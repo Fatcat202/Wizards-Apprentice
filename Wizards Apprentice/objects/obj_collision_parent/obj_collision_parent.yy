@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_npc",
+  "%Name":"obj_collision_parent",
   "eventList":[],
   "managed":true,
-  "name":"obj_npc",
+  "name":"obj_collision_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"NPCs",
-    "path":"folders/Objects/Characters/NPCs.yy",
+    "name":"Collision Walls",
+    "path":"folders/Objects/Collision Walls.yy",
   },
   "parentObjectId":{
-    "name":"obj_character",
-    "path":"objects/obj_character/obj_character.yy",
+    "name":"obj_solid",
+    "path":"objects/obj_solid/obj_solid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

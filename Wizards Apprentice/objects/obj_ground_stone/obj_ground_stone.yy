@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player",
+  "%Name":"obj_ground_stone",
   "eventList":[],
   "managed":true,
-  "name":"obj_player",
+  "name":"obj_ground_stone",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Objects/Characters/Player.yy",
+    "name":"Collision Walls",
+    "path":"folders/Objects/Collision Walls.yy",
   },
   "parentObjectId":{
-    "name":"obj_character",
-    "path":"objects/obj_character/obj_character.yy",
+    "name":"obj_collision_parent",
+    "path":"objects/obj_collision_parent/obj_collision_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_ground_stone_0",
+    "path":"sprites/spr_ground_stone_0/spr_ground_stone_0.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
