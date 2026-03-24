@@ -9,6 +9,8 @@
 	// (x2 if both move towards each other)
 	global.collision_distance = 2
 	
+
+	
 	#endregion Variables
 
 	#region Controls
