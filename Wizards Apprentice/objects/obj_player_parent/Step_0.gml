@@ -4,6 +4,8 @@ event_inherited()
 
 // Tick coyote time each cycle
 func_coyote_time()
+// Check for jump buffering
+func_jump_buffer()
 
 
 	#region Controls
@@ -20,16 +22,19 @@ func_coyote_time()
 			}
 			
 			// Jump if on a surface and the button to jump is pressed
-			if(coyote_time > 0 && keyboard_check_pressed(global.cont_jump) )
+			if(coyote_time_timer > 0 && (jump_key_buffered || global.cont_jump_pressed ))
 			{
-				coyote_time = 0;
+				// Reset coyote time to prevent double jump
+				coyote_time_timer = 0;
+				
+				// Set vertical move speed to jump speed
 				move_spd_v = jump_speed
 				
 				// Set state to jumping
 				state_jump = state_jumping;
 			}
 		#endregion Jump States
-			
+			show_debug_message(string(global.cont_right))
 		#region Moving Sprite
 			
 			// Assign input variable defaults
@@ -37,9 +42,9 @@ func_coyote_time()
 			var _right = 0;
 
 			// Determine movement direction based on key presses, prevent self from touching solid objects
-			if(place_free (x - collision_speed, y)) _left = keyboard_check(ord(global.cont_left));
+			if(place_free (x - collision_speed, y)) _left = global.cont_left;
 
-			if(place_free (x + collision_speed, y)) _right = keyboard_check(ord(global.cont_right));
+			if(place_free (x + collision_speed, y)) _right = global.cont_right;
 
 			// Define if the player is walking
 			if(_right || _left > 0)

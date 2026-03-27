@@ -18,10 +18,15 @@
 
 	// Max speed
 	move_spd_max = 4;
+
+	// Movement speed when jumping
+	jump_speed = 8;
+
+	//Terminal Velocity
+	term_vel = -jump_speed
 	
 	// Current horizontal move speed, used for acceleraton/deceleration
 	move_spd_h = 0;
-	
 	// Current vertical move speed, used for acceleraton/deceleration
 	move_spd_v = 0;
 	
@@ -33,21 +38,24 @@
 	// Gravity, used for deceleration when jumping and acceleration when falling
 	grav = 0.275
 	
-	// Movement speed when jumping
-	jump_speed = 8;
-	
-	//Terminal Velocity
-	term_vel = -jump_speed
-	
-	//Coyote Time
-	coyote_time = 0;
-	// Length of coyote time, measured in frames
-	coyote_time_length = 3;
-	
+
+		
 	// Collision speed, used for collision logic
 	collision_speed = move_spd_max + global.collision_distance;
 	
+	// **TIMERS**
 	
+	// Coyote timer
+	coyote_time_timer = 0;
+	// Length of coyote time, measured in cycles
+	coyote_time_length = 3;
+	
+	// Jump buffer timer
+	jump_buffer_timer = 0;
+	// Length of jump buffer, measured in cycles
+	jump_buffer_length = 5
+	// Used to determine if a jump has been buffered
+	jump_key_buffered = false
 	
 	
 	
@@ -62,10 +70,28 @@
 // Ticks down counter for coyote time
 function func_coyote_time()
 {
-	if(coyote_time > 0) coyote_time--;
+	// Tick down timer if timer is active
+	if(coyote_time_timer > 0) coyote_time_timer--;
 	
-	if(scr_on_ground()) coyote_time = coyote_time_length;
+	// Reset timer if on the ground
+	if(scr_on_ground()) coyote_time_timer = coyote_time_length;
 }
+
+// Ticks down counter for jump buffering
+function func_jump_buffer()
+{
+	// Reset timer whenever jump button is pressed
+	if(global.cont_jump_pressed) jump_buffer_timer = jump_buffer_length
+	
+	// Tick down timer if active
+	if(jump_buffer_timer > 0)
+	{
+		jump_key_buffered = true;
+		jump_buffer_timer--
+	}else jump_key_buffered = false;
+}
+
+
 
 #region Jump States
 

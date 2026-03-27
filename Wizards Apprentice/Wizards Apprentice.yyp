@@ -38,6 +38,7 @@
     {"id":{"name":"obj_player_parent","path":"objects/obj_player_parent/obj_player_parent.yy",},},
     {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},},
     {"id":{"name":"rm_testing","path":"rooms/rm_testing/rm_testing.yy",},},
+    {"id":{"name":"scr_get_controls","path":"scripts/scr_get_controls/scr_get_controls.yy",},},
     {"id":{"name":"scr_on_ground","path":"scripts/scr_on_ground/scr_on_ground.yy",},},
     {"id":{"name":"scr_test","path":"scripts/scr_test/scr_test.yy",},},
     {"id":{"name":"spr_background_rm_testing","path":"sprites/spr_background_rm_testing/spr_background_rm_testing.yy",},},
