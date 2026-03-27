@@ -1,0 +1,65 @@
+
+
+
+**PLAYER STATS**
+
+	Vigor: Determines health
+	Intelligence: Determines mana
+	Dexterity: Jump distance/height, movement and speed. Higher number makes platforming easier
+	Charisma: Provides a discount in shops
+	Memory: Determines what spells the player can prepare. Some spells cost more memory than others
+
+
+**SPELL IDEAS**
+
+	*Cantrips*
+	Starter spells, take no mana
+	
+	*Level 1*
+	
+	*Level 2*
+	
+	*Level 3*
+	
+	*Level 4*
+	
+	
+	*Unplaced spells*
+
+
+
+**ITEM IDEAS**
+
+	-Healing potion: Restores hp
+	-Mana potion: Restores mana
+	-Scrolls: Single use of a non-prepared spell
+
+
+
+**ENEMY IDEAS**
+
+			**GOBLINS**
+	Basic enemies, faster but less damage and health
+		
+	Goblin Grunt: Basic melee goblin enemy
+	Goblin Brute: Advanced melee goblin
+	Sling Goblin: Basic ranged goblin
+	Goblin Mage: Spellcaster goblin, advanced ranged enemy
+	
+	
+			**ORCS**
+	More difficult than goblins, more hp and damage
+	
+	Orc Grunt: Basic melee orc
+	Orc Archer: Basic ranged orc
+	Orc Shaman: Buffs allies and debuffs enemies
+	
+	
+			**UNDEAD**
+	More advanced enemies, often in large groups or have debuff effects
+		
+	Shambler zombie: Basic undead, more health but less damage
+	Shambler skeleton Basic undead, hits harder but less health
+
+
+

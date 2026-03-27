@@ -1,21 +1,17 @@
-
-
-
-
+event_inherited()
 
 #region Loading instance stats
 
-/*
+	
 	// Health
-	max_hp = global.player_stats[index].dice_hp + global.player_stats[index].hp_mod;
-	active_health = max_hp;
+	max_health = 6
+	active_health = max_health;
 
-	// Armor
-	max_armor = global.player_stats[index].dice_armor;
-	active_armor = max_armor;
-*/
-
-
+	// Mana
+	max_mana = 10;
+	active_mana = max_mana;
+	
+	
 	// Max speed
 	move_spd_max = 4;
 
