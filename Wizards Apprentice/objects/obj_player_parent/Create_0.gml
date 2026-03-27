@@ -16,14 +16,35 @@
 */
 
 
-	// Speed
-	move_spd = 5;
-	jump_speed = -8;
-	collision_speed = move_spd + global.collision_distance;
-	y_speed = 0;
+	// Max speed
+	move_spd_max = 4;
+	
+	// Current horizontal move speed, used for acceleraton/deceleration
+	move_spd_h = 0;
+	
+	// Current vertical move speed, used for acceleraton/deceleration
+	move_spd_v = 0;
+	
+	// Horizontal movement acceleration rate. 0 is instant, 1 is nothing
+	h_acel = 0.5
+	// Horizontal movement deceleration rate. 0 is instant, 1 is nothing
+	h_decel = 0.4
+	
+	// Gravity, used for deceleration when jumping and acceleration when falling
+	grav = 0.275
+	
+	// Movement speed when jumping
+	jump_speed = 8;
 	
 	//Terminal Velocity
-	term_vel = move_spd
+	term_vel = -jump_speed
+	
+	
+	collision_speed = move_spd_max + global.collision_distance;
+	
+	
+	
+	
 	
 	// Variable to determine if player is walking
 	is_walking = false;
