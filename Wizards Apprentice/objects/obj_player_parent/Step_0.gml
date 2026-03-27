@@ -24,8 +24,15 @@ func_jump_buffer()
 			// Jump if on a surface and the button to jump is pressed
 			if(coyote_time_timer > 0 && (jump_key_buffered || global.cont_jump_pressed ))
 			{
+				// Set the jump hold timer
+				jump_hold_timer = jump_hold_frames;
+				
 				// Reset coyote time to prevent double jump
 				coyote_time_timer = 0;
+				
+				// Reset jump buffer to prevent double jump
+				jump_key_buffered = 0;
+				jump_buffer_timer = 0;
 				
 				// Set vertical move speed to jump speed
 				move_spd_v = jump_speed
@@ -33,8 +40,24 @@ func_jump_buffer()
 				// Set state to jumping
 				state_jump = state_jumping;
 			}
+			
+			// End jump held timer if no longer held, or hitting collision object above
+			if(!global.cont_jump_held or place_meeting(x, y - 1, obj_collision_parent)) jump_hold_timer = 0;
+			
+			// Count down jump held timer
+			if(jump_hold_timer > 0 && global.cont_jump_held)
+			{
+				// Keep vertical move speed as jump speed when active, negative gravity
+				move_spd_v = jump_speed
+				
+				// Tick timer
+				jump_hold_timer--;
+			}
+			
+			
 		#endregion Jump States
-			show_debug_message(string(global.cont_right))
+		
+			
 		#region Moving Sprite
 			
 			// Assign input variable defaults

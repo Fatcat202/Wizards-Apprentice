@@ -20,7 +20,7 @@
 	move_spd_max = 4;
 
 	// Movement speed when jumping
-	jump_speed = 8;
+	jump_speed = 5.5;
 
 	//Terminal Velocity
 	term_vel = -jump_speed
@@ -38,10 +38,6 @@
 	// Gravity, used for deceleration when jumping and acceleration when falling
 	grav = 0.275
 	
-
-		
-	// Collision speed, used for collision logic
-	collision_speed = move_spd_max + global.collision_distance;
 	
 	// **TIMERS**
 	
@@ -57,6 +53,11 @@
 	// Used to determine if a jump has been buffered
 	jump_key_buffered = false
 	
+	// Holding jump timer
+	jump_hold_timer = 0;
+	// Maximum number of cycles for held jump before gravity kicks in
+	jump_hold_frames = 12;
+	
 	
 	
 	// Variable to determine if player is walking
@@ -64,6 +65,9 @@
 	
 	// Sets initial default for state_jump to idle
 	state_jump_free = noone
+	
+	// Collision speed, used for collision logic
+	collision_speed = move_spd_max + global.collision_distance;
 	
 #endregion
 
@@ -89,6 +93,12 @@ function func_jump_buffer()
 		jump_key_buffered = true;
 		jump_buffer_timer--
 	}else jump_key_buffered = false;
+}
+
+//
+function func_jump_held()
+{
+		
 }
 
 
