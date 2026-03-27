@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_test",
+  "%Name":"scr_health_and_mana_test",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_test",
+  "name":"scr_health_and_mana_test",
   "parent":{
     "name":"Debug",
     "path":"folders/Scripts/Debug.yy",

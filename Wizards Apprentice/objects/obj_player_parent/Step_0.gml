@@ -7,20 +7,8 @@ func_coyote_time()
 // Check for jump buffering
 func_jump_buffer()
 
-if(keyboard_check_pressed(ord("K")))
-{
-	active_health--	
-}else if(keyboard_check_pressed(ord("L")))
-{
-	active_health++
-}
-if(keyboard_check_pressed(ord("O")))
-{
-	active_mana--	
-}else if(keyboard_check_pressed(ord("P")))
-{
-	active_mana++
-}
+// Used for testing health and mana functionality
+//scr_health_and_mana_test()
 
 
 	#region Controls
@@ -107,6 +95,8 @@ if(keyboard_check_pressed(ord("O")))
 			// Set and apply terminal velocity
 			if(move_spd_v < term_vel) move_spd_v = term_vel;
 			
+			// Preventing getting stuck with collision objects horizontaly
+			if(place_meeting(x + move_spd_h, y, obj_collision_parent)) move_spd_h = 0
 			
 			// Move object horizontally
 			x += move_spd_h
