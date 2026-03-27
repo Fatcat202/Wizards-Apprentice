@@ -39,7 +39,12 @@
 	//Terminal Velocity
 	term_vel = -jump_speed
 	
+	//Coyote Time
+	coyote_time = 0;
+	// Length of coyote time, measured in frames
+	coyote_time_length = 3;
 	
+	// Collision speed, used for collision logic
 	collision_speed = move_spd_max + global.collision_distance;
 	
 	
@@ -53,6 +58,14 @@
 	state_jump_free = noone
 	
 #endregion
+
+// Ticks down counter for coyote time
+function func_coyote_time()
+{
+	if(coyote_time > 0) coyote_time--;
+	
+	if(scr_on_ground()) coyote_time = coyote_time_length;
+}
 
 #region Jump States
 

@@ -2,6 +2,8 @@
 
 event_inherited()
 
+// Tick coyote time each cycle
+func_coyote_time()
 
 
 	#region Controls
@@ -10,21 +12,23 @@ event_inherited()
 	#region Movement
 
 
+		#region Jump States
+			// Set jump state to idle if located on the ground
+			if(scr_on_ground())
+			{
+				state_jump = state_idle
+			}
 			
-		// Set jump state to idle if located on the ground
-		if(scr_on_ground())
-		{
-			state_jump = state_idle
-		}
-			
-		// Jump if on a surface and the button to jump is pressed
-		if(scr_on_ground() && keyboard_check_pressed(global.cont_jump))
-		{
-			move_spd_v = jump_speed
+			// Jump if on a surface and the button to jump is pressed
+			if(coyote_time > 0 && keyboard_check_pressed(global.cont_jump) )
+			{
+				coyote_time = 0;
+				move_spd_v = jump_speed
 				
-			// Set state to jumping
-			state_jump = state_jumping;
-		}
+				// Set state to jumping
+				state_jump = state_jumping;
+			}
+		#endregion Jump States
 			
 		#region Moving Sprite
 			
