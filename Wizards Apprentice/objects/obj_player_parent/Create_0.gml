@@ -59,7 +59,7 @@
 	// Applies when the player is not jumping or falling
 	state_idle = function()
 	{
-	
+
 		state_jump_free = state_idle;
 		//show_debug_message("Jump State: Idle");
 	}
@@ -67,7 +67,7 @@
 	// Applies when player is jumping
 	state_jumping = function()
 	{
-		
+
 		state_jump_free = state_jumping;
 		//show_debug_message("Jump State: Jumping");
 	}

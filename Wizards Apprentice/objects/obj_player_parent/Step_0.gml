@@ -2,8 +2,7 @@
 
 event_inherited()
 
-	// State machine for jumping and falling
-	state_jump();
+
 
 	#region Controls
 
@@ -13,13 +12,13 @@ event_inherited()
 
 			
 		// Set jump state to idle if located on the ground
-		if(place_meeting(x, y + 1, obj_collision_parent))
+		if(scr_on_ground())
 		{
 			state_jump = state_idle
 		}
 			
 		// Jump if on a surface and the button to jump is pressed
-		if(place_meeting(x, y + 1, obj_collision_parent) && keyboard_check_pressed(global.cont_jump))
+		if(scr_on_ground() && keyboard_check_pressed(global.cont_jump))
 		{
 			move_spd_v = jump_speed
 				
@@ -61,6 +60,8 @@ event_inherited()
 			// Set and apply terminal velocity
 			if(move_spd_v < term_vel) move_spd_v = term_vel;
 			
+
+			
 			// Move object horizontally
 			x += move_spd_h
 			// Move object vertically
@@ -73,14 +74,19 @@ event_inherited()
 				image_xscale = -1;
 			}else if(move_spd_h > 0) image_xscale = 1;
 			
+			// State machine for jumping and falling
+			state_jump();
+			
 			// Increment gravity
-			if(!place_meeting(x, y + 1, obj_collision_parent))
+			if(!scr_on_ground())
 			{
 				move_spd_v -= grav;
-			}else if(place_meeting(x, y + 1, obj_collision_parent)) move_spd_v = 0
+			}else if(scr_on_ground()) move_spd_v = 0
 			
-
-			show_debug_message("move_spd_v = " + string(move_spd_v))
+			
+			// Test curent movement speeds
+			//show_debug_message("move_spd_h = " + string(move_spd_h))
+			//show_debug_message("move_spd_v = " + string(move_spd_v))
 				
 		#endregion Moving Sprite
 			
