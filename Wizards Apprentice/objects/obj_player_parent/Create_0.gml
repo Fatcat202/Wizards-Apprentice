@@ -95,13 +95,6 @@ function func_jump_buffer()
 	}else jump_key_buffered = false;
 }
 
-//
-function func_jump_held()
-{
-		
-}
-
-
 
 #region Jump States
 

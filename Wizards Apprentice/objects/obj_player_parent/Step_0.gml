@@ -92,7 +92,6 @@ func_jump_buffer()
 			// Set and apply terminal velocity
 			if(move_spd_v < term_vel) move_spd_v = term_vel;
 			
-
 			
 			// Move object horizontally
 			x += move_spd_h
