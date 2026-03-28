@@ -236,6 +236,21 @@ func_jump_buffer()
 		
 		
 	#endregion Swap Spells
+	
+	#region Use Spell
+		
+		if(global.cont_attack)
+		{
+			// Execute Attack Script
+			script_execute(global.spell_stats[active_spell].scr);
+			
+			// Debug
+			//show_debug_message("global.spell_stats[active_spell].scr: " + string(global.spell_stats[active_spell].scr))
+			//show_debug_message("active_spell: " + string(active_spell))
+		}
+		
+		
+	#endregion Use Spell
 
 
 

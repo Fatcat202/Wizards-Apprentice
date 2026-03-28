@@ -65,13 +65,32 @@ event_inherited()
 	// Collision speed, used for collision logic
 	collision_speed = move_spd_max + global.collision_distance;
 	
-	//Actively selected spell
+	// Actively selected spell
 	active_spell = 1;
 	
 	// Total number of spells memorised
 	total_spells = 5
 	
-#endregion
+	// Array of usable spells
+	arr_active_spells[total_spells] = -1
+	
+	#region Hard coded spells for testing
+		arr_active_spells[1] = -1
+		arr_active_spells[2] = -1
+		arr_active_spells[3] = -1
+		arr_active_spells[4] = -1
+		arr_active_spells[5] = -1
+	//	arr_active_spells[6] = -1
+	//	arr_active_spells[7] = -1
+	//	arr_active_spells[8] = -1
+	//	arr_active_spells[9] = -1
+	//	arr_active_spells[10] = -1
+	
+	show_debug_message("arr_active_spells = " + string(arr_active_spells))
+	#endregion Hard coded spells for testing
+	
+	
+#endregion Loading instance stats
 
 // Ticks down counter for coyote time
 function func_coyote_time()

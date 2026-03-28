@@ -1,2 +1,2 @@
 (spell names below),spell_level,spell_damage,spell_atk_speed,spell_cooldown,spell_mana,spell_memory,title,desc,spr,scr
-test,1,2,3,4,5,6,empty,empty,-1,-1
+test,1,2,3,4,5,6,empty,empty,-1,scr_test
