@@ -252,7 +252,7 @@ func_jump_buffer()
 			var spell_selected = 9
 			if(total_spells >= spell_selected) active_spell = 9
 		}
-		if(global.cont_spell_8)
+		if(global.cont_spell_10)
 		{
 			var spell_selected = 10
 			if(total_spells >= spell_selected) active_spell = 10

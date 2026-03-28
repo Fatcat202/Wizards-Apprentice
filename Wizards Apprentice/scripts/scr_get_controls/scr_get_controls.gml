@@ -21,7 +21,7 @@ function scr_get_controls()
 	global.cont_spell_7 = keyboard_check_pressed(ord("7"))
 	global.cont_spell_8 = keyboard_check_pressed(ord("8"))
 	global.cont_spell_9 = keyboard_check_pressed(ord("9"))
-	global.cont_spell_10 = keyboard_check_pressed(ord("10"))
+	global.cont_spell_10 = keyboard_check_pressed(ord("0"))
 		
 	//Misc
 	global.cont_attack = mouse_check_button(mb_left)
