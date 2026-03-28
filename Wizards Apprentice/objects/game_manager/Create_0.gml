@@ -72,12 +72,14 @@
 
 			}
 
+			// Declare length of spell index based on adjusted CSV height
+			global.spell_index_length = ds_grid_height(ds_spell_stats_csv) - 1
+			
 			// Create spell_stats struct array
-			// **ADD ANOTHER LINE ONCE ANOTHER SPELL IS IMPLEMENTED**
-			global.spell_index_length++; global.spell_stats[global.spell_index_length] = new spell_stats();
-
-	
-
+			for(var i = 1; i <= global.spell_index_length; i++)
+			{
+				global.spell_stats[global.spell_index_length] = new spell_stats();
+			}
 
 			// Assign all values from CSV file into stats database structs
 			for(var i = 0; i < global.spell_index_length; i++)
@@ -107,6 +109,10 @@
 				// Sets 1st place in array as names
 				global.arr_spell_index_name[n] = ds_grid_get(ds_spell_stats_csv, 0, n);
 			}
+			
+			var hh = ds_grid_height(ds_spell_stats_csv)
+			
+			show_debug_message("hh: " + string(hh))
 	
 	
 			// Cleanup DS grid
