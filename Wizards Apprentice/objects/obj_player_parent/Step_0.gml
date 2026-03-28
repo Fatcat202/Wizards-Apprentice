@@ -59,7 +59,6 @@ func_jump_buffer()
 			
 			
 		#endregion Jump States
-		
 			
 		#region Moving Sprite
 			

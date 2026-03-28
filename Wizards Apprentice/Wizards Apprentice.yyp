@@ -20,11 +20,14 @@
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Debug","folderPath":"folders/Scripts/Debug.yy","name":"Debug","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Spells","folderPath":"folders/Sprites/Spells.yy","name":"Spells","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hearts","folderPath":"folders/Sprites/Hearts.yy","name":"Hearts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Mana","folderPath":"folders/Sprites/Mana.yy","name":"Mana","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"spell_data.csv","CopyToMask":-1,"filePath":"datafiles","name":"spell_data.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -56,6 +59,7 @@
     {"id":{"name":"spr_mana_full","path":"sprites/spr_mana_full/spr_mana_full.yy",},},
     {"id":{"name":"spr_mana_half","path":"sprites/spr_mana_half/spr_mana_half.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
+    {"id":{"name":"spr_spell_placeholder","path":"sprites/spr_spell_placeholder/spr_spell_placeholder.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
