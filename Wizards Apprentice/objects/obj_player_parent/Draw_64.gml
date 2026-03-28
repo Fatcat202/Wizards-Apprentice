@@ -1,6 +1,9 @@
 /// @description HUD
 
 
+var xx = display_get_gui_width() / 2
+var yy = display_get_gui_height() / 2
+
 #region Hearts
 	// Total number of hearts
 	var total_hearts = max_health / 2;
@@ -64,5 +67,31 @@
 		}
 	}
 #endregion Mana
+
+#region Spells
+
+	var total_spells = 5;
+	var spell_width = sprite_get_width(spr_spell_placeholder)
+	var spell_height = sprite_get_height(spr_spell_placeholder)
+	var spell_spacing = (spell_width);
+	var spell_margin_x =  xx - (((total_spells + 1) * spell_width))/2
+	var spell_margin_y = yy * 2 - (spell_height / 2) - 5;
+
+
+	
+	for(var i = 1; i <= total_spells; i++)
+	{
+		// Swap sprite image depending on if spell is selected
+		if(active_spell == i)
+		{
+			draw_sprite(spr_spell_placeholder, 0, spell_margin_x + (i * spell_spacing), spell_margin_y)
+		} else
+		{
+			draw_sprite(spr_spell_placeholder, 1, spell_margin_x + (i * spell_spacing), spell_margin_y)
+		}
+	}
+
+
+#endregion Spells
 
 

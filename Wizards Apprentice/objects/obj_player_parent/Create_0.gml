@@ -65,6 +65,9 @@ event_inherited()
 	// Collision speed, used for collision logic
 	collision_speed = move_spd_max + global.collision_distance;
 	
+	//Actively selected spell
+	active_spell = 1;
+	
 #endregion
 
 // Ticks down counter for coyote time

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_find_attack_index",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_find_attack_index",
+  "parent":{
+    "name":"Spells",
+    "path":"folders/Scripts/Spells.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
