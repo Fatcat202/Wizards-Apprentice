@@ -27,4 +27,5 @@ function scr_get_controls()
 	global.cont_attack = mouse_check_button(mb_left)
 	global.cont_block = mouse_check_button(mb_right)
 	global.cont_menu = keyboard_check(ord(vk_escape));
+	
 }

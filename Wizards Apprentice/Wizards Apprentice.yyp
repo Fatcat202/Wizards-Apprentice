@@ -47,7 +47,7 @@
     {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},},
     {"id":{"name":"rm_testing","path":"rooms/rm_testing/rm_testing.yy",},},
     {"id":{"name":"scr_example","path":"scripts/scr_example/scr_example.yy",},},
-    {"id":{"name":"scr_find_attack_index","path":"scripts/scr_find_attack_index/scr_find_attack_index.yy",},},
+    {"id":{"name":"scr_find_spell_index","path":"scripts/scr_find_spell_index/scr_find_spell_index.yy",},},
     {"id":{"name":"scr_get_controls","path":"scripts/scr_get_controls/scr_get_controls.yy",},},
     {"id":{"name":"scr_health_and_mana_test","path":"scripts/scr_health_and_mana_test/scr_health_and_mana_test.yy",},},
     {"id":{"name":"scr_on_ground","path":"scripts/scr_on_ground/scr_on_ground.yy",},},

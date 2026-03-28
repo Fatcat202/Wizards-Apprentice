@@ -206,57 +206,33 @@ func_jump_buffer()
 	
 	#region Swap Spells
 	
+		var spell_selected = active_spell
+		if(global.cont_spell_1) spell_selected = 1
+		if(global.cont_spell_2) spell_selected = 2
+		if(global.cont_spell_3) spell_selected = 3
+		if(global.cont_spell_4) spell_selected = 4
+		if(global.cont_spell_5) spell_selected = 5
+		if(global.cont_spell_6) spell_selected = 6
+		if(global.cont_spell_7) spell_selected = 7
+		if(global.cont_spell_8) spell_selected = 8
+		if(global.cont_spell_9) spell_selected = 9
+		if(global.cont_spell_10) spell_selected = 10
+			
+		// Adds scrolling selection for active spells
+		if(mouse_wheel_up())
+		{
+			spell_selected++;
+		} else if(mouse_wheel_down())
+		{
+			spell_selected--;
+		}
 		
-		if(global.cont_spell_1)
-		{
-			var spell_selected = 1
-			if(total_spells >= spell_selected) active_spell = 1
-		}
-		if(global.cont_spell_2)
-		{
-			var spell_selected = 2
-			if(total_spells >= spell_selected) active_spell = 2
-		}
-		if(global.cont_spell_3)
-		{
-			var spell_selected = 3
-			if(total_spells >= spell_selected) active_spell = 3
-		}
-		if(global.cont_spell_4)
-		{
-			var spell_selected = 4
-			if(total_spells >= spell_selected) active_spell = 4
-		}
-		if(global.cont_spell_5)
-		{
-			var spell_selected = 5
-			if(total_spells >= spell_selected) active_spell = 5
-		}
-		if(global.cont_spell_6)
-		{
-			var spell_selected = 6
-			if(total_spells >= spell_selected) active_spell = 6
-		}
-		if(global.cont_spell_7)
-		{
-			var spell_selected = 7
-			if(total_spells >= spell_selected) active_spell = 7
-		}
-		if(global.cont_spell_8)
-		{
-			var spell_selected = 8
-			if(total_spells >= spell_selected) active_spell = 8
-		}
-		if(global.cont_spell_9)
-		{
-			var spell_selected = 9
-			if(total_spells >= spell_selected) active_spell = 9
-		}
-		if(global.cont_spell_10)
-		{
-			var spell_selected = 10
-			if(total_spells >= spell_selected) active_spell = 10
-		}
+		// Loop mouse scroll if going beyond bound of spells
+		if(spell_selected < 1) spell_selected = total_spells;
+		else if(spell_selected > total_spells) spell_selected = 1;
+		
+		// Assign new active spell, provided it is a spell that exists
+		active_spell = spell_selected;
 		
 		
 	#endregion Swap Spells

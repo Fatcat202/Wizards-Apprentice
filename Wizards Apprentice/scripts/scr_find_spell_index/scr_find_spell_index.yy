@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_find_attack_index",
+  "%Name":"scr_find_spell_index",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_find_attack_index",
+  "name":"scr_find_spell_index",
   "parent":{
     "name":"Spells",
     "path":"folders/Scripts/Spells.yy",

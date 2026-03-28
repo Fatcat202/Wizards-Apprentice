@@ -13,7 +13,7 @@
 **SPELL IDEAS**
 
 	*Cantrips*
-	Starter spells, take no mana
+	Starter spells, use no mana
 	
 	*Level 1*
 	
@@ -25,7 +25,33 @@
 	
 	
 	*Unplaced spells*
+		-Wall of Ice: Create a solid wall of ice, can stick out horizontally from walls
+		-Wall of Fire: Create a solid wall of ice, can stick out horizontally from walls or vertically from ceilings
+		-Lightning Bolt: Bolt of electricity, can strike through enemies
+		-Fireball: Ball of fire creating a large explosion, damaging many enemies in an area
+		-Shocking Touch: Electrocute with a touch
+		-Flaming Grasp: Burn with a touch
+		-Burning Ray: Ranged blast of fire
+		-Heal: Heal self, but lose mana until able to rest
+		-Jump: Gain the ability to double jump
+		-Icy Breath: Coat a surface with slippery ice
+		-Teleport (Maybe): Gain the ability to teleport to one location within line of sight and within a range
+		-Shield: Gain the ability to block attacks
+		-Rain Cloud: Cause rain to fall in an area, putting out fires and making puddles of water
+		-Invisibility: Become invisible (but not invulnerable) for a short time
+		-Shroud of (element): Enemies that hit you take damage for a short time
+		-Dragon's Breath: Breathe out cone of fire
+	
+	
+**ELEMENT COMBOS**
 
+	-Fire + Ice = Water
+
+	-Water + Electricity = Charged Water
+
+	-Fire + Water = Steam
+
+	-Steam + Electricity = Charged Steam
 
 
 **ITEM IDEAS**
@@ -41,25 +67,25 @@
 			**GOBLINS**
 	Basic enemies, faster but less damage and health
 		
-	Goblin Grunt: Basic melee goblin enemy
-	Goblin Brute: Advanced melee goblin
-	Sling Goblin: Basic ranged goblin
-	Goblin Mage: Spellcaster goblin, advanced ranged enemy
+	-Goblin Grunt: Basic melee goblin enemy
+	-Goblin Brute: Advanced melee goblin
+	-Sling Goblin: Basic ranged goblin
+	-Goblin Mage: Spellcaster goblin, advanced ranged enemy
 	
 	
 			**ORCS**
 	More difficult than goblins, more hp and damage
 	
-	Orc Grunt: Basic melee orc
-	Orc Archer: Basic ranged orc
-	Orc Shaman: Buffs allies and debuffs enemies
+	-Orc Grunt: Basic melee orc
+	-Orc Archer: Basic ranged orc
+	-Orc Shaman: Buffs allies and debuffs enemies
 	
 	
 			**UNDEAD**
 	More advanced enemies, often in large groups or have debuff effects
 		
-	Shambler zombie: Basic undead, more health but less damage
-	Shambler skeleton Basic undead, hits harder but less health
+	-Shambler zombie: Basic undead, more health but less damage
+	-Shambler skeleton Basic undead, hits harder but less health
 
 
 
