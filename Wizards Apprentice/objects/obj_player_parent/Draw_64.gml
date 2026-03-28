@@ -70,7 +70,6 @@ var yy = display_get_gui_height() / 2
 
 #region Spells
 
-	var total_spells = 5;
 	var spell_width = sprite_get_width(spr_spell_placeholder)
 	var spell_height = sprite_get_height(spr_spell_placeholder)
 	var spell_spacing = (spell_width);

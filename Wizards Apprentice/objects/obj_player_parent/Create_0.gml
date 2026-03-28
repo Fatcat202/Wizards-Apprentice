@@ -68,6 +68,9 @@ event_inherited()
 	//Actively selected spell
 	active_spell = 1;
 	
+	// Total number of spells memorised
+	total_spells = 5
+	
 #endregion
 
 // Ticks down counter for coyote time
