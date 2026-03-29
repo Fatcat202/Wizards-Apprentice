@@ -177,7 +177,7 @@ event_inherited()
 	{
 
 		state_jump_free = state_idle;
-		//show_debug_message("Jump State: Idle");
+		show_debug_message("Jump State: Idle");
 	}
 
 	// Applies when player is jumping
@@ -185,7 +185,7 @@ event_inherited()
 	{
 
 		state_jump_free = state_jumping;
-		//show_debug_message("Jump State: Jumping");
+		show_debug_message("Jump State: Jumping");
 	}
 
 	// Applies when player is falling
@@ -193,7 +193,7 @@ event_inherited()
 	{
 
 		state_jump_free = state_falling;
-		//show_debug_message("Jump State: Falling");
+		show_debug_message("Jump State: Falling");
 	}
 
 	state_jump = state_idle;

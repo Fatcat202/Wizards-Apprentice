@@ -55,7 +55,7 @@ scr_health_and_mana_test()
 				// Allow double jumping when off the ground with more than 1 max jump
 			}else if(!scr_on_ground() && global.cont_jump_pressed && jumps_left > 0)
 			{
-				func_jump()
+				func_jump() //scr_test()
 			// End jump spell if all jumps are used
 			}else if(jumps_left == 0 && spell_jump_active == true) spell_jump_duration = 0;
 			
@@ -104,7 +104,6 @@ scr_health_and_mana_test()
 				move_spd_h *= h_decel
 			}
 			
-			
 			// Set max horizontal movement speed
 			move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
 			// Set and apply terminal velocity
@@ -149,44 +148,50 @@ scr_health_and_mana_test()
 			
 			// State machine for jumping and falling
 			state_jump();
+			
+			
+			
 
 			// Gravity
 			if(!scr_on_ground())
 			{
 				// Increment Gravity
 				move_spd_v -= grav;
-				
+
 				// Gravity Debug
 				//show_debug_message("Gravity On")
-			}else //if(moving_down_slope == true)
+			}else
 			{
 				// Reset y speed if on the ground
 				move_spd_v = 0
-				
+
 				// Reset number of jumps remaining
 				jumps_left = max_jumps
 				
 				// Gravity Debug
+				//show_debug_message("jumps_left = " + string(jumps_left))
 				//show_debug_message("Gravity Off")
 			}
+			
+			
 			
 			// Test curent movement speeds
 			//show_debug_message("move_spd_h = " + string(move_spd_h))
 			//show_debug_message("move_spd_v = " + string(move_spd_v))
 
+
+			// Declare the player is falling after reaching apex of jump
+			if(move_spd_v < 0 && state_jump != state_falling)
+			{
+				// Decrease jumps left to prevent excess jumps when falling off platform
+				// Also prevent losing double jump when falling after jumping
+				if(state_jump != state_jumping) jumps_left -= 1// scr_test()
+			
+				// Set jump state to falling
+				state_jump = state_falling
+			}
 				
 		#endregion Moving Sprite
-			
-		// Declare the player is falling after reaching apex of jump
-		if(move_spd_v < 0 && state_jump != state_falling)
-		{
-			// Decrease jumps left to prevent excess jumps when falling off platform
-			// Also prevent losing double jump when falling after jumping
-			if(state_jump != state_jumping) jumps_left -= 1
-			
-			// Set jump state to falling
-			state_jump = state_falling
-		}
 	
 		
 		#region Preventing getting stuck inside collision objects
