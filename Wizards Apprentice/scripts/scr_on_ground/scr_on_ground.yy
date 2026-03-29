@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_on_ground",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Player Movement",
+    "path":"folders/Scripts/Player Movement.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -31,7 +31,7 @@ event_inherited()
 	jump_speed = 5.5;
 
 	//Terminal Velocity
-	term_vel = -jump_speed
+	term_vel = -(jump_speed + 2)
 	
 	// Current horizontal move speed, used for acceleraton/deceleration
 	move_spd_h = 0;

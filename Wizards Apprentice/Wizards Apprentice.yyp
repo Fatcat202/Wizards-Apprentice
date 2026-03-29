@@ -20,6 +20,7 @@
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Debug","folderPath":"folders/Scripts/Debug.yy","name":"Debug","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Effects","folderPath":"folders/Scripts/Effects.yy","name":"Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Player Movement","folderPath":"folders/Scripts/Player Movement.yy","name":"Player Movement","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Spells","folderPath":"folders/Scripts/Spells.yy","name":"Spells","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Spell Scripts","folderPath":"folders/Scripts/Spells/Spell Scripts.yy","name":"Spell Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},

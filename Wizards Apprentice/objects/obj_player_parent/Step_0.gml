@@ -92,8 +92,30 @@ scr_health_and_mana_test()
 			// Set and apply terminal velocity
 			if(move_spd_v < term_vel) move_spd_v = term_vel;
 			
-			// Preventing getting stuck with collision objects horizontaly
-			if(place_meeting(x + move_spd_h, y, obj_collision_parent)) move_spd_h = 0
+			
+			
+			var sub_pixel = 0.5
+	
+			// Moving up slope
+			// Detect if a slope is present
+			if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent))
+			{
+				// Move up slope if present
+				while(place_meeting(x + move_spd_h, y, obj_collision_parent)) y -= sub_pixel
+			}else
+			{
+				// Preventing getting stuck with collision objects horizontaly
+				if(place_meeting(x + move_spd_h, y, obj_collision_parent)) move_spd_h = 0
+			}
+			
+			// Moving down slope
+			// Detect if a slope is present
+			if(!place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && place_meeting(x + move_spd_h, y + abs(move_spd_h), obj_collision_parent))
+			{
+				// Move down slope if present
+				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent)) y += sub_pixel
+			}		
+			
 			
 			// Move object horizontally
 			x += move_spd_h
@@ -109,17 +131,28 @@ scr_health_and_mana_test()
 			
 			// State machine for jumping and falling
 			state_jump();
-			
-			// Increment gravity
+
+			// Gravity
 			if(!scr_on_ground())
 			{
+				// Increment Gravity
 				move_spd_v -= grav;
-			}else if(scr_on_ground()) move_spd_v = 0
-			
+				
+				// Gravity Debug
+				//show_debug_message("Gravity On")
+			}else //if(moving_down_slope == true)
+			{
+				// Reset y speed if on the ground
+				move_spd_v = 0
+				
+				// Gravity Debug
+				//show_debug_message("Gravity Off")
+			}
 			
 			// Test curent movement speeds
 			//show_debug_message("move_spd_h = " + string(move_spd_h))
 			//show_debug_message("move_spd_v = " + string(move_spd_v))
+
 				
 		#endregion Moving Sprite
 			
