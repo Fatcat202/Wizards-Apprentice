@@ -15,15 +15,14 @@ scr_health_and_mana_test()
 	#region Movement
 
 
-		#region Jump States
+		#region Jumping
 			// Set jump state to idle if located on the ground
 			if(scr_on_ground())
 			{
 				state_jump = state_idle
 			}
 			
-			// Jump if on a surface and the button to jump is pressed
-			if(coyote_time_timer > 0 && (jump_key_buffered || global.cont_jump_pressed ))
+			function func_jump()
 			{
 				// Set the jump hold timer
 				jump_hold_timer = jump_hold_frames;
@@ -40,7 +39,26 @@ scr_health_and_mana_test()
 				
 				// Set state to jumping
 				state_jump = state_jumping;
+				
+				// Decrease jumps left
+				jumps_left = jumps_left - 1;
+				
+				// Jumps left debug
+				//show_debug_message("jumps_left: " + string(jumps_left))
 			}
+			
+			// Jump if on a surface and the button to jump is pressed
+			if(coyote_time_timer > 0 && (jump_key_buffered || global.cont_jump_pressed ) && jumps_left > 0)
+			{
+				func_jump()
+				
+				// Allow double jumping when off the ground with more than 1 max jump
+			}else if(!scr_on_ground() && global.cont_jump_pressed && jumps_left > 0)
+			{
+				func_jump()
+			// End jump spell if all jumps are used
+			}else if(jumps_left == 0 && spell_jump_active == true) spell_jump_duration = 0;
+			
 			
 			// End jump held timer if no longer held, or hitting collision object above
 			if(!global.cont_jump_held or place_meeting(x, y - 1, obj_collision_parent)) jump_hold_timer = 0;
@@ -56,7 +74,7 @@ scr_health_and_mana_test()
 			}
 			
 			
-		#endregion Jump States
+		#endregion Jumping
 			
 		#region Moving Sprite
 			
@@ -145,6 +163,9 @@ scr_health_and_mana_test()
 				// Reset y speed if on the ground
 				move_spd_v = 0
 				
+				// Reset number of jumps remaining
+				jumps_left = max_jumps
+				
 				// Gravity Debug
 				//show_debug_message("Gravity Off")
 			}
@@ -157,8 +178,13 @@ scr_health_and_mana_test()
 		#endregion Moving Sprite
 			
 		// Declare the player is falling after reaching apex of jump
-		if(move_spd_v < 0 && state_jumping)
+		if(move_spd_v < 0 && state_jump != state_falling)
 		{
+			// Decrease jumps left to prevent excess jumps when falling off platform
+			// Also prevent losing double jump when falling after jumping
+			if(state_jump != state_jumping) jumps_left -= 1
+			
+			// Set jump state to falling
 			state_jump = state_falling
 		}
 	

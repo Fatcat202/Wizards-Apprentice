@@ -47,27 +47,6 @@ event_inherited()
 	grav = 0.275
 	
 	
-	// **TIMERS**
-	
-	// Coyote timer
-	coyote_time_timer = 0;
-	// Length of coyote time, measured in cycles
-	coyote_time_length = 3;
-	
-	// Jump buffer timer
-	jump_buffer_timer = 0;
-	// Length of jump buffer, measured in cycles
-	jump_buffer_length = 5
-	// Used to determine if a jump has been buffered
-	jump_key_buffered = false
-	
-	// Holding jump timer
-	jump_hold_timer = 0;
-	// Maximum number of cycles for held jump before gravity kicks in
-	jump_hold_frames = 12;
-	
-	
-	
 	// Variable to determine if player is walking
 	is_walking = false;
 	
@@ -76,6 +55,13 @@ event_inherited()
 	
 	// Collision speed, used for collision logic
 	collision_speed = global.collision_distance
+	
+	// Normal max jumps
+	base_max_jumps = 0;
+	// Adjusted jumps
+	max_jumps = 1;
+	// Jumps remaining
+	jumps_left = max_jumps
 	
 	// Actively selected spell
 	active_spell = 1;
@@ -88,7 +74,7 @@ event_inherited()
 	
 	#region Hard coded spells for testing
 		arr_active_spells[1] = global.spell_stats[scr_find_spell_index("heal")]
-		arr_active_spells[2] = -1
+		arr_active_spells[2] = global.spell_stats[scr_find_spell_index("jump")]
 		arr_active_spells[3] = -1
 		arr_active_spells[4] = -1
 		arr_active_spells[5] = -1
@@ -98,52 +84,84 @@ event_inherited()
 	//	arr_active_spells[9] = -1
 	//	arr_active_spells[10] = -1
 	
-	show_debug_message("arr_active_spells = " + string(arr_active_spells))
+		show_debug_message("arr_active_spells = " + string(arr_active_spells))
 	#endregion Hard coded spells for testing
 	
 	// Used for deciding if the player is able to attack
 	can_attack = true;
 	
-	#region Spell Timers
-		
-		// Activates timer and states if spell slot is on cooldown
-		spell_cooldown_1 = false;
-		spell_cooldown_2 = false;
-		spell_cooldown_3 = false;
-		spell_cooldown_4 = false;
-		spell_cooldown_5 = false;
-		spell_cooldown_6 = false;
-		spell_cooldown_7 = false;
-		spell_cooldown_8 = false;
-		spell_cooldown_9 = false;
-		spell_cooldown_10 = false;
-		
-		// Used for the length of a timer in frames
-		spell_cooldown_time_1 = 0;
-		spell_cooldown_time_2 = 0;
-		spell_cooldown_time_3 = 0;
-		spell_cooldown_time_4 = 0;
-		spell_cooldown_time_5 = 0;
-		spell_cooldown_time_6 = 0;
-		spell_cooldown_time_7 = 0;
-		spell_cooldown_time_8 = 0;
-		spell_cooldown_time_9 = 0;
-		spell_cooldown_time_10 = 0;
-
-		// Used for ticking timer up
-		spell_cooldown_timer_1 = 0;
-		spell_cooldown_timer_2 = 0;
-		spell_cooldown_timer_3 = 0;
-		spell_cooldown_timer_4 = 0;
-		spell_cooldown_timer_5 = 0;
-		spell_cooldown_timer_6 = 0;
-		spell_cooldown_timer_7 = 0;
-		spell_cooldown_timer_8 = 0;
-		spell_cooldown_timer_9 = 0;
-		spell_cooldown_timer_10 = 0;
-
-	#endregion Spell Timers
 	
+	#region Timers
+	
+		// Coyote timer
+		coyote_time_timer = 0;
+		// Length of coyote time, measured in cycles
+		coyote_time_length = 3;
+	
+		// Jump buffer timer
+		jump_buffer_timer = 0;
+		// Length of jump buffer, measured in cycles
+		jump_buffer_length = 5
+		// Used to determine if a jump has been buffered
+		jump_key_buffered = false
+	
+		// Holding jump timer
+		jump_hold_timer = 0;
+		// Maximum number of cycles for held jump before gravity kicks in
+		jump_hold_frames = 12;
+
+	
+		#region Spell Slot Timers
+		
+			// Activates timer and states if spell slot is on cooldown
+			spell_cooldown_1 = false;
+			spell_cooldown_2 = false;
+			spell_cooldown_3 = false;
+			spell_cooldown_4 = false;
+			spell_cooldown_5 = false;
+			spell_cooldown_6 = false;
+			spell_cooldown_7 = false;
+			spell_cooldown_8 = false;
+			spell_cooldown_9 = false;
+			spell_cooldown_10 = false;
+		
+			// Used for the length of a timer in frames
+			spell_cooldown_time_1 = 0;
+			spell_cooldown_time_2 = 0;
+			spell_cooldown_time_3 = 0;
+			spell_cooldown_time_4 = 0;
+			spell_cooldown_time_5 = 0;
+			spell_cooldown_time_6 = 0;
+			spell_cooldown_time_7 = 0;
+			spell_cooldown_time_8 = 0;
+			spell_cooldown_time_9 = 0;
+			spell_cooldown_time_10 = 0;
+
+			// Used for ticking timer up
+			spell_cooldown_timer_1 = 0;
+			spell_cooldown_timer_2 = 0;
+			spell_cooldown_timer_3 = 0;
+			spell_cooldown_timer_4 = 0;
+			spell_cooldown_timer_5 = 0;
+			spell_cooldown_timer_6 = 0;
+			spell_cooldown_timer_7 = 0;
+			spell_cooldown_timer_8 = 0;
+			spell_cooldown_timer_9 = 0;
+			spell_cooldown_timer_10 = 0;
+
+		#endregion Spell Slot Timers
+	
+	#region Effect Timers
+	
+		// Jump spell timers
+		spell_jump_duration = 0;
+		spell_jump_timer = 0;
+		spell_jump_active = false;
+		
+		
+		
+	
+	#endregion Effect Timers
 	
 #endregion Loading instance stats
 
