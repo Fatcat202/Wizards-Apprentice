@@ -24,15 +24,15 @@
   "name":"spr_ground_stone_0",
   "nineSlice":{
     "$GMNineSliceData":"",
-    "bottom":0,
+    "bottom":2,
     "enabled":true,
     "guideColour":[4294902015,4294902015,4294902015,4294902015,],
     "highlightColour":1728023040,
     "highlightStyle":0,
-    "left":0,
+    "left":4,
     "resourceType":"GMNineSliceData",
     "resourceVersion":"2.0",
-    "right":0,
+    "right":3,
     "tileMode":[
       0,
       0,
@@ -40,7 +40,7 @@
       0,
       0,
     ],
-    "top":4,
+    "top":5,
   },
   "origin":4,
   "parent":{

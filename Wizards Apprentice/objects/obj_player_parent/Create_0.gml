@@ -63,7 +63,7 @@ event_inherited()
 	state_jump_free = noone
 	
 	// Collision speed, used for collision logic
-	collision_speed = move_spd_max + global.collision_distance;
+	collision_speed = global.collision_distance
 	
 	// Actively selected spell
 	active_spell = 1;
@@ -75,7 +75,7 @@ event_inherited()
 	arr_active_spells[total_spells] = -1
 	
 	#region Hard coded spells for testing
-		arr_active_spells[1] = -1
+		arr_active_spells[1] = global.spell_stats[1]
 		arr_active_spells[2] = -1
 		arr_active_spells[3] = -1
 		arr_active_spells[4] = -1
@@ -89,32 +89,51 @@ event_inherited()
 	show_debug_message("arr_active_spells = " + string(arr_active_spells))
 	#endregion Hard coded spells for testing
 	
+	// Used for deciding if the player is able to attack
+	can_attack = true;
+	
+	#region Spell Timers
+		
+		// Activates timer and states if spell slot is on cooldown
+		spell_cooldown_1 = false;
+		spell_cooldown_2 = false;
+		spell_cooldown_3 = false;
+		spell_cooldown_4 = false;
+		spell_cooldown_5 = false;
+		spell_cooldown_6 = false;
+		spell_cooldown_7 = false;
+		spell_cooldown_8 = false;
+		spell_cooldown_9 = false;
+		spell_cooldown_10 = false;
+		
+		// Used for the length of a timer in frames
+		spell_cooldown_time_1 = 0;
+		spell_cooldown_time_2 = 0;
+		spell_cooldown_time_3 = 0;
+		spell_cooldown_time_4 = 0;
+		spell_cooldown_time_5 = 0;
+		spell_cooldown_time_6 = 0;
+		spell_cooldown_time_7 = 0;
+		spell_cooldown_time_8 = 0;
+		spell_cooldown_time_9 = 0;
+		spell_cooldown_time_10 = 0;
+
+		// Used for ticking timer up
+		spell_cooldown_timer_1 = 0;
+		spell_cooldown_timer_2 = 0;
+		spell_cooldown_timer_3 = 0;
+		spell_cooldown_timer_4 = 0;
+		spell_cooldown_timer_5 = 0;
+		spell_cooldown_timer_6 = 0;
+		spell_cooldown_timer_7 = 0;
+		spell_cooldown_timer_8 = 0;
+		spell_cooldown_timer_9 = 0;
+		spell_cooldown_timer_10 = 0;
+
+	#endregion Spell Timers
+	
 	
 #endregion Loading instance stats
-
-// Ticks down counter for coyote time
-function func_coyote_time()
-{
-	// Tick down timer if timer is active
-	if(coyote_time_timer > 0) coyote_time_timer--;
-	
-	// Reset timer if on the ground
-	if(scr_on_ground()) coyote_time_timer = coyote_time_length;
-}
-
-// Ticks down counter for jump buffering
-function func_jump_buffer()
-{
-	// Reset timer whenever jump button is pressed
-	if(global.cont_jump_pressed) jump_buffer_timer = jump_buffer_length
-	
-	// Tick down timer if active
-	if(jump_buffer_timer > 0)
-	{
-		jump_key_buffered = true;
-		jump_buffer_timer--
-	}else jump_key_buffered = false;
-}
 
 
 #region Jump States
@@ -146,3 +165,4 @@ function func_jump_buffer()
 	state_jump = state_idle;
 	
 #endregion Jump States
+

@@ -2,13 +2,11 @@
 
 event_inherited()
 
-// Tick coyote time each cycle
-func_coyote_time()
-// Check for jump buffering
-func_jump_buffer()
+// Check for and tick most player timers
+scr_player_timers()
 
 // Used for testing health and mana functionality
-//scr_health_and_mana_test()
+scr_health_and_mana_test()
 
 
 	#region Controls
@@ -239,10 +237,80 @@ func_jump_buffer()
 	
 	#region Use Spell
 		
-		if(global.cont_attack)
+		if(global.cont_attack && can_attack)
 		{
-			// Execute Attack Script
-			script_execute(global.spell_stats[active_spell].scr);
+			switch(active_spell)
+			{
+				case 1:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_1 == false) script_execute(global.spell_stats[active_spell].scr);
+
+				break;
+
+				case 2:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_2 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+
+				case 3:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_3 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+				
+				case 4:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_4 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+				
+				case 5:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_5 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+				
+				case 6:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_6 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+				
+				case 7:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_7 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+				
+				case 8:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_8 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+
+				case 9:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_9 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+				
+				case 10:
+
+					// Execute spell script if off cooldown
+					if(spell_cooldown_10 == false) script_execute(global.spell_stats[active_spell].scr);
+					
+				break;
+			}
 			
 			// Debug
 			//show_debug_message("global.spell_stats[active_spell].scr: " + string(global.spell_stats[active_spell].scr))

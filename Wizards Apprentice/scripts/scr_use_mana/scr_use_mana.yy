@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_use_mana",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_use_mana",
+  "parent":{
+    "name":"Spells",
+    "path":"folders/Scripts/Spells.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
