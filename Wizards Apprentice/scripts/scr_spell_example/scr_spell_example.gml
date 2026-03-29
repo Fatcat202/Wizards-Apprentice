@@ -2,7 +2,7 @@
 //NOT TO BE USED, TAKING PLACE AS TEMPLATE FOR FUTURE SPELLS
 
 
-function scr_example()
+function scr_spell_example()
 {
 	// Find index in array using name of spell
 	var spell_index = scr_find_spell_index("example")

@@ -4,14 +4,26 @@ event_inherited()
 
 	
 	// Health
-	max_health = 6
-	active_health = max_health;
+		// Normal max health
+		base_max_health = 6
+		// Adjusted max health after drain
+		max_health = base_max_health;
+		// Total health drained from normal max
+		health_drain = 0;
+		// Current health
+		active_health = max_health;
 
 	// Mana
-	max_mana = 10;
-	active_mana = max_mana;
+		// Normal max mana
+		base_max_mana = 10
+		// Adjusted max mana after drain
+		max_mana = base_max_mana;
+		// Total mana drained from normal max
+		mana_drain = 0;
+		// Current mana
+		active_mana = max_mana;
 	
-	
+
 	// Max speed
 	move_spd_max = 4;
 
@@ -75,7 +87,7 @@ event_inherited()
 	arr_active_spells[total_spells] = -1
 	
 	#region Hard coded spells for testing
-		arr_active_spells[1] = global.spell_stats[1]
+		arr_active_spells[1] = global.spell_stats[scr_find_spell_index("heal")]
 		arr_active_spells[2] = -1
 		arr_active_spells[3] = -1
 		arr_active_spells[4] = -1
