@@ -154,9 +154,13 @@ event_inherited()
 	#region Effect Timers
 	
 		// Jump spell timers
-		spell_jump_duration = 0;
-		spell_jump_timer = 0;
-		spell_jump_active = false;
+			spell_jump_duration = 0;
+			spell_jump_timer = 0;
+			// Determines if spell if active
+			spell_jump_active = false;
+			// Used for passing through spell slot when duration is over
+			spell_jump_slot = -1;
+		
 		
 		
 		

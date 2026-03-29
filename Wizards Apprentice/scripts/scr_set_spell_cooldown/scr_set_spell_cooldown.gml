@@ -1,12 +1,13 @@
 
 // Checks what spell slot is selected for the purposes of activating correct cooldown
+// May pass through active_spell if not activated directly by spell script
 
-function scr_set_spell_cooldown(_cooldown)
+function scr_set_spell_cooldown(_cooldown, spell_slot = active_spell)
 {
 	// Sets cooldown to function in seconds
 	_cooldown = _cooldown * 60
 	
-	switch(active_spell)
+	switch(spell_slot)
 	{
 		case 1:
 
@@ -21,6 +22,7 @@ function scr_set_spell_cooldown(_cooldown)
 			// Set up attack cooldown
 			spell_cooldown_2 = true;
 			spell_cooldown_time_2 = _cooldown;
+			spell_used_2 = false;
 					
 		break;
 
@@ -86,6 +88,10 @@ function scr_set_spell_cooldown(_cooldown)
 			spell_cooldown_10 = true;
 			spell_cooldown_time_10 = _cooldown;
 					
+		break;
+		
+		case -1:
+			show_debug_message("ERROR: Spell slot not passed through for cooldown");
 		break;
 	}
 }

@@ -168,16 +168,20 @@ function scr_player_timers()
 	
 	#region Effect Timers
 		
-		// Check if cooldown ticking
+		// Check if effect active
 		if(spell_jump_active == true)
 		{
-			// Increment cooldown each frame
+			// Increment duration ticker each frame
 			spell_jump_timer++;
 			if(spell_jump_timer >= spell_jump_duration) 
 			{
-				// Reset cooldown once time has been reached
+				// Reset duration once time has been reached
 				spell_jump_active = false;
 				spell_jump_timer = 0;
+				
+				// Set cooldown once duration has completed
+				var _cooldown = global.spell_stats[scr_find_spell_index("jump")].cooldown
+				scr_set_spell_cooldown(_cooldown, spell_jump_slot);
 				
 				// Reset max jumps
 				max_jumps -= global.spell_stats[scr_find_spell_index("jump")].uses

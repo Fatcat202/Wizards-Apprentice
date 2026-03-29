@@ -8,13 +8,19 @@ function scr_spell_jump()
 	
 	// Pull relevant details for easier to use variables
 	var num_jumps = global.spell_stats[spell_index].uses
-	var _cooldown = global.spell_stats[spell_index].cooldown
 	var _mana = global.spell_stats[spell_index].mana
 	// Set duration in seconds
 	var duration = global.spell_stats[spell_index].duration * 60;
 	
+	// Prevent use if duration is not up
+	if(spell_jump_active = true) exit;
+	
 	// Prevent use of spell if not enough mana. Expend mana if player has enough
 	if(scr_use_mana(_mana) == false) exit
+	
+	
+	//Use active_spell to declare spell slot used to pass through cooldown once duration finishes
+	spell_jump_slot = active_spell;
 	
 	// Increase max number of jumps
 	max_jumps += num_jumps;
@@ -31,6 +37,5 @@ function scr_spell_jump()
 	// Activate duration timer
 	spell_jump_active = true;
 	
-	// Set cooldown time depending on spell slot selected
-	scr_set_spell_cooldown(_cooldown)
+
 }
