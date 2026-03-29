@@ -1,13 +1,13 @@
 
-function scr_mana_drain(drain)
+function scr_health_drain(drain)
 {
-	// Drain mana from max mana pool, or return drained mana
+	// Drain health from max health pool, or return drained health
 	// Positive number to add to drain, negative number to subtract from drain
 	
-	// Increment mana drain
-	mana_drain += drain
+	// Increment health drain
+	health_drain += drain
 	
-	// Set new max mana
-	max_mana = base_max_mana - drain;
+	// Set new max health
+	max_health = base_max_health - drain;
 
 }
