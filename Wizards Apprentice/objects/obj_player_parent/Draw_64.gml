@@ -83,10 +83,10 @@ var yy = display_get_gui_height() / 2
 		// Swap sprite image depending on if spell is selected
 		if(active_spell == i)
 		{
-			draw_sprite(spr_spell_placeholder, 0, spell_margin_x + (i * spell_spacing), spell_margin_y)
+			draw_sprite(arr_active_spells[i].spr, 0, spell_margin_x + (i * spell_spacing), spell_margin_y)
 		} else
 		{
-			draw_sprite(spr_spell_placeholder, 1, spell_margin_x + (i * spell_spacing), spell_margin_y)
+			draw_sprite(arr_active_spells[i].spr, 1, spell_margin_x + (i * spell_spacing), spell_margin_y)
 		}
 	}
 

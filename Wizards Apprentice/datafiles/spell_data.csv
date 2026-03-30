@@ -1,6 +1,6 @@
 (spell names below),spell_level,spell_damage,spell_atk_speed,spell_cooldown,spell_mana,spell_memory,spell_uses,spell_duration,spell_element,title,desc,spr,scr
-heal,1,2,-1,5,1,-1,-1,-1,-1,Heal,empty,-1,scr_spell_heal
-jump,1,-1,-1,2,2,-1,1,5,-1,Jump,empty,-1,scr_spell_jump
-jolt,0,5,-1,1,0,-1,-1,-1,shock,Jolt,Empty,-1,scr_spell_jolt
-firebolt,0,5,-1,1,0,-1,-1,-1,fire,Firebolt,Empty,-1,scr_spell_firebolt
-icicle,0,5,-1,1,0,-1,-1,-1,water,Icicle,Empty,-1,scr_spell_icicle
+heal,1,2,-1,5,1,-1,-1,-1,-1,Heal,empty,spr_spell_placeholder,scr_spell_heal
+jump,1,-1,-1,2,2,-1,1,5,-1,Jump,empty,spr_spell_placeholder,scr_spell_jump
+jolt,0,5,-1,1,0,-1,-1,-1,shock,Jolt,Empty,spr_spell_placeholder,scr_spell_jolt
+firebolt,0,5,-1,1,0,-1,-1,-1,fire,Firebolt,Empty,spr_spell_firebolt,scr_spell_firebolt
+icicle,0,5,-1,1,0,-1,-1,-1,water,Icicle,Empty,spr_spell_placeholder,scr_spell_icicle
