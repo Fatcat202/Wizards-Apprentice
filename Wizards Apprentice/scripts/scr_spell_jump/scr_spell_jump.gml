@@ -5,7 +5,7 @@ function scr_spell_jump()
 {
 	// Find index in array using name of spell
 	var spell_index = scr_find_spell_index("jump")
-	
+
 	// Pull relevant details for easier to use variables
 	var num_jumps = global.spell_stats[spell_index].uses
 	var _mana = global.spell_stats[spell_index].mana

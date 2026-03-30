@@ -1,18 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_character",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_melee_parent",
+  "eventList":[],
   "managed":true,
-  "name":"obj_character",
+  "name":"obj_melee_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Characters",
-    "path":"folders/Objects/Characters.yy",
+    "name":"Melee",
+    "path":"folders/Objects/Attacks/Melee.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_attack_parent",
+    "path":"objects/obj_attack_parent/obj_attack_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

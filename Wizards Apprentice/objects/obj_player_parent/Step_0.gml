@@ -55,7 +55,7 @@ scr_health_and_mana_test()
 				// Allow double jumping when off the ground with more than 1 max jump
 			}else if(!scr_on_ground() && global.cont_jump_pressed && jumps_left > 0)
 			{
-				func_jump() //scr_test()
+				func_jump()
 			// End jump spell if all jumps are used
 			}else if(jumps_left == 0 && spell_jump_active == true) spell_jump_duration = 0;
 			
@@ -110,7 +110,7 @@ scr_health_and_mana_test()
 			if(move_spd_v < term_vel) move_spd_v = term_vel;
 			
 			
-			
+			// Used for sub pixel collisions to ensure accuracy
 			var sub_pixel = 0.5
 	
 			// Moving up slope
@@ -131,7 +131,10 @@ scr_health_and_mana_test()
 			{
 				// Move down slope if present
 				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent)) y += sub_pixel
-			}		
+			}
+			
+			// Fall when hitting head on ceiling
+			if(state_jump == state_jumping && place_meeting(x, y - 2, obj_collision_parent)) move_spd_v = -grav
 			
 			
 			// Move object horizontally
@@ -185,7 +188,7 @@ scr_health_and_mana_test()
 			{
 				// Decrease jumps left to prevent excess jumps when falling off platform
 				// Also prevent losing double jump when falling after jumping
-				if(state_jump != state_jumping) jumps_left -= 1// scr_test()
+				if(state_jump != state_jumping) jumps_left -= 1
 			
 				// Set jump state to falling
 				state_jump = state_falling
@@ -302,76 +305,145 @@ scr_health_and_mana_test()
 	#region Use Spell
 		
 		if(global.cont_attack && can_attack)
-		{
+		{ 
 			switch(active_spell)
 			{
 				case 1:
+				
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
 
 					// Execute spell script if off cooldown
-					if(spell_cooldown_1 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_1 == false) script_execute(arr_active_spells[active_spell].scr);
 
 				break;
 
 				case 2:
-
+				
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
+					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_2 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_2 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 
 				case 3:
-
+				
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
+					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_3 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_3 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 				
 				case 4:
-
+				
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
 					// Execute spell script if off cooldown
-					if(spell_cooldown_4 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_4 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 				
 				case 5:
 
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
+					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_5 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_5 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 				
 				case 6:
 
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
+					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_6 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_6 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 				
 				case 7:
-
+				
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
+					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_7 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_7 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 				
 				case 8:
 
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
+					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_8 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_8 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 
 				case 9:
 
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
+					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_9 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_9 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 				
 				case 10:
 
+					//Debug
+					/*
+					show_debug_message("Script: " + string(global.spell_stats[active_spell].scr))
+					show_debug_message("active_spell: " + string(active_spell))
+					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
+					*/
+					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_10 == false) script_execute(global.spell_stats[active_spell].scr);
+					if(spell_cooldown_10 == false) script_execute(arr_active_spells[active_spell].scr);
 					
 				break;
 			}
@@ -383,7 +455,6 @@ scr_health_and_mana_test()
 		
 		
 	#endregion Use Spell
-
 
 
 	#endregion Controls

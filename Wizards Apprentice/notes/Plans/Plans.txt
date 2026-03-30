@@ -15,7 +15,13 @@
 	*Cantrips*
 	Starter spells, use no mana
 	
+		-Jolt: Ranged electric
+		-Icicle: Ranged ice
+		-Fireblast: Ranged fire
+	
 	*Level 1*
+	X	-Heal: Heal self, but lose mana until able to rest
+	X	-Jump: Gain the ability to double jump
 	
 	*Level 2*
 	
@@ -31,9 +37,6 @@
 		-Fireball: Ball of fire creating a large explosion, damaging many enemies in an area
 		-Shocking Touch: Electrocute with a touch
 		-Flaming Grasp: Burn with a touch
-		-Burning Ray: Ranged blast of fire
-	X	-Heal: Heal self, but lose mana until able to rest
-		-Jump: Gain the ability to double jump
 		-Icy Breath: Coat a surface with slippery ice
 		-Teleport (Maybe): Gain the ability to teleport to one location within line of sight and within a range
 		-Shield: Gain the ability to block attacks

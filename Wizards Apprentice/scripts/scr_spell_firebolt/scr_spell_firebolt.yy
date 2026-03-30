@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_spell_fireball",
+  "%Name":"scr_spell_firebolt",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_spell_fireball",
+  "name":"scr_spell_firebolt",
   "parent":{
     "name":"Spell Scripts",
     "path":"folders/Scripts/Spells/Spell Scripts.yy",

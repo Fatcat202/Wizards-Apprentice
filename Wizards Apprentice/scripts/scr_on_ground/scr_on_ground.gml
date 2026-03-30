@@ -8,14 +8,14 @@ function scr_on_ground(obj = self)
 		if(place_meeting(x, y + 0.5, obj_collision_parent) )
 		{
 			// Used to prevent thinking the ceiling is the floor
-			var half_sprite = sprite_get_height(object_get_sprite(obj_player_parent)) / 2
-			if(!place_meeting(x, y - half_sprite, obj_collision_parent))
+			var quarter_sprite = sprite_get_height(object_get_sprite(obj_player_parent)) / 4
+			if(!place_meeting(x, y - quarter_sprite, obj_collision_parent))
 			{
 				// Debug message
 				// show_debug_message("on_ground = true")
 				
 				return true
-			}
+			}else return false
 		}else
 		{
 			// Debug message

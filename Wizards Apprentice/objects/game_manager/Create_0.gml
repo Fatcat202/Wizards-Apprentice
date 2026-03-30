@@ -57,7 +57,7 @@
 				}
 
 				// Initialize stats dictionary constructor
-				function spell_stats(_spell_level = 0, _spell_damage = 0, _spell_atk_speed = 0, _spell_cooldown = 0, _spell_mana = 0, _spell_memory = 0, _spell_uses = 0, _spell_duration = 0, _spell_title = "Empty", _spell_desc = "Empty", _spell_spr = spr_spell_placeholder, _spell_script = scr_test()) constructor {
+				function spell_stats(_spell_level = -1, _spell_damage = -1, _spell_atk_speed = -1, _spell_cooldown = -1, _spell_mana = -1, _spell_memory = -1, _spell_uses = -1, _spell_duration = -1, _spell_element = -1, _spell_title = "Empty", _spell_desc = "Empty", _spell_spr = spr_spell_placeholder, _spell_script = scr_test()) constructor {
 				
 					level = _spell_level
 					damage = _spell_damage
@@ -67,6 +67,7 @@
 					memory = _spell_memory
 					uses = _spell_uses
 					duration = _spell_duration
+					element = _spell_element
 					title = _spell_title
 					desc = _spell_desc
 					spr = _spell_spr
@@ -80,7 +81,7 @@
 				// Create spell_stats struct array
 				for(var i = 1; i <= global.spell_index_length; i++)
 				{
-					global.spell_stats[global.spell_index_length] = new spell_stats();
+					global.spell_stats[i] = new spell_stats();
 				}
 
 				// Assign all values from CSV file into stats database structs
@@ -88,7 +89,6 @@
 				{
 					var yy = i + 1;
 					var xx = 1;
-	
 				
 					global.spell_stats[yy].level = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].damage = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
@@ -98,7 +98,8 @@
 					global.spell_stats[yy].memory = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].uses = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].duration = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
-					global.spell_stats[yy].title = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++
+					global.spell_stats[yy].element = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].title = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].description = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++
 					global.spell_stats[yy].spr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].scr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
@@ -114,19 +115,17 @@
 					global.arr_spell_index_name[n] = ds_grid_get(ds_spell_stats_csv, 0, n);
 				}
 			
-				var hh = ds_grid_height(ds_spell_stats_csv)
-			
-				show_debug_message("hh: " + string(hh))
-	
+				var grid_height = ds_grid_height(ds_spell_stats_csv)	
 	
 				// Cleanup DS grid
 				ds_grid_destroy(ds_spell_stats_csv);
 			
 				// Debug testing
-				/*
-				show_debug_message("Spell Constructor List: " + string(global.spell_stats))
-				show_debug_message("global.spell_index_length: " + string(global.spell_index_length))
-				*/
+				
+			//	show_debug_message("Spell Constructor List: " + string(global.spell_stats))
+			//	show_debug_message("global.spell_index_length: " + string(global.spell_index_length))
+			//	show_debug_message("global.arr_spell_index_name: " + string(global.arr_spell_index_name))
+				
 	
 			#endregion Spell Stats
 	

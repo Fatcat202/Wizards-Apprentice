@@ -73,9 +73,9 @@ event_inherited()
 	arr_active_spells[total_spells] = -1
 	
 	#region Hard coded spells for testing
-		arr_active_spells[1] = global.spell_stats[scr_find_spell_index("heal")]
+		arr_active_spells[1] = global.spell_stats[scr_find_spell_index("firebolt")]
 		arr_active_spells[2] = global.spell_stats[scr_find_spell_index("jump")]
-		arr_active_spells[3] = -1
+		arr_active_spells[3] = global.spell_stats[scr_find_spell_index("heal")]
 		arr_active_spells[4] = -1
 		arr_active_spells[5] = -1
 	//	arr_active_spells[6] = -1
@@ -84,7 +84,7 @@ event_inherited()
 	//	arr_active_spells[9] = -1
 	//	arr_active_spells[10] = -1
 	
-		show_debug_message("arr_active_spells = " + string(arr_active_spells))
+		//show_debug_message("arr_active_spells = " + string(arr_active_spells))
 	#endregion Hard coded spells for testing
 	
 	// Used for deciding if the player is able to attack
@@ -177,7 +177,7 @@ event_inherited()
 	{
 
 		state_jump_free = state_idle;
-		show_debug_message("Jump State: Idle");
+		//show_debug_message("Jump State: Idle");
 	}
 
 	// Applies when player is jumping
@@ -185,7 +185,7 @@ event_inherited()
 	{
 
 		state_jump_free = state_jumping;
-		show_debug_message("Jump State: Jumping");
+		//show_debug_message("Jump State: Jumping");
 	}
 
 	// Applies when player is falling
@@ -193,7 +193,7 @@ event_inherited()
 	{
 
 		state_jump_free = state_falling;
-		show_debug_message("Jump State: Falling");
+		//show_debug_message("Jump State: Falling");
 	}
 
 	state_jump = state_idle;

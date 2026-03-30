@@ -22,7 +22,6 @@ function scr_set_spell_cooldown(_cooldown, spell_slot = active_spell)
 			// Set up attack cooldown
 			spell_cooldown_2 = true;
 			spell_cooldown_time_2 = _cooldown;
-			spell_used_2 = false;
 					
 		break;
 

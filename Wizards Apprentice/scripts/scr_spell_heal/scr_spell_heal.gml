@@ -8,7 +8,7 @@ function scr_spell_heal()
 	var healing = global.spell_stats[spell_index].damage
 	var _cooldown = global.spell_stats[spell_index].cooldown
 	var _mana = global.spell_stats[spell_index].mana
-	
+
 	// Checks to make sure the player is not already at max health
 	if(active_health == max_health) exit
 	

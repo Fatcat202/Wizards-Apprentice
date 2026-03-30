@@ -1,16 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_character",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_spell_firebolt",
+  "eventList":[],
   "managed":true,
-  "name":"obj_character",
+  "name":"obj_spell_firebolt",
   "overriddenProperties":[],
   "parent":{
-    "name":"Characters",
-    "path":"folders/Objects/Characters.yy",
+    "name":"Projectiles",
+    "path":"folders/Objects/Attacks/Projectiles.yy",
   },
   "parentObjectId":null,
   "persistent":false,
