@@ -15,9 +15,9 @@
 	*Cantrips*
 	Starter spells, use no mana
 	
-		-Jolt: Ranged electric
-		-Icicle: Ranged ice
-		-Fireblast: Ranged fire
+	X	-Jolt: Ranged electric
+	X	-Icicle: Ranged ice
+	X	-Firebolt: Ranged fire
 	
 	*Level 1*
 	X	-Heal: Heal self, but lose mana until able to rest

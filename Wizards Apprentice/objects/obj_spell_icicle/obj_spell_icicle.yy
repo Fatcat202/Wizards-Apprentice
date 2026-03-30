@@ -9,7 +9,10 @@
     "name":"Projectiles",
     "path":"folders/Objects/Attacks/Projectiles.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_projectile_parent",
+    "path":"objects/obj_projectile_parent/obj_projectile_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -27,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_spell_icicle",
+    "path":"sprites/spr_spell_icicle/spr_spell_icicle.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

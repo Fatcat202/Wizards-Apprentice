@@ -76,8 +76,8 @@ event_inherited()
 		arr_active_spells[1] = global.spell_stats[scr_find_spell_index("firebolt")]
 		arr_active_spells[2] = global.spell_stats[scr_find_spell_index("jump")]
 		arr_active_spells[3] = global.spell_stats[scr_find_spell_index("heal")]
-		arr_active_spells[4] = -1
-		arr_active_spells[5] = -1
+		arr_active_spells[4] = global.spell_stats[scr_find_spell_index("icicle")]
+		arr_active_spells[5] = global.spell_stats[scr_find_spell_index("jolt")]
 	//	arr_active_spells[6] = -1
 	//	arr_active_spells[7] = -1
 	//	arr_active_spells[8] = -1

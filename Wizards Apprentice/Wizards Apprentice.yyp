@@ -31,6 +31,8 @@
     {"$GMFolder":"","%Name":"Hearts","folderPath":"folders/Sprites/Hearts.yy","name":"Hearts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Mana","folderPath":"folders/Sprites/Mana.yy","name":"Mana","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Spells","folderPath":"folders/Sprites/Spells.yy","name":"Spells","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Effects","folderPath":"folders/Sprites/Spells/Effects.yy","name":"Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Icons","folderPath":"folders/Sprites/Spells/Icons.yy","name":"Icons","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
@@ -88,6 +90,9 @@
     {"id":{"name":"spr_mana_full","path":"sprites/spr_mana_full/spr_mana_full.yy",},},
     {"id":{"name":"spr_mana_half","path":"sprites/spr_mana_half/spr_mana_half.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
+    {"id":{"name":"spr_spell_firebolt","path":"sprites/spr_spell_firebolt/spr_spell_firebolt.yy",},},
+    {"id":{"name":"spr_spell_icicle","path":"sprites/spr_spell_icicle/spr_spell_icicle.yy",},},
+    {"id":{"name":"spr_spell_jolt","path":"sprites/spr_spell_jolt/spr_spell_jolt.yy",},},
     {"id":{"name":"spr_spell_placeholder","path":"sprites/spr_spell_placeholder/spr_spell_placeholder.yy",},},
   ],
   "resourceType":"GMProject",
