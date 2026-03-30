@@ -13,37 +13,36 @@
 **SPELL IDEAS**
 
 	*Cantrips*
-	Starter spells, use no mana
-	
+		Starter spells, use no mana
 	X	-Jolt: Ranged electric
 	X	-Icicle: Ranged ice
 	X	-Firebolt: Ranged fire
 	
-	*Level 1*
+	*Utility*
 	X	-Heal: Heal self, but lose mana until able to rest
 	X	-Jump: Gain the ability to double jump
+		-Shield: Gain the ability to block attacks
+		-Teleport (Maybe): Gain the ability to teleport to one location within line of sight and within a range
+		-Invisibility: Become invisible (but not invulnerable) for a short time
 	
-	*Level 2*
-	
-	*Level 3*
-	
-	*Level 4*
-	
-	
-	*Unplaced spells*
+	*Stronger Damaging*
+		-Shroud of (element): Enemies that hit you take damage for a short time
+		-Dragon's Breath: Breathe out cone of fire
 		-Wall of Ice: Create a solid wall of ice, can stick out horizontally from walls
 		-Wall of Fire: Create a solid wall of ice, can stick out horizontally from walls or vertically from ceilings
 		-Lightning Bolt: Bolt of electricity, can strike through enemies
 		-Fireball: Ball of fire creating a large explosion, damaging many enemies in an area
 		-Shocking Touch: Electrocute with a touch
 		-Flaming Grasp: Burn with a touch
+		
+	*Elemental Spells*
 		-Icy Breath: Coat a surface with slippery ice
-		-Teleport (Maybe): Gain the ability to teleport to one location within line of sight and within a range
-		-Shield: Gain the ability to block attacks
 		-Rain Cloud: Cause rain to fall in an area, putting out fires and making puddles of water
-		-Invisibility: Become invisible (but not invulnerable) for a short time
-		-Shroud of (element): Enemies that hit you take damage for a short time
-		-Dragon's Breath: Breathe out cone of fire
+	
+	*Unplaced spells*
+
+
+
 	
 	
 **ELEMENT COMBOS**

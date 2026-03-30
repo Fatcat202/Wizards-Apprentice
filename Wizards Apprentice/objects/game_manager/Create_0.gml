@@ -8,6 +8,9 @@
 		// Sets how many pixel away objects must be from another object to collide 
 		// (x2 if both move towards each other)
 		global.collision_distance = 0.5
+		
+		// Number of frames to apply invincibility after taking damage
+		global.i_frames = 15;
 	
 		#region Camera
 	
