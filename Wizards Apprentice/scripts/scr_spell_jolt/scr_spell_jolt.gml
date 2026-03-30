@@ -18,6 +18,7 @@ function scr_spell_jolt(target_x = mouse_x, target_y = mouse_y)
 		jolt.speed = 6;
 		jolt.direction = point_direction(x, y, target_x, target_y);
 		jolt.image_angle = jolt.direction;
+		jolt.damage = damage;
 	
 	
 	

@@ -7,7 +7,7 @@
 	
 		// Sets how many pixel away objects must be from another object to collide 
 		// (x2 if both move towards each other)
-		global.collision_distance = 0.5
+		global.collision_distance = 0.5;
 		
 		// Number of frames to apply invincibility after taking damage
 		global.i_frames = 15;
@@ -44,7 +44,7 @@
 				global.spell_index_length = 0;
 
 				// Create spell_stats array for tracking stats
-				global.spell_stats[0] = 0
+				global.spell_stats[0] = 0;
 
 				// Initialize spell index arrays
 				global.arr_spell_index_name[0] = "No valid spell name";
@@ -131,6 +131,85 @@
 				
 	
 			#endregion Spell Stats
+			
+			#region Enemy Stats
+				
+				// Create enemy_index_length for tracking total number of enemy in csv
+				global.enemy_index_length = 0;
+
+				// Create enemy_stats array for tracking stats
+				global.enemy_stats[0] = 0;
+
+				// Initialize enemy index arrays
+				global.arr_enemy_index_name[0] = "No valid enemy name";
+	
+	
+
+				var ds_enemy_stats_csv = load_csv("enemy_data.csv");
+
+				// Ensure the grid is valid
+				if (ds_enemy_stats_csv == -1) {
+				    show_error("Failed to load CSV file.", true);
+				    exit;
+				}
+
+				// Initialize stats dictionary constructor
+				function enemy_stats(_hp = -1, _damage = -1, _atk_spd = -1, _move_spd = -1, _element_shield = -1) constructor {
+				
+					hp = _hp
+					damage = _damage
+					atk_spd = _atk_spd
+					move_spd = _move_spd
+					element_shield = _element_shield
+
+				}
+
+				// Declare length of enemy index based on adjusted CSV height
+				global.enemy_index_length = ds_grid_height(ds_enemy_stats_csv) - 1
+			
+				// Create enemy_stats struct array
+				for(var i = 1; i <= global.enemy_index_length; i++)
+				{
+					global.enemy_stats[i] = new enemy_stats();
+				}
+
+				// Assign all values from CSV file into stats database structs
+				for(var i = 0; i < global.enemy_index_length; i++)
+				{
+					var yy = i + 1;
+					var xx = 1;
+				
+					global.enemy_stats[yy].hp = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
+					global.enemy_stats[yy].damage = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
+					global.enemy_stats[yy].atk_spd = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
+					global.enemy_stats[yy].move_spd = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
+					global.enemy_stats[yy].element_shield = string(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
+					
+	
+				}
+
+
+				// Assign data to enemy index arrays
+				for(var p = 0; p < global.enemy_index_length; p++)
+				{
+					var n = p + 1;
+					// Sets 1st place in array as names
+					global.arr_enemy_index_name[n] = ds_grid_get(ds_enemy_stats_csv, 0, n);
+				}
+			
+				var grid_height = ds_grid_height(ds_enemy_stats_csv)	
+	
+				// Cleanup DS grid
+				ds_grid_destroy(ds_enemy_stats_csv);
+			
+				// Debug testing
+				
+				//	show_debug_message("enemy Constructor List: " + string(global.enemy_stats))
+				//	show_debug_message("global.enemy_index_length: " + string(global.enemy_index_length))
+				//	show_debug_message("global.arr_enemy_index_name: " + string(global.arr_enemy_index_name))
+				
+				
+			#endregion Enemy Stats
 	
 	
 		#endregion Database

@@ -41,6 +41,7 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"enemy_data.csv","CopyToMask":-1,"filePath":"datafiles","name":"enemy_data.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"spell_data.csv","CopyToMask":-1,"filePath":"datafiles","name":"spell_data.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,

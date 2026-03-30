@@ -18,6 +18,7 @@ function scr_spell_icicle(target_x = mouse_x, target_y = mouse_y)
 		icicle.speed = 6;
 		icicle.direction = point_direction(x, y, target_x, target_y);
 		icicle.image_angle = icicle.direction;
+		icicle.damage = damage;
 	
 	
 	

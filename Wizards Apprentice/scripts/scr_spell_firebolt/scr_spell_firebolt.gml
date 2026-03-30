@@ -19,6 +19,7 @@ function scr_spell_firebolt(target_x = mouse_x, target_y = mouse_y)
 		firebolt.speed = 6;
 		firebolt.direction = point_direction(x, y, target_x, target_y);
 		firebolt.image_angle = firebolt.direction;
+		firebolt.damage = damage;
 	
 	
 	
