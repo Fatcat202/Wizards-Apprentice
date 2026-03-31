@@ -13,14 +13,16 @@ scr_health_and_mana_test()
 
 
 	#region Movement
+	
+		// Set move state to idle if located on the ground
+		if(scr_on_ground())
+		{
+			state_move = state_idle
+		}
 
 
 		#region Jumping
-			// Set jump state to idle if located on the ground
-			if(scr_on_ground())
-			{
-				state_jump = state_idle
-			}
+
 			
 			function func_jump()
 			{
@@ -38,7 +40,7 @@ scr_health_and_mana_test()
 				move_spd_v = jump_speed
 				
 				// Set state to jumping
-				state_jump = state_jumping;
+				state_move = state_jumping;
 				
 				// Decrease jumps left
 				jumps_left = jumps_left - 1;
@@ -61,7 +63,7 @@ scr_health_and_mana_test()
 			
 			
 			// End jump held timer if no longer held, or hitting collision object above
-			if(!global.cont_jump_held or place_meeting(x, y - 1, obj_collision_parent)) jump_hold_timer = 0;
+			if(!global.cont_jump_held or (place_meeting(x, y - 1, obj_collision_parent) && !scr_check_semi_solid(x, y -1))) jump_hold_timer = 0;
 			
 			// Count down jump held timer
 			if(jump_hold_timer > 0 && global.cont_jump_held)
@@ -75,6 +77,31 @@ scr_health_and_mana_test()
 			
 			
 		#endregion Jumping
+		
+		#region Crouching
+			
+			if(global.cont_crouch)
+			{
+				
+				//Cancel held jump
+				jump_hold_timer = 0;
+				
+				// Increase gravity (located below in gravity section)
+				
+				state_move = state_crouch
+			}
+			
+		#endregion Crouching
+		
+		#region Semi Solid
+			// Used to determine if character should be solid or semi solid
+			
+			if(state_move == state_crouch || state_move == state_jumping)
+			{
+				semi_solid = true
+			}else semi_solid = false
+			
+		#endregion Semi Solid
 			
 		#region Moving Sprite
 			
@@ -83,9 +110,8 @@ scr_health_and_mana_test()
 			var _right = 0;
 
 			// Determine movement direction based on key presses, prevent self from touching solid objects
-			if(place_free (x - collision_speed, y)) _left = global.cont_left;
-
-			if(place_free (x + collision_speed, y)) _right = global.cont_right;
+			_left = global.cont_left;
+			_right = global.cont_right;
 
 			// Define if the player is walking
 			if(_right || _left > 0)
@@ -115,26 +141,29 @@ scr_health_and_mana_test()
 	
 			// Moving up slope
 			// Detect if a slope is present
-			if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent))
+			if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y - abs(move_spd_h) - 1))
 			{
 				// Move up slope if present
-				while(place_meeting(x + move_spd_h, y, obj_collision_parent)) y -= sub_pixel
+				while(place_meeting(x + move_spd_h, y, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y)) y -= sub_pixel
 			}else
 			{
 				// Preventing getting stuck with collision objects horizontaly
-				if(place_meeting(x + move_spd_h, y, obj_collision_parent)) move_spd_h = 0
+				if(place_meeting(x + move_spd_h, y, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y)) move_spd_h = 0
 			}
 			
 			// Moving down slope
 			// Detect if a slope is present
-			if(!place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && place_meeting(x + move_spd_h, y + abs(move_spd_h), obj_collision_parent))
+			if((!place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y + 1)) && (place_meeting(x + move_spd_h, y + abs(move_spd_h), obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y + abs(move_spd_h))))
 			{
 				// Move down slope if present
-				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent)) y += sub_pixel
+				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y + sub_pixel))
+				{
+					y += sub_pixel
+				}
 			}
 			
 			// Fall when hitting head on ceiling
-			if(state_jump == state_jumping && place_meeting(x, y - 2, obj_collision_parent)) move_spd_v = -grav
+			if(state_move == state_jumping && place_meeting(x, y - 2, obj_collision_parent) && !scr_check_semi_solid(x, y - 2)) move_spd_v = -grav
 			
 			
 			// Move object horizontally
@@ -150,16 +179,21 @@ scr_health_and_mana_test()
 			}else if(move_spd_h > 0) image_xscale = 1;
 			
 			// State machine for jumping and falling
-			state_jump();
-			
-			
-			
+			state_move();
+
 
 			// Gravity
 			if(!scr_on_ground())
 			{
-				// Increment Gravity
-				move_spd_v -= grav;
+				// Increment gravity based on if crouching or not
+				// Fall at double speed when crouching
+				if(state_move == state_crouch)
+				{
+					move_spd_v -= grav * 2;
+				}else
+				{
+					move_spd_v -= grav;
+				}
 
 				// Gravity Debug
 				//show_debug_message("Gravity On")
@@ -184,14 +218,14 @@ scr_health_and_mana_test()
 
 
 			// Declare the player is falling after reaching apex of jump
-			if(move_spd_v < 0 && state_jump != state_falling)
+			if(move_spd_v < 0 && state_move != state_falling)
 			{
 				// Decrease jumps left to prevent excess jumps when falling off platform
 				// Also prevent losing double jump when falling after jumping
-				if(state_jump != state_jumping) jumps_left -= 1
+				if(state_move == state_idle) jumps_left -= 1
 			
 				// Set jump state to falling
-				state_jump = state_falling
+				state_move = state_falling
 			}
 				
 		#endregion Moving Sprite
@@ -200,40 +234,40 @@ scr_health_and_mana_test()
 		#region Preventing getting stuck inside collision objects
 			
 			// Force objects outside of other objects if stuck or overlaping
-			if(place_meeting(x, y, obj_collision_parent) || place_meeting(x, y, obj_enemy_parent))
+			if(place_meeting(x, y, obj_collision_parent) && !scr_check_semi_solid(x, y))
 			{
 				for(var i = 0; i < 1000; i++)
 				{
 					// Right
-					if(!place_meeting(x + i, y, obj_collision_parent) && !place_meeting(x + i, y, obj_enemy_parent))
+					if(!place_meeting(x + i, y, obj_collision_parent))
 					{
 						x += i;
 						break;	
 					}
 
 					// Left
-					if(!place_meeting(x - i, y, obj_collision_parent) && !place_meeting(x - i, y, obj_enemy_parent))
+					if(!place_meeting(x - i, y, obj_collision_parent))
 					{
 						x -= i;
 						break;	
 					}
 		
 					// Up
-					if(!place_meeting(x, y + i, obj_collision_parent) && !place_meeting(x, y + i, obj_enemy_parent))
+					if(!place_meeting(x, y + i, obj_collision_parent))
 					{
 						y += i;
 						break;	
 					}
 		
 					// Down
-					if(!place_meeting(x, y - i, obj_collision_parent) && !place_meeting(x, y - i, obj_enemy_parent))
+					if(!place_meeting(x, y - i, obj_collision_parent))
 					{
 						y -= i;
 						break;	
 					}
 		
 					// Top Right
-					if(!place_meeting(x + i, y + i, obj_collision_parent) && !place_meeting(x + i, y + i, obj_enemy_parent))
+					if(!place_meeting(x + i, y + i, obj_collision_parent))
 					{
 						x += i;
 						y += i;
@@ -241,7 +275,7 @@ scr_health_and_mana_test()
 					}
 			
 					// Top Left
-					if(!place_meeting(x - i, y + i, obj_collision_parent) && !place_meeting(x - i, y + i, obj_enemy_parent))
+					if(!place_meeting(x - i, y + i, obj_collision_parent))
 					{
 						x -= i;
 						y += i;
@@ -249,7 +283,7 @@ scr_health_and_mana_test()
 					}
 			
 					// Bottom Right
-					if(!place_meeting(x + i, y - i, obj_collision_parent) && !place_meeting(x + i, y - i, obj_enemy_parent))
+					if(!place_meeting(x + i, y - i, obj_collision_parent))
 					{
 						x += i;
 						y -= i;
@@ -257,7 +291,7 @@ scr_health_and_mana_test()
 					}
 			
 					// Bottom Left
-					if(!place_meeting(x - i, y - i, obj_collision_parent) && !place_meeting(x - i, y - i, obj_enemy_parent))
+					if(!place_meeting(x - i, y - i, obj_collision_parent))
 					{
 						x -= i;
 						y -= i;

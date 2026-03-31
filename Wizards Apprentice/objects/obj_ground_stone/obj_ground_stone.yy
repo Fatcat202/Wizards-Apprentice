@@ -6,12 +6,12 @@
   "name":"obj_ground_stone",
   "overriddenProperties":[],
   "parent":{
-    "name":"Collision Walls",
-    "path":"folders/Objects/Collision Walls.yy",
+    "name":"Solid",
+    "path":"folders/Objects/Collision Walls/Solid.yy",
   },
   "parentObjectId":{
-    "name":"obj_collision_parent",
-    "path":"objects/obj_collision_parent/obj_collision_parent.yy",
+    "name":"obj_solid",
+    "path":"objects/obj_solid/obj_solid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

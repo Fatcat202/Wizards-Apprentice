@@ -11,6 +11,9 @@ function scr_get_controls()
 	global.cont_jump_pressed = keyboard_check_pressed(vk_space);
 	global.cont_jump_held = keyboard_check(vk_space);
 	
+	// Crouching
+	global.cont_crouch = keyboard_check(ord("S"));
+	
 	// Selecting Spells
 	global.cont_spell_1 = keyboard_check_pressed(ord("1"))
 	global.cont_spell_2 = keyboard_check_pressed(ord("2"))

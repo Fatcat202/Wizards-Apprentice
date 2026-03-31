@@ -1,15 +1,20 @@
 {
   "$GMObject":"",
   "%Name":"obj_solid",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_solid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Collision Walls",
-    "path":"folders/Objects/Collision Walls.yy",
+    "name":"Solid",
+    "path":"folders/Objects/Collision Walls/Solid.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_collision_parent",
+    "path":"objects/obj_collision_parent/obj_collision_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

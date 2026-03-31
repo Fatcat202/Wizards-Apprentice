@@ -50,11 +50,14 @@ event_inherited()
 	// Variable to determine if player is walking
 	is_walking = false;
 	
-	// Sets initial default for state_jump to idle
-	state_jump_free = noone
+	// Sets initial default for state_move to idle
+	state_move_free = noone
 	
 	// Collision speed, used for collision logic
 	collision_speed = global.collision_distance
+	
+	// Used to determine if the player is solid for the purposes of semi solid objects
+	semi_solid = false
 	
 	// Normal max jumps
 	base_max_jumps = 0;
@@ -176,7 +179,7 @@ event_inherited()
 	state_idle = function()
 	{
 
-		state_jump_free = state_idle;
+		state_move_free = state_idle;
 		//show_debug_message("Jump State: Idle");
 	}
 
@@ -184,7 +187,7 @@ event_inherited()
 	state_jumping = function()
 	{
 
-		state_jump_free = state_jumping;
+		state_move_free = state_jumping;
 		//show_debug_message("Jump State: Jumping");
 	}
 
@@ -192,11 +195,20 @@ event_inherited()
 	state_falling = function()
 	{
 
-		state_jump_free = state_falling;
+		state_move_free = state_falling;
+		//show_debug_message("Jump State: Falling");
+	}
+	
+	// Applies when player is falling
+	state_crouch = function()
+	{
+		
+
+		state_move_free = state_crouch;
 		//show_debug_message("Jump State: Falling");
 	}
 
-	state_jump = state_idle;
+	state_move = state_idle;
 	
 #endregion Jump States
 
