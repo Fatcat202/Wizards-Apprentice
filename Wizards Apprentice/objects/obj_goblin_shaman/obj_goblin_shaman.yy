@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_goblin_thug",
+  "%Name":"obj_goblin_shaman",
   "eventList":[],
   "managed":true,
-  "name":"obj_goblin_thug",
+  "name":"obj_goblin_shaman",
   "overriddenProperties":[],
   "parent":{
     "name":"Goblins",
@@ -30,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_goblin_thug",
-    "path":"sprites/spr_goblin_thug/spr_goblin_thug.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

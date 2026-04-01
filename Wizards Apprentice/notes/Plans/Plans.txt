@@ -69,10 +69,11 @@
 			**GOBLINS**
 	Basic enemies, faster but less damage and health
 		
-	-Goblin Grunt: Basic melee goblin enemy
+	-Goblin Thug: Basic melee goblin enemy
 	-Goblin Brute: Advanced melee goblin
-	-Sling Goblin: Basic ranged goblin
+	-Goblin Slinger: Basic ranged goblin
 	-Goblin Mage: Spellcaster goblin, advanced ranged enemy
+	-Goblin Bat: Flying melee enemy
 	
 	
 			**ORCS**

@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_goblin_thug",
+  "%Name":"obj_goblin_slinger",
   "eventList":[],
   "managed":true,
-  "name":"obj_goblin_thug",
+  "name":"obj_goblin_slinger",
   "overriddenProperties":[],
   "parent":{
     "name":"Goblins",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_goblin_thug",
-    "path":"sprites/spr_goblin_thug/spr_goblin_thug.yy",
+    "name":"spr_goblin_slinger",
+    "path":"sprites/spr_goblin_slinger/spr_goblin_slinger.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -13,7 +13,7 @@ function scr_spell_firebolt(target_x = mouse_x, target_y = mouse_y)
 
 	// Prevent use of spell if not enough mana. Expend mana if player has enough
 	if(scr_use_mana(_mana) == false) exit
-	
+
 
 	firebolt = instance_create_layer(x, y, "Projectiles", obj_spell_firebolt)
 		firebolt.speed = 6;
