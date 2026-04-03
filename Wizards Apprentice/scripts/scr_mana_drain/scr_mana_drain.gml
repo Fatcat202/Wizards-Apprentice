@@ -8,7 +8,7 @@ function scr_mana_drain(drain)
 	mana_drain += drain
 	
 	// Set new max mana
-	max_mana = base_max_mana - drain;
+	max_mana = max_mana - drain;
 
 	// Prevent going over unadjusted max mana when removing drain
 	if(max_mana > base_max_mana) max_mana = base_max_mana;

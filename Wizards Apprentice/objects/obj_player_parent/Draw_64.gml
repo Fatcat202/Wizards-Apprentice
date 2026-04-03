@@ -38,13 +38,15 @@ var yy = display_get_gui_height() / 2
 
 #region Mana
 	// Total number of mana crystals
-	var total_mana = max_mana / 2;
-	// Total number of full mana crystals
-	var current_mana = floor(active_mana / 2);
+	var total_mana = ceil(max_mana / 2);
+	// Total number of full double mana crystals
+	var double_mana = floor(active_mana / 2);
+	// Total number of single mana crystals
+	var single_mana = max_mana % 2
 	// Remainder of current crystals after full mana crystals
-	var partial_mana = active_mana - (current_mana * 2)
+	var partial_double_mana = active_mana - (double_mana * 2)
 	// Total number of empty crystals
-	var empty_mana = total_mana - current_mana
+	var empty_double_mana = total_mana - double_mana
 
 
 	// Mana location
@@ -55,16 +57,42 @@ var yy = display_get_gui_height() / 2
 	// Display Mana Crystals
 	for(var i = 1; i <= total_mana; i++)
 	{
-		if (i <= current_mana) 
+		if (i <= double_mana) 
 		{
-			draw_sprite(spr_mana_full, 0, margin_x + (_spacing * i), margin_y)
-		}else if (i = current_mana + 1 && partial_mana != 0)
+			// Display all full double mana crystals
+			draw_sprite(spr_mana_double_full, 0, margin_x + (_spacing * i), margin_y)
+			
+		}else if (i == double_mana + 1 && partial_double_mana != 0 && max_mana != active_mana)
 		{
-			draw_sprite(spr_mana_half, 0, margin_x + (_spacing * i), margin_y)
-		}else if (empty_mana > 0)
+			// Display all half double mana crystals
+			draw_sprite(spr_mana_double_half, 0, margin_x + (_spacing * i), margin_y)
+			
+		}else if (empty_double_mana > 0 && i < total_mana)
 		{
-			draw_sprite(spr_mana_empty, 0, margin_x + (_spacing * i), margin_y)
+			// Display all empty double mana crystals
+			draw_sprite(spr_mana_double_empty, 0, margin_x + (_spacing * i), margin_y)
+			
+		}else if(i == total_mana)
+		{
+			if(single_mana > 0)
+			{
+				if(active_mana == max_mana)
+				{
+					// Display full single mana crystal
+					draw_sprite(spr_mana_single_full, 0, margin_x + (_spacing * i), margin_y)
+				
+				}else
+				{
+					// Display empty single mana crystal
+					draw_sprite(spr_mana_single_empty, 0, margin_x + (_spacing * i), margin_y)
+				}
+			}else
+			{
+				draw_sprite(spr_mana_double_empty, 0, margin_x + (_spacing * i), margin_y)
+			}
+			
 		}
+		
 	}
 #endregion Mana
 

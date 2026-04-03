@@ -8,6 +8,10 @@ scr_player_timers()
 // Used for testing health and mana functionality
 scr_health_and_mana_test()
 
+// Used to provide debug outputs for health, mana, and drain
+scr_health_and_mana_debug()
+
+
 
 	#region Controls
 
