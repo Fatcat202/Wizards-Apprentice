@@ -15,14 +15,13 @@ event_inherited()
 
 	// Mana
 		// Normal max mana
-		base_max_mana = 9
+		base_max_mana = 10
 		// Adjusted max mana after drain
 		max_mana = base_max_mana;
 		// Total mana drained from normal max
 		mana_drain = 0;
 		// Current mana
 		active_mana = max_mana;
-		
 	
 
 	// Max speed

@@ -10,7 +10,7 @@ function scr_spell_heal()
 	var _mana = global.spell_stats[spell_index].mana
 	
 	// Total amount of mana drain
-	var drain = 1
+	var drain = healing
 
 	// Checks to make sure the player is not already at max health
 	if(active_health == max_health) exit
@@ -22,7 +22,7 @@ function scr_spell_heal()
 	scr_heal(healing)
 	
 	// Apply mana drain
-	//scr_mana_drain(drain)
+	scr_mana_drain(drain)
 		
 	// Set cooldown time depending on spell slot selected
 	scr_set_spell_cooldown(_cooldown)
