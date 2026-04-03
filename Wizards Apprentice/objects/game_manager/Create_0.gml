@@ -60,7 +60,7 @@
 				}
 
 				// Initialize stats dictionary constructor
-				function spell_stats(_spell_level = -1, _spell_damage = -1, _spell_atk_speed = -1, _spell_cooldown = -1, _spell_mana = -1, _spell_memory = -1, _spell_uses = -1, _spell_duration = -1, _spell_element = -1, _spell_title = "Empty", _spell_desc = "Empty", _spell_spr = spr_spell_placeholder, _spell_script = scr_test()) constructor {
+				function spell_stats(_spell_level = -1, _spell_damage = -1, _spell_atk_speed = -1, _spell_cooldown = -1, _spell_mana = -1, _spell_memory = -1, _spell_uses = -1, _spell_duration = -1, _spell_element = -1, _spell_title = "Empty", _spell_desc = "Empty", _spell_spr = spr_spell_slot_placeholder, _spell_script = scr_test()) constructor {
 				
 					level = _spell_level
 					damage = _spell_damage

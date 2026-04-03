@@ -70,8 +70,8 @@ var yy = display_get_gui_height() / 2
 
 #region Spells
 
-	var spell_width = sprite_get_width(spr_spell_placeholder)
-	var spell_height = sprite_get_height(spr_spell_placeholder)
+	var spell_width = sprite_get_width(spr_spell_slot_template)
+	var spell_height = sprite_get_height(spr_spell_slot_template)
 	var spell_spacing = (spell_width);
 	var spell_margin_x =  xx - (((total_spells + 1) * spell_width))/2
 	var spell_margin_y = yy * 2 - (spell_height / 2) - 5;
