@@ -14,6 +14,7 @@ var yy = display_get_gui_height() / 2
 	// Total number of empty hearts
 	var empty_hearts = total_hearts - current_hearts
 	
+	// True-false if base_max_health is a round number
 	var half_heart = base_max_health % 2;
 
 
@@ -37,8 +38,10 @@ var yy = display_get_gui_height() / 2
 		}
 	}
 	
+	// Check if total health is a round number
 	if(half_heart == true)
 	{
+		// Check if at full hp to determine what sprite to show
 		if(active_health == max_health)
 		{
 			draw_sprite(spr_heart_half_full, 0, margin_x + (_spacing * total_hearts) + (_spacing/2), margin_y)
