@@ -13,6 +13,8 @@ var yy = display_get_gui_height() / 2
 	var partial_heart = active_health - (current_hearts * 2)
 	// Total number of empty hearts
 	var empty_hearts = total_hearts - current_hearts
+	
+	var half_heart = base_max_health % 2;
 
 
 	// Hearts location
@@ -28,12 +30,23 @@ var yy = display_get_gui_height() / 2
 			draw_sprite(spr_heart_full, 0, margin_x + (_spacing * i), margin_y)
 		}else if (i = current_hearts + 1 && partial_heart != 0)
 		{
-			draw_sprite(spr_heart_half, 0, margin_x + (_spacing * i), margin_y)
+			draw_sprite(spr_heart_partial, 0, margin_x + (_spacing * i), margin_y)
 		}else if (empty_hearts > 0)
 		{
 			draw_sprite(spr_heart_empty, 0, margin_x + (_spacing * i), margin_y)
 		}
 	}
+	
+	if(half_heart == true)
+	{
+		if(active_health == max_health)
+		{
+			draw_sprite(spr_heart_half_full, 0, margin_x + (_spacing * total_hearts) + (_spacing/2), margin_y)
+		} else draw_sprite(spr_heart_half_empty, 0, margin_x + (_spacing * total_hearts) + (_spacing/2), margin_y)
+	}
+	
+	
+	
 #endregion Hearts
 
 

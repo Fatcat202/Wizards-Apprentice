@@ -5,7 +5,7 @@ event_inherited()
 	
 	// Health
 		// Normal max health
-		base_max_health = 6
+		base_max_health = 7
 		// Adjusted max health after drain
 		max_health = base_max_health;
 		// Total health drained from normal max
