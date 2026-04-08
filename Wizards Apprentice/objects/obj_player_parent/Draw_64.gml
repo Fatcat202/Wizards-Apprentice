@@ -153,7 +153,7 @@ var yy = display_get_gui_height() / 2
 	
 	#region Debug
 	
-		
+	/*	
 		show_debug_message("num_displayed - 1 = " + string(num_displayed - 1))
 		show_debug_message("total_crystals = " + string(total_crystals))
 		show_debug_message("full_crystals = " + string(full_crystals))
@@ -162,7 +162,7 @@ var yy = display_get_gui_height() / 2
 		show_debug_message("partial_drained_crystal = " + string(partial_drained_crystal))
 		show_debug_message("partial_full_crystal = " + string(partial_full_crystal))
 		show_debug_message("half_crystal = " + string(half_crystal))
-		
+	*/
 		
 	#endregion Debug
 

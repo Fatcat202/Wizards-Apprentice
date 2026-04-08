@@ -1,5 +1,3 @@
 /// @description Destroy Instance
 
-//show_debug_message("PROJECTILE DURATION REACHED")
-
 instance_destroy();

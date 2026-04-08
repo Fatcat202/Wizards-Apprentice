@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_ground_stone",
+  "%Name":"obj_solid_ground",
   "eventList":[],
   "managed":true,
-  "name":"obj_ground_stone",
+  "name":"obj_solid_ground",
   "overriddenProperties":[],
   "parent":{
-    "name":"Solid",
-    "path":"folders/Objects/Collision Walls/Solid.yy",
+    "name":"Collision Walls",
+    "path":"folders/Objects/Collision Walls.yy",
   },
   "parentObjectId":{
-    "name":"obj_solid_ground",
-    "path":"objects/obj_solid_ground/obj_solid_ground.yy",
+    "name":"obj_solid",
+    "path":"objects/obj_solid/obj_solid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -30,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_ground_stone_0",
-    "path":"sprites/spr_ground_stone_0/spr_ground_stone_0.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

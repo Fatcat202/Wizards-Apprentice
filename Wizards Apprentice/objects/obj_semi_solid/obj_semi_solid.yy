@@ -8,8 +8,8 @@
   "name":"obj_semi_solid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Semi Solid",
-    "path":"folders/Objects/Collision Walls/Semi Solid.yy",
+    "name":"Collision Walls",
+    "path":"folders/Objects/Collision Walls.yy",
   },
   "parentObjectId":{
     "name":"obj_collision_parent",

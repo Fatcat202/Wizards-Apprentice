@@ -9,7 +9,7 @@ scr_player_timers()
 scr_health_and_mana_test()
 
 // Used to provide debug outputs for health, mana, and drain
-scr_health_and_mana_debug()
+//scr_health_and_mana_debug()
 
 
 #region Controls
