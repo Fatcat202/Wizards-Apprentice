@@ -66,7 +66,7 @@ scr_health_and_mana_test()
 			
 			
 		// End jump held timer if no longer held, or hitting collision object above
-		if(!global.cont_jump_held or (place_meeting(x, y - 1, obj_collision_parent) && !scr_check_semi_solid(x, y -1))) jump_hold_timer = 0;
+		if(!global.cont_jump_held or (place_meeting(x, y - 1, obj_collision_parent) && scr_is_solid(x, y - 1) && !scr_check_semi_solid(x, y -1))) jump_hold_timer = 0;
 			
 		// Count down jump held timer
 		if(jump_hold_timer > 0 && global.cont_jump_held)
@@ -138,35 +138,34 @@ scr_health_and_mana_test()
 		// Set and apply terminal velocity
 		if(move_spd_v < term_vel) move_spd_v = term_vel;
 			
-			
 		// Used for sub pixel collisions to ensure accuracy
 		var sub_pixel = 0.5
 	
 		// Moving up slope
 		// Detect if a slope is present
-		if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y - abs(move_spd_h) - 1))
+		if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent) && !scr_is_solid(x + move_spd_h, y - abs(move_spd_h) - 1) && !scr_check_semi_solid(x + move_spd_h, y - abs(move_spd_h) - 1))
 		{
 			// Move up slope if present
-			while(place_meeting(x + move_spd_h, y, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y)) y -= sub_pixel
+			while(place_meeting(x + move_spd_h, y, obj_collision_parent) && scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y)) y -= sub_pixel
 		}else
 		{
 			// Preventing getting stuck with collision objects horizontaly
-			if(place_meeting(x + move_spd_h, y, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y)) move_spd_h = 0
+			if(place_meeting(x + move_spd_h, y, obj_collision_parent) && scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y)) move_spd_h = 0
 		}
 			
 		// Moving down slope
 		// Detect if a slope is present
-		if((!place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y + 1)) && (place_meeting(x + move_spd_h, y + abs(move_spd_h), obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y + abs(move_spd_h))))
+		if((!place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && !scr_is_solid(x + move_spd_h, y + 1) && !scr_check_semi_solid(x + move_spd_h, y + 1)) && (place_meeting(x + move_spd_h, y + abs(move_spd_h), obj_collision_parent) && scr_is_solid(x + move_spd_h, y + abs(move_spd_h)) && !scr_check_semi_solid(x + move_spd_h, y + abs(move_spd_h))))
 		{
 			// Move down slope if present
-			while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent) && !scr_check_semi_solid(x + move_spd_h, y + sub_pixel))
+			while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent) && !scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y + sub_pixel))
 			{
 				y += sub_pixel
 			}
 		}
 			
 		// Fall when hitting head on ceiling
-		if(state_move == state_jumping && place_meeting(x, y - 2, obj_collision_parent) && !scr_check_semi_solid(x, y - 2)) move_spd_v = -grav
+		if(state_move == state_jumping && place_meeting(x, y - 2, obj_collision_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2)) move_spd_v = -grav
 			
 			
 		// Move object horizontally
@@ -237,40 +236,40 @@ scr_health_and_mana_test()
 	#region Preventing getting stuck inside collision objects
 			
 		// Force objects outside of other objects if stuck or overlaping
-		if(place_meeting(x, y, obj_collision_parent) && !scr_check_semi_solid(x, y))
+		if(place_meeting(x, y, obj_collision_parent) && scr_is_solid(x,y) && !scr_check_semi_solid(x, y))
 		{
 			for(var i = 0; i < 1000; i++)
 			{
 				// Right
-				if(!place_meeting(x + i, y, obj_collision_parent))
+				if(!place_meeting(x + i, y, obj_collision_parent) || !scr_is_solid(x + i , y))
 				{
 					x += i;
 					break;	
 				}
 
 				// Left
-				if(!place_meeting(x - i, y, obj_collision_parent))
+				if(!place_meeting(x - i, y, obj_collision_parent) || !scr_is_solid(x - i , y))
 				{
 					x -= i;
 					break;	
 				}
 		
 				// Up
-				if(!place_meeting(x, y + i, obj_collision_parent))
+				if(!place_meeting(x, y + i, obj_collision_parent) || !scr_is_solid(x , y + i))
 				{
 					y += i;
 					break;	
 				}
 		
 				// Down
-				if(!place_meeting(x, y - i, obj_collision_parent))
+				if(!place_meeting(x, y - i, obj_collision_parent) || !scr_is_solid(x , y - i))
 				{
 					y -= i;
 					break;	
 				}
 		
 				// Top Right
-				if(!place_meeting(x + i, y + i, obj_collision_parent))
+				if(!place_meeting(x + i, y + i, obj_collision_parent) || !scr_is_solid(x + i , y + i))
 				{
 					x += i;
 					y += i;
@@ -278,7 +277,7 @@ scr_health_and_mana_test()
 				}
 			
 				// Top Left
-				if(!place_meeting(x - i, y + i, obj_collision_parent))
+				if(!place_meeting(x - i, y + i, obj_collision_parent) || !scr_is_solid(x - i , y + i))
 				{
 					x -= i;
 					y += i;
@@ -286,7 +285,7 @@ scr_health_and_mana_test()
 				}
 			
 				// Bottom Right
-				if(!place_meeting(x + i, y - i, obj_collision_parent))
+				if(!place_meeting(x + i, y - i, obj_collision_parent) || !scr_is_solid(x + i ,y - i))
 				{
 					x += i;
 					y -= i;
@@ -294,7 +293,7 @@ scr_health_and_mana_test()
 				}
 			
 				// Bottom Left
-				if(!place_meeting(x - i, y - i, obj_collision_parent))
+				if(!place_meeting(x - i, y - i, obj_collision_parent) || !scr_is_solid(x - i , y - i))
 				{
 					x -= i;
 					y -= i;

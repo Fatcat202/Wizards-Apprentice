@@ -1,8 +1,8 @@
 
-function scr_spell_wall_of_fire()
+function scr_spell_wall_of_ice()
 {
 	// Find index in array using name of spell
-	var spell_index = scr_find_spell_index("wall of fire")
+	var spell_index = scr_find_spell_index("wall of ice")
 	
 	// Pull relevant details for easier to use variables
 	var _damage = global.spell_stats[spell_index].damage
@@ -23,7 +23,7 @@ function scr_spell_wall_of_fire()
 		// Set x cords
 		var location_x = mouse_x
 	
-		// Sprite height of spr_wall_of_fire
+		// Sprite height of spr_wall_of_ice
 		var spr_height = sprite_get_height(_spr)
 		//show_debug_message("spr_height = " + string(spr_height))
 	
@@ -89,7 +89,7 @@ function scr_spell_wall_of_fire()
 	if(scr_use_mana(_mana) == false) exit
 
 	// Create wall instance
-	fire_wall = instance_create_layer(location_x, location_y, "Projectiles", obj_spell_wall_of_fire,
+	ice_wall = instance_create_layer(location_x, location_y, "Projectiles", obj_spell_wall_of_ice,
 	{
 		damage : _damage,
 		duration : _duration,

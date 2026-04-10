@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_attack_parent",
+  "%Name":"obj_spell_wall_of_ice",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_attack_parent",
+  "name":"obj_spell_wall_of_ice",
   "overriddenProperties":[],
   "parent":{
-    "name":"Attacks",
-    "path":"folders/Objects/Attacks.yy",
+    "name":"Walls",
+    "path":"folders/Objects/Attacks/Walls.yy",
   },
   "parentObjectId":{
-    "name":"obj_collision_parent",
-    "path":"objects/obj_collision_parent/obj_collision_parent.yy",
+    "name":"obj_wall_player_parent",
+    "path":"objects/obj_wall_player_parent/obj_wall_player_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_spell_wall_of_ice",
+    "path":"sprites/spr_spell_wall_of_ice/spr_spell_wall_of_ice.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

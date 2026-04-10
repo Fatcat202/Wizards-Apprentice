@@ -70,7 +70,7 @@ event_inherited()
 	active_spell = 1;
 	
 	// Total number of spells memorised
-	total_spells = 6
+	total_spells = 7
 	
 	// Array of usable spells
 	arr_active_spells[total_spells] = -1
@@ -82,7 +82,7 @@ event_inherited()
 		arr_active_spells[4] = global.spell_stats[scr_find_spell_index("icicle")]
 		arr_active_spells[5] = global.spell_stats[scr_find_spell_index("jolt")]
 		arr_active_spells[6] = global.spell_stats[scr_find_spell_index("wall of fire")]
-	//	arr_active_spells[7] = -1
+		arr_active_spells[7] = global.spell_stats[scr_find_spell_index("wall of ice")]
 	//	arr_active_spells[8] = -1
 	//	arr_active_spells[9] = -1
 	//	arr_active_spells[10] = -1

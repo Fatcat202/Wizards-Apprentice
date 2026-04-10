@@ -28,8 +28,8 @@
 	*Stronger Damaging*
 		-Shroud of (element): Enemies that hit you take damage for a short time
 		-Dragon's Breath: Breathe out cone of fire
-		-Wall of Ice: Create a solid wall of ice, can stick out horizontally from walls
-		-Wall of Fire: Create a solid wall of ice, can stick out horizontally from walls or vertically from ceilings
+	X	-Wall of Ice: Create a solid wall of ice, can stick out horizontally from walls
+	X	-Wall of Fire: Create a solid wall of ice, can stick out horizontally from walls or vertically from ceilings
 		-Lightning Bolt: Bolt of electricity, can strike through enemies
 		-Fireball: Ball of fire creating a large explosion, damaging many enemies in an area
 		-Shocking Touch: Electrocute with a touch

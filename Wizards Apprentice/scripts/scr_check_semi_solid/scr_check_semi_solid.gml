@@ -7,7 +7,7 @@ function scr_check_semi_solid(xx, yy)
 	
 
 	// Check if there is a object in the location to be checked before attempting to gather instance data
-	if(place_meeting(xx, yy, obj_collision_parent))
+	if(place_meeting(xx, yy, obj_collision_parent) && scr_is_solid(xx, yy))
 	{
 		// Check if both self and object in location selected are semi_solid
 		if(semi_solid && instance_place(xx, yy, obj_collision_parent).semi_solid)
