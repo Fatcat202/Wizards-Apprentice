@@ -9,9 +9,9 @@ Area based elements: Fire, Ice, Water, Steam
 		Effects created by spells gain their level from the level of spell which was cast
 	
 	Effects:
-		Fire: Ticking damage
-		Ice: Slippery surfaces, solid surfaces
-		Steam: Concealment, blocks line of sight
+		Fire: Ticking damage, changes other states of matter
+		Ice: Slippery surfaces, solid surfaces, cannot add shock
+		Steam: Concealment, blocks line of sight, disapears over time
 		Water: Can be transformed into other area elements, puts out fire effects
 		Shock: Stuns enemies periodically
 		

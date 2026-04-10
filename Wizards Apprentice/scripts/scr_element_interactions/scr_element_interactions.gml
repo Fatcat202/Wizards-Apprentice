@@ -5,6 +5,13 @@ function scr_element_interactions(own_id, other_id)
 	
 	// Must provide ID of elements being interacted with
 	
+	/*
+	if(!object_exists(other_id))
+	{
+		show_debug_message("No other object detectd")	
+		exit;
+	}
+	*/
 	
 	// Used for own variables
 	var own_element = own_id.element
@@ -19,6 +26,10 @@ function scr_element_interactions(own_id, other_id)
 	if(other_element == "None" || own_element == "None") exit;
 	
 	
+	show_debug_message("Interaction started")
+	
+	
+	
 	#region Ice - Fire = Water
 	
 		// Check if interaction is Fire + Ice
@@ -30,6 +41,13 @@ function scr_element_interactions(own_id, other_id)
 				Destroy which ever has its level lowered to 0
 				Any remaining element has level permenantly lowered
 			*/
+			
+			// Lower level of both objects by the others level
+			own_id.level -= other_level
+			other_id.level -= own_level
+			
+			
+			
 		
 			/*
 				Create water from amount removed from ice
@@ -126,5 +144,31 @@ function scr_element_interactions(own_id, other_id)
 		
 	#endregion Steam + Shock = Charged Steam
 	
+	
+	// Activate element interaction delay to prevent doubling up on interactions
+	own_id.element_delay_active = true;
+	other_id.element_delay_active = true;
+	
+	
+	
+	// Destroy objects if reaching under level 0 or under
+	
+		show_debug_message(string(own_id.title) + " interaction finished")
+	
+	if(other_id.level <= 0) with(other_id)
+	{
+		show_debug_message(string(other_id.title) + " Destroyed")
+		instance_destroy()
+	}
+
+	
+	if(own_id.level <= 0) with(own_id)
+	{
+		show_debug_message(string(own_id.title) + " Destroyed")
+		instance_destroy()
+	}
+	
+
+
 	
 }

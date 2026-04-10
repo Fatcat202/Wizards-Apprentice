@@ -83,11 +83,24 @@ function scr_spell_wall_of_ice()
 	// Create wall instance
 	ice_wall = instance_create_layer(location_x, location_y, "Projectiles", obj_spell_wall_of_ice,
 	{
+		level : _level,
 		damage : _damage,
+		atk_speed : _atk_speed,
+		cooldown : _cooldown,
+		mana : _mana,
+		memory : _memory,
+		uses : _uses,
 		duration : _duration,
+		element : _element,
+		title : _title,
+		desc : _desc,
+		spr : _spr,
+		scr : _scr,
+		
 		location_x : location_x,
 		location_y : location_y,
-		image_yscale : wall_height
+		image_yscale : wall_height,
+
 	});
 
 	
