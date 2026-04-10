@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_spell_fireball",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_spell_fireball",
+  "parent":{
+    "name":"Spells",
+    "path":"folders/Scripts/Spells/Spells.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

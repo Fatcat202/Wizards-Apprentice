@@ -1,15 +1,7 @@
 
 function scr_spell_wall_of_fire()
 {
-	// Find index in array using name of spell
-	var spell_index = scr_find_spell_index("wall of fire")
-	
-	// Pull relevant details for easier to use variables
-	var _damage = global.spell_stats[spell_index].damage
-	var _cooldown = global.spell_stats[spell_index].cooldown
-	var _mana = global.spell_stats[spell_index].mana
-	var _duration = global.spell_stats[spell_index].duration
-	var _spr = global.spell_stats[spell_index].spr
+	scr_pull_spell_data("wall of fire")
 	
 	#region Wall Logic
 	

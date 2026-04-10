@@ -1,15 +1,15 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scr_spell_jolt(target_x = mouse_x, target_y = mouse_y)
+
+function scr_spell_fireball(target_x = mouse_x, target_y = mouse_y)
 {
-	scr_pull_spell_data("jolt")
 	
+	// Pull relevant details for easier to use variables
+	scr_pull_spell_data("fireball")
 	
 	// Prevent use of spell if not enough mana. Expend mana if player has enough
 	if(scr_use_mana(_mana) == false) exit
 	
 
-	jolt = instance_create_layer(x, y, "Projectiles", obj_spell_jolt,
+	fireball = instance_create_layer(x, y, "Projectiles", obj_spell_fireball,
 	{
 		speed : 6,
 		direction : point_direction(x, y, target_x, target_y),

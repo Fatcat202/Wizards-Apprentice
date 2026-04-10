@@ -6,3 +6,4 @@ firebolt,0,5,-1,1,0,-1,-1,2,fire,Firebolt,Empty,spr_spell_slot_firebolt,scr_spel
 icicle,0,5,-1,1,0,-1,-1,2,water,Icicle,Empty,spr_spell_slot_icicle,scr_spell_icicle
 wall of fire,3,2,-1,1,3,-1,-1,10,fire,Wall of Fire,Empty,spr_spell_slot_placeholder,scr_spell_wall_of_fire
 wall of ice,3,-1,-1,1,3,-1,-1,10,ice,Wall of Ice,Empty,spr_spell_slot_placeholder,scr_spell_wall_of_ice
+fireball,2,5,-1,1,2,-1,-1,-1,fire,Fireball,Empty,spr_spell_slot_placeholder,scr_spell_fireball

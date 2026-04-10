@@ -2,14 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_spell_icicle(target_x = mouse_x, target_y = mouse_y)
 {
-	// Find index in array using name of spell
-	var spell_index = scr_find_spell_index("icicle")
-	
-	// Pull relevant details for easier to use variables
-	var _damage = global.spell_stats[spell_index].damage
-	var _cooldown = global.spell_stats[spell_index].cooldown
-	var _mana = global.spell_stats[spell_index].mana
-	var _duration = global.spell_stats[spell_index].duration
+	scr_pull_spell_data("icicle")
 
 	// Prevent use of spell if not enough mana. Expend mana if player has enough
 	if(scr_use_mana(_mana) == false) exit
