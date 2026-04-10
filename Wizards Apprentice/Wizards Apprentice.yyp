@@ -28,6 +28,7 @@
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Debug","folderPath":"folders/Scripts/Debug.yy","name":"Debug","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Effects","folderPath":"folders/Scripts/Effects.yy","name":"Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Elements","folderPath":"folders/Scripts/Elements.yy","name":"Elements","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player Movement","folderPath":"folders/Scripts/Player Movement.yy","name":"Player Movement","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Spells","folderPath":"folders/Scripts/Spells.yy","name":"Spells","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Spells","folderPath":"folders/Scripts/Spells/Spells.yy","name":"Spells","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -55,6 +56,7 @@
   },
   "name":"Wizards Apprentice",
   "resources":[
+    {"id":{"name":"Elements","path":"notes/Elements/Elements.yy",},},
     {"id":{"name":"Plans","path":"notes/Plans/Plans.yy",},},
     {"id":{"name":"game_manager","path":"objects/game_manager/game_manager.yy",},},
     {"id":{"name":"obj_aoe_parent","path":"objects/obj_aoe_parent/obj_aoe_parent.yy",},},
@@ -85,6 +87,7 @@
     {"id":{"name":"rm_testing","path":"rooms/rm_testing/rm_testing.yy",},},
     {"id":{"name":"scr_check_semi_solid","path":"scripts/scr_check_semi_solid/scr_check_semi_solid.yy",},},
     {"id":{"name":"scr_damage","path":"scripts/scr_damage/scr_damage.yy",},},
+    {"id":{"name":"scr_elements","path":"scripts/scr_elements/scr_elements.yy",},},
     {"id":{"name":"scr_find_spell_index","path":"scripts/scr_find_spell_index/scr_find_spell_index.yy",},},
     {"id":{"name":"scr_get_controls","path":"scripts/scr_get_controls/scr_get_controls.yy",},},
     {"id":{"name":"scr_heal","path":"scripts/scr_heal/scr_heal.yy",},},

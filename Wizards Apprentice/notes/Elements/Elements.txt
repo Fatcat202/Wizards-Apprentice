@@ -1,0 +1,29 @@
+
+
+
+Area based elements: Fire, Ice, Water, Steam
+	Modifying elements: Shock
+	
+	Levels:
+		Levels are used to represent the strength of an enviormental effect
+		Effects created by spells gain their level from the level of spell which was cast
+	
+	Effects:
+		Fire: Ticking damage
+		Ice: Slippery surfaces, solid surfaces
+		Steam: Concealment, blocks line of sight
+		Water: Can be transformed into other area elements, puts out fire effects
+		Shock: Stuns enemies periodically
+		
+	Elements can be changed based on level of enviormental effect or spell, for example:
+		Water subtracts from fire, becoming steam:
+			Level 1 water vs level 3 fire = Level 2 fire, + Level 1 steam
+		Fire subtracts from water, becoming steam:
+			Level 3 water vs level 1 fire = Level 1 steam + level 2 water
+		Add ice and water together:
+			Level 2 ice vs level 1 water = Level 3 ice
+			
+		Shock:
+			Functions as an additional effect for existing water and steam enviormental effects.
+			Stuns characters that are hit by it, potentially only slowing the player instead of stunning them
+			Does not add to or subtract from the level of enviormental effects

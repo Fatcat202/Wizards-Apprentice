@@ -1,4 +1,4 @@
-
+a
 function scr_spell_wall_of_fire()
 {
 	// Find index in array using name of spell
@@ -19,8 +19,7 @@ function scr_spell_wall_of_fire()
 	
 		// Set max height of wall
 		var max_wall_height = 2
-		var wall_height = max_wall_height
-	
+		var wall_height = max_wall_height	
 		// Set x cords
 		var location_x = mouse_x
 	

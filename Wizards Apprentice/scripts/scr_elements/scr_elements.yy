@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_elements",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_elements",
+  "parent":{
+    "name":"Elements",
+    "path":"folders/Scripts/Elements.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
