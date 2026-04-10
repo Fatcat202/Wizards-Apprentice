@@ -89,7 +89,7 @@
     {"id":{"name":"rm_testing","path":"rooms/rm_testing/rm_testing.yy",},},
     {"id":{"name":"scr_check_semi_solid","path":"scripts/scr_check_semi_solid/scr_check_semi_solid.yy",},},
     {"id":{"name":"scr_damage","path":"scripts/scr_damage/scr_damage.yy",},},
-    {"id":{"name":"scr_elements","path":"scripts/scr_elements/scr_elements.yy",},},
+    {"id":{"name":"scr_element_interactions","path":"scripts/scr_element_interactions/scr_element_interactions.yy",},},
     {"id":{"name":"scr_find_spell_index","path":"scripts/scr_find_spell_index/scr_find_spell_index.yy",},},
     {"id":{"name":"scr_get_controls","path":"scripts/scr_get_controls/scr_get_controls.yy",},},
     {"id":{"name":"scr_heal","path":"scripts/scr_heal/scr_heal.yy",},},
