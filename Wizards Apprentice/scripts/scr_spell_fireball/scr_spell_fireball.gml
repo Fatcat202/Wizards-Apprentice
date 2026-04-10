@@ -29,7 +29,6 @@ function scr_spell_fireball(target_x = mouse_x, target_y = mouse_y)
 		direction : point_direction(x, y, target_x, target_y),
 		image_angle : point_direction(x, y, target_x, target_y),
 
-
 	});
 	
 	
