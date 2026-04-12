@@ -25,14 +25,13 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 
 
 
-	#region Spreading Flaming Oil
+	#region Flaming Oil
 		
 		if(own_element == "Oil" && own_id.is_flaming == true)
 		{
+			// Spreading flaming oil
 			if(other_element == "Oil")
 			{
-				
-				
 				// Start timer to spread fire between oil
 				if(spreading_fire_timer >= spreading_fire_length)
 				{
@@ -43,11 +42,45 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					
 					// Increment timer
 				}else spreading_fire_timer++
+			}else
+			
+			// Melting Ice
+			if(other_element == "Ice")
+			{
+				// Start timer to melt ice
+				if(melting_ice_timer >= melting_ice_length)
+				{
+					// Turn platform to water from ice
+					other_id.element = "Water"
+					// Reset timer
+					melting_ice_timer = 0;
+					
+					// Increment timer
+				}else melting_ice_timer++
+			}else
+			
+			
+			// Evaporating Water
+			if(other_element == "Water")
+			{
+				// Start timer to evaporate water
+				if(evaporation_timer >= evaporation_length)
+				{
+					// Turn platform to water empty
+					other_id.element = "Empty"
+					
+					// Create steam effect
+					
+					// Reset timer
+					evaporation_timer = 0;
+					
+					// Increment timer
+				}else evaporation_timer++
 			}
 		
 		}
 		//with(other_id)show_debug_message("is_flaming = " + string(is_flaming))
-	#endregion Spreading Flaming Oil
+	#endregion Flaming Oil
 	
 	#region Water Freezing
 	

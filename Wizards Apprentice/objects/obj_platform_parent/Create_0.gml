@@ -15,12 +15,28 @@ is_flaming = false;
 // Determines if flames are spawned to prevent duplication
 flames_spawned = false
 
+// Time for water to freeze
+freezing_time = 5
+// Time for fire to spread
+spreading_fire_time = 0.5
+// Timer for ice to melt
+melting_time = 4
+// Time for water to evaporate
+evaporation_time = 4
 
 
 // Used for timer when turning water platform to ice
-water_to_ice_length = game_get_speed(gamespeed_fps) * 5
+water_to_ice_length = game_get_speed(gamespeed_fps) * freezing_time
 water_to_ice_timer = 0
 
-// Used for timer when turning water platform to ice
-spreading_fire_length = game_get_speed(gamespeed_fps) * 1
+// Used for timer when spreading flaming oil
+spreading_fire_length = game_get_speed(gamespeed_fps) * spreading_fire_time
 spreading_fire_timer = 0
+
+// Used for timer when turning ice to water
+melting_ice_length = game_get_speed(gamespeed_fps) * melting_time
+melting_ice_timer = 0
+
+// Used for timer when turning water platform to steam
+evaporation_length = game_get_speed(gamespeed_fps) * evaporation_time
+evaporation_timer = 0
