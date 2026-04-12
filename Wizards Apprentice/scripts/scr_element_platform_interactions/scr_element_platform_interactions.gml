@@ -44,6 +44,14 @@ function scr_element_platform_interactions(own_id, other_id)
 		{
 			other_id.element = "None"
 		}
+		
+		// Ice + Water
+		if(own_element == "Ice")
+		{
+			other_id.element = "Ice"
+		}
+		
+
 			
 	}else
 		
