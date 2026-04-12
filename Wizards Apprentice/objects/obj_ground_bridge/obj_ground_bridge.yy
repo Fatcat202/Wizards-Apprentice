@@ -10,8 +10,8 @@
     "path":"folders/Objects/Collision Walls/Semi Solid.yy",
   },
   "parentObjectId":{
-    "name":"obj_semi_solid",
-    "path":"objects/obj_semi_solid/obj_semi_solid.yy",
+    "name":"obj_platform_semi_solid",
+    "path":"objects/obj_platform_semi_solid/obj_platform_semi_solid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ground_bridge_0",
-    "path":"sprites/spr_ground_bridge_0/spr_ground_bridge_0.yy",
+    "name":"spr_platform_bridge_0",
+    "path":"sprites/spr_platform_bridge_0/spr_platform_bridge_0.yy",
   },
   "spriteMaskId":null,
   "visible":true,

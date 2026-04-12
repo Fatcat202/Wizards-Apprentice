@@ -13,8 +13,8 @@
     "path":"folders/Objects/Characters.yy",
   },
   "parentObjectId":{
-    "name":"obj_solid",
-    "path":"objects/obj_solid/obj_solid.yy",
+    "name":"obj_collision_parent",
+    "path":"objects/obj_collision_parent/obj_collision_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

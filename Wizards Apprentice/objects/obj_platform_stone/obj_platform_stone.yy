@@ -1,19 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_semi_solid",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_platform_stone",
+  "eventList":[],
   "managed":true,
-  "name":"obj_semi_solid",
+  "name":"obj_platform_stone",
   "overriddenProperties":[],
   "parent":{
-    "name":"Collision Walls",
-    "path":"folders/Objects/Collision Walls.yy",
+    "name":"Solid",
+    "path":"folders/Objects/Collision Walls/Solid.yy",
   },
   "parentObjectId":{
-    "name":"obj_collision_parent",
-    "path":"objects/obj_collision_parent/obj_collision_parent.yy",
+    "name":"obj_platform_solid",
+    "path":"objects/obj_platform_solid/obj_platform_solid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -32,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_platform_stone_0",
+    "path":"sprites/spr_platform_stone_0/spr_platform_stone_0.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_solid",
+  "%Name":"obj_platform_semi_solid",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_solid",
+  "name":"obj_platform_semi_solid",
   "overriddenProperties":[],
   "parent":{
     "name":"Collision Walls",
     "path":"folders/Objects/Collision Walls.yy",
   },
   "parentObjectId":{
-    "name":"obj_collision_parent",
-    "path":"objects/obj_collision_parent/obj_collision_parent.yy",
+    "name":"obj_platform_parent",
+    "path":"objects/obj_platform_parent/obj_platform_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

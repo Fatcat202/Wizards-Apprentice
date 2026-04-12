@@ -24,7 +24,7 @@ function scr_spell_wall_of_fire()
 		var obj_id = -1;
 		for(var i = 0; i <= (spr_height); i++)
 		{
-			if(place_meeting(location_x, mouse_y + i, obj_solid_ground) || place_meeting(location_x, mouse_y + i, obj_semi_solid))
+			if(place_meeting(location_x, mouse_y + i, obj_platform_parent))
 			{
 				obj_id = instance_place(location_x, mouse_y + i, obj_collision_parent);
 				break;
@@ -51,7 +51,7 @@ function scr_spell_wall_of_fire()
 		for(var i = 0; i < spr_height * max_wall_height; i++)
 		{
 			// If finding ground, get image_yscale. Ignore ground object the wall is created on
-			if((place_meeting(location_x, location_y - i, obj_solid_ground) || place_meeting(location_x, location_y - i, obj_semi_solid)) && !place_meeting(location_x, location_y - i, obj_id))
+			if((place_meeting(location_x, location_y - i, obj_platform_parent)) && !place_meeting(location_x, location_y - i, obj_id))
 			{
 			
 				// Set image_yscale by comparing distance to obj above
