@@ -20,3 +20,7 @@ flames_spawned = false
 // Used for timer when turning water platform to ice
 water_to_ice_length = game_get_speed(gamespeed_fps) * 5
 water_to_ice_timer = 0
+
+// Used for timer when turning water platform to ice
+spreading_fire_length = game_get_speed(gamespeed_fps) * 1
+spreading_fire_timer = 0

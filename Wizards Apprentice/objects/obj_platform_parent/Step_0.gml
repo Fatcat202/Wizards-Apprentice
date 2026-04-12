@@ -33,20 +33,42 @@ var quarter_width = width / 4;
 #region Flaming
 
 #region Inter Platform Element Interactions
+
+	// Check in each direction for touching platforms. Run interelement script for each direction
+
 	var other_id = noone
 	
+	// Distance to check
 	var check_distance = 1
 	
-	if(place_meeting(x + check_distance, y, obj_platform_parent)) other_id = instance_place(x + check_distance, y, obj_platform_parent)
+	// Check right
+	if(place_meeting(x + check_distance, y, obj_platform_parent))
+	{
+		other_id = instance_place(x + check_distance, y, obj_platform_parent)
+		scr_element_inter_platform_interactions(id, other_id)
+	}
 	
-	if(place_meeting(x - check_distance, y, obj_platform_parent)) other_id = instance_place(x - check_distance, y, obj_platform_parent)
+	// Check left
+	if(place_meeting(x - check_distance, y, obj_platform_parent))
+	{
+		other_id = instance_place(x - check_distance, y, obj_platform_parent)
+		scr_element_inter_platform_interactions(id, other_id)
+	}
 	
-	if(place_meeting(x, y + check_distance, obj_platform_parent)) other_id = instance_place(x, y + check_distance, obj_platform_parent)
+	// Check top
+	if(place_meeting(x, y + check_distance, obj_platform_parent)) 
+	{
+		other_id = instance_place(x, y + check_distance, obj_platform_parent)
+		scr_element_inter_platform_interactions(id, other_id)
+	}
 	
-	if(place_meeting(x, y - check_distance, obj_platform_parent)) other_id = instance_place(x, y - check_distance, obj_platform_parent)
+	// Check bottom
+	if(place_meeting(x, y - check_distance, obj_platform_parent))
+	{
+		other_id = instance_place(x, y - check_distance, obj_platform_parent)
+		scr_element_inter_platform_interactions(id, other_id)
+	}
 	
-
-	if(other_id != noone) scr_element_inter_platform_interactions(id, other_id)
 
 
 	

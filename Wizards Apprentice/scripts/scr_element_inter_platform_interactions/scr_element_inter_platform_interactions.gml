@@ -26,16 +26,27 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 
 
 	#region Spreading Flaming Oil
-		/*	
+		
 		if(own_element == "Oil" && own_id.is_flaming == true)
 		{
 			if(other_element == "Oil")
 			{
-				other_id.is_flaming = true;
+				
+				
+				// Start timer to spread fire between oil
+				if(spreading_fire_timer >= spreading_fire_length)
+				{
+					// Turn platform to flaming oil
+					other_id.is_flaming = true;
+					// Reset timer
+					spreading_fire_timer = 0;
+					
+					// Increment timer
+				}else spreading_fire_timer++
 			}
 		
-		}*/
-
+		}
+		//with(other_id)show_debug_message("is_flaming = " + string(is_flaming))
 	#endregion Spreading Flaming Oil
 	
 	#region Water Freezing
