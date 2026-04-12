@@ -14,3 +14,9 @@ is_flaming = false;
 
 // Determines if flames are spawned to prevent duplication
 flames_spawned = false
+
+
+
+// Used for timer when turning water platform to ice
+water_to_ice_length = game_get_speed(gamespeed_fps) * 5
+water_to_ice_timer = 0

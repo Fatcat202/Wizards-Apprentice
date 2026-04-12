@@ -31,7 +31,7 @@
 	X	-Wall of Ice: Create a solid wall of ice, can stick out horizontally from walls
 	X	-Wall of Fire: Create a solid wall of ice, can stick out horizontally from walls or vertically from ceilings
 		-Lightning Bolt: Bolt of electricity, can strike through enemies
-		-Fireball: Ball of fire creating a large explosion, damaging many enemies in an area
+	X	-Fireball: Ball of fire creating a large explosion, damaging many enemies in an area
 		-Shocking Touch: Electrocute with a touch
 		-Flaming Grasp: Burn with a touch
 		
