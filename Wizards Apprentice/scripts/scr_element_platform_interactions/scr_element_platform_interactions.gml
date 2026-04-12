@@ -25,7 +25,6 @@ function scr_element_platform_interactions(own_id, other_id)
 	if(platform_element == "Ice")
 	{
 
-		
 		// Fire + Ice
 		if(own_element == "Fire")
 		{
@@ -58,7 +57,15 @@ function scr_element_platform_interactions(own_id, other_id)
 	// if platform is oily
 	if(platform_element == "Oil")
 	{
-			
+		
+		// Lighting oil on fire with fire
+		if(own_element == "Fire")
+		{
+			// Sets platform to now be flaming
+			other_id.is_flaming = true;
+
+		}
+		
 			
 	}
 }

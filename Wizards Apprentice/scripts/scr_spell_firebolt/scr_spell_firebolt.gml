@@ -9,7 +9,7 @@ function scr_spell_firebolt(target_x = mouse_x, target_y = mouse_y)
 	if(scr_use_mana(_mana) == false) exit
 
 
-	firebolt = instance_create_layer(x, y, "Projectiles", obj_spell_firebolt,
+	firebolt = instance_create_layer(x, y, "Spells", obj_spell_firebolt,
 	{
 		level : _level,
 		damage : _damage,

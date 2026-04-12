@@ -81,7 +81,7 @@ function scr_spell_wall_of_ice()
 	if(scr_use_mana(_mana) == false) exit
 
 	// Create wall instance
-	ice_wall = instance_create_layer(location_x, location_y, "Projectiles", obj_spell_wall_of_ice,
+	ice_wall = instance_create_layer(location_x, location_y, "Spells", obj_spell_wall_of_ice,
 	{
 		level : _level,
 		damage : _damage,

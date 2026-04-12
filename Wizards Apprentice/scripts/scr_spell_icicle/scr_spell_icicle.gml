@@ -8,7 +8,7 @@ function scr_spell_icicle(target_x = mouse_x, target_y = mouse_y)
 	if(scr_use_mana(_mana) == false) exit
 	
 
-	icicle = instance_create_layer(x, y, "Projectiles", obj_spell_icicle,
+	icicle = instance_create_layer(x, y, "Spells", obj_spell_icicle,
 	{
 		level : _level,
 		damage : _damage,

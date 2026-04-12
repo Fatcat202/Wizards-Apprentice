@@ -9,7 +9,7 @@ function scr_spell_jolt(target_x = mouse_x, target_y = mouse_y)
 	if(scr_use_mana(_mana) == false) exit
 	
 
-	jolt = instance_create_layer(x, y, "Projectiles", obj_spell_jolt,
+	jolt = instance_create_layer(x, y, "Spells", obj_spell_jolt,
 	{
 		level : _level,
 		damage : _damage,

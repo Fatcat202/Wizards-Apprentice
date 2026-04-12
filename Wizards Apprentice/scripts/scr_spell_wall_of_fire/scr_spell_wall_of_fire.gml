@@ -81,7 +81,7 @@ function scr_spell_wall_of_fire()
 	if(scr_use_mana(_mana) == false) exit
 
 	// Create wall instance
-	fire_wall = instance_create_layer(location_x, location_y, "Projectiles", obj_spell_wall_of_fire,
+	fire_wall = instance_create_layer(location_x, location_y, "Spells", obj_spell_wall_of_fire,
 	{
 		level : _level,
 		damage : _damage,

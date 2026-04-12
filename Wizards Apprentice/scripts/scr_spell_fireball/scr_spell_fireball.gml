@@ -9,7 +9,7 @@ function scr_spell_fireball(target_x = mouse_x, target_y = mouse_y)
 	if(scr_use_mana(_mana) == false) exit
 	
 
-	fireball = instance_create_layer(x, y, "Projectiles", obj_spell_fireball,
+	fireball = instance_create_layer(x, y, "Spells", obj_spell_fireball,
 	{
 		level : _level,
 		damage : _damage,
