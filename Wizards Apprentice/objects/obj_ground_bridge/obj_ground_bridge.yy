@@ -10,8 +10,8 @@
     "path":"folders/Objects/Collision Walls/Semi Solid.yy",
   },
   "parentObjectId":{
-    "name":"obj_platform_semi_solid",
-    "path":"objects/obj_platform_semi_solid/obj_platform_semi_solid.yy",
+    "name":"obj_platform_semi_solid_parent",
+    "path":"objects/obj_platform_semi_solid_parent/obj_platform_semi_solid_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

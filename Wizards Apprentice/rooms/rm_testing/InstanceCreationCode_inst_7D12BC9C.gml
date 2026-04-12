@@ -1,1 +1,1 @@
-is_wet = true
+element  = "Water"

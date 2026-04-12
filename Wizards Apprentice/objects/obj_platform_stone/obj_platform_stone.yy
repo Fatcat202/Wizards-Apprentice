@@ -10,8 +10,8 @@
     "path":"folders/Objects/Collision Walls/Solid.yy",
   },
   "parentObjectId":{
-    "name":"obj_platform_solid",
-    "path":"objects/obj_platform_solid/obj_platform_solid.yy",
+    "name":"obj_platform_solid_parent",
+    "path":"objects/obj_platform_solid_parent/obj_platform_solid_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

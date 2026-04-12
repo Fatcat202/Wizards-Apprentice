@@ -10,14 +10,14 @@ draw_self()
 
 	// Check for elements, and draw if activated
 
-	if(is_wet == true)
+	if(element == "Water")
 	{
 		draw_sprite(spr_element_water, 0, x, y)
-	}else if(is_icy == true)
+	}else if(element == "Ice")
 	{
 		draw_sprite(spr_element_ice, 0, x, y)
 	
-	}else if(is_oily == true)
+	}else if(element == "Oil")
 	{
 		draw_sprite(spr_element_oil, 0, x, y)	
 	}

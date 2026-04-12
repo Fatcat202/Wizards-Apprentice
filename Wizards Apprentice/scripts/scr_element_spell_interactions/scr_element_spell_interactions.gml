@@ -1,39 +1,34 @@
 
-function scr_element_interactions(own_id, other_id)
+function scr_element_spell_interactions(own_id, other_id)
 {
 	// Provides the logic for element interactions
 	
 	// Must provide ID of elements being interacted with
 	
-	/*
-	if(!object_exists(other_id))
-	{
-		show_debug_message("No other object detectd")	
-		exit;
-	}
-	*/
-	
-	// Used for own variables
-	var own_element = own_id.element
-	var own_level = own_id.level
 	
 	// Used for calling other elements variables
-	var other_element = other_id.element
-	var other_level = other_id.level
+		
+		// Used for own variables
+		var own_element = own_id.element
+		var own_level = own_id.level
+	
+		// Used for calling other elements variables
+		var other_element = other_id.element
+		var other_level = other_id.level
 
 	
 	// Cancel script if either effect has no element
 	if(other_element == "None" || own_element == "None") exit;
 	
 	
-	show_debug_message("Interaction started")
+	//show_debug_message("Interaction started")
 	
 	
 	
 	#region Ice - Fire = Water
 	
 		// Check if interaction is Fire + Ice
-		if((own_element == "fire" && other_element == "ice") || (own_element = "ice" && other_element == "fire"))
+		if((own_element == "Fire" && other_element == "Ice") || (own_element = "Ice" && other_element == "Fire"))
 		{
 		
 			/*
@@ -62,7 +57,7 @@ function scr_element_interactions(own_id, other_id)
 	#region Water - Fire = Steam
 	
 		// Check if interaction is Water - Fire
-		if((own_element == "fire" && other_element == "water") || (own_element = "water" && other_element == "fire"))
+		if((own_element == "Fire" && other_element == "Water") || (own_element = "Water" && other_element == "Fire"))
 		{
 		
 			/*
@@ -83,7 +78,7 @@ function scr_element_interactions(own_id, other_id)
 	#region Steam - Ice = Water
 	
 		// Check if interaction is Ice - Steam
-		if((own_element == "ice" && other_element == "steam") || (own_element = "steam" && other_element == "ice"))
+		if((own_element == "Ice" && other_element == "Steam") || (own_element = "Steam" && other_element == "Ice"))
 		{
 		
 			/*
@@ -104,7 +99,7 @@ function scr_element_interactions(own_id, other_id)
 	#region Ice + Water = Ice
 	
 		// Check if interaction is Ice + Water
-		if((own_element == "ice" && other_element == "water") || (own_element = "water" && other_element == "ice"))
+		if((own_element == "Ice" && other_element == "Water") || (own_element = "Water" && other_element == "Ice"))
 		{
 		
 			/*
@@ -119,7 +114,7 @@ function scr_element_interactions(own_id, other_id)
 	#region Water + Shock = Charged Water
 	
 		// Check if interaction is Water + Shock
-		if((own_element == "shock" && other_element == "water") || (own_element = "water" && other_element == "shock"))
+		if((own_element == "Shock" && other_element == "Water") || (own_element = "Water" && other_element == "Shock"))
 		{
 		
 			/*
@@ -133,7 +128,7 @@ function scr_element_interactions(own_id, other_id)
 		#region Steam + Shock = Charged Steam
 	
 		// Check if interaction is Steam + Shock
-		if((own_element == "shock" && other_element == "steam") || (own_element = "steam" && other_element == "shock"))
+		if((own_element == "Shock" && other_element == "Steam") || (own_element = "Steam" && other_element == "Shock"))
 		{
 		
 			/*
@@ -150,11 +145,11 @@ function scr_element_interactions(own_id, other_id)
 	other_id.element_delay_active = true;
 	
 	
+	//show_debug_message(string(own_id.title) + " interaction finished")
+	
 	
 	// Destroy objects if reaching under level 0 or under
-	
-		show_debug_message(string(own_id.title) + " interaction finished")
-	
+
 	if(other_id.level <= 0) with(other_id)
 	{
 		show_debug_message(string(other_id.title) + " Destroyed")
@@ -167,8 +162,4 @@ function scr_element_interactions(own_id, other_id)
 		show_debug_message(string(own_id.title) + " Destroyed")
 		instance_destroy()
 	}
-	
-
-
-	
 }

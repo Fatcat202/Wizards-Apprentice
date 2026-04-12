@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_element_interactions",
+  "%Name":"scr_element_spell_interactions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_element_interactions",
+  "name":"scr_element_spell_interactions",
   "parent":{
     "name":"Elements",
     "path":"folders/Scripts/Elements.yy",

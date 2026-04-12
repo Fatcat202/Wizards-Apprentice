@@ -1,1 +1,1 @@
-is_oily = true
+element  = "Oil"

@@ -1,9 +1,9 @@
 (spell names below),level,damage,atk_speed,cooldown,mana,memory,uses,duration,element,title,desc,spr,scr
 heal,1,2,-1,5,1,-1,-1,-1,-1,Heal,Empty,spr_spell_slot_heal,scr_spell_heal
 jump,1,-1,-1,2,2,-1,1,5,-1,Jump,Empty,spr_spell_slot_placeholder,scr_spell_jump
-jolt,0,5,-1,1,0,-1,-1,2,shock,Jolt,Empty,spr_spell_slot_jolt,scr_spell_jolt
-firebolt,0,5,-1,1,0,-1,-1,2,fire,Firebolt,Empty,spr_spell_slot_firebolt,scr_spell_firebolt
-icicle,0,5,-1,1,0,-1,-1,2,water,Icicle,Empty,spr_spell_slot_icicle,scr_spell_icicle
-wall of fire,3,2,-1,1,3,-1,-1,10,fire,Wall of Fire,Empty,spr_spell_slot_placeholder,scr_spell_wall_of_fire
-wall of ice,3,-1,-1,1,3,-1,-1,10,ice,Wall of Ice,Empty,spr_spell_slot_placeholder,scr_spell_wall_of_ice
-fireball,2,5,-1,1,2,-1,-1,-1,fire,Fireball,Empty,spr_spell_slot_placeholder,scr_spell_fireball
+jolt,0,5,-1,1,0,-1,-1,2,Shock,Jolt,Empty,spr_spell_slot_jolt,scr_spell_jolt
+firebolt,0,5,-1,1,0,-1,-1,2,Fire,Firebolt,Empty,spr_spell_slot_firebolt,scr_spell_firebolt
+icicle,0,5,-1,1,0,-1,-1,2,Ice,Icicle,Empty,spr_spell_slot_icicle,scr_spell_icicle
+wall of fire,3,2,-1,1,3,-1,-1,10,Fire,Wall of Fire,Empty,spr_spell_slot_placeholder,scr_spell_wall_of_fire
+wall of ice,3,-1,-1,1,3,-1,-1,10,Ice,Wall of Ice,Empty,spr_spell_slot_placeholder,scr_spell_wall_of_ice
+fireball,2,5,-1,1,2,-1,-1,-1,Fire,Fireball,Empty,spr_spell_slot_placeholder,scr_spell_fireball
