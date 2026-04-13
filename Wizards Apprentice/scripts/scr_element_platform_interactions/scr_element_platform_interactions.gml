@@ -28,6 +28,7 @@ function scr_element_platform_interactions(own_id, other_id)
 		// Fire + Ice
 		if(own_element == "Fire")
 		{
+			scr_element_reset_variables()
 			other_id.element = "Water"
 		}
 			
@@ -41,12 +42,14 @@ function scr_element_platform_interactions(own_id, other_id)
 		// Fire + Water
 		if(own_element == "Fire")
 		{
+			scr_element_reset_variables()
 			other_id.element = "None"
 		}
 		
 		// Ice + Water
 		if(own_element == "Ice")
 		{
+			scr_element_reset_variables()
 			other_id.element = "Ice"
 		}
 		
@@ -64,8 +67,21 @@ function scr_element_platform_interactions(own_id, other_id)
 			// Sets platform to now be flaming
 			other_id.is_flaming = true;
 
-		}
-		
+		}	
+	}else
+	
+	// if platform is steaming
+	if(platform_element == "Steam")
+	{
+		if(own_element == "Ice")
+		{
+			with(other_id)
+			{
+				scr_element_reset_variables()
+				element = "Water"
+				instance_destroy(steam)
+			}
 			
+		}
 	}
 }

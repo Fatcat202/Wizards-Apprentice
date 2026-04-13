@@ -96,6 +96,7 @@
     {"id":{"name":"scr_damage","path":"scripts/scr_damage/scr_damage.yy",},},
     {"id":{"name":"scr_element_inter_platform_interactions","path":"scripts/scr_element_inter_platform_interactions/scr_element_inter_platform_interactions.yy",},},
     {"id":{"name":"scr_element_platform_interactions","path":"scripts/scr_element_platform_interactions/scr_element_platform_interactions.yy",},},
+    {"id":{"name":"scr_element_reset_variables","path":"scripts/scr_element_reset_variables/scr_element_reset_variables.yy",},},
     {"id":{"name":"scr_element_spell_interactions","path":"scripts/scr_element_spell_interactions/scr_element_spell_interactions.yy",},},
     {"id":{"name":"scr_find_spell_index","path":"scripts/scr_find_spell_index/scr_find_spell_index.yy",},},
     {"id":{"name":"scr_get_controls","path":"scripts/scr_get_controls/scr_get_controls.yy",},},

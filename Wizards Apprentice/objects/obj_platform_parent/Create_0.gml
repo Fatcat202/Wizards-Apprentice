@@ -32,8 +32,8 @@ evaporation_time = 4
 
 
 // Used for timer when turning water platform to ice
-water_to_ice_length = game_get_speed(gamespeed_fps) * freezing_time
-water_to_ice_timer = 0
+freeze_length = game_get_speed(gamespeed_fps) * freezing_time
+freeze_timer = 0
 
 // Used for timer when spreading flaming oil
 spreading_fire_length = game_get_speed(gamespeed_fps) * spreading_fire_time

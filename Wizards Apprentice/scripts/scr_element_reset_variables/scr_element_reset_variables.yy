@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_element_reset_variables",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_element_reset_variables",
+  "parent":{
+    "name":"Elements",
+    "path":"folders/Scripts/Elements.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

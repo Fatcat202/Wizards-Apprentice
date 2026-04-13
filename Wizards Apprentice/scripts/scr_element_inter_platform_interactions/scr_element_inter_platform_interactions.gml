@@ -50,10 +50,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Start timer to melt ice
 				if(melting_ice_timer >= melting_ice_length)
 				{
+					scr_element_reset_variables()
 					// Turn platform to water from ice
 					other_id.element = "Water"
-					// Reset timer
-					melting_ice_timer = 0;
 					
 					// Increment timer
 				}else melting_ice_timer++
@@ -66,8 +65,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Start timer to evaporate water
 				if(evaporation_timer >= evaporation_length)
 				{
-					// Turn platform to water empty
-					other_id.element = "Empty"
+					scr_element_reset_variables()
+					// Turn platform to steam
+					other_id.element = "Steam"
 					
 					// Create steam effect
 					other_id.is_steaming = true;
@@ -93,15 +93,16 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			if(other_element == "Water")
 			{
 				// Start timer to turn water platform to ice
-				if(water_to_ice_timer >= water_to_ice_length)
+				if(freeze_timer >= freeze_length)
 				{
+					scr_element_reset_variables()
 					// Turn platform to ice
 					other_id.element = "Ice"
 					// Reset timer
-					water_to_ice_timer = 0;
+					freeze_timer = 0;
 					
 					// Increment timer
-				}else water_to_ice_timer++
+				}else freeze_timer++
 			}
 		}
 		
