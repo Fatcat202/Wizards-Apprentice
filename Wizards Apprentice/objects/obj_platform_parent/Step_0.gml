@@ -28,7 +28,20 @@ var quarter_width = width / 4;
 	
 		// State flames are now spawned to prevent duplication
 		flames_spawned = true;
+
 	}
+	
+	// Oil is removed once flames are put out
+	if(flames_spawned == true)
+	{
+		if(!instance_exists(flame_0) && !instance_exists(flame_1))
+		{
+			scr_element_reset_variables()
+			element = "None"
+		}
+	}
+	
+	
 
 #region Flaming
 
