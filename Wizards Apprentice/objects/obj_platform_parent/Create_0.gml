@@ -9,6 +9,12 @@ event_inherited()
 // May also be set to "Water", "Ice", or "Oil"
 element = "Empty"
 
+// Determines if the platform is steaming
+is_steaming = false;
+
+// Determines if steam is spawned to prevent duplication
+steam_spawned = false;
+
 // Determines if the platform is flaming
 is_flaming = false;
 

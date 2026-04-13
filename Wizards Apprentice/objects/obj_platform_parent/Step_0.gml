@@ -32,6 +32,24 @@ var quarter_width = width / 4;
 
 #region Flaming
 
+#region Steaming
+	
+	if(is_steaming == true && steam_spawned == false)
+	{
+		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam)
+		steam_spawned = true;
+		
+		
+		// Reset conditions when steam dissapates
+		if(instance_exists(steam) == false)
+		{
+			is_steaming = false
+			steam_spawned = false
+		}
+	}
+	
+#endregion Steaming
+
 #region Inter Platform Element Interactions
 
 	// Check in each direction for touching platforms. Run interelement script for each direction

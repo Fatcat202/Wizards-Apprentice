@@ -70,6 +70,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					other_id.element = "Empty"
 					
 					// Create steam effect
+					other_id.is_steaming = true;
 					
 					// Reset timer
 					evaporation_timer = 0;
@@ -79,7 +80,8 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			}
 		
 		}
-		//with(other_id)show_debug_message("is_flaming = " + string(is_flaming))
+
+		
 	#endregion Flaming Oil
 	
 	#region Water Freezing
