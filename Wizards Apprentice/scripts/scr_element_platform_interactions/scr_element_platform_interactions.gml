@@ -31,6 +31,14 @@ function scr_element_platform_interactions(own_id, other_id)
 			scr_element_reset_variables()
 			other_id.element = "Water"
 		}
+		
+		// Steam + Ice
+		if(own_element == "Steam")
+		{
+			scr_element_reset_variables()
+			other_id.element = "Water"
+			other_id.is_steaming = false
+		}
 			
 			
 	}else
@@ -43,7 +51,13 @@ function scr_element_platform_interactions(own_id, other_id)
 		if(own_element == "Fire")
 		{
 			scr_element_reset_variables()
-			other_id.element = "None"
+			other_id.element = "Steam"
+			
+			// Create steam effect
+			other_id.is_steaming = true;
+					
+			// Reset timer
+			evaporation_timer = 0;
 		}
 		
 		// Ice + Water
