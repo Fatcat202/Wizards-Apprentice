@@ -25,7 +25,10 @@ event_inherited()
 	
 
 	// Max speed
-	move_spd_max = 4;
+		// Default modifier
+		move_spd_max_default = 4;
+		// Used to modify speeds
+		move_spd_max = move_spd_max_default;
 
 	// Movement speed when jumping
 	jump_speed = 5.5;
@@ -39,12 +42,35 @@ event_inherited()
 	move_spd_v = 0;
 	
 	// Horizontal movement acceleration rate. 0 is instant, 1 is nothing
-	h_acel = 0.5
+		// Default modifier
+		h_acel_default = 0.5
+		// Modifier to be used
+		h_acel = h_acel_default
 	// Horizontal movement deceleration rate. 0 is instant, 1 is nothing
-	h_decel = 0.4
+		// Default modifier
+		h_decel_default = 0.4
+		// Modifier to be used
+		h_decel = h_decel_default
 	
 	// Gravity, used for deceleration when jumping and acceleration when falling
 	grav = 0.275
+	
+	// Used for modifying movement speed when the player is on a specific platform element
+	
+		// Sets default
+		plat_spd_default = 1
+	
+		// Used to modify speeds
+		plat_spd_mod = plat_spd_default
+	
+		// Modifies move speed when on oil
+		plat_spd_oil = 0.4
+		
+		// Modifies acceleration on ice
+		plat_spd_acel_ice = 0.6
+		// Modifies deceleration on ice
+		plat_spd_decel_ice = 2.3
+	
 	
 	
 	// Variable to determine if player is walking

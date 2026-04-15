@@ -111,6 +111,7 @@
     {"id":{"name":"scr_player_timers","path":"scripts/scr_player_timers/scr_player_timers.yy",},},
     {"id":{"name":"scr_pull_spell_data","path":"scripts/scr_pull_spell_data/scr_pull_spell_data.yy",},},
     {"id":{"name":"scr_push_spell_data","path":"scripts/scr_push_spell_data/scr_push_spell_data.yy",},},
+    {"id":{"name":"scr_reset_move_modifiers","path":"scripts/scr_reset_move_modifiers/scr_reset_move_modifiers.yy",},},
     {"id":{"name":"scr_set_spell_cooldown","path":"scripts/scr_set_spell_cooldown/scr_set_spell_cooldown.yy",},},
     {"id":{"name":"scr_spell_example","path":"scripts/scr_spell_example/scr_spell_example.yy",},},
     {"id":{"name":"scr_spell_fireball","path":"scripts/scr_spell_fireball/scr_spell_fireball.yy",},},

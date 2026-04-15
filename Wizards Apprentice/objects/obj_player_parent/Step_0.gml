@@ -22,7 +22,45 @@ scr_health_and_mana_test()
 	{
 		state_move = state_idle
 	}
-
+	
+	#region Changing Modifiers Based On Platform Element
+	
+		// Detects platform ID below player
+		var plat_id = instance_place(x, y + 1, obj_collision_parent)
+		if(plat_id != noone)
+		{
+			// Gathers platform element
+			var plat_element = plat_id.element
+			if(plat_element == "Oil")
+			{
+				// Rest any changes
+				scr_reset_move_modifiers();
+				
+				// Change move speed to match
+				plat_spd_mod = plat_spd_oil;
+			
+				// Change acceleration/deceleration
+				h_acel = h_acel_default * plat_spd_mod;
+				h_decel = h_decel_default * plat_spd_mod;
+				// Change max move speed
+				move_spd_max = move_spd_max_default * plat_spd_mod;
+			
+			
+			}else if(plat_element == "Ice")
+			{
+				// Rest any changes
+				scr_reset_move_modifiers();
+				
+				// Change acceleration/deceleration
+				h_acel = h_acel_default * plat_spd_acel_ice;
+				h_decel = h_decel_default * plat_spd_decel_ice;
+				
+				
+			}else scr_reset_move_modifiers() // Rest any changes when on the ground
+			
+		}else scr_reset_move_modifiers() // Rest any changes when not on the ground
+		
+	#endregion Changing Modifiers Based On Platform Element
 
 	#region Jumping
 
