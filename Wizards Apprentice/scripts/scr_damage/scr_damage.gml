@@ -1,13 +1,36 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scr_damage(dmg)
+function scr_damage(dmg, _element = element)
 {
-	if(other.can_damage == true)
+	// Deals damage to other object, designed to be used in collision events of attacks
+	// Pass through damage and element of attack
+	with(other)
 	{
-		other.can_damage = false;
-		other.active_health = other.active_health - dmg;
-		// Tint sprite red for 15 frames when damaged
-		other.image_blend = c_red;
-		other.alarm[11] = global.i_frames;
+	
+		if(element_shield == _element || element_shield == "Empty")
+		{
+		
+			// If enemy has same element shield as attack, or has no element shield then do damage
+	
+			if(can_damage == true)
+			{
+				can_damage = false;
+				active_health = active_health - dmg;
+				// Tint sprite red for 15 frames when damaged
+				image_blend = c_red;
+				// Activate I frames
+				alarm[11] = global.i_frames;
+				
+				// Remove element shield
+				element_shield = "Empty"
+			}
+		}else
+		{
+			// If element shield does not match attack element
+		
+			// Do nothing
+		}	
 	}
+	
+	
+	// Debug
+	show_debug_message("Damage Element: " + string(_element))
 }

@@ -11,3 +11,6 @@ semi_solid = false;
 
 // Character current health
 active_health = 1;
+
+// Stores the type of element shield the character has, default "Empty"
+element_shield = "Empty";

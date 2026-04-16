@@ -154,13 +154,12 @@
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_stats(_hp = -1, _damage = -1, _atk_spd = -1, _move_spd = -1, _element_shield = -1) constructor {
+				function enemy_stats(_hp = -1, _damage = -1, _atk_spd = -1, _move_spd = -1) constructor {
 				
 					hp = _hp
 					damage = _damage
 					atk_spd = _atk_spd
 					move_spd = _move_spd
-					element_shield = _element_shield
 
 				}
 
@@ -183,9 +182,7 @@
 					global.enemy_stats[yy].damage = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].atk_spd = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].move_spd = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
-					global.enemy_stats[yy].element_shield = string(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					
-	
 				}
 
 
