@@ -43,6 +43,16 @@
 
 
 
+
+**ELEMENTS**
+	
+	-Fire
+	-Steam
+	-Water
+	-Ice
+	-Shock
+	-Oil
+
 	
 	
 **ELEMENT COMBOS**
@@ -54,6 +64,7 @@
 	-Fire + Water = Steam
 
 	-Steam + Electricity = Charged Steam
+	
 
 
 **ITEM IDEAS**
