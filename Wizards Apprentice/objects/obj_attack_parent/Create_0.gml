@@ -5,6 +5,10 @@ is_solid = false
 semi_solid = false
 
 
+// Declares if the attack is charged
+is_charged = false;
+
+
 // Used to delay interactions between elements after one completes
 element_delay_timer = 0;
 element_delay_length = 3;

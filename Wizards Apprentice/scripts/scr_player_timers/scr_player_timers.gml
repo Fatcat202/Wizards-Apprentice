@@ -20,6 +20,37 @@ function scr_player_timers()
 		}else stun_cooldown_timer++
 	#endregion Stun Cooldown
 	
+	#region Platform Stun
+	
+		if(plat_stunned == true)
+		{
+			// Character cannot move and is stunned
+			if(plat_stun_timer > 0)
+			{
+				// Declare the character is stunned
+				is_stunned = true;
+				// Set max move speed to 0
+				move_spd_max = 0
+				// Count down timer until character is no longer stunned
+				plat_stun_timer--
+			}else
+			{
+				// Declare the character is not stunned
+				is_stunned = false
+				// Declare platform stun to be over
+				plat_stunned = false
+				// Start timer until character can be stunned again
+				can_be_stunned = false
+				// Reset move speed to default
+				move_spd_max = move_spd_max_default
+				// Reset timer duration
+				plat_stun_timer = plat_stun_length;
+								
+			}
+		}
+	
+	#endregion Platform Stun
+	
 	#region Jump Buffer
 	
 		// Ticks down counter for jump buffering

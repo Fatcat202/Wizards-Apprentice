@@ -68,38 +68,23 @@ scr_health_and_mana_test()
 							// Determines if the character can be stunned
 							if(can_be_stunned == true)
 							{
-								// Timer counts down to 0
-								
-								// Character cannot move and is stunned
-								if(plat_stun_timer > 0)
-								{
-									// Declare the character is stunned
-									is_stunned = true;
-									// Set max move speed to 0
-									move_spd_max = 0
-									// Count down timer until character is no longer stunned
-									plat_stun_timer--
-								}else
-								{
-									// Declare the character is not stunned
-									is_stunned = false
-									// Start timer until character can be stunned again
-									can_be_stunned = false
-									// Reset move speed to default
-									move_spd_max = move_spd_max_default
-									// Reset timer duration
-									plat_stun_timer = plat_stun_length;
-								
-								}
+								// Declares the player platform stunned, starting timer until no longer stunned
+								plat_stunned = true
 							}
 							
 						}
+						
+
 
 					}else scr_reset_move_modifiers() // Rest any changes when on the ground
+					
 				}
 			}else scr_reset_move_modifiers() // Rest any changes when not on the ground
+			
+
 		
 		#endregion Changing Modifiers Based On Platform Element
+
 
 		#region Jumping
 
@@ -129,30 +114,35 @@ scr_health_and_mana_test()
 				//show_debug_message("jumps_left: " + string(jumps_left))
 			}
 			
-			// Jump if on a surface and the button to jump is pressed
-			if(coyote_time_timer > 0 && (jump_key_buffered || global.cont_jump_pressed ) && jumps_left > 0)
+			// Check if the character is stunned
+			if(is_stunned == false)
 			{
-				func_jump()
+			
+				// Jump if on a surface and the button to jump is pressed
+				if(coyote_time_timer > 0 && (jump_key_buffered || global.cont_jump_pressed ) && jumps_left > 0)
+				{
+					func_jump()
 				
-				// Allow double jumping when off the ground with more than 1 max jump
-			}else if(!scr_on_ground() && global.cont_jump_pressed && jumps_left > 0)
-			{
-				func_jump()
-			// End jump spell if all jumps are used
-			}else if(jumps_left == 0 && spell_jump_active == true) spell_jump_duration = 0;
+					// Allow double jumping when off the ground with more than 1 max jump
+				}else if(!scr_on_ground() && global.cont_jump_pressed && jumps_left > 0)
+				{
+					func_jump()
+				// End jump spell if all jumps are used
+				}else if(jumps_left == 0 && spell_jump_active == true) spell_jump_duration = 0;
 			
 			
-			// End jump held timer if no longer held, or hitting collision object above
-			if(!global.cont_jump_held or (place_meeting(x, y - 1, obj_collision_parent) && scr_is_solid(x, y - 1) && !scr_check_semi_solid(x, y -1))) jump_hold_timer = 0;
+				// End jump held timer if no longer held, or hitting collision object above
+				if(!global.cont_jump_held or (place_meeting(x, y - 1, obj_collision_parent) && scr_is_solid(x, y - 1) && !scr_check_semi_solid(x, y -1))) jump_hold_timer = 0;
 			
-			// Count down jump held timer
-			if(jump_hold_timer > 0 && global.cont_jump_held)
-			{
-				// Keep vertical move speed as jump speed when active, negative gravity
-				move_spd_v = jump_speed
+				// Count down jump held timer
+				if(jump_hold_timer > 0 && global.cont_jump_held)
+				{
+					// Keep vertical move speed as jump speed when active, negative gravity
+					move_spd_v = jump_speed
 				
-				// Tick timer
-				jump_hold_timer--;
+					// Tick timer
+					jump_hold_timer--;
+				}
 			}
 			
 			
@@ -417,7 +407,7 @@ scr_health_and_mana_test()
 	
 	#region Use Spell
 		
-		if(global.cont_attack && can_attack)
+		if(global.cont_attack && can_attack && is_stunned == false)
 		{ 
 			switch(active_spell)
 			{

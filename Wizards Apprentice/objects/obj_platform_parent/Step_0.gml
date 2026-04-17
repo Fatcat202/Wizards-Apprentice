@@ -65,7 +65,11 @@ var quarter_width = width / 4;
 
 #region Charged
 	
-	if(element != "Water") is_charged = false
+	if(element != "Water")
+	{
+		is_charged = false
+		
+	}
 	
 #endregion Charged
 
