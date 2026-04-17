@@ -5,7 +5,7 @@ is_solid = false
 semi_solid = false
 
 
-// Declares if the attack is charged
+// Declares if the attack is charged with shock
 is_charged = false;
 
 
