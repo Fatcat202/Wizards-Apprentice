@@ -9,6 +9,12 @@ event_inherited()
 // May also be set to "Water", "Ice", or "Oil"
 element = "Empty"
 
+// Determines if the platform is charged
+is_charged = false;
+
+// Amount of time a charged platform will stun a character
+shock_duration = game_get_speed(gamespeed_fps) * 2
+
 // Determines if the platform is steaming
 is_steaming = false;
 
@@ -29,6 +35,8 @@ spreading_fire_time = 0.5
 melting_time = 4
 // Time for water to evaporate
 evaporation_time = 4
+
+
 
 
 // Used for timer when turning water platform to ice

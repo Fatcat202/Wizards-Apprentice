@@ -66,6 +66,13 @@ function scr_element_platform_interactions(spell_id, platform_id)
 			platform_id.element = "Ice"
 		}
 		
+		// Shock + Water
+		if(spell_element == "Shock")
+		{
+			// Charge water to stun characters
+			platform_id.is_charged = true;
+		}
+		
 
 			
 	}else

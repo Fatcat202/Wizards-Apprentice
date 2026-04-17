@@ -12,7 +12,14 @@ draw_self()
 
 	if(element == "Water")
 	{
-		draw_sprite(spr_element_water, 0, x, y)
+		// Check if water is charged
+		if(is_charged == true)
+		{
+			draw_sprite(spr_element_water_charged, 0, x, y)
+		}else
+		{
+			draw_sprite(spr_element_water, 0, x, y)
+		}
 	}else if(element == "Ice")
 	{
 		draw_sprite(spr_element_ice, 0, x, y)

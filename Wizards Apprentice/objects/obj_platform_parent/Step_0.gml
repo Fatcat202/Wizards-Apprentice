@@ -63,6 +63,12 @@ var quarter_width = width / 4;
 	
 #endregion Steaming
 
+#region Charged
+	
+	if(element != "Water") is_charged = false
+	
+#endregion Charged
+
 #region Inter Platform Element Interactions
 
 	// Check in each direction for touching platforms. Run interelement script for each direction

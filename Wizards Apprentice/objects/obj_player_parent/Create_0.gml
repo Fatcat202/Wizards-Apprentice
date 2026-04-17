@@ -119,7 +119,16 @@ event_inherited()
 	// Used for deciding if the player is able to attack
 	can_attack = true;
 	
+	// Determines if the character is stunned
+	is_stunned = false
+	// Determines if the character can be stunned
+	can_be_stunned = true
 	
+
+
+
+
+
 	#region Timers
 	
 		// Coyote timer
@@ -138,6 +147,14 @@ event_inherited()
 		jump_hold_timer = 0;
 		// Maximum number of cycles for held jump before gravity kicks in
 		jump_hold_frames = 12;
+		
+		// Stun timer from charged platforms
+		plat_stun_length = game_get_speed(gamespeed_fps) * 1
+		plat_stun_timer = plat_stun_length;
+		
+		// Used for timer for cooldown between being stunned
+		stun_cooldown_timer = 0
+		stun_cooldown_length = game_get_speed(gamespeed_fps) * 2
 
 	
 		#region Spell Slot Timers

@@ -133,6 +133,7 @@
     {"id":{"name":"spr_element_shield_ice","path":"sprites/spr_element_shield_ice/spr_element_shield_ice.yy",},},
     {"id":{"name":"spr_element_shield_shock","path":"sprites/spr_element_shield_shock/spr_element_shield_shock.yy",},},
     {"id":{"name":"spr_element_steam","path":"sprites/spr_element_steam/spr_element_steam.yy",},},
+    {"id":{"name":"spr_element_water_charged","path":"sprites/spr_element_water_charged/spr_element_water_charged.yy",},},
     {"id":{"name":"spr_element_water","path":"sprites/spr_element_water/spr_element_water.yy",},},
     {"id":{"name":"spr_goblin_brute","path":"sprites/spr_goblin_brute/spr_goblin_brute.yy",},},
     {"id":{"name":"spr_goblin_slinger","path":"sprites/spr_goblin_slinger/spr_goblin_slinger.yy",},},

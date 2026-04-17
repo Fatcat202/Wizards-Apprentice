@@ -14,7 +14,6 @@ scr_health_and_mana_test()
 
 #region Controls
 
-
 	#region Movement
 	
 		// Set move state to idle if located on the ground
@@ -59,6 +58,43 @@ scr_health_and_mana_test()
 						h_decel = h_decel_default * plat_spd_decel_ice;
 				
 				
+					}else if(plat_element == "Water")
+					{
+						
+						// If the character is standing on a charged water platform
+						if(plat_id.is_charged)
+						{
+	
+							// Determines if the character can be stunned
+							if(can_be_stunned == true)
+							{
+								// Timer counts down to 0
+								
+								// Character cannot move and is stunned
+								if(plat_stun_timer > 0)
+								{
+									// Declare the character is stunned
+									is_stunned = true;
+									// Set max move speed to 0
+									move_spd_max = 0
+									// Count down timer until character is no longer stunned
+									plat_stun_timer--
+								}else
+								{
+									// Declare the character is not stunned
+									is_stunned = false
+									// Start timer until character can be stunned again
+									can_be_stunned = false
+									// Reset move speed to default
+									move_spd_max = move_spd_max_default
+									// Reset timer duration
+									plat_stun_timer = plat_stun_length;
+								
+								}
+							}
+							
+						}
+
 					}else scr_reset_move_modifiers() // Rest any changes when on the ground
 				}
 			}else scr_reset_move_modifiers() // Rest any changes when not on the ground

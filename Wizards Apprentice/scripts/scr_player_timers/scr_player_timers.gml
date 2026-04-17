@@ -4,6 +4,22 @@
 function scr_player_timers()
 {
 	
+	#region Stun Cooldown
+		
+		// Ticks up counter until the character can be stunned again
+	
+		if(stun_cooldown_timer >= stun_cooldown_length)
+		{
+			// Declare the character can be stunned
+			can_be_stunned = true
+			
+			// Reset timer
+			stun_cooldown_timer = 0;
+	
+	
+		}else stun_cooldown_timer++
+	#endregion Stun Cooldown
+	
 	#region Jump Buffer
 	
 		// Ticks down counter for jump buffering

@@ -108,7 +108,17 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 		
 	#endregion Water Freezing
 	
-	
+	#region Charge Spreading
+		
+		if(own_element == "Water" && own_id.is_charged == true)
+		{
+			if(other_element == "Water" && other_id.is_charged == false)
+			{
+				other_id.is_charged = true
+			}
+		}
+		
+	#endregion Charge Spreading
 	
 	
 	
