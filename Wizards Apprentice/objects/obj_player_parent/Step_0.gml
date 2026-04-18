@@ -207,32 +207,33 @@ scr_health_and_mana_test()
 			
 			// Used for sub pixel collisions to ensure accuracy
 			var sub_pixel = 0.5
+			var search = sub_pixel
 	
 			// Moving up slope
 			// Detect if a slope is present
-			if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent) && !scr_is_solid(x + move_spd_h, y - abs(move_spd_h) - 1) && !scr_check_semi_solid(x + move_spd_h, y - abs(move_spd_h) - 1))
+			if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - search, obj_platform_parent) && !scr_is_solid(x + move_spd_h, y - abs(move_spd_h) - search) && !scr_check_semi_solid(x + move_spd_h, y - abs(move_spd_h) - search))
 			{
 				// Move up slope if present
-				while(place_meeting(x + move_spd_h, y, obj_collision_parent) && scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y)) y -= sub_pixel
+				while(place_meeting(x + move_spd_h, y, obj_platform_parent) && scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y)) y -= sub_pixel
 			}else
 			{
 				// Preventing getting stuck with collision objects horizontaly
-				if(place_meeting(x + move_spd_h, y, obj_collision_parent) && scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y)) move_spd_h = 0
+				if(place_meeting(x + move_spd_h, y, obj_platform_parent) && scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y)) move_spd_h = 0
 			}
 			
 			// Moving down slope
 			// Detect if a slope is present
-			if((!place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && !scr_is_solid(x + move_spd_h, y + 1) && !scr_check_semi_solid(x + move_spd_h, y + 1)) && (place_meeting(x + move_spd_h, y + abs(move_spd_h), obj_collision_parent) && scr_is_solid(x + move_spd_h, y + abs(move_spd_h)) && !scr_check_semi_solid(x + move_spd_h, y + abs(move_spd_h))))
+			if((!place_meeting(x + move_spd_h, y + search, obj_platform_parent) && !scr_is_solid(x + move_spd_h, y + search) && !scr_check_semi_solid(x + move_spd_h, y + search)) && (place_meeting(x + move_spd_h, y + abs(move_spd_h), obj_platform_parent) && scr_is_solid(x + move_spd_h, y + abs(move_spd_h)) && !scr_check_semi_solid(x + move_spd_h, y + abs(move_spd_h))))
 			{
 				// Move down slope if present
-				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent) && !scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y + sub_pixel))
+				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_platform_parent) && !scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y + sub_pixel))
 				{
 					y += sub_pixel
 				}
 			}
 			
 			// Fall when hitting head on ceiling
-			if(state_move == state_jumping && place_meeting(x, y - 2, obj_collision_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2)) move_spd_v = -grav
+			if(state_move == state_jumping && place_meeting(x, y - 2, obj_platform_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2)) move_spd_v = -grav
 			
 			
 			// Move object horizontally
