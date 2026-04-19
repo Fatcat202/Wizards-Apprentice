@@ -132,7 +132,10 @@ scr_health_and_mana_test()
 			
 			
 				// End jump held timer if no longer held, or hitting collision object above
-				if(!global.cont_jump_held or (place_meeting(x, y - 1, obj_collision_parent) && scr_is_solid(x, y - 1) && !scr_check_semi_solid(x, y -1))) jump_hold_timer = 0;
+				if(!global.cont_jump_held || (place_meeting(x, y - 2, obj_collision_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2)))
+				{
+					jump_hold_timer = 0;
+				}
 			
 				// Count down jump held timer
 				if(jump_hold_timer > 0 && global.cont_jump_held)
