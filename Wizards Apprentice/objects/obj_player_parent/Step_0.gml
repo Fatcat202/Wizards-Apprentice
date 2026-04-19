@@ -169,7 +169,7 @@ scr_health_and_mana_test()
 		#region Semi Solid
 			// Used to determine if character should be solid or semi solid
 			
-			if(state_move == state_crouch || state_move == state_jumping)
+			if(state_move == state_crouch || state_move == state_jumping || place_meeting(x, y, obj_platform_semi_solid_parent))
 			{
 				semi_solid = true
 			}else semi_solid = false
@@ -305,6 +305,7 @@ scr_health_and_mana_test()
 	
 		
 		#region Preventing getting stuck inside collision objects
+
 			
 			// Force objects outside of other objects if stuck or overlaping
 			if(place_meeting(x, y, obj_collision_parent) && scr_is_solid(x,y) && !scr_check_semi_solid(x, y))
