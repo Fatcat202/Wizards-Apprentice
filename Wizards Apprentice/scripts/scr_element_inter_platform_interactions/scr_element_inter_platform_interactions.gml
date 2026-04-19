@@ -19,9 +19,11 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 		
 		// Used for calling other elements variables
 		var other_element = other_id.element
+		
+
 
 	// End script if there is no interaction to be had
-	if(own_element == "Empty" || other_element == "Empty") exit;
+	 if(own_element == "Empty" && other_element == "Empty") exit;
 
 
 
@@ -114,12 +116,35 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 		{
 			if(other_element == "Water" && other_id.is_charged == false)
 			{
+				// Electrify other platform
 				other_id.is_charged = true
 			}
 		}
 		
 	#endregion Charge Spreading
 	
+	#region Water Spreading
+
+		if(own_element == "Water" && own_id.water_level > 1)
+		{
+			if(other_element == "Empty")
+			{
+				// Change element to water
+				other_id.element = "Water";
+				// Decrease own water level by 1
+				own_id.water_level -= 1;
+				// Transfer water level
+				other_id.water_level += own_id.water_level;
+				
+			}else if(other_element == "Water")
+			{
+				// Transfer level without decreasing
+				other_id.water_level += own_id.water_level;
+			}
+		}
+		
+		
+	#endregion Water Spreading
 	
 	
 }

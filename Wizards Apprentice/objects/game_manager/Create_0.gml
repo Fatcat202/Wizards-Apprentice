@@ -11,6 +11,9 @@
 		
 		// Number of frames to apply invincibility after taking damage
 		global.i_frames = 15;
+		
+		// Gravity, used for deceleration when jumping and acceleration when falling
+		global.grav = 0.275
 	
 		#region Camera
 	

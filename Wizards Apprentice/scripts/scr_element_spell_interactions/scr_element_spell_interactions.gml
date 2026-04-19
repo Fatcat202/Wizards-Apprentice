@@ -30,6 +30,12 @@ function scr_element_spell_interactions(own_id, other_id)
 		// Check if interaction is Fire + Ice
 		if((own_element == "Fire" && other_element == "Ice") || (own_element = "Ice" && other_element == "Fire"))
 		{
+			
+			// Create water droplet with the level of the element subtracted
+			water_drop = instance_create_layer(x, y, "Spells", obj_element_water_droplet,
+			{
+				level : abs(own_id.level - other_id.level)
+			})
 		
 			/*
 				Subtract fire from ice
@@ -41,14 +47,6 @@ function scr_element_spell_interactions(own_id, other_id)
 			own_id.level -= other_level
 			other_id.level -= own_level
 			
-			
-			
-		
-			/*
-				Create water from amount removed from ice
-				Max level of water is level of ice
-			*/
-		
 		}
 		
 	#endregion Ice - Fire = Water

@@ -52,9 +52,6 @@ event_inherited()
 		// Modifier to be used
 		h_decel = h_decel_default
 	
-	// Gravity, used for deceleration when jumping and acceleration when falling
-	grav = 0.275
-	
 	// Used for modifying movement speed when the player is on a specific platform element
 	
 		// Sets default

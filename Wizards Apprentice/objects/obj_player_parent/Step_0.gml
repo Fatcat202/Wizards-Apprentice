@@ -236,7 +236,7 @@ scr_health_and_mana_test()
 			}
 			
 			// Fall when hitting head on ceiling
-			if(state_move == state_jumping && place_meeting(x, y - 2, obj_platform_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2)) move_spd_v = -grav
+			if(state_move == state_jumping && place_meeting(x, y - 2, obj_platform_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2)) move_spd_v = -global.grav
 			
 			
 			// Move object horizontally
@@ -262,10 +262,10 @@ scr_health_and_mana_test()
 				// Fall at double speed when crouching
 				if(state_move == state_crouch)
 				{
-					move_spd_v -= grav * 2;
+					move_spd_v -= global.grav * 2;
 				}else
 				{
-					move_spd_v -= grav;
+					move_spd_v -= global.grav;
 				}
 
 				// Gravity Debug

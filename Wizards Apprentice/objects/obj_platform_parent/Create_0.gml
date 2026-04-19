@@ -27,6 +27,9 @@ is_flaming = false;
 // Determines if flames are spawned to prevent duplication
 flames_spawned = false
 
+// Used for spreading water effect. Represents number of platforms to spread to
+water_level = 0;
+
 // Time for water to freeze
 freezing_time = 5
 // Time for fire to spread
