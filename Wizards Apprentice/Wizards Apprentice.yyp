@@ -39,7 +39,6 @@
     {"$GMFolder":"","%Name":"Enemy","folderPath":"folders/Sprites/Characters/Enemy.yy","name":"Enemy","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Sprites/Characters/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Element Shields","folderPath":"folders/Sprites/Element Shields.yy","name":"Element Shields","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Status Effects","folderPath":"folders/Sprites/Status Effects.yy","name":"Status Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hearts","folderPath":"folders/Sprites/Hearts.yy","name":"Hearts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Mana","folderPath":"folders/Sprites/Mana.yy","name":"Mana","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Platforms","folderPath":"folders/Sprites/Platforms.yy","name":"Platforms","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -47,6 +46,7 @@
     {"$GMFolder":"","%Name":"Spells","folderPath":"folders/Sprites/Spells.yy","name":"Spells","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Effects","folderPath":"folders/Sprites/Spells/Effects.yy","name":"Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Icons","folderPath":"folders/Sprites/Spells/Icons.yy","name":"Icons","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Status Effects","folderPath":"folders/Sprites/Status Effects.yy","name":"Status Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
