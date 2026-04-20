@@ -36,12 +36,7 @@ function scr_element_spell_interactions(own_id, other_id)
 			{
 				level : abs(own_id.level - other_id.level)
 			})
-		
-			/*
-				Subtract fire from ice
-				Destroy which ever has its level lowered to 0
-				Any remaining element has level permenantly lowered
-			*/
+
 			
 			// Lower level of both objects by the others level
 			own_id.level -= other_level

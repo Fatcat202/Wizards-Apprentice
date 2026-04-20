@@ -73,44 +73,93 @@ var quarter_width = width / 4;
 	
 #endregion Charged
 
+
+#region Water Level
+	
+	// Reset water level if not water based element
+	if(element == "Fire" || element == "Oil")
+	{
+		water_level = 0;
+	}
+	
+	// Lock water level at a minimum of 0
+	if(water_level < 0) water_level = 0;
+	
+#endregion Water Level
+
+
+
 #region Inter Platform Element Interactions
 
-	// Check in each direction for touching platforms. Run interelement script for each direction
+	// Check in each direction for touching platforms. Run inter-element script for each direction
 
-	var other_id = noone
-	
 	// Distance to check
 	var check_distance = 1
 	
+	// Generate random int to select direction to interact with
+	var rand_dir = irandom(3)
+	
+	//show_debug_message("rand_dir = " + string(rand_dir))
+	
+	
+	// Continue ongoing interaction
+	if(interacting == true)
+	{
+		scr_element_inter_platform_interactions(id, other_id)
+	}else
+	
 	// Check right
-	if(place_meeting(x + check_distance, y, obj_platform_parent))
+	if(place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
 	{
 		other_id = instance_place(x + check_distance, y, obj_platform_parent)
 		scr_element_inter_platform_interactions(id, other_id)
-	}
+	}else
 	
 	// Check left
-	if(place_meeting(x - check_distance, y, obj_platform_parent))
+	if(place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
 	{
 		other_id = instance_place(x - check_distance, y, obj_platform_parent)
 		scr_element_inter_platform_interactions(id, other_id)
-	}
+	}else
 	
 	// Check top
-	if(place_meeting(x, y + check_distance, obj_platform_parent)) 
+	if(place_meeting(x, y + check_distance, obj_platform_parent) && interacting == false && rand_dir == 2) 
 	{
 		other_id = instance_place(x, y + check_distance, obj_platform_parent)
 		scr_element_inter_platform_interactions(id, other_id)
-	}
+	}else
 	
 	// Check bottom
-	if(place_meeting(x, y - check_distance, obj_platform_parent))
+	if(place_meeting(x, y - check_distance, obj_platform_parent) && interacting == false  && rand_dir == 3)
 	{
 		other_id = instance_place(x, y - check_distance, obj_platform_parent)
 		scr_element_inter_platform_interactions(id, other_id)
 	}
 	
-
+	if(element = "Water" && water_level > 0)
+	{
+		rand_dir = irandom(1)
+		show_debug_message("rand_dir = " + string(rand_dir))
+		
+		if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
+		{
+			water_drop = instance_create_layer(x + sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
+			{
+				level : 1
+			})
+			water_level--
+		}else
+		
+		if(!place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
+		{
+			water_drop = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
+			{
+				level : 1
+			})
+			water_level--
+		}
+	}
 
 	
+
 #endregion Inter Platform Element Interactions

@@ -11,4 +11,5 @@ function scr_element_reset_variables()
 	spreading_fire_timer = 0
 	melting_ice_timer = 0
 	evaporation_timer = 0
+	interacting = false
 }

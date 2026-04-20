@@ -1,7 +1,7 @@
 /// @description Platform Interactions
 
-// Change platform to water if empty
-if(other.element == "Empty" || other.element == "Water")
+// Change platform to water if empty, transfer remaining water level
+if(other.element == "Empty")
 {
 	// Change element to water
 	other.element = "Water"
@@ -10,15 +10,24 @@ if(other.element == "Empty" || other.element == "Water")
 	// Increment water level
 	other.water_level += level;
 	
-	
-	// Debug
-	//show_debug_message("other.water_level: " + string(other.water_level))
+}else
+
+// If water, transfer level
+if(other.element == "Water")
+{
+	// Increment water level
+	other.water_level += level;
+		
+}else
 
 // Store water level when Ice to release when thawed
-}else if(other.element == "Ice")
+if(other.element == "Ice")
 {
 	other.water_level += level;
 }
+
+// Debug
+//show_debug_message("other.water_level: " + string(other.water_level))
 
 
 // Destroy self upon contact

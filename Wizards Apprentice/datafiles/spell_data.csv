@@ -7,3 +7,4 @@ icicle,0,5,-1,1,0,-1,-1,2,Ice,Icicle,Empty,spr_spell_slot_icicle,scr_spell_icicl
 wall of fire,3,2,-1,1,3,-1,-1,10,Fire,Wall of Fire,Empty,spr_spell_slot_wall_of_fire,scr_spell_wall_of_fire
 wall of ice,3,-1,-1,1,3,-1,-1,10,Ice,Wall of Ice,Empty,spr_spell_slot_wall_of_ice,scr_spell_wall_of_ice
 fireball,2,5,-1,1,2,-1,-1,-1,Fire,Fireball,Empty,spr_spell_slot_fireball,scr_spell_fireball
+water splash,1,5,-1,1,0,-1,-1,-1,Water,Water Splash,Empty,spr_spell_slot_water_splash,scr_spell_water_splash

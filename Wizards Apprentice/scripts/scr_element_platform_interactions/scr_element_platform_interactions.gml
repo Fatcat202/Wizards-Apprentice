@@ -38,6 +38,12 @@ function scr_element_platform_interactions(spell_id, platform_id)
 			platform_id.element = "Water"
 			platform_id.is_steaming = false
 		}
+		
+		// Water + Ice
+		if(spell_element == "Water")
+		{
+			platform_id.water_level += spell_id.level;
+		}
 			
 			
 	}else
@@ -71,6 +77,12 @@ function scr_element_platform_interactions(spell_id, platform_id)
 		{
 			// Charge water to stun characters
 			platform_id.is_charged = true;
+		}
+		
+		// Water + Water
+		if(spell_element == "Water")
+		{
+			platform_id.water_level += spell_id.level;
 		}
 		
 

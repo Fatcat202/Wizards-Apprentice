@@ -34,6 +34,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			// Spreading flaming oil
 			if(other_element == "Oil")
 			{
+				// Declare an interaction has started
+				interacting = true;
+				
 				// Start timer to spread fire between oil
 				if(spreading_fire_timer >= spreading_fire_length)
 				{
@@ -42,6 +45,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					// Reset timer
 					spreading_fire_timer = 0;
 					
+					// Set interacting to false
+					interacting = false;
+					
 					// Increment timer
 				}else spreading_fire_timer++
 			}else
@@ -49,12 +55,18 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			// Melting Ice
 			if(other_element == "Ice")
 			{
+				// Declare an interaction has started
+				interacting = true;
+				
 				// Start timer to melt ice
 				if(melting_ice_timer >= melting_ice_length)
 				{
 					scr_element_reset_variables()
 					// Turn platform to water from ice
 					other_id.element = "Water"
+					
+					// Set interacting to false
+					interacting = false;
 					
 					// Increment timer
 				}else melting_ice_timer++
@@ -64,6 +76,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			// Evaporating Water
 			if(other_element == "Water")
 			{
+				// Declare an interaction has started
+				interacting = true;
+				
 				// Start timer to evaporate water
 				if(evaporation_timer >= evaporation_length)
 				{
@@ -77,6 +92,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					// Reset timer
 					evaporation_timer = 0;
 					
+					// Set interacting to false
+					interacting = false;
+					
 					// Increment timer
 				}else evaporation_timer++
 			}
@@ -87,13 +105,14 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 	#endregion Flaming Oil
 	
 	#region Water Freezing
-	
 
-		
 		if(own_element == "Ice")
 		{
 			if(other_element == "Water")
 			{
+				// Declare an interaction has started
+				interacting = true;
+				
 				// Start timer to turn water platform to ice
 				if(freeze_timer >= freeze_length)
 				{
@@ -102,6 +121,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					other_id.element = "Ice"
 					// Reset timer
 					freeze_timer = 0;
+					
+					// Set interacting to false
+					interacting = false;
 					
 					// Increment timer
 				}else freeze_timer++
@@ -118,6 +140,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			{
 				// Electrify other platform
 				other_id.is_charged = true
+				
+				// Set interacting to false
+				interacting = false;
 			}
 		}
 		
@@ -125,21 +150,54 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 	
 	#region Water Spreading
 
-		if(own_element == "Water" && own_id.water_level > 1)
+		if(own_element == "Water" && own_id.water_level > 0)
 		{
 			if(other_element == "Empty")
 			{
-				// Change element to water
-				other_id.element = "Water";
-				// Decrease own water level by 1
-				own_id.water_level -= 1;
-				// Transfer water level
-				other_id.water_level += own_id.water_level;
+				// Declare an interaction has started
+				interacting = true;
+				
+				// Start timer spread water between platforms
+				if(own_id.spreading_water_timer >= own_id.spreading_water_length)
+				{
+					// Change element to water
+					other_id.element = "Water";
+					// Decrease own water level by 1
+					own_id.water_level -= 1;
+					// Transfer water level
+					other_id.water_level += own_id.water_level;
+					// Reset timer
+					other_id.spreading_water_timer = 0;
+					own_id.spreading_water_timer = 0;
+					
+					// Set interacting to false
+					interacting = false;
+					
+				// Increment timer
+				} own_id.spreading_water_timer++
 				
 			}else if(other_element == "Water")
 			{
-				// Transfer level without decreasing
-				other_id.water_level += own_id.water_level;
+				// Declare an interaction has started
+				interacting = true;
+				
+				// Start timer to turn water platform to ice
+				if(own_id.spreading_water_timer >= own_id.spreading_water_length)
+				{
+					var level = own_id.water_level
+					// Transfer water level
+					other_id.water_level += level;
+					own_id.water_level -= level
+					
+					// Reset timer
+					other_id.spreading_water_timer = 0;
+					own_id.spreading_water_timer = 0;
+					
+					// Set interacting to false
+					interacting = false;
+					
+				// Increment timer
+				} own_id.spreading_water_timer++
 			}
 		}
 		

@@ -9,6 +9,12 @@ event_inherited()
 // May also be set to "Water", "Ice", or "Oil"
 element = "Empty"
 
+// Used for gathering and holding ID of other platform being interacted with
+other_id = noone
+
+// Determines if interaction is ongoing 
+interacting = false
+
 // Determines if the platform is charged
 is_charged = false;
 
@@ -31,13 +37,15 @@ flames_spawned = false
 water_level = 0;
 
 // Time for water to freeze
-freezing_time = 5
+freezing_time = 5;
 // Time for fire to spread
-spreading_fire_time = 0.5
+spreading_fire_time = 0.5;
 // Timer for ice to melt
-melting_time = 4
+melting_time = 4;
 // Time for water to evaporate
-evaporation_time = 4
+evaporation_time = 4;
+// Time for water to spread to other platforms
+spreading_water_time = 0.5;
 
 
 
@@ -57,3 +65,6 @@ melting_ice_timer = 0
 // Used for timer when turning water platform to steam
 evaporation_length = game_get_speed(gamespeed_fps) * evaporation_time
 evaporation_timer = 0
+
+spreading_water_length = game_get_speed(gamespeed_fps) * spreading_water_time
+spreading_water_timer = 0
