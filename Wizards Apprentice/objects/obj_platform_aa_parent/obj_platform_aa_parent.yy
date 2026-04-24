@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_platform_stone",
+  "%Name":"obj_platform_aa_parent",
   "eventList":[],
   "managed":true,
-  "name":"obj_platform_stone",
+  "name":"obj_platform_aa_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Stone",
-    "path":"folders/Objects/Platforms/Solid/Stone.yy",
+    "name":"Auto Assign",
+    "path":"folders/Objects/Platforms/Solid/Auto Assign.yy",
   },
   "parentObjectId":{
     "name":"obj_platform_solid_parent",
@@ -30,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_platform_stone_0",
-    "path":"sprites/spr_platform_stone_0/spr_platform_stone_0.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

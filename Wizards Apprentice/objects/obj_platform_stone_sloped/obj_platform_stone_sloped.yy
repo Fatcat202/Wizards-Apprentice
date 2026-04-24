@@ -6,8 +6,8 @@
   "name":"obj_platform_stone_sloped",
   "overriddenProperties":[],
   "parent":{
-    "name":"Solid",
-    "path":"folders/Objects/Platforms/Solid.yy",
+    "name":"Stone",
+    "path":"folders/Objects/Platforms/Solid/Stone.yy",
   },
   "parentObjectId":{
     "name":"obj_platform_solid_parent",

@@ -44,8 +44,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Platforms",
-    "path":"folders/Sprites/Platforms.yy",
+    "name":"Stone",
+    "path":"folders/Sprites/Platforms/Stone.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
