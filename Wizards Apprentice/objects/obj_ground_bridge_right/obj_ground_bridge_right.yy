@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_ground_bridge",
+  "%Name":"obj_ground_bridge_right",
   "eventList":[],
   "managed":true,
-  "name":"obj_ground_bridge",
+  "name":"obj_ground_bridge_right",
   "overriddenProperties":[],
   "parent":{
-    "name":"Semi Solid",
-    "path":"folders/Objects/Platforms/Semi Solid.yy",
+    "name":"Bridge",
+    "path":"folders/Objects/Platforms/Semi Solid/Bridge.yy",
   },
   "parentObjectId":{
     "name":"obj_platform_semi_solid_parent",
@@ -31,9 +31,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_platform_bridge_0",
-    "path":"sprites/spr_platform_bridge_0/spr_platform_bridge_0.yy",
+    "name":"spr_platform_bridge_left_1",
+    "path":"sprites/spr_platform_bridge_left_1/spr_platform_bridge_left_1.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_platform_bridge_left_1",
+    "path":"sprites/spr_platform_bridge_left_1/spr_platform_bridge_left_1.yy",
+  },
   "visible":true,
 }

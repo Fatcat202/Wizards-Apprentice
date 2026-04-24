@@ -10,24 +10,33 @@ draw_self()
 
 	// Check for elements, and draw if activated
 
+	// Stores sprite of element to draw
+	var element_draw = noone
+	
+	// Used for scaling element sprite
+	element_xscale = image_xscale
+	element_yscale = image_yscale
+
 	if(element == "Water")
 	{
 		// Check if water is charged
 		if(is_charged == true)
 		{
-			draw_sprite(spr_element_water_charged, 0, x, y)
+			element_draw = spr_element_water_charged
 		}else
 		{
-			draw_sprite(spr_element_water, 0, x, y)
+			element_draw = spr_element_water
 		}
 	}else if(element == "Ice")
 	{
-		draw_sprite(spr_element_ice, 0, x, y)
+		element_draw = spr_element_ice
 	
 	}else if(element == "Oil")
 	{
-		draw_sprite(spr_element_oil, 0, x, y)	
+		element_draw = spr_element_oil
 	}
+	
+	if(element_draw != noone) draw_sprite_ext(element_draw, 0, x, y, element_xscale, element_yscale, 0, c_white, 1)
 
 #endregion Elements
 
