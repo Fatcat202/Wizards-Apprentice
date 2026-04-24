@@ -8,8 +8,8 @@
   "name":"obj_collision_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Collision Walls",
-    "path":"folders/Objects/Collision Walls.yy",
+    "name":"Platforms",
+    "path":"folders/Objects/Platforms.yy",
   },
   "parentObjectId":null,
   "persistent":false,

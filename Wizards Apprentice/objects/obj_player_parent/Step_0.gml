@@ -60,6 +60,8 @@ scr_health_and_mana_test()
 				
 					}else if(plat_element == "Water")
 					{
+						// Rest any changes
+						scr_reset_move_modifiers();
 						
 						// If the character is standing on a charged water platform
 						if(plat_id.is_charged)
@@ -73,9 +75,6 @@ scr_health_and_mana_test()
 							}
 							
 						}
-						
-
-
 					}else scr_reset_move_modifiers() // Rest any changes when on the ground
 					
 				}
@@ -155,7 +154,6 @@ scr_health_and_mana_test()
 			
 			if(global.cont_crouch)
 			{
-				
 				//Cancel held jump
 				jump_hold_timer = 0;
 				
@@ -208,36 +206,46 @@ scr_health_and_mana_test()
 			// Set and apply terminal velocity
 			if(move_spd_v < term_vel) move_spd_v = term_vel;
 			
-			// Used for sub pixel collisions to ensure accuracy
-			var sub_pixel = 0.5
-			var search = sub_pixel
-	
-			// Moving up slope
-			// Detect if a slope is present
-			if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - search, obj_platform_parent) && !scr_is_solid(x + move_spd_h, y - abs(move_spd_h) - search) && !scr_check_semi_solid(x + move_spd_h, y - abs(move_spd_h) - search))
-			{
-				// Move up slope if present
-				while(place_meeting(x + move_spd_h, y, obj_platform_parent) && scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y)) y -= sub_pixel
-			}else
-			{
-				// Preventing getting stuck with collision objects horizontaly
-				if(place_meeting(x + move_spd_h, y, obj_platform_parent) && scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y)) move_spd_h = 0
-			}
+			#region Slopes
 			
-			// Moving down slope
-			// Detect if a slope is present
-			if((!place_meeting(x + move_spd_h, y + search, obj_platform_parent) && !scr_is_solid(x + move_spd_h, y + search) && !scr_check_semi_solid(x + move_spd_h, y + search)) && (place_meeting(x + move_spd_h, y + abs(move_spd_h), obj_platform_parent) && scr_is_solid(x + move_spd_h, y + abs(move_spd_h)) && !scr_check_semi_solid(x + move_spd_h, y + abs(move_spd_h))))
-			{
-				// Move down slope if present
-				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_platform_parent) && !scr_is_solid(x + move_spd_h, y) && !scr_check_semi_solid(x + move_spd_h, y + sub_pixel))
+				// Used for sub pixel collisions to ensure accuracy
+				var sub_pixel = 0.5
+			
+				// Check for horizontal collision
+				if(place_meeting(x + move_spd_h, y, obj_platform_parent))
 				{
-					y += sub_pixel
+					// Check for slope to go up
+					if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent))
+					{
+						// Go up slope
+						while(place_meeting(x + move_spd_h, y, obj_collision_parent))
+						{
+							y -= sub_pixel
+						}
+					}else
+					{
+						// Preventing getting stuck with collision objects horizontaly
+						move_spd_h = 0
+					}
 				}
-			}
 			
+				// Check for slope to go down
+				if(move_spd_v >= 0 && !place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && place_meeting(x + move_spd_h, y + abs(move_spd_h) + 1, obj_collision_parent))
+				{
+					// Go down slope
+					while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent))
+					{
+							y += sub_pixel
+					}
+				}
+				
+			#endregion Slopes
+		
 			// Fall when hitting head on ceiling
-			if(state_move == state_jumping && place_meeting(x, y - 2, obj_platform_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2)) move_spd_v = -global.grav
-			
+			if(state_move == state_jumping && place_meeting(x, y - 2, obj_platform_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2))
+			{
+				move_spd_v = -global.grav
+			}
 			
 			// Move object horizontally
 			x += move_spd_h
@@ -566,4 +574,3 @@ scr_health_and_mana_test()
 
 
 #endregion Controls
-

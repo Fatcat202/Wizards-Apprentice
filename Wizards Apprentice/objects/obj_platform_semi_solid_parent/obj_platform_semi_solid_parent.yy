@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Semi Solid",
-    "path":"folders/Objects/Collision Walls/Semi Solid.yy",
+    "path":"folders/Objects/Platforms/Semi Solid.yy",
   },
   "parentObjectId":{
     "name":"obj_platform_parent",

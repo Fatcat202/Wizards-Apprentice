@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Solid",
-    "path":"folders/Objects/Collision Walls/Solid.yy",
+    "path":"folders/Objects/Platforms/Solid.yy",
   },
   "parentObjectId":{
     "name":"obj_platform_parent",

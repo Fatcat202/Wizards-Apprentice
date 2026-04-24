@@ -9,32 +9,43 @@ var spr_height = sprite_get_height(sprite_index)
 
 
 #region Element Shields
+
+	// Spawn element shields based on element shield declared
+	// Increase sprite size by gathering ratio of base fire shield sprite
+	
 	if(element_shield != "Empty")
-	{
-		if(element_shield == "Fire")
+	{	
+		var ratio_h = (sprite_get_width(spr_element_shield_fire) / spr_width)
+		var ratio_v = (sprite_get_height(spr_element_shield_fire) / spr_height)
+		
+		switch (element_shield)
 		{
-			var ratio_h = sprite_get_width(spr_element_shield_fire) / spr_width
-			var ratio_v = sprite_get_height(spr_element_shield_fire) / spr_height
-			
-			draw_sprite_ext(spr_element_shield_fire, 0, x, y, ratio_h, ratio_v, 0, c_white, 1)
-		}else if(element_shield == "Ice")
-		{
-			
-			var ratio_h = sprite_get_width(spr_element_shield_ice) / spr_width
-			var ratio_v = sprite_get_height(spr_element_shield_ice) / spr_height
-			
-			draw_sprite_ext(spr_element_shield_ice, 0, x, y, ratio_h, ratio_v, 0, c_white, 1)
-		}else if(element_shield == "Shock")
-		{
-			var ratio_h = sprite_get_width(spr_element_shield_shock) / spr_width
-			var ratio_v = sprite_get_height(spr_element_shield_shock) / spr_height
-			
-			draw_sprite_ext(spr_element_shield_shock, 0, x, y, ratio_h, ratio_v, 0, c_white, 1)
-		}else
-		{
-			show_debug_message("Error: Element Shield Cannot Be Displayed");
+			case "Fire":
+				draw_sprite_ext(spr_element_shield_fire, 0, x, y, ratio_h, ratio_v, 0, c_white, 1)
+			break;
+		
+			case "Ice":
+				draw_sprite_ext(spr_element_shield_ice, 0, x, y, ratio_h, ratio_v, 0, c_white, 1)
+			break;
+		
+			case "Shock":
+				draw_sprite_ext(spr_element_shield_shock, 0, x, y, ratio_h, ratio_v, 0, c_white, 1)
+			break;
+		
+			case "Water":
+				draw_sprite_ext(spr_element_shield_water, 0, x, y, ratio_h, ratio_v, 0, c_white, 1)
+			break;
+		
+			case "Steam":
+				draw_sprite_ext(spr_element_shield_steam, 0, x, y, ratio_h, ratio_v, 0, c_white, 1)
+			break;
+		
+			default:
+				show_debug_message("Error: Element Shield Cannot Be Displayed");
+			break;
 		}
 	}
+
 #endregion Element Shields
 
 #region Stunned
