@@ -53,121 +53,135 @@ var yy = display_get_gui_height() / 2
 #endregion Hearts
 
 
-#region Mana //FUNCTIONS PROPERLY IF BOTH base_max_mana AND mana_drain ARE EVEN
+#region Mana
 
 	// Mana location
 	margin_y = margin_y * 3;
 	_spacing = _spacing;
 	margin_x = margin_x;
-	
-	// Total number of crystals to be displayed
-	var total_crystals = ceil(base_max_mana / 2);
-	
-	// Presence of a half crystal
-	var half_crystal = base_max_mana % 2;
-	
-	// Total number of whole drained crystals
-	var drained_crystals = floor(mana_drain / 2);
-	
-	// Presence of a split drained/empty crystal
-	var partial_drained_crystal = mana_drain % 2;
-	
-	// Presence of a split full/empty crystal
-	var partial_full_crystal = (active_mana % 2);
-	
-	// Total number of whole full crystals
-	var full_crystals = floor(active_mana / 2);
 
-	// Total number of whole empty crystals
-	var empty_crystals = floor((base_max_mana - mana_drain - active_mana) / 2);
-
-	// Counter for number of crystals displayed
+	// Used for placing crystals in order
 	var num_displayed = 1;
 	
+	// Signifies presense of ending half crystal
+	var half_crystal = base_max_mana % 2
 	
-	// Display all fully drained crystals
-	for(var i = 0; i < drained_crystals; i++)
-	{
-		draw_sprite(spr_mana_double_drained, 0, margin_x + (_spacing * num_displayed), margin_y)
-		num_displayed++;
-	}
+	// Total number of drained crystals
+	var fully_drained = floor(mana_drain / 2)
 	
-	// Display half drained half full/empty crystal, if one exists
-	if(partial_drained_crystal == true)
+	// Signifies presense of half-drained crystal
+	var half_drained = mana_drain % 2
+	
+	// Total number of full crystals
+	var full = floor((active_mana - half_drained) / 2)
+	
+	// Total number of empty crystals
+	var empty = floor((max_mana - active_mana - half_crystal) / 2)
+	
+	// Signifies presense of half-full/half-empty crystal
+	var half_full = 0
+	
+	// Decide if there will be a half-full/half empty crystal
+	if(active_mana > 0 && active_mana != max_mana)
 	{
-		if(active_mana > 0)
+		if((active_mana - half_drained) % 2 == 1)
 		{
-			draw_sprite(spr_mana_double_half_drained_full, 0, margin_x + (_spacing * num_displayed), margin_y)
+			half_full = 1
+		}else half_full = 0
+	}else half_full = 0
+	
+	
+	
+	#region Display
+	
+		// Display all fully drained crystals
+		for(var i = 0; i < fully_drained; i++)
+		{
+			draw_sprite(spr_mana_double_drained, 0, margin_x + (_spacing * num_displayed), margin_y)
 			num_displayed++
-			
-			if(active_mana == 1) partial_full_crystal = false
-			
-			
-		} else if(active_mana + mana_drain != base_max_mana)
-		{
-			draw_sprite(spr_mana_double_half_drained_empty, 0, margin_x + (_spacing * num_displayed), margin_y)
-			num_displayed++;
 		}
-	}
 	
-	// Display all full mana crystals
-	for(var i = 0; i < full_crystals; i++)
-	{
-		draw_sprite(spr_mana_double_full, 0, margin_x + (_spacing * num_displayed), margin_y)
-		num_displayed++;
-	}
-	
-	// Display half full/empty crystal, if one exists
-	if(partial_full_crystal == true)
-	{	
-		draw_sprite(spr_mana_double_half, 0, margin_x + (_spacing * num_displayed), margin_y)
-		num_displayed++;
-	}
-	
-	// Display all fully empty crystals
-	for(var i = 0; i < empty_crystals; i++)
-	{
-		draw_sprite(spr_mana_double_empty, 0, margin_x + (_spacing * num_displayed), margin_y)
-		num_displayed++;
-	}
-
-	
-	// Display last half crystal
-	if(half_crystal == true)
-	{
-		if(mana_drain == base_max_mana)
+		// Check for half drained
+		if(half_drained == true)
 		{
-			draw_sprite(spr_mana_single_drained, 0, margin_x + (_spacing * num_displayed), margin_y)
-			num_displayed++;
-		} else if(mana_drain + active_mana == base_max_mana)
-		{
-			draw_sprite(spr_mana_single_full, 0, margin_x + (_spacing * num_displayed), margin_y)
-			num_displayed++;
-		} else
-		{
-			draw_sprite(spr_mana_single_empty, 0, margin_x + (_spacing * num_displayed), margin_y)
-			num_displayed++;
+			// Select what version to display based on mana
+			if(active_mana > 0)
+			{
+				draw_sprite(spr_mana_double_half_drained_full, 0, margin_x + (_spacing * num_displayed), margin_y)
+				num_displayed++
+			}else
+			{
+				draw_sprite(spr_mana_double_half_drained_empty, 0, margin_x + (_spacing * num_displayed), margin_y)
+				num_displayed++
+			}
 		}
-	}
+	
+		// Display full crystals
+		for(var i = 0; i < full; i++)
+		{
+			draw_sprite(spr_mana_double_full, 0, margin_x + (_spacing * num_displayed), margin_y)
+			num_displayed++
+		}
+	
+		// Display half ful/empty crystal
+		if(half_full == true)
+		{
+			draw_sprite(spr_mana_double_half, 0, margin_x + (_spacing * num_displayed), margin_y)
+			num_displayed++
+		}
+	
+		// Display empty crystals
+		for(var i = 0; i < empty; i++)
+		{
+			draw_sprite(spr_mana_double_empty, 0, margin_x + (_spacing * num_displayed), margin_y)
+			num_displayed++
+		}
+	
+		// Check for half crystal
+		if(half_crystal == true)
+		{
+		
+			// Check if mana is max
+			if(active_mana == max_mana)
+			{
+				draw_sprite(spr_mana_single_full, 0, margin_x + (_spacing * num_displayed), margin_y)
+				num_displayed++
+			}else
+		
+			// Check if drain is equal to max mana
+			if(mana_drain == max_mana)
+			{
+				draw_sprite(spr_mana_single_drained, 0, margin_x + (_spacing * num_displayed), margin_y)
+				num_displayed++
+			}else
+			{
+		
+			// Default option of empty half crystal
+				draw_sprite(spr_mana_single_empty, 0, margin_x + (_spacing * num_displayed), margin_y)
+				num_displayed++
+			}
+		}
+	#endregion Display
 	
 	
 	#region Debug
-	
-	/*	
-		show_debug_message("num_displayed - 1 = " + string(num_displayed - 1))
-		show_debug_message("total_crystals = " + string(total_crystals))
-		show_debug_message("full_crystals = " + string(full_crystals))
-		show_debug_message("drained_crystals = " + string(drained_crystals))
-		show_debug_message("empty_crystals = " + string(empty_crystals))
-		show_debug_message("partial_drained_crystal = " + string(partial_drained_crystal))
-		show_debug_message("partial_full_crystal = " + string(partial_full_crystal))
-		show_debug_message("half_crystal = " + string(half_crystal))
-	*/
+	/*
+		show_debug_message("mana_drain = " + string(mana_drain))
+		show_debug_message("base_max_mana = " + string(base_max_mana))
+		show_debug_message("active_mana = " + string(active_mana))
 		
+		show_debug_message("fully_drained = " + string(fully_drained))
+		show_debug_message("half_drained = " + string(half_drained))
+		show_debug_message("full = " + string(full))
+		show_debug_message("half_full = " + string(half_full))
+		show_debug_message("empty = " + string(empty))
+		show_debug_message("half_crystal = " + string(half_crystal))
+		
+		show_debug_message("*****************************")
+	*/
 	#endregion Debug
+	
 
-	
-	
 #endregion Mana
 
 #region Spells
