@@ -1,5 +1,7 @@
 /// @description Destroy on impact
 
+event_inherited()
+
 // Do not destroy if coming in contact with player or semi solid object
 if(place_meeting(x, y, obj_collision_parent)
 	&& scr_is_solid(x, y)

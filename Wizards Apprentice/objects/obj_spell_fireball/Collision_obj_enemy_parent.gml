@@ -6,7 +6,7 @@ sprite_index = spr_spell_fireball_explosion;
 speed = 0;
 
 // Deal damage
-if(other.can_damage) scr_damage(damage);
+if(other.can_damage) scr_damage(damage, element);
 	
 // Destruction on explosion animation end
 triggered = true;
