@@ -5,6 +5,8 @@ if(active_health <= 0) scr_player_death()
 
 // Check to make sure active health is not greater than max
 if(active_health > max_health) active_health = max_health;
+// Set max mana as defined by mana drain
+max_health = base_max_health - health_drain
 
 // Check to make sure active mana is not greater than max or lower than 0
 if(active_mana > max_mana) active_mana = max_mana;
