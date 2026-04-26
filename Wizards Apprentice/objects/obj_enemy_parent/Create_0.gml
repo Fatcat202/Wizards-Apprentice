@@ -35,3 +35,44 @@ event_inherited();
 	move_spd = global.enemy_stats[index].move_spd;
 
 #endregion
+
+#region Enemy AI States
+
+
+	state_free = function()
+	{
+		
+		state = state_free
+		
+	}
+	
+	state_patrol = function()
+	{
+		
+		
+
+	}
+	
+	state_attack = function()
+	{
+		
+		
+
+	}
+	
+	state_retreat = function()
+	{
+		
+		
+
+	}
+
+	state_behavior = state_free;
+
+#endregion Enemy AI States
+
+
+
+
+
+

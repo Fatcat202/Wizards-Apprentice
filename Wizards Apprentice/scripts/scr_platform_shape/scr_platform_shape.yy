@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_texture_auto_assign",
+  "%Name":"scr_platform_shape",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_texture_auto_assign",
+  "name":"scr_platform_shape",
   "parent":{
     "name":"Platforms",
     "path":"folders/Scripts/Platforms.yy",

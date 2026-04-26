@@ -9,6 +9,9 @@ platform_texture = sprite_index
 // Assign textures
 scr_texture_auto_assign()
 
+// Used to modify image_index
+subimage = 0
+
 
 // Default is set to Empty
 // May also be set to "Water", "Ice", or "Oil"
