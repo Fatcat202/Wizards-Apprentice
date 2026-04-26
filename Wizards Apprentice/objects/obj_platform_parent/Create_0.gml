@@ -3,7 +3,12 @@
 event_inherited()
 
 
-// ** Used for elemental mechanics **
+// Used for dynamic platform textures
+platform_texture = sprite_index
+
+// Assign textures
+scr_texture_auto_assign()
+
 
 // Default is set to Empty
 // May also be set to "Water", "Ice", or "Oil"

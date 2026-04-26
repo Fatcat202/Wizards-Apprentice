@@ -6,11 +6,11 @@
   "bbox_left":0,
   "bbox_right":31,
   "bbox_top":0,
-  "collisionKind":1,
+  "collisionKind":0,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
-  "For3D":false,
+  "For3D":true,
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"5d174a16-813f-4e10-97d9-2db34d420ae5","name":"5d174a16-813f-4e10-97d9-2db34d420ae5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],

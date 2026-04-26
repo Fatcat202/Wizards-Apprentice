@@ -1,10 +1,11 @@
 /// @description
 
-
-// Draws own sprite
-draw_self()
-
-
+// Allow manual drawing of sprite for auto assigning textures
+if(!object_is_ancestor(id.object_index, obj_platform_aa_parent))
+{
+	// Draws own sprite
+	draw_self()
+}
 
 #region Elements
 
@@ -39,4 +40,3 @@ draw_self()
 	if(element_draw != noone) draw_sprite_ext(element_draw, 0, x, y, element_xscale, element_yscale, 0, c_white, 1)
 
 #endregion Elements
-
