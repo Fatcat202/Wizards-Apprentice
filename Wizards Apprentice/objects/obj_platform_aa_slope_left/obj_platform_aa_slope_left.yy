@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_platform_aa_slope_right",
-    "path":"sprites/spr_platform_aa_slope_right/spr_platform_aa_slope_right.yy",
+    "name":"spr_plat_aa_slope_right",
+    "path":"sprites/spr_plat_aa_slope_right/spr_plat_aa_slope_right.yy",
   },
   "spriteMaskId":null,
   "visible":true,

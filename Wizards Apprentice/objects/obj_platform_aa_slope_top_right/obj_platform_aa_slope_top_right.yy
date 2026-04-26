@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_platform_aa_slope_right",
+  "%Name":"obj_platform_aa_slope_top_right",
   "eventList":[],
   "managed":true,
-  "name":"obj_platform_aa_slope_right",
+  "name":"obj_platform_aa_slope_top_right",
   "overriddenProperties":[],
   "parent":{
     "name":"Auto Assign",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_plat_aa_slope_left",
-    "path":"sprites/spr_plat_aa_slope_left/spr_plat_aa_slope_left.yy",
+    "name":"spr_plat_aa_slope_top_right",
+    "path":"sprites/spr_plat_aa_slope_top_right/spr_plat_aa_slope_top_right.yy",
   },
   "spriteMaskId":null,
   "visible":true,

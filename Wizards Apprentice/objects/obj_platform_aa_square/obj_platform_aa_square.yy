@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_platform_aa_slope_left",
-    "path":"sprites/spr_platform_aa_slope_left/spr_platform_aa_slope_left.yy",
+    "name":"spr_plat_aa_square",
+    "path":"sprites/spr_plat_aa_square/spr_plat_aa_square.yy",
   },
   "spriteMaskId":null,
   "visible":true,

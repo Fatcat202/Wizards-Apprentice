@@ -3,6 +3,7 @@
 // Inherit the parent event
 event_inherited();
 
+#region Determening Enemy for Stats
 
 	// Read name of object and assigns it to object_name
 	object_name = object_get_name(object_index);
@@ -37,6 +38,10 @@ event_inherited();
 #endregion
 
 #region Enemy AI States
+
+	// Stores x and y origin points
+	home_x = y;
+	home_y = x;
 
 
 	state_free = function()
