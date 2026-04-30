@@ -16,47 +16,47 @@ function scr_platform_shape()
 	// Variations of platform types for image_index
 	enum PLAT_TYPE
 	{
-		DEFAULT = 0,
-		RIGHT_ROUND = 1,
-		LEFT_ROUND = 2,
-		ROUNDED = 3,
+		SQUARE = 0,
+		ROUNDED = 1,
+		
+		RIGHT_ROUND = 2,
+		LEFT_ROUND = 3,
+		
 		TOP_ROUND = 4,
+		BOTTOM_ROUND = 5,
+		
+		
 	}
 	
 	
-	// Default platform type with platform above
-	if(above == true)
+	if(above == true && right == true && left == true)
 	{
-		subimage = PLAT_TYPE.DEFAULT;
-		
+		subimage = PLAT_TYPE.SQUARE
 	}else
 	
-	// Right and Left side are rounded
-	if(right == false && left == false && below == false)
+	if(left == true && right == false)
 	{
-		subimage = PLAT_TYPE.ROUNDED;
+		subimage = PLAT_TYPE.RIGHT_ROUND
 	}else
 	
-	// Top Right and Left side are rounded
-	if(right == false && left == false && below == true)
+	if(left == false && right == true)
 	{
-		subimage = PLAT_TYPE.TOP_ROUND;
+		subimage = PLAT_TYPE.LEFT_ROUND
 	}else
 	
-	// Right side is rounded
-	if(right == false)
+	if(left == false && right == false && above == false && below == false)
 	{
-		subimage = PLAT_TYPE.RIGHT_ROUND;
+		subimage = PLAT_TYPE.ROUNDED
 	}else
 	
-	// Left side is rounded
-	if(left == false)
+	if(above == false && below == true)
 	{
-		subimage = PLAT_TYPE.LEFT_ROUND;
+		subimage = PLAT_TYPE.TOP_ROUND
 	}else
+	
+	if(below == false && above == true)
 	{
-		// Used for platform between others, without a platform above
-		subimage = PLAT_TYPE.DEFAULT;
+		subimage = PLAT_TYPE.BOTTOM_ROUND
 	}
 	
 }

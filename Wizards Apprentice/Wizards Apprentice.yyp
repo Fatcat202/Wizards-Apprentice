@@ -190,6 +190,7 @@
     {"id":{"name":"spr_mana_single_drained","path":"sprites/spr_mana_single_drained/spr_mana_single_drained.yy",},},
     {"id":{"name":"spr_mana_single_empty","path":"sprites/spr_mana_single_empty/spr_mana_single_empty.yy",},},
     {"id":{"name":"spr_mana_single_full","path":"sprites/spr_mana_single_full/spr_mana_single_full.yy",},},
+    {"id":{"name":"spr_plat_aa_corner","path":"sprites/spr_plat_aa_corner/spr_plat_aa_corner.yy",},},
     {"id":{"name":"spr_plat_aa_slope_left","path":"sprites/spr_plat_aa_slope_left/spr_plat_aa_slope_left.yy",},},
     {"id":{"name":"spr_plat_aa_slope_right","path":"sprites/spr_plat_aa_slope_right/spr_plat_aa_slope_right.yy",},},
     {"id":{"name":"spr_plat_aa_slope_top_left","path":"sprites/spr_plat_aa_slope_top_left/spr_plat_aa_slope_top_left.yy",},},

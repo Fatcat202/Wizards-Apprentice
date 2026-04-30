@@ -1,92 +1,98 @@
 /// @description Apply Texture
 
 
-#region Dynamic Textures
-	ground_texture = spr_tex_ground_stone
-	
-	// Create shader
-	shader_set(shd_platform_multi_texture);
-
-	var sampler_other = shader_get_sampler_index(shd_platform_multi_texture, "shape_texture");
-	texture_set_stage(sampler_other, sprite_get_texture(sprite_index, subimage));
-	
-	
-	// Create surface
-	if(!surface_exists(surf))
-	{
-		surf = surface_create(sprite_width, sprite_height);
-		
-		surface_set_target(surf)
-		draw_clear_alpha(c_black, 0);
-	}
-	
-	// Set surface target
-	surface_set_target(surf);
-	
-	// Draw sprite to surface
-	draw_sprite_ext(platform_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, image_xscale, image_yscale, 0, c_white, 1);
 
 
+// Create shader
+shader_set(shd_platform_multi_texture);
 
-	// Rotation of overlap sprite
-	var rotation = 0
+var sampler_other = shader_get_sampler_index(shd_platform_multi_texture, "shape_texture");
+texture_set_stage(sampler_other, sprite_get_texture(sprite_index, subimage));
 
-	// If platform is a slope
-	if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
-	{
 		
+// Create surface
+if(!surface_exists(surf))
+{
+	surf = surface_create(sprite_width, sprite_height);
 		
-		if(obj_platform_aa_slope_left)
-		{
-			ground_left()
-			ground_below()
-		}else
-		
-		if(obj_platform_aa_slope_right)
-		{
-			ground_right()
-			ground_below()
-		}else
-		
-		if(obj_platform_aa_slope_top_left)
-		{
-			ground_left()
-			ground_above()
-		}else
-		
-		if(obj_platform_aa_slope_top_right)
-		{
-			ground_right()
-			ground_above()
-		}
-		
-		
-	}else // If the platform is not a slope
+	surface_set_target(surf)
+	draw_clear_alpha(c_black, 0);
+}
+	
+// Set surface target
+surface_set_target(surf);
+	
+// Draw sprite to surface
+draw_sprite_ext(platform_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, image_xscale, image_yscale, 0, c_white, 1);
+
+
+// If platform is a slope
+if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
+{
+	if(obj_platform_aa_slope_left)
 	{
 		ground_left()
+		ground_below()
+	}else
+		
+	if(obj_platform_aa_slope_right)
+	{
+		ground_right()
+		ground_below()
+	}else
+		
+	if(obj_platform_aa_slope_top_left)
+	{
+		ground_left()
+		ground_above()
+	}else
+		
+	if(obj_platform_aa_slope_top_right)
+	{
 		ground_right()
 		ground_above()
-		ground_below()
-		
 	}
 	
 	
+	// Default blank corners
+	var corner_top_left = shader_get_sampler_index(shd_platform_multi_texture, "corner_top_left");
+	texture_set_stage(corner_top_left, sprite_get_texture(spr_plat_aa_corner, 0));
 	
+	var corner_top_right = shader_get_sampler_index(shd_platform_multi_texture, "corner_top_right");
+	texture_set_stage(corner_top_right, sprite_get_texture(spr_plat_aa_corner, 0));
 	
+	var corner_bottom_left = shader_get_sampler_index(shd_platform_multi_texture, "corner_bottom_left");
+	texture_set_stage(corner_bottom_left, sprite_get_texture(spr_plat_aa_corner, 0));
 	
+	var corner_bottom_right = shader_get_sampler_index(shd_platform_multi_texture, "corner_bottom_right");
+	texture_set_stage(corner_bottom_right, sprite_get_texture(spr_plat_aa_corner, 0));
 	
+		
+}else // If the platform is not a slope
+{
+	// Default sides
+	ground_left()
+	ground_right()
+	ground_above()
+	ground_below()
 	
-	
-	// Reset surface target
-	surface_reset_target()
-	
-	// Draw surface
-	draw_surface(surf, x - sprite_xoffset, y - sprite_yoffset);
-	
-	// End shader
-	shader_reset();
+	// Corners
+	ground_top_left()
+	ground_top_right()
+	ground_bottom_left()
+	ground_bottom_right()
+}
 
-#endregion Dynamic Textures
+
+// Reset surface target
+surface_reset_target()
+	
+// Draw surface
+draw_surface(surf, x - sprite_xoffset, y - sprite_yoffset);
+	
+// End shader
+shader_reset();
+
 
 
 // Inherit the parent event
