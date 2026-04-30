@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_platform_aa_slope_left",
+  "%Name":"obj_platform_aa_slope_parent",
   "eventList":[],
   "managed":true,
-  "name":"obj_platform_aa_slope_left",
+  "name":"obj_platform_aa_slope_parent",
   "overriddenProperties":[],
   "parent":{
     "name":"Auto Assign",
     "path":"folders/Objects/Platforms/Solid/Auto Assign.yy",
   },
   "parentObjectId":{
-    "name":"obj_platform_aa_slope_parent",
-    "path":"objects/obj_platform_aa_slope_parent/obj_platform_aa_slope_parent.yy",
+    "name":"obj_platform_aa_parent",
+    "path":"objects/obj_platform_aa_parent/obj_platform_aa_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -30,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_plat_aa_slope_right",
-    "path":"sprites/spr_plat_aa_slope_right/spr_plat_aa_slope_right.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

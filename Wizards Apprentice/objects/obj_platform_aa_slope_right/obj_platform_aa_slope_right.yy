@@ -10,8 +10,8 @@
     "path":"folders/Objects/Platforms/Solid/Auto Assign.yy",
   },
   "parentObjectId":{
-    "name":"obj_platform_aa_parent",
-    "path":"objects/obj_platform_aa_parent/obj_platform_aa_parent.yy",
+    "name":"obj_platform_aa_slope_parent",
+    "path":"objects/obj_platform_aa_slope_parent/obj_platform_aa_slope_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
