@@ -13,8 +13,8 @@ right = place_meeting(x + search, y, obj_platform_parent)
 above = place_meeting(x, y - search, obj_platform_parent)
 below = place_meeting(x, y + search, obj_platform_parent)
 
-search = 1
-// Used for corners
+
+// Used for corners, booleans
 top_left = place_meeting(x - search, y - search, obj_platform_parent)
 top_right = place_meeting(x + search, y - search, obj_platform_parent)
 bottom_left = place_meeting(x - search, y + search, obj_platform_parent)

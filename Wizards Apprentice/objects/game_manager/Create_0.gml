@@ -228,8 +228,8 @@
 		view_height = 360;
 	
 		// Used for full screen
-		//view_width = 1960;
-		//view_height = 1080;
+//		view_width = 1960;
+//		view_height = 1080;
 
 	// Scaling (hardcoded for now)
 	window_scale = 1;

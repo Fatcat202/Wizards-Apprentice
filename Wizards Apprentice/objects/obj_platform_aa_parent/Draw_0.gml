@@ -29,28 +29,76 @@ draw_sprite_ext(platform_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, ima
 // If platform is a slope
 if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 {
-	if(obj_platform_aa_slope_left)
+
+	if(object_index == obj_platform_aa_slope_left)
 	{
 		ground_left()
 		ground_below()
-	}else
 		
-	if(obj_platform_aa_slope_right)
+
+		if(top_right == false)
+		{
+			rotation = 135
+			// Used to offset location of sprite
+			xx = 4
+			yy = -14
+		
+			// Draw ground overlap texture
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);
+		}
+	}
+		
+	if(object_index == obj_platform_aa_slope_right)
 	{
 		ground_right()
 		ground_below()
-	}else
 		
-	if(obj_platform_aa_slope_top_left)
+		if(top_left == false)
+		{
+			rotation = 225
+			xx = -4
+			yy = -14
+
+			// Draw ground overlap texture
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);
+		}
+	}
+	
+	if(object_index == obj_platform_aa_slope_top_left) // **NOT WORKING**
 	{
+		ground_above()
 		ground_left()
-		ground_above()
-	}else
 		
-	if(obj_platform_aa_slope_top_right)
+
+		if(bottom_right == false)
+		{
+			rotation = 0
+			// Used to offset location of sprite
+			xx = 0
+			yy = 0
+
+			// Draw ground overlap texture
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);
+		}
+	}
+		
+	if(object_index == obj_platform_aa_slope_top_right) // **NOT WORKING**
 	{
-		ground_right()
 		ground_above()
+		ground_right()
+
+
+		if(bottom_left == false)
+		{
+			rotation = 0
+			// Used to offset location of sprite
+			xx = 4
+			yy = -14
+
+			// Draw ground overlap texture
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);
+		}
+		
 	}
 	
 	
@@ -68,7 +116,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 	texture_set_stage(corner_bottom_right, sprite_get_texture(spr_plat_aa_corner, 0));
 	
 		
-}else // If the platform is not a slope
+}else if(obj_platform_aa_square)// If the platform is not a slope
 {
 	// Default sides
 	ground_left()
@@ -86,14 +134,13 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 
 // Reset surface target
 surface_reset_target()
-	
+
 // Draw surface
 draw_surface(surf, x - sprite_xoffset, y - sprite_yoffset);
-	
+
 // End shader
 shader_reset();
 
 
-
 // Inherit the parent event
-event_inherited();
+event_inherited();	
