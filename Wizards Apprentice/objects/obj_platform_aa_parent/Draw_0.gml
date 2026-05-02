@@ -1,14 +1,15 @@
 /// @description Apply Texture
 
 
-
-
 // Create shader
 shader_set(shd_platform_multi_texture);
 
+// Send shape to the shader
 var sampler_other = shader_get_sampler_index(shd_platform_multi_texture, "shape_texture");
 texture_set_stage(sampler_other, sprite_get_texture(sprite_index, subimage));
 
+// Ensure base texture is set for the surface drawing
+texture_set_stage(0, surface_get_texture(surf));
 		
 // Create surface
 if(!surface_exists(surf))
@@ -22,13 +23,18 @@ if(!surface_exists(surf))
 // Set surface target
 surface_set_target(surf);
 	
-// Draw sprite to surface
+
+// Draw texture to the surface
 draw_sprite_ext(platform_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, image_xscale, image_yscale, 0, c_white, 1);
 
 
 // If platform is a slope
 if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 {
+	// Variables to offset location of sprites
+	var x_shift = 0
+	var y_shift = 16
+	
 
 	if(object_index == obj_platform_aa_slope_left)
 	{
@@ -38,16 +44,16 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 
 		if(top_right == false)
 		{
-			rotation = 135
+			var rotation = 135
 			// Used to offset location of sprite
-			xx = 4
-			yy = -14
+			var xx = x_shift
+			var yy = -y_shift
 		
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);
 		}
 	}
-		
+
 	if(object_index == obj_platform_aa_slope_right)
 	{
 		ground_right()
@@ -55,15 +61,15 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		
 		if(top_left == false)
 		{
-			rotation = 225
-			xx = -4
-			yy = -14
+			var rotation = 225
+			var xx = -x_shift
+			var yy = -y_shift
 
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);
 		}
 	}
-	
+
 	if(object_index == obj_platform_aa_slope_top_left) // **NOT WORKING**
 	{
 		ground_above()
@@ -72,13 +78,14 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 
 		if(bottom_right == false)
 		{
-			rotation = 0
+			var rotation = 45
 			// Used to offset location of sprite
-			xx = 0
-			yy = 0
+			var xx = x_shift
+			var yy = y_shift
 
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);	
+		
 		}
 	}
 		
@@ -90,10 +97,10 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 
 		if(bottom_left == false)
 		{
-			rotation = 0
+			var rotation = 315
 			// Used to offset location of sprite
-			xx = 4
-			yy = -14
+			var xx = -x_shift
+			var yy = y_shift
 
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale, image_yscale, rotation, c_white, 1);
@@ -130,7 +137,6 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 	ground_bottom_left()
 	ground_bottom_right()
 }
-
 
 // Reset surface target
 surface_reset_target()

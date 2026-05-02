@@ -118,6 +118,7 @@
     {"id":{"name":"obj_spell_wall_of_ice","path":"objects/obj_spell_wall_of_ice/obj_spell_wall_of_ice.yy",},},
     {"id":{"name":"obj_spell_water_splash","path":"objects/obj_spell_water_splash/obj_spell_water_splash.yy",},},
     {"id":{"name":"obj_wall_player_parent","path":"objects/obj_wall_player_parent/obj_wall_player_parent.yy",},},
+    {"id":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
     {"id":{"name":"rm_testing","path":"rooms/rm_testing/rm_testing.yy",},},
     {"id":{"name":"scr_check_semi_solid","path":"scripts/scr_check_semi_solid/scr_check_semi_solid.yy",},},
     {"id":{"name":"scr_damage","path":"scripts/scr_damage/scr_damage.yy",},},
@@ -231,6 +232,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_testing","path":"rooms/rm_testing/rm_testing.yy",},},
+    {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

@@ -16,6 +16,12 @@ function scr_texture_auto_assign()
 			ground_texture = spr_tex_ground_stone
 		break;
 		
+		case "rm_testing_1":
+		
+			platform_texture = spr_tex_stone
+			ground_texture = spr_tex_ground_stone
+		break;
+		
 		default:
 			
 			// Apply default texture

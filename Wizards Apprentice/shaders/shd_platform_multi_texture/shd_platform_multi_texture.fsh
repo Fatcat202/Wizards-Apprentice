@@ -25,10 +25,10 @@ void main()
 	vec4 corner_tex_top_right = texture2D(corner_top_right, v_vTexcoord);
 	
 	// Bottom Right corner
-	vec4 corner_tex_bottom_right = texture2D(corner_bottom_left, v_vTexcoord);
+	vec4 corner_tex_bottom_right = texture2D(corner_bottom_right, v_vTexcoord);
 	
 	// Bottom left corner
-	vec4 corner_tex_bottom_left = texture2D(corner_bottom_right, v_vTexcoord);
+	vec4 corner_tex_bottom_left = texture2D(corner_bottom_left, v_vTexcoord);
 	
 	shape_tex_color.a += corner_tex_top_left.a + corner_tex_top_right.a + corner_tex_bottom_right.a + corner_tex_bottom_left.a;
 
