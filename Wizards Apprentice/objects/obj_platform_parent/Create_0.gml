@@ -76,3 +76,39 @@ evaporation_timer = 0
 
 spreading_water_length = game_get_speed(gamespeed_fps) * spreading_water_time
 spreading_water_timer = 0
+
+
+function func_elements(xx = x, yy = y, xx_scale = image_xscale, yy_scale = image_yscale, rot = 0)
+{
+	// Used to display element sprites on platforms
+
+	// Check for elements, and draw if activated
+
+	// Stores sprite of element to draw
+	var element_draw = noone
+
+	if(element == "Water")
+	{
+		// Check if water is charged
+		if(is_charged == true)
+		{
+			element_draw = spr_element_water_charged
+		}else
+		{
+			element_draw = spr_element_water
+		}
+	}else if(element == "Ice")
+	{
+		element_draw = spr_element_ice
+	
+	}else if(element == "Oil")
+	{
+		element_draw = spr_element_oil
+	}
+	
+	if(element_draw != noone)
+	{
+		scr_test()
+		draw_sprite_ext(element_draw, 0, xx + sprite_xoffset, yy + sprite_yoffset , xx_scale, yy_scale, rot, c_white, 1)
+	}
+}
