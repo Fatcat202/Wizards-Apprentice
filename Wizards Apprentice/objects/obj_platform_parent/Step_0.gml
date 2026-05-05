@@ -3,6 +3,7 @@
 
 var height = sprite_get_height(sprite_index)
 var half_height = height / 2;
+var quarter_height = height / 4;
 
 var width = sprite_get_width(sprite_index)
 var half_width = width / 2;
@@ -29,7 +30,6 @@ var quarter_width = width / 4;
 			platform_id : id
 		});
 			
-
 		// Spawn right flame
 		flame_1 = instance_create_layer(x + quarter_width, y - half_height, "Spells", obj_element_flaming,
 		{
@@ -38,6 +38,24 @@ var quarter_width = width / 4;
 	
 		// State flames are now spawned to prevent duplication
 		flames_spawned = true;
+		
+		// Rotate and shift flame sprites to match slope angle
+		if(object_index == obj_platform_aa_slope_left)
+		{
+			flame_0.image_angle = 45
+			flame_0.y += half_height + quarter_height
+			
+			flame_1.image_angle = 45
+			flame_1.y += quarter_height
+		}
+		if(object_index == obj_platform_aa_slope_right)
+		{
+			flame_0.image_angle = 315
+			flame_0.y += quarter_height
+			
+			flame_1.image_angle = 315
+			flame_1.y += half_height + quarter_height
+		}
 
 	}
 	
@@ -61,6 +79,18 @@ var quarter_width = width / 4;
 	{
 		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam)
 		steam_spawned = true;
+		
+		// Rotate and shift steam sprites to match slope angle
+		if(object_index == obj_platform_aa_slope_left)
+		{
+			steam.image_angle = 45
+			steam.y += half_height
+		}
+		if(object_index == obj_platform_aa_slope_right)
+		{
+			steam.image_angle = 315
+			steam.y += half_height
+		}
 		
 		
 		// Reset conditions when steam dissapates
