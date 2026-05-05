@@ -12,6 +12,8 @@ scr_texture_auto_assign()
 // Used to modify image_index
 subimage = 0
 
+// Surface the sprite and all modifications are drawn to
+surf = -1;
 
 // Default is set to Empty
 // May also be set to "Water", "Ice", or "Oil"
@@ -78,7 +80,7 @@ spreading_water_length = game_get_speed(gamespeed_fps) * spreading_water_time
 spreading_water_timer = 0
 
 
-function func_elements(xx = x, yy = y, xx_scale = image_xscale, yy_scale = image_yscale, rot = 0)
+function func_elements(xx = 0, yy = 0, xx_scale = image_xscale, yy_scale = image_yscale, rot = 0)
 {
 	// Used to display element sprites on platforms
 
@@ -108,7 +110,6 @@ function func_elements(xx = x, yy = y, xx_scale = image_xscale, yy_scale = image
 	
 	if(element_draw != noone)
 	{
-		scr_test()
-		draw_sprite_ext(element_draw, 0, xx + sprite_xoffset, yy + sprite_yoffset , xx_scale, yy_scale, rot, c_white, 1)
+		draw_sprite_ext(element_draw, 0, xx + sprite_xoffset, yy + sprite_yoffset, xx_scale, yy_scale, rot, c_white, 1)
 	}
 }

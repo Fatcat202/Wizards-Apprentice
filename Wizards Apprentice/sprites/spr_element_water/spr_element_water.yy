@@ -10,20 +10,20 @@
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
-  "For3D":false,
+  "For3D":true,
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"d8a67d1c-7195-4415-b6a8-8c89648cd2ed","name":"d8a67d1c-7195-4415-b6a8-8c89648cd2ed","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":16,
+  "height":32,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"726b3d5b-4b60-45db-b3dd-f405237da427","blendMode":0,"displayName":"default","isLocked":false,"name":"726b3d5b-4b60-45db-b3dd-f405237da427","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_element_water",
   "nineSlice":null,
-  "origin":7,
+  "origin":4,
   "parent":{
     "name":"Elements",
     "path":"folders/Sprites/Platforms/Elements.yy",

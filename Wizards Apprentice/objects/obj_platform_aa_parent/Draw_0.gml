@@ -171,5 +171,8 @@ surface_reset_target()
 // Draw surface
 draw_surface(surf, x - sprite_xoffset, y - sprite_yoffset);
 
+// Free memory
+surface_free(surf)
+
 // End shader
 shader_reset();

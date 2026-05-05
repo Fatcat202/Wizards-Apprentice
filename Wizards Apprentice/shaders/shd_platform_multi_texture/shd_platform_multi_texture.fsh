@@ -10,6 +10,7 @@ uniform sampler2D corner_bottom_right;
 uniform sampler2D corner_bottom_left;
 
 
+// Combines together shape and texture sprites to automatically fill platform textures
 void main()
 {
 	// Main texture to use

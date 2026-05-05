@@ -8,6 +8,16 @@ var width = sprite_get_width(sprite_index)
 var half_width = width / 2;
 var quarter_width = width / 4;
 
+
+#region Surface
+	// Recreate surface if destroyed
+	if(!surface_exists(surf))
+	{
+		surf = surface_create(sprite_width, sprite_height); 
+	}
+#endregion Surface
+
+
 #region Flaming
 
 	if(is_flaming == true && flames_spawned == false)
