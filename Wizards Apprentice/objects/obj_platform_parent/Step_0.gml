@@ -18,7 +18,6 @@ var quarter_width = width / 4;
 	}
 #endregion Surface
 
-
 #region Flaming
 
 	if(is_flaming == true && flames_spawned == false)
@@ -71,7 +70,7 @@ var quarter_width = width / 4;
 	
 	
 
-#region Flaming
+#endregion Flaming
 
 #region Steaming
 	
@@ -113,7 +112,6 @@ var quarter_width = width / 4;
 	
 #endregion Charged
 
-
 #region Water Level
 	
 	// Reset water level if not water based element
@@ -150,8 +148,35 @@ var quarter_width = width / 4;
 	
 	#region Water transfer
 	
+	
+		// Water sliding down slopes **NOT WORKING**
+		if(element == "Water" && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
+		{
+			if(object_index == obj_platform_aa_slope_left)
+			{
+				if(place_meeting(x - 1, y + 1, obj_platform_parent))
+				{
+					other_id = instance_place(x - 1, y + 1, obj_platform_parent)
+					
+					scr_element_inter_platform_interactions(id, other_id)
+					
+				}
+			}else
+				
+			if(object_index == obj_platform_aa_slope_right)
+			{
+				if(place_meeting(x + 1, y + 1, obj_platform_parent))
+				{
+					other_id = instance_place(x + 1, y + 1, obj_platform_parent)
+				
+					scr_element_inter_platform_interactions(id, other_id)
+				}
+			}
+			
+		}else
+	
+	
 		// If water, check water levels of platform to left and right, transfer to lowest level
-		
 		if(element == "Water" && water_level > 0)
 		{
 			// Platform id to right and left
@@ -210,6 +235,8 @@ var quarter_width = width / 4;
 	#endregion Water transfer
 	
 	
+	#region Check Directions
+	
 	// Check right
 	if(place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
 	{
@@ -225,43 +252,46 @@ var quarter_width = width / 4;
 	}else
 	
 	// Check top
-	if(place_meeting(x, y + check_distance, obj_platform_parent) && interacting == false && rand_dir == 2) 
+	if(place_meeting(x, y - check_distance, obj_platform_parent) && interacting == false && rand_dir == 2) 
 	{
-		other_id = instance_place(x, y + check_distance, obj_platform_parent)
+		other_id = instance_place(x, y - check_distance, obj_platform_parent)
 		scr_element_inter_platform_interactions(id, other_id)
 	}else
 	
 	// Check bottom
-	if(place_meeting(x, y - check_distance, obj_platform_parent) && interacting == false  && rand_dir == 3)
+	if(place_meeting(x, y + check_distance, obj_platform_parent) && interacting == false  && rand_dir == 3)
 	{
-		other_id = instance_place(x, y - check_distance, obj_platform_parent)
+		other_id = instance_place(x, y + check_distance, obj_platform_parent)
 		scr_element_inter_platform_interactions(id, other_id)
 	}
 	
-	if(element = "Water" && water_level > 0)
-	{
-		rand_dir = irandom(1)
-		show_debug_message("rand_dir = " + string(rand_dir))
-		
-		if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
-		{
-			water_droplet = instance_create_layer(x + sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
-			{
-				level : 1
-			})
-			water_level--
-		}else
-		
-		if(!place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
-		{
-			water_droplet = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
-			{
-				level : 1
-			})
-			water_level--
-		}
-	}
 
+	
+	#region Water Droplets
+		if(element = "Water" && water_level > 0)
+		{
+			rand_dir = irandom(1)
+			show_debug_message("rand_dir = " + string(rand_dir))
+		
+			if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
+			{
+				water_droplet = instance_create_layer(x + sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
+				{
+					level : 1
+				})
+				water_level--
+			}else
+		
+			if(!place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
+			{
+				water_droplet = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
+				{
+					level : 1
+				})
+				water_level--
+			}
+		}
+	#endregion Water Droplets
 	
 
 #endregion Inter Platform Element Interactions

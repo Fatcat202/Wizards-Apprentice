@@ -150,7 +150,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 	
 	#region Water Spreading
 
-		if(own_element == "Water" && own_id.water_level > 0)
+		if(own_element == "Water" && own_id.water_level > 0 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{
 			if(other_element == "Empty")
 			{
@@ -181,7 +181,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Declare an interaction has started
 				interacting = true;
 				
-				// Start timer to turn water platform to ice
+				// Start timer to transfer water level
 				if(own_id.spreading_water_timer >= own_id.spreading_water_length)
 				{
 					var level = own_id.water_level
@@ -199,6 +199,51 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Increment timer
 				} own_id.spreading_water_timer++
 			}
+		}else
+		
+		// Water sliding down slopes
+		if(own_id.element == "Water" && (own_id.object_index == obj_platform_aa_slope_left || own_id.object_index == obj_platform_aa_slope_right))
+		{
+
+			// Declare an interaction has started
+			interacting = true;
+				
+			// Start timer to spread water between platforms
+			if(own_id.spreading_water_timer >= own_id.spreading_water_length)
+			{
+				var level = own_id.water_level
+				if(other_id.element == "Empty" || other_id.element == "Water")
+				{
+					scr_test()
+					show_debug_message("Level = " + string(level))
+						
+					if(!object_is_ancestor(other_id.object_index, obj_platform_aa_slope_parent) && other_id.element == "Water")
+					{
+						// Set minimum water level
+						if(level == 0) level = 1;
+					}
+						
+						
+					// Change other element to water
+					other_id.element = "Water";
+					// Transfer water level
+					other_id.water_level += level;
+					own_id.water_level -= 0
+					
+					// Clear own element
+					own_id.element = "Empty"
+				}
+				
+				// Reset timer
+				other_id.spreading_water_timer = 0;
+				own_id.spreading_water_timer = 0;
+					
+				// Set interacting to false
+				interacting = false;
+					
+			// Increment timer
+			} own_id.spreading_water_timer++
+
 		}
 		
 		
