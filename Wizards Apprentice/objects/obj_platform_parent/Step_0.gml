@@ -76,8 +76,12 @@ var quarter_width = width / 4;
 	
 	if(is_steaming == true && steam_spawned == false)
 	{
-		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam)
+		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam,
+		{
+			platform_id : id
+		})
 		steam_spawned = true;
+
 		
 		// Rotate and shift steam sprites to match slope angle
 		if(object_index == obj_platform_aa_slope_left)
@@ -89,14 +93,6 @@ var quarter_width = width / 4;
 		{
 			steam.image_angle = 315
 			steam.y += half_height
-		}
-		
-		
-		// Reset conditions when steam dissapates
-		if(instance_exists(steam) == false)
-		{
-			is_steaming = false
-			steam_spawned = false
 		}
 	}
 	
@@ -135,7 +131,7 @@ var quarter_width = width / 4;
 	var check_distance = 1
 	
 	// Generate random int to select cardinal direction to interact with
-	var rand_dir = irandom(3)
+	var rand_dir = irandom(1)
 	
 	//show_debug_message("rand_dir = " + string(rand_dir))
 	
@@ -146,7 +142,15 @@ var quarter_width = width / 4;
 		scr_element_inter_platform_interactions(id, other_id)
 	}else
 	
+	if(interacting == false)
+	{
+	  other_id = -1
+	}
+	
+	
 	#region Water transfer
+	
+
 	
 	
 		// Water sliding down slopes **NOT WORKING**
@@ -154,22 +158,24 @@ var quarter_width = width / 4;
 		{
 			if(object_index == obj_platform_aa_slope_left)
 			{
-				if(place_meeting(x - 1, y + 1, obj_platform_parent))
+				if(bottom_left_free == false)
 				{
-					other_id = instance_place(x - 1, y + 1, obj_platform_parent)
+					other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
 					
 					scr_element_inter_platform_interactions(id, other_id)
-					
+
+						
 				}
 			}else
 				
 			if(object_index == obj_platform_aa_slope_right)
 			{
-				if(place_meeting(x + 1, y + 1, obj_platform_parent))
+				if(bottom_right_free == false)
 				{
-					other_id = instance_place(x + 1, y + 1, obj_platform_parent)
-				
+					other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
+
 					scr_element_inter_platform_interactions(id, other_id)
+
 				}
 			}
 			
@@ -249,29 +255,16 @@ var quarter_width = width / 4;
 	{
 		other_id = instance_place(x - check_distance, y, obj_platform_parent)
 		scr_element_inter_platform_interactions(id, other_id)
-	}else
-	
-	// Check top
-	if(place_meeting(x, y - check_distance, obj_platform_parent) && interacting == false && rand_dir == 2) 
-	{
-		other_id = instance_place(x, y - check_distance, obj_platform_parent)
-		scr_element_inter_platform_interactions(id, other_id)
-	}else
-	
-	// Check bottom
-	if(place_meeting(x, y + check_distance, obj_platform_parent) && interacting == false  && rand_dir == 3)
-	{
-		other_id = instance_place(x, y + check_distance, obj_platform_parent)
-		scr_element_inter_platform_interactions(id, other_id)
 	}
 	
-
-	
 	#region Water Droplets
-		if(element = "Water" && water_level > 0)
+		if(element == "Water" && water_level > 0 && interacting == false
+		&& above_free == true // No platform above
+		&& top_right_free == true // No platform top right
+		&& top_left_free == true) // No platform top left
 		{
 			rand_dir = irandom(1)
-			show_debug_message("rand_dir = " + string(rand_dir))
+			//show_debug_message("rand_dir = " + string(rand_dir))
 		
 			if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
 			{

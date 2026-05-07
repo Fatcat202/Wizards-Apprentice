@@ -150,6 +150,12 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 	
 	#region Water Spreading
 
+		/*if(own_element == "Water" && other_id.x != own_id.x)
+		{
+			scr_test()
+			exit
+		}*/
+		
 		if(own_element == "Water" && own_id.water_level > 0 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{
 			if(other_element == "Empty")
@@ -176,7 +182,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Increment timer
 				} own_id.spreading_water_timer++
 				
-			}else if(other_element == "Water")
+			}else if(other_element == "Water" && other_id.water_level < own_id.water_level)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -214,8 +220,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				var level = own_id.water_level
 				if(other_id.element == "Empty" || other_id.element == "Water")
 				{
-					scr_test()
-					show_debug_message("Level = " + string(level))
+					//show_debug_message("Level = " + string(level))
 						
 					if(!object_is_ancestor(other_id.object_index, obj_platform_aa_slope_parent) && other_id.element == "Water")
 					{
@@ -228,7 +233,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					other_id.element = "Water";
 					// Transfer water level
 					other_id.water_level += level;
-					own_id.water_level -= 0
+					own_id.water_level = 0
 					
 					// Clear own element
 					own_id.element = "Empty"

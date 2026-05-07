@@ -111,7 +111,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 			{
 				scr_element_reset_variables()
 				element = "Water"
-				instance_destroy(steam)
+				instance_destroy(steam, true)
 			}
 			
 		}

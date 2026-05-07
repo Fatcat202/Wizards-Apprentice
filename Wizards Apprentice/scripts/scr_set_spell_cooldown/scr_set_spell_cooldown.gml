@@ -90,7 +90,7 @@ function scr_set_spell_cooldown(_cooldown, spell_slot = active_spell)
 		break;
 		
 		case -1:
-			show_debug_message("ERROR: Spell slot not passed through for cooldown");
+			show_error("ERROR: Spell slot not passed through for cooldown", false);
 		break;
 	}
 }

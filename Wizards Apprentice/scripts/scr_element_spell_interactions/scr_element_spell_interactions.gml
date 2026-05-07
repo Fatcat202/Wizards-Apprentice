@@ -145,14 +145,14 @@ function scr_element_spell_interactions(own_id, other_id)
 
 	if(other_id.level <= 0) with(other_id)
 	{
-		show_debug_message(string(other_id.title) + " Destroyed")
+		//show_debug_message(string(other_id.title) + " Destroyed")
 		instance_destroy()
 	}
 
 	
 	if(own_id.level <= 0) with(own_id)
 	{
-		show_debug_message(string(own_id.title) + " Destroyed")
+		//show_debug_message(string(own_id.title) + " Destroyed")
 		instance_destroy()
 	}
 }

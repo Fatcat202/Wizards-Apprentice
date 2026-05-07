@@ -41,7 +41,7 @@ var spr_height = sprite_get_height(sprite_index)
 			break;
 		
 			default:
-				show_debug_message("Error: Element Shield Cannot Be Displayed");
+				show_error("Error: Element Shield Cannot Be Displayed", false);
 			break;
 		}
 	}

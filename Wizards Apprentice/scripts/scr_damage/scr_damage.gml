@@ -32,5 +32,5 @@ function scr_damage(dmg, _element = element)
 	
 	
 	// Debug
-	show_debug_message("Damage Element: " + string(_element))
+	//show_debug_message("Damage Element: " + string(_element))
 }

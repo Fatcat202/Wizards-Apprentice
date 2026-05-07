@@ -6,6 +6,9 @@ event_inherited()
 // Used for dynamic platform textures
 platform_texture = sprite_index
 
+sprite_half_height = sprite_height / 2
+sprite_half_width = sprite_width / 2
+
 // Assign textures
 scr_texture_auto_assign()
 
@@ -57,9 +60,6 @@ evaporation_time = 4;
 // Time for water to spread to other platforms
 spreading_water_time = 0.5;
 
-
-
-
 // Used for timer when turning water platform to ice
 freeze_length = game_get_speed(gamespeed_fps) * freezing_time
 freeze_timer = 0
@@ -78,6 +78,18 @@ evaporation_timer = 0
 
 spreading_water_length = game_get_speed(gamespeed_fps) * spreading_water_time
 spreading_water_timer = 0
+
+// Checks cardinal direction to detect if platform is touching another
+above_free = !place_meeting(x, y - sprite_height, obj_platform_parent)
+below_free = !place_meeting(x, y + sprite_height, obj_platform_parent)
+right_free = !place_meeting(x + sprite_width, y, obj_platform_parent)
+left_free = !place_meeting(x - sprite_width, y, obj_platform_parent)
+
+// Check corners to detect if platform is touching another
+top_right_free = !place_meeting(x + sprite_width, y - sprite_height, obj_platform_parent)
+top_left_free = !place_meeting(x - sprite_width, y - sprite_height, obj_platform_parent)
+bottom_right_free = !place_meeting(x + sprite_width, y + sprite_height, obj_platform_parent)
+bottom_left_free = !place_meeting(x - sprite_width, y + sprite_height, obj_platform_parent)
 
 
 function func_elements(xx = 0, yy = 0, xx_scale = image_xscale, yy_scale = image_yscale, rot = 0)
