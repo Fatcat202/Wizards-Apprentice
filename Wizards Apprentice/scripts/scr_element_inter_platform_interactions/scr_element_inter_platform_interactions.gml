@@ -150,11 +150,12 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 	
 	#region Water Spreading
 
-		/*if(own_element == "Water" && other_id.x != own_id.x)
+		// Prevent water from spreading to platform located under another platform
+		if(own_element == "Water" && other_id.above_free == false)
 		{
 			scr_test()
 			exit
-		}*/
+		}
 		
 		if(own_element == "Water" && own_id.water_level > 0 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{

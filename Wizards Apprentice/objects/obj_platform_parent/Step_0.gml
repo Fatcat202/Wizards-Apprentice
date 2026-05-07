@@ -247,14 +247,25 @@ var quarter_width = width / 4;
 	if(place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
 	{
 		other_id = instance_place(x + check_distance, y, obj_platform_parent)
-		scr_element_inter_platform_interactions(id, other_id)
+		
+		// Prevent water from spreading to platform located under another platform
+		if(other_id.above_free == true)
+		{
+			scr_element_inter_platform_interactions(id, other_id)
+		}
+		
 	}else
 	
 	// Check left
 	if(place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
 	{
 		other_id = instance_place(x - check_distance, y, obj_platform_parent)
-		scr_element_inter_platform_interactions(id, other_id)
+		
+		// Prevent water from spreading to platform located under another platform
+		if(other_id.above_free == true)
+		{
+			scr_element_inter_platform_interactions(id, other_id)
+		}
 	}
 	
 	#region Water Droplets
