@@ -21,8 +21,6 @@ bottom_left = place_meeting(x - search, y + search, obj_platform_parent)
 bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 
 
-
-
 #region Ground Sprite Functions
 
 	rotation = 0

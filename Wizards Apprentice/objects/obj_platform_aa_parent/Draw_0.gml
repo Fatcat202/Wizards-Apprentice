@@ -34,7 +34,7 @@ draw_sprite_ext(platform_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, ima
 if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 {
 	// Variables to shift ground sprite to position
-	var x_shift = 0
+	var xx = 0
 	var y_shift = 16
 	
 	// X scale modifier for ground sprites
@@ -46,7 +46,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 	// x and y shift for elements
 	var ele_x_shift = 9
 	var ele_y_shift = 9
-	
+
 
 	if(object_index == obj_platform_aa_slope_right)
 	{
@@ -54,13 +54,28 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		ground_below()
 	
 		var rotation = 135
-		// Used to offset location of sprite
-		var xx = x_shift
-		var yy = -y_shift
+
+		#region Corner
+		
+			// Check for and draw ground corner
+			if(!place_meeting(x - sprite_width, y + sprite_height, obj_platform_parent) && (left == true && below == true))
+			{
+				// Used to offset location of sprite
+				xx = -2
+				var yy = y_shift / 2
+
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+			}
+		
+		#endregion Corner
+		
 		
 		if(top_right == false)
 		{
-
+			// Used to offset location of sprite
+			xx = 0
+			var yy = -y_shift
+			
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
 		}
@@ -74,10 +89,26 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		ground_right()
 		ground_below()
 		
+		var rotation = 225
+		
+		#region Corner
+		
+			// Check for and draw ground corner
+			if(!place_meeting(x + sprite_width, y + sprite_height, obj_platform_parent) && (right == true && below == true))
+			{
+				// Used to offset location of sprite
+				xx = 4
+				var yy = y_shift / 2
+
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+			}
+		
+		#endregion Corner
+		
 		if(top_left == false)
 		{
-			var rotation = 225
-			var xx = -x_shift
+
+			xx = 0
 			var yy = -y_shift
 
 			// Draw ground overlap texture
@@ -88,18 +119,36 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		func_elements(0 + ele_x_shift, 0 + ele_y_shift, ele_xscale, ele_yscale, 45)
 	}
 
+
+
+
 	if(object_index == obj_platform_aa_slope_top_left)
 	{
 		ground_above()
 		ground_left()
 		
+		var rotation = 45
+		
+		#region Corner
+		
+			// Check for and draw ground corner
+			if(!place_meeting(x - sprite_width, y - sprite_height, obj_platform_parent) && (left == true && above == true))
+			{
+				// Used to offset location of sprite
+				xx = -4
+				var yy = -y_shift / 2
+
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+			}
+		
+		#endregion Corner
 
 		if(bottom_right == false)
 		{
-			var rotation = 45
+
 			// Used to offset location of sprite
-			var xx = x_shift
 			var yy = y_shift
+			xx = 0
 
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);	
@@ -113,22 +162,43 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 	{
 		ground_above()
 		ground_right()
+		
+		var rotation = 315
+		
+		#region Corner
+		
+			// Check for and draw ground corner
+			if(!place_meeting(x + sprite_width, y - sprite_height, obj_platform_parent)  && (right == true && above == true))
+			{
+				// Used to offset location of sprite
+				xx = 0
+				var yy = -y_shift / 2
+
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+			}
+		
+		#endregion Corner
 
 
 		if(bottom_left == false)
 		{
-			var rotation = 315
 			// Used to offset location of sprite
-			var xx = -x_shift
+			xx = 0
 			var yy = y_shift
 
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
 		}
 		
+		
 		// Draw element sprite
 		func_elements(0, 0)
 	}
+	
+	
+	
+	
+	
 	
 	// Default blank corners
 	var corner_top_left = shader_get_sampler_index(shd_platform_multi_texture, "corner_top_left");
@@ -142,8 +212,8 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 	
 	var corner_bottom_right = shader_get_sampler_index(shd_platform_multi_texture, "corner_bottom_right");
 	texture_set_stage(corner_bottom_right, sprite_get_texture(spr_plat_aa_corner, 0));
+
 	
-		
 }else if(obj_platform_aa_square)// If the platform is not a slope
 {
 
