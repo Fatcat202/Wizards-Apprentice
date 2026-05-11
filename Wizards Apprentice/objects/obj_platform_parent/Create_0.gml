@@ -49,6 +49,14 @@ flames_spawned = false
 // Used for spreading water effect. Represents number of platforms to spread to
 water_level = 0;
 
+// Used to store id of platform water level will be transfered to
+transfer_id = noone;
+				
+// Stores id of last platform water level was transfered from
+transferred_from = noone
+				
+
+
 // Time for water to freeze
 freezing_time = 5;
 // Time for fire to spread
@@ -59,6 +67,12 @@ melting_time = 4;
 evaporation_time = 4;
 // Time for water to spread to other platforms
 spreading_water_time = 0.5;
+// Time for last platform transfered to to be saved
+transfer_time = 1
+
+// Time before last_transferred stored id is reset
+transfer_timer_length = game_get_speed(gamespeed_fps) * transfer_time
+transfer_timer = 0;
 
 // Used for timer when turning water platform to ice
 freeze_length = game_get_speed(gamespeed_fps) * freezing_time

@@ -152,34 +152,38 @@ var quarter_width = width / 4;
 	
 
 	
-	
-		// Water sliding down slopes **NOT WORKING**
-		if(element == "Water" && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
-		{
-			if(object_index == obj_platform_aa_slope_left)
+		#region Slopes
+		
+		
+			// Water sliding down slopes
+			if(element == "Water" && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
 			{
-				if(bottom_left_free == false)
+				if(object_index == obj_platform_aa_slope_left)
 				{
-					other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
+					if(bottom_left_free == false)
+					{
+						other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
 					
-					scr_element_inter_platform_interactions(id, other_id)
+						scr_element_inter_platform_interactions(id, other_id)
 
 						
-				}
-			}else
+					}
+				}else
 				
-			if(object_index == obj_platform_aa_slope_right)
-			{
-				if(bottom_right_free == false)
+				if(object_index == obj_platform_aa_slope_right)
 				{
-					other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
+					if(bottom_right_free == false)
+					{
+						other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
 
-					scr_element_inter_platform_interactions(id, other_id)
+						scr_element_inter_platform_interactions(id, other_id)
 
+					}
 				}
-			}
 			
-		}else
+			}else
+		
+		#endregion Slopes
 	
 	
 		// If water, check water levels of platform to left and right, transfer to lowest level
@@ -196,44 +200,91 @@ var quarter_width = width / 4;
 		
 				// Used to select random direction with equal water levels
 				var rand_water_dir = -1
-		
-				// Check if water level of right is higher than left
-				if(right_id.water_level > left_id.water_level)
-				{
-					higher_id = right_id
-			
-				// Check if water level of right is higher than left
-				}else if(right_id.water_level < left_id.water_level)
-				{
-					higher_id = left_id
-				}else
-				{
-					// If both directions are equal, randomise direction
-					rand_water_dir = irandom(1)
-			
-					// 0 is right
-					if(rand_water_dir == 0)
-					{
-						higher_id = instance_place(x + 1, y, obj_platform_parent)
 				
-					// 1 is left
+				// If water recently transferred from another platform
+				if(transferred_from != noone)
+				{
+					// If timer length has not been reached
+					if(transfer_timer < transfer_timer_length)
+					{
+						// Continue to transfer in the opposite direction the water came from
+						if(right_id == transferred_from) transfer_id = left_id
+						else 
+						if(left_id == transferred_from) transfer_id = right_id
+						
+						// Increment timer
+						transfer_timer++
+					}else 
+					{
+						// End of timer
+						 
+						// Reset transferred_from
+						transferred_from = noone;
+						
+						// Reset timer
+						transfer_timer = 0;
+					}
+					
+					
+				}else
+				
+				// If water has not recently transferred from another platform
+				if(transferred_from == noone)
+				{
+
+
+					// Check if water level of right is higher than left
+					if(right_id.water_level > left_id.water_level)
+					{
+						higher_id = right_id
+			
+					// Check if water level of right is higher than left
+					}else if(right_id.water_level < left_id.water_level)
+					{
+						higher_id = left_id
 					}else
 					{
-						higher_id = instance_place(x - 1, y, obj_platform_parent)
+						// If both directions are equal, randomise direction
+						rand_water_dir = irandom(1)
+			
+						// 0 is right
+						if(rand_water_dir == 0)
+						{
+							higher_id = instance_place(x + 1, y, obj_platform_parent)
+				
+						// 1 is left
+						}else
+						{
+							higher_id = instance_place(x - 1, y, obj_platform_parent)
+						}
 					}
+					
+					// Set transfer_id to higher_id
+					transfer_id = higher_id;
 				}
-		
+				
+				
+
 				// If own platforms water level is higher than the water level of highest to the left or right
 				// then transfer water level between, else continue to other checks
-				if(higher_id != noone)
+				if(transfer_id != noone)
 				{
-					if(water_level > higher_id.water_level && (higher_id.element == "Water" || higher_id.element == "Empty"))
+					if(water_level > transfer_id.water_level && (transfer_id.element == "Water" || transfer_id.element == "Empty"))
 					{
 						// Activate interaction to transfer water level
-						scr_element_inter_platform_interactions(id, higher_id)
+						scr_element_inter_platform_interactions(id, transfer_id)
+						
+						// Send to other platform the direction to transfer to
+						transfer_id.transferred_from = id
+						
+//						show_debug_message("Transferring to: " + string(transfer_id))
 			
 					}
 				}
+				
+				
+				// Clear transfer_id to prevent incorrectly stored variable
+				transfer_id = noone
 			}
 
 		}else
