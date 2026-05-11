@@ -7,6 +7,7 @@ function scr_texture_auto_assign()
 	// Holds room name
 	room_name = room_get_name(room)
 	
+	
 	// Checks for assignment
 	switch (room_name)
 	{
@@ -18,8 +19,8 @@ function scr_texture_auto_assign()
 		
 		case "rm_testing_1":
 		
-			platform_texture = spr_tex_stone
-			ground_texture = spr_tex_ground_stone
+			platform_texture = spr_tex_testing
+			ground_texture = spr_tex_ground_testing
 		break;
 		
 		default:
