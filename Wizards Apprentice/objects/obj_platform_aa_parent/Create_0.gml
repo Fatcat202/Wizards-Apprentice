@@ -6,6 +6,11 @@ event_inherited()
 surf = -1
 
 
+half_sprite_width = sprite_width / 2
+half_sprite_height = sprite_height / 2
+
+ground_height = sprite_get_height(spr_tex_ground_testing)
+
 // Used to determine if a platform is adjacent, booleans
 search = 1
 left = place_meeting(x - search, y, obj_platform_parent)
@@ -30,7 +35,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		{
 			rotation = 90
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, image_xscale, image_yscale, rotation, c_white, 1);
+			draw_sprite_ext(ground_texture, 0, 0, 0 + sprite_yoffset, image_xscale, image_yscale, rotation, c_white, 1);
 		}
 	}
 
@@ -40,7 +45,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		{
 			rotation = 270
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, image_xscale, image_yscale, rotation, c_white, 1);
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_width, 0 + sprite_yoffset, image_xscale, image_yscale, rotation, c_white, 1);
 		}
 	}
 
@@ -50,7 +55,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		{
 			rotation = 0
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, image_xscale, image_yscale, rotation, c_white, 1);
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset, 0, image_xscale, image_yscale, rotation, c_white, 1);
 		}
 	}
 	
@@ -60,7 +65,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		{
 			rotation = 180
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, image_xscale, image_yscale, rotation, c_white, 1);
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset, 0 + sprite_height, image_xscale, image_yscale, rotation, c_white, 1);
 		}
 	}
 	

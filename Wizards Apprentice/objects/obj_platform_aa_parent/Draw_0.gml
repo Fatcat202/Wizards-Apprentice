@@ -53,7 +53,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		ground_left()
 		ground_below()
 	
-		var rotation = 135
+		var rotation = 315
 
 		#region Corner
 		
@@ -61,10 +61,10 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			if(!place_meeting(x - sprite_width, y + sprite_height, obj_platform_parent) && (left == true && below == true))
 			{
 				// Used to offset location of sprite
-				xx = -2
-				var yy = y_shift / 2
+				xx = -half_sprite_width
+				var yy = half_sprite_height
 
-				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, 135, c_white, 1);
 			}
 		
 		#endregion Corner
@@ -74,7 +74,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		{
 			// Used to offset location of sprite
 			xx = 0
-			var yy = -y_shift
+			var yy = 0
 			
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
@@ -89,7 +89,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		ground_right()
 		ground_below()
 		
-		var rotation = 225
+		var rotation = 45
 		
 		#region Corner
 		
@@ -97,10 +97,10 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			if(!place_meeting(x + sprite_width, y + sprite_height, obj_platform_parent) && (right == true && below == true))
 			{
 				// Used to offset location of sprite
-				xx = 4
-				var yy = y_shift / 2
+				xx = half_sprite_width
+				var yy = half_sprite_height
 
-				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, 225, c_white, 1);
 			}
 		
 		#endregion Corner
@@ -109,7 +109,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		{
 
 			xx = 0
-			var yy = -y_shift
+			var yy = 0
 
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
@@ -127,7 +127,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		ground_above()
 		ground_left()
 		
-		var rotation = 45
+		var rotation = 225
 		
 		#region Corner
 		
@@ -135,10 +135,10 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			if(!place_meeting(x - sprite_width, y - sprite_height, obj_platform_parent) && (left == true && above == true))
 			{
 				// Used to offset location of sprite
-				xx = -4
-				var yy = -y_shift / 2
+				xx = -half_sprite_width
+				var yy = -half_sprite_height
 
-				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, 45, c_white, 1);
 			}
 		
 		#endregion Corner
@@ -147,7 +147,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		{
 
 			// Used to offset location of sprite
-			var yy = y_shift
+			var yy = 0
 			xx = 0
 
 			// Draw ground overlap texture
@@ -163,7 +163,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		ground_above()
 		ground_right()
 		
-		var rotation = 315
+		var rotation = 135
 		
 		#region Corner
 		
@@ -171,10 +171,10 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			if(!place_meeting(x + sprite_width, y - sprite_height, obj_platform_parent)  && (right == true && above == true))
 			{
 				// Used to offset location of sprite
-				xx = 0
-				var yy = -y_shift / 2
+				xx = half_sprite_width
+				var yy = -half_sprite_height
 
-				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, 315, c_white, 1);
 			}
 		
 		#endregion Corner
@@ -184,7 +184,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		{
 			// Used to offset location of sprite
 			xx = 0
-			var yy = y_shift
+			var yy = 0
 
 			// Draw ground overlap texture
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
