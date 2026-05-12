@@ -155,8 +155,6 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		#endregion Ground Corner
 	}
 	
-
-	
 	function ground_bottom_left()
 	{
 		if(bottom_left == true)
@@ -184,6 +182,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		
 		#endregion Ground Corner
 	}
+	
 #endregion Ground Sprite Functions
 
 

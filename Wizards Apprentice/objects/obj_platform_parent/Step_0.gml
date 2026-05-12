@@ -122,7 +122,6 @@ var quarter_width = width / 4;
 #endregion Water Level
 
 
-
 #region Inter Platform Element Interactions
 
 	// Check in each direction for touching platforms. Run inter-element script for each direction
@@ -163,8 +162,12 @@ var quarter_width = width / 4;
 					if(bottom_left_free == false)
 					{
 						other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
-					
-						scr_element_inter_platform_interactions(id, other_id)
+						
+						// Freeze water on slopes if in contact with ice
+						if(element == "Water" && other_id.element == "Ice")
+						{
+							element = "Ice"
+						}else scr_element_inter_platform_interactions(id, other_id)
 
 						
 					}
@@ -176,7 +179,11 @@ var quarter_width = width / 4;
 					{
 						other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
 
-						scr_element_inter_platform_interactions(id, other_id)
+						// Freeze water on slopes if in contact with ice
+						if(element == "Water" && other_id.element == "Ice")
+						{
+							element = "Ice"
+						}else scr_element_inter_platform_interactions(id, other_id)
 
 					}
 				}
