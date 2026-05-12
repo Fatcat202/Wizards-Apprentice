@@ -1,35 +1,65 @@
 
-
-// Used to assign textures to rooms for use by obj_platform_aa_parent and all child objects
+// Used to assign textures to auto assign platforms based on active room
 
 function scr_texture_auto_assign()
 {
-	// Holds room name
-	room_name = room_get_name(room)
+	// Stored room name
+	var active_room = room_get_name(room)
+	
+	// Stored room texture, assigned in "Room Textures"
+	var room_texture = -1;
 	
 	
-	// Checks for assignment
-	switch (room_name)
+	#region Room Textures
+	
+		// ASSIGN TEXTURES TO ROOMS HERE
+	
+	// Check room name against assigned room textures
+	switch(active_room)
 	{
-		case "rm_testing":
-		
-			platform_texture = spr_tex_stone
-			ground_texture = spr_tex_ground_stone
+		case "rm_testing_0":
+			
+			room_texture = "Stone";
+			
 		break;
 		
 		case "rm_testing_1":
 		
-			platform_texture = spr_tex_testing
-			ground_texture = spr_tex_ground_testing
+			room_texture = "Testing";
+			
 		break;
 		
-		default:
-			
-			// Apply default texture
-			//platform_texture = sprite_index
-			
-			//show_debug_message("ERROR: CANNOT FIND PLATFORM TEXTURE")
+		default: // Default Option
+		
+		show_error("ERROR: CANNOT FIND PLATFORM TEXTURE", false);
 		
 		break;
 	}
+	
+	
+	#endregion Room Textures
+	
+	
+	#region Assign Textures
+	
+		if(room_texture == "Testing")
+		{
+			platform_texture = spr_tex_testing;
+			ground_texture = spr_tex_ground_testing;
+		}else
+	
+		if(room_texture == "Stone")
+		{
+			platform_texture = spr_tex_stone;
+			ground_texture = spr_tex_ground_stone;
+		}else
+		{
+			
+			// Apply default texture
+			platform_texture = sprite_index
+			
+			show_error("ERROR: CANNOT FIND PLATFORM TEXTURE", false)
+		}
+		
+	#region Assign Textures
 }
