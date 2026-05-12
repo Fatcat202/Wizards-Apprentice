@@ -37,8 +37,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 	var xx = 0
 	var y_shift = 16
 	
-	// X scale modifier for ground sprites
-	var xx_scale = .5
+
 	
 	// image x and y scale shift for elements
 	var ele_xscale = image_xscale + 0.5
@@ -64,7 +63,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 				xx = -half_sprite_width
 				var yy = half_sprite_height
 
-				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, 135, c_white, 1);
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, 135, c_white, 1);
 			}
 		
 		#endregion Corner
@@ -77,7 +76,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			var yy = 0
 			
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, rotation, c_white, 1);
 		}
 		
 		// Draw element sprite
@@ -100,7 +99,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 				xx = half_sprite_width
 				var yy = half_sprite_height
 
-				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, 225, c_white, 1);
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, 225, c_white, 1);
 			}
 		
 		#endregion Corner
@@ -112,7 +111,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			var yy = 0
 
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, rotation, c_white, 1);
 		}
 		
 		// Draw element sprite
@@ -138,7 +137,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 				xx = -half_sprite_width
 				var yy = -half_sprite_height
 
-				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, 45, c_white, 1);
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, 45, c_white, 1);
 			}
 		
 		#endregion Corner
@@ -151,7 +150,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			xx = 0
 
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);	
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, rotation, c_white, 1);	
 		}
 		
 			// Draw element sprite
@@ -174,7 +173,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 				xx = half_sprite_width
 				var yy = -half_sprite_height
 
-				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, 315, c_white, 1);
+				draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, 315, c_white, 1);
 			}
 		
 		#endregion Corner
@@ -187,11 +186,11 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			var yy = 0
 
 			// Draw ground overlap texture
-			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + xx_scale, image_yscale, rotation, c_white, 1);
+			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, rotation, c_white, 1);
 		}
 		
 		
-		// Draw element sprite
+		// Draw element spritae
 		func_elements(0, 0)
 	}
 	
