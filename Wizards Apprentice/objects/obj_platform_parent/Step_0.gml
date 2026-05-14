@@ -238,8 +238,6 @@ var quarter_width = width / 4;
 				// If water has not recently transferred from another platform
 				if(transferred_from == noone)
 				{
-
-
 					// Check if water level of right is higher than left
 					if(right_id.water_level > left_id.water_level)
 					{
@@ -301,30 +299,32 @@ var quarter_width = width / 4;
 	
 	#region Check Directions
 	
-	// Check right
-	if(place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
-	{
-		other_id = instance_place(x + check_distance, y, obj_platform_parent)
-		
-		// Prevent water from spreading to platform located under another platform
-		if(other_id.above_free == true)
+		// Check right
+		if(place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
 		{
-			scr_element_inter_platform_interactions(id, other_id)
-		}
+			other_id = instance_place(x + check_distance, y, obj_platform_parent)
 		
-	}else
+			// Prevent water from spreading to platform located under another platform
+			if(other_id.above_free == true)
+			{
+				scr_element_inter_platform_interactions(id, other_id)
+			}
+		
+		}else
 	
-	// Check left
-	if(place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
-	{
-		other_id = instance_place(x - check_distance, y, obj_platform_parent)
-		
-		// Prevent water from spreading to platform located under another platform
-		if(other_id.above_free == true)
+		// Check left
+		if(place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
 		{
-			scr_element_inter_platform_interactions(id, other_id)
+			other_id = instance_place(x - check_distance, y, obj_platform_parent)
+		
+			// Prevent water from spreading to platform located under another platform
+			if(other_id.above_free == true)
+			{
+				scr_element_inter_platform_interactions(id, other_id)
+			}
 		}
-	}
+	
+	#endregion Check Directions
 	
 	#region Water Droplets
 		if(element == "Water" && water_level > 0 && interacting == false
@@ -357,3 +357,11 @@ var quarter_width = width / 4;
 	
 
 #endregion Inter Platform Element Interactions
+
+
+
+with(inst_1846FDF5)
+{
+	//show_debug_message("Element: " + string(element))
+	//show_debug_message("Water_level: " + string(water_level))
+}

@@ -55,7 +55,7 @@
   "origin":7,
   "parent":{
     "name":"Elements",
-    "path":"folders/Sprites/Platforms/Elements.yy",
+    "path":"folders/Sprites/Elements.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -153,7 +153,6 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 		// Prevent water from spreading to platform located under another platform
 		if(own_element == "Water" && other_id.above_free == false)
 		{
-			scr_test()
 			exit
 		}
 		

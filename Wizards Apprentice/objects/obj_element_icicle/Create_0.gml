@@ -9,4 +9,11 @@ move_spd_max = 6;
 // "Level" of droplet, used to determine number of platforms to make wet
 level = 1
 
-element = "Water"
+// Player damage
+player_damage = 1;
+
+// Enemy damage
+enemy_damage = 5;
+
+// Icicle element
+element = "Ice"

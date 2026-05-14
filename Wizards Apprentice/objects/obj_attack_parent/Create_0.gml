@@ -13,3 +13,4 @@ is_charged = false;
 element_delay_timer = 0;
 element_delay_length = 3;
 element_delay_active = false;
+
