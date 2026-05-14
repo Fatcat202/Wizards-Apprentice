@@ -76,7 +76,7 @@ var quarter_width = width / 4;
 	
 	if(is_steaming == true && steam_spawned == false)
 	{
-		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam,
+		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam_platform,
 		{
 			platform_id : id
 		})

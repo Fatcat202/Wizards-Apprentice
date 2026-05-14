@@ -1,14 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_element_water_droplet",
+  "%Name":"obj_element_steam_air",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_platform_parent","path":"objects/obj_platform_parent/obj_platform_parent.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_attack_parent","path":"objects/obj_attack_parent/obj_attack_parent.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_element_water_droplet",
+  "name":"obj_element_steam_air",
   "overriddenProperties":[],
   "parent":{
     "name":"Elemental Effects",
@@ -36,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_element_water_droplet",
-    "path":"sprites/spr_element_water_droplet/spr_element_water_droplet.yy",
+    "name":"spr_element_steam_air",
+    "path":"sprites/spr_element_steam_air/spr_element_steam_air.yy",
   },
   "spriteMaskId":null,
   "visible":true,

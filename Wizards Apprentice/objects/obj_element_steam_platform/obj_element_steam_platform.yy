@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_element_steam",
+  "%Name":"obj_element_steam_platform",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_element_steam",
+  "name":"obj_element_steam_platform",
   "overriddenProperties":[],
   "parent":{
     "name":"Elemental Effects",
@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_element_steam",
-    "path":"sprites/spr_element_steam/spr_element_steam.yy",
+    "name":"spr_element_steam_platform",
+    "path":"sprites/spr_element_steam_platform/spr_element_steam_platform.yy",
   },
   "spriteMaskId":null,
   "visible":true,
