@@ -1,6 +1,54 @@
 /// @description Apply Texture
 
 
+
+
+/* **TO DO**
+
+Gather element of platform in top right/left and place the same element in top right/left of own platform
+Do not display if located below another platform to prevent sprite from showing when platform is part of a wall
+
+
+*/
+
+function draw_element_above(rotation = 0, x_shift = 0, y_shift = 0)
+{
+	// ID of platform above
+	var above_id = instance_place(x, y - sprite_height, obj_platform_parent);
+	
+	// If platform above has an element
+	if(above_id.element != "Empty")
+	{
+		// Set default element to draw to null
+		var element_draw = noone;
+		
+		// If water
+		if(above_id.element == "Water")
+		{
+			// Set element sprite
+			element_draw = spr_element_water
+		}else
+		
+		// If ice
+		if(above_id.element == "Ice")
+		{
+			// Set element sprite
+			element_draw = spr_element_ice
+		}else
+		
+		// If oil
+		if(above_id.element == "Oil")
+		{
+			// Set element sprite
+			element_draw = spr_element_oil
+		}
+		
+		// Draw element sprite
+		draw_sprite_ext(element_draw, 0, 0 + sprite_xoffset + x_shift, 0 + sprite_yoffset + y_shift, image_xscale, image_xscale, rotation, c_white, 1)
+	}
+}
+
+
 // ** DOES NOT INHERIT PARENT EVENT**
 
 // Create shader
@@ -36,8 +84,6 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 	// Variables to shift ground sprite to position
 	var xx = 0
 	var y_shift = 16
-	
-
 	
 	// image x and y scale shift for elements
 	var ele_xscale = image_xscale + 0.5
@@ -118,9 +164,6 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		func_elements(0 + ele_x_shift, 0 + ele_y_shift, ele_xscale, ele_yscale, 45)
 	}
 
-
-
-
 	if(object_index == obj_platform_aa_slope_top_left)
 	{
 		ground_above()
@@ -153,8 +196,11 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, rotation, c_white, 1);	
 		}
 		
-			// Draw element sprite
-			func_elements(0, 0)
+		// Element of platform above in corner
+		draw_element_above(45, -half_sprite_width/2, -half_sprite_height/2 + 1)
+		
+		// Draw element sprite
+		func_elements(0, 0)
 	}
 		
 	if(object_index == obj_platform_aa_slope_top_right)
@@ -163,6 +209,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		ground_right()
 		
 		var rotation = 135
+	
 		
 		#region Corner
 		
@@ -189,6 +236,8 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 			draw_sprite_ext(ground_texture, 0, 0 + sprite_xoffset + xx, 0 + sprite_yoffset + yy, image_xscale + ground_x_scale, image_yscale, rotation, c_white, 1);
 		}
 		
+		// Element of platform above in corner
+		draw_element_above(315, half_sprite_width/2, -half_sprite_height/2 + 1)
 		
 		// Draw element spritae
 		func_elements(0, 0)

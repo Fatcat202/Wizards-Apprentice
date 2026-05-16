@@ -359,9 +359,3 @@ var quarter_width = width / 4;
 #endregion Inter Platform Element Interactions
 
 
-
-with(inst_1846FDF5)
-{
-	//show_debug_message("Element: " + string(element))
-	//show_debug_message("Water_level: " + string(water_level))
-}

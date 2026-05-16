@@ -31,6 +31,7 @@ draw_sprite_ext(sprite_index, 0, 0 + sprite_xoffset, 0 + sprite_yoffset, image_x
 // Draw elements
 func_elements(0, 0, image_xscale, image_yscale, 0)
 
+
 // Reset surface target
 surface_reset_target()
 
