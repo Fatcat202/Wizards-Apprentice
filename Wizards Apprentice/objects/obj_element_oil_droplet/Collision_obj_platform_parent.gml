@@ -1,0 +1,28 @@
+/// @description Platform Interactions
+
+// Change platform to oil if empty, transfer remaining oil level
+if(other.element == "Empty")
+{
+	// Change element to oil
+	other.element = "Oil"
+	// Decrease level
+	level -= 1;
+	// Increment oil level
+	other.oil_level += level;
+	
+}else
+
+// If oil, transfer level
+if(other.element == "Oil")
+{
+	// Increment oil level
+	other.oil_level += level;
+		
+}
+
+// Debug
+//show_debug_message("other.oil_level: " + string(other.oil_level))
+
+
+// Destroy self upon contact
+instance_destroy()

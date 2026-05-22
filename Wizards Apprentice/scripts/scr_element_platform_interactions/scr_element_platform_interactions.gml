@@ -92,6 +92,11 @@ function scr_element_platform_interactions(spell_id, platform_id)
 	// if platform is oily
 	if(platform_element == "Oil")
 	{
+		// Oil + Oil
+		if(spell_element == "Oil")
+		{
+			platform_id.oil_level += spell_id.level;
+		}
 		
 		// Lighting oil on fire with fire
 		if(spell_element == "Fire")

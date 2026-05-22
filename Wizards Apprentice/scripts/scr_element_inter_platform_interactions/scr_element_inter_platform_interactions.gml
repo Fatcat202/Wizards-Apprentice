@@ -253,6 +253,112 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 		
 		
 	#endregion Water Spreading
+
+	#region Oil Spreading
+
+		// Prevent oil from spreading to platform located under another platform
+		if(own_element == "Oil" && other_id.above_free == false)
+		{
+			exit;
+		}
+		
+		if(own_element == "Oil" && own_id.oil_level > 0 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
+		{
+			if(other_element == "Empty")
+			{
+				// Declare an interaction has started
+				interacting = true;
+				
+				// Start timer spread oil between platforms
+				if(own_id.spreading_oil_timer >= own_id.spreading_oil_length)
+				{
+					// Change element to oil
+					other_id.element = "Oil";
+					// Decrease own oil level by 1
+					own_id.oil_level -= 1;
+					// Transfer oil level
+					other_id.oil_level += own_id.oil_level;
+					// Reset timer
+					other_id.spreading_oil_timer = 0;
+					own_id.spreading_oil_timer = 0;
+					
+					// Set interacting to false
+					interacting = false;
+					
+				// Increment timer
+				} own_id.spreading_oil_timer++
+				
+			}else if(other_element == "Oil" && other_id.oil_level < own_id.oil_level)
+			{
+				// Declare an interaction has started
+				interacting = true;
+				
+				// Start timer to transfer oil level
+				if(own_id.spreading_oil_timer >= own_id.spreading_oil_length)
+				{
+					var level = own_id.oil_level
+					// Transfer oil level
+					other_id.oil_level += level;
+					own_id.oil_level -= level
+					
+					// Reset timer
+					other_id.spreading_oil_timer = 0;
+					own_id.spreading_oil_timer = 0;
+					
+					// Set interacting to false
+					interacting = false;
+					
+				// Increment timer
+				} own_id.spreading_oil_timer++
+			}
+		}else
+		
+		// Oil sliding down slopes
+		if(own_id.element == "Oil" && (own_id.object_index == obj_platform_aa_slope_left || own_id.object_index == obj_platform_aa_slope_right))
+		{
+
+			// Declare an interaction has started
+			interacting = true;
+				
+			// Start timer to spread oil between platforms
+			if(own_id.spreading_oil_timer >= own_id.spreading_oil_length)
+			{
+				var level = own_id.oil_level
+				if(other_id.element == "Empty" || other_id.element == "Oil")
+				{
+					//show_debug_message("Level = " + string(level))
+						
+					if(!object_is_ancestor(other_id.object_index, obj_platform_aa_slope_parent) && other_id.element == "Oil")
+					{
+						// Set minimum oil level
+						if(level == 0) level = 1;
+					}
+						
+						
+					// Change other element to oil
+					other_id.element = "Oil";
+					// Transfer oil level
+					other_id.oil_level += level;
+					own_id.oil_level = 0
+					
+					// Clear own element
+					own_id.element = "Empty"
+				}
+				
+				// Reset timer
+				other_id.spreading_oil_timer = 0;
+				own_id.spreading_oil_timer = 0;
+					
+				// Set interacting to false
+				interacting = false;
+					
+			// Increment timer
+			} own_id.spreading_oil_timer++
+
+		}
+		
+		
+	#endregion Oil Spreading
 	
 	
 }

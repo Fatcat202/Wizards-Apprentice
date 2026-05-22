@@ -81,6 +81,7 @@
     {"id":{"name":"obj_collision_parent","path":"objects/obj_collision_parent/obj_collision_parent.yy",},},
     {"id":{"name":"obj_element_flaming","path":"objects/obj_element_flaming/obj_element_flaming.yy",},},
     {"id":{"name":"obj_element_icicle","path":"objects/obj_element_icicle/obj_element_icicle.yy",},},
+    {"id":{"name":"obj_element_oil_droplet","path":"objects/obj_element_oil_droplet/obj_element_oil_droplet.yy",},},
     {"id":{"name":"obj_element_parent","path":"objects/obj_element_parent/obj_element_parent.yy",},},
     {"id":{"name":"obj_element_steam_air","path":"objects/obj_element_steam_air/obj_element_steam_air.yy",},},
     {"id":{"name":"obj_element_steam_platform","path":"objects/obj_element_steam_platform/obj_element_steam_platform.yy",},},

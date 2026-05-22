@@ -52,6 +52,9 @@ flames_spawned = false
 // Used for spreading water effect. Represents number of platforms to spread to
 water_level = 0;
 
+// Used for spreading oil effect. Represents number of platforms to spread to
+oil_level = 0;
+
 // Used to store id of platform water level will be transfered to
 transfer_id = noone;
 				
@@ -70,10 +73,14 @@ melting_time = 4;
 evaporation_time = 4;
 // Time for water to spread to other platforms
 spreading_water_time = 0.5;
+// Time for oil to spread to other platforms
+spreading_oil_time = 0.5;
 // Time for last platform transfered to to be saved
 transfer_time = 1
 // Time for a platform to create a water droplet
 water_drop_time = 0.5
+// Time for a platform to create a oil droplet
+oil_drop_time = 0.5
 
 // Time before last_transferred stored id is reset
 transfer_timer_length = game_get_speed(gamespeed_fps) * transfer_time
@@ -102,6 +109,14 @@ spreading_water_timer = 0
 // Used for timer for creating water droplets
 water_drop_length = game_get_speed(gamespeed_fps) * water_drop_time;
 water_drop_timer = 0;
+
+// Used for timer for spreading oil between platforms
+spreading_oil_length = game_get_speed(gamespeed_fps) * spreading_oil_time
+spreading_oil_timer = 0
+
+// Used for timer for creating oil droplets
+oil_drop_length = game_get_speed(gamespeed_fps) * oil_drop_time;
+oil_drop_timer = 0;
 
 // Checks cardinal direction to detect if platform is touching another
 above_free = !place_meeting(x, y - sprite_height, obj_platform_parent)
@@ -196,5 +211,54 @@ function func_create_water_droplet(dir)
 							
 	// Increment timer
 	} water_drop_timer++
+
+}
+
+function func_create_oil_droplet(dir)
+{
+
+	// Must pass through direction of oil droplet in relation to platform
+	// 0 is right, 1 is left
+	
+	// Start timer to create a droplet, based on spreading oil timer
+	if(oil_drop_timer >= oil_drop_length)
+	{
+
+		// Create right
+		if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && dir == 0)
+		{
+			oil_droplet = instance_create_layer(x + sprite_get_width(sprite_index), y, "Spells", obj_element_oil_droplet,
+			{
+				level : 1
+			})
+		}else
+	
+		// Create left
+		if(!place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && dir == 1)
+		{
+			oil_droplet = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_oil_droplet,
+			{
+				level : 1
+			})
+		}
+		
+		// Decrease own oil level by 1
+		oil_level--;
+		
+		// If oil level reaches under 0
+		if(oil_level < 0)
+		{
+			// Set element to empty
+			element = "Empty"
+			
+			// Reset oil level to 0
+			oil_level = 0;
+		}
+
+		// Reset timer
+		oil_drop_timer = 0;
+							
+	// Increment timer
+	} oil_drop_timer++
 
 }
