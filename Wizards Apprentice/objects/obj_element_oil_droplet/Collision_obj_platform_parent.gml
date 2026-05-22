@@ -10,6 +10,9 @@ if(other.element == "Empty")
 	// Increment oil level
 	other.oil_level += level;
 	
+	// Transfer flaming state
+	if(is_flaming == true) other.is_flaming = true;
+	
 }else
 
 // If oil, transfer level
@@ -17,7 +20,9 @@ if(other.element == "Oil")
 {
 	// Increment oil level
 	other.oil_level += level;
-		
+	
+	// Transfer flaming state
+	if(is_flaming == true) other.is_flaming = true;
 }
 
 // Debug

@@ -282,6 +282,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					other_id.spreading_oil_timer = 0;
 					own_id.spreading_oil_timer = 0;
 					
+					// Transfer flames to other platform
+					other_id.is_flaming = own_id.is_flaming;
+					
 					// Set interacting to false
 					interacting = false;
 					
@@ -304,6 +307,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					// Reset timer
 					other_id.spreading_oil_timer = 0;
 					own_id.spreading_oil_timer = 0;
+					
+					// Transfer flames to other platform
+					other_id.is_flaming = own_id.is_flaming;
 					
 					// Set interacting to false
 					interacting = false;
@@ -340,6 +346,10 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 					// Transfer oil level
 					other_id.oil_level += level;
 					own_id.oil_level = 0
+					
+					// Transfer flames to other platform
+					other_id.is_flaming = own_id.is_flaming;
+					
 					
 					// Clear own element
 					own_id.element = "Empty"

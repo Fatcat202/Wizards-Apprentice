@@ -229,7 +229,8 @@ function func_create_oil_droplet(dir)
 		{
 			oil_droplet = instance_create_layer(x + sprite_get_width(sprite_index), y, "Spells", obj_element_oil_droplet,
 			{
-				level : 1
+				level : 1,
+				is_flaming : is_flaming
 			})
 		}else
 	
@@ -238,7 +239,8 @@ function func_create_oil_droplet(dir)
 		{
 			oil_droplet = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_oil_droplet,
 			{
-				level : 1
+				level : 1,
+				is_flaming : is_flaming
 			})
 		}
 		

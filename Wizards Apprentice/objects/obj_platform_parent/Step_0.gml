@@ -64,7 +64,7 @@ var quarter_width = width / 4;
 		if(!instance_exists(flame_0) && !instance_exists(flame_1))
 		{
 			scr_element_reset_variables()
-			element = "None"
+			element = "Empty"
 		}
 	}
 	
@@ -140,7 +140,7 @@ var quarter_width = width / 4;
 	// Check in each direction for touching platforms. Run inter-element script for each direction
 	
 	// Generate random int to select cardinal direction to interact with
-	var rand_dir = irandom(1)
+	var rand_dir = irandom(1);
 	
 	//show_debug_message("rand_dir = " + string(rand_dir))
 	
@@ -148,12 +148,12 @@ var quarter_width = width / 4;
 	// Continue ongoing interaction
 	if(interacting == true)
 	{
-		scr_element_inter_platform_interactions(id, other_id)
+		scr_element_inter_platform_interactions(id, other_id);
 	}else
 	
 	if(interacting == false)
 	{
-	  other_id = -1
+	  other_id = -1;
 	}
 	
 	
@@ -457,7 +457,6 @@ var quarter_width = width / 4;
 	
 	#endregion Oil transfer
 	
-	
 	#region Check Directions
 	
 		// Check right
@@ -492,14 +491,14 @@ var quarter_width = width / 4;
 		if(element == "Water" && water_level > 0 && interacting == false && above_free == true)
 		{
 			// Used to detect if water dropping function is used in this step
-			var dropping = false
+			var dropping = false;
 			
 			// Preventing issue if platform in top left is a slope
 			if(top_left_free == false)
 			{
 				if(instance_place(x - sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
 				{
-					func_create_water_droplet(0)
+					func_create_water_droplet(0);
 					
 					// State water dropping function has been used in step
 					dropping = true;
@@ -511,7 +510,7 @@ var quarter_width = width / 4;
 			{
 				if(instance_place(x + sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
 				{
-					func_create_water_droplet(1)
+					func_create_water_droplet(1);
 					
 					// State water dropping function has been used in step
 					dropping = true;
@@ -522,13 +521,13 @@ var quarter_width = width / 4;
 			if(dropping == false)
 			{
 				// Create random direction
-				var rand_dir = irandom(1)
+				var rand_dir = irandom(1);
 				
 				// Drop to left side
-				if(top_left_free && rand_dir = 1) func_create_water_droplet(1)
+				if(top_left_free && rand_dir = 1) func_create_water_droplet(1);
 				
 				// Drop to right side
-				if(top_right_free && rand_dir = 0) func_create_water_droplet(0)
+				if(top_right_free && rand_dir = 0) func_create_water_droplet(0);
 				
 				
 			}
@@ -589,5 +588,3 @@ var quarter_width = width / 4;
 	
 
 #endregion Inter Platform Element Interactions
-
-
