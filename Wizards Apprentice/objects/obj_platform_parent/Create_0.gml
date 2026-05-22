@@ -12,6 +12,9 @@ sprite_half_width = sprite_width / 2
 // Assign textures
 scr_texture_auto_assign()
 
+// Distance to check for other platforms or objects
+check_distance = 1
+
 // Used to modify image_index
 subimage = 0
 
@@ -69,6 +72,8 @@ evaporation_time = 4;
 spreading_water_time = 0.5;
 // Time for last platform transfered to to be saved
 transfer_time = 1
+// Time for a platform to create a water droplet
+water_drop_time = 0.5
 
 // Time before last_transferred stored id is reset
 transfer_timer_length = game_get_speed(gamespeed_fps) * transfer_time
@@ -90,8 +95,13 @@ melting_ice_timer = 0
 evaporation_length = game_get_speed(gamespeed_fps) * evaporation_time
 evaporation_timer = 0
 
+// Used for timer for spreading water between platforms
 spreading_water_length = game_get_speed(gamespeed_fps) * spreading_water_time
 spreading_water_timer = 0
+
+// Used for timer for creating water droplets
+water_drop_length = game_get_speed(gamespeed_fps) * water_drop_time;
+water_drop_timer = 0;
 
 // Checks cardinal direction to detect if platform is touching another
 above_free = !place_meeting(x, y - sprite_height, obj_platform_parent)
@@ -138,4 +148,59 @@ function func_elements(xx = 0, yy = 0, xx_scale = image_xscale, yy_scale = image
 	{
 		draw_sprite_ext(element_draw, 0, xx + sprite_xoffset, yy + sprite_yoffset, xx_scale, yy_scale, rot, c_white, 1)
 	}
+}
+
+function func_create_water_droplet(dir = -1)
+{
+	// Create random direction to create droplet in. Can manually pass through direction
+	// Right is 0, left is 1
+	if(dir = -1) dir = irandom(1)
+	//show_debug_message("rand_dir = " + string(rand_dir))
+	
+	
+	// Start timer to create a droplet, based on spreading water timer
+	if(water_drop_timer >= water_drop_length)
+	{
+
+		// Create right
+		if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && dir == 0)
+		{
+			water_droplet = instance_create_layer(x + sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
+			{
+				level : 1
+			})
+		}else
+	
+		// Create left
+		if(!place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && dir == 1)
+		{
+			water_droplet = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
+			{
+				level : 1
+			})
+		}
+		
+		// Decrease own water level by 1
+		water_level--;
+		
+		// If water level reaches under 0
+		if(water_level < 0)
+		{
+			// Set element to empty
+			element = "Empty"
+			
+			// Reset water level to 0
+			water_level = 0;
+		}
+
+		// Reset timer
+		water_drop_timer = 0;
+							
+	// Increment timer
+	} water_drop_timer++
+	
+	
+	
+		
+
 }

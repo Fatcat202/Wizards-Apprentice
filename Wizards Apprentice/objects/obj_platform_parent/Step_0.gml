@@ -125,9 +125,6 @@ var quarter_width = width / 4;
 #region Inter Platform Element Interactions
 
 	// Check in each direction for touching platforms. Run inter-element script for each direction
-
-	// Distance to check
-	var check_distance = 1
 	
 	// Generate random int to select cardinal direction to interact with
 	var rand_dir = irandom(1)
@@ -168,8 +165,11 @@ var quarter_width = width / 4;
 						{
 							element = "Ice"
 						}else scr_element_inter_platform_interactions(id, other_id)
-
+					}else
+					{	// Create droplet going off slope
 						
+						// Create droplet to left side
+						func_create_water_droplet(1)
 					}
 				}else
 				
@@ -184,7 +184,11 @@ var quarter_width = width / 4;
 						{
 							element = "Ice"
 						}else scr_element_inter_platform_interactions(id, other_id)
-
+					}else
+					{	// Create droplet going off slope
+						
+						// Create droplet to right side
+						func_create_water_droplet(0)
 					}
 				}
 			
@@ -296,7 +300,6 @@ var quarter_width = width / 4;
 	
 	#endregion Water transfer
 	
-	
 	#region Check Directions
 	
 		// Check right
@@ -327,32 +330,15 @@ var quarter_width = width / 4;
 	#endregion Check Directions
 	
 	#region Water Droplets
+	
 		if(element == "Water" && water_level > 0 && interacting == false
 		&& above_free == true // No platform above
 		&& top_right_free == true // No platform top right
 		&& top_left_free == true) // No platform top left
 		{
-			rand_dir = irandom(1)
-			//show_debug_message("rand_dir = " + string(rand_dir))
-		
-			if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
-			{
-				water_droplet = instance_create_layer(x + sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
-				{
-					level : 1
-				})
-				water_level--
-			}else
-		
-			if(!place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
-			{
-				water_droplet = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
-				{
-					level : 1
-				})
-				water_level--
-			}
+			func_create_water_droplet()
 		}
+		
 	#endregion Water Droplets
 	
 
