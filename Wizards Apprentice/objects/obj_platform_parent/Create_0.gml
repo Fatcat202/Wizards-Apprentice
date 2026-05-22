@@ -150,13 +150,11 @@ function func_elements(xx = 0, yy = 0, xx_scale = image_xscale, yy_scale = image
 	}
 }
 
-function func_create_water_droplet(dir = -1)
+function func_create_water_droplet(dir)
 {
-	// Create random direction to create droplet in. Can manually pass through direction
-	// Right is 0, left is 1
-	if(dir = -1) dir = irandom(1)
-	//show_debug_message("rand_dir = " + string(rand_dir))
-	
+
+	// Must pass through direction of water droplet in relation to platform
+	// 0 is right, 1 is left
 	
 	// Start timer to create a droplet, based on spreading water timer
 	if(water_drop_timer >= water_drop_length)
@@ -198,9 +196,5 @@ function func_create_water_droplet(dir = -1)
 							
 	// Increment timer
 	} water_drop_timer++
-	
-	
-	
-		
 
 }

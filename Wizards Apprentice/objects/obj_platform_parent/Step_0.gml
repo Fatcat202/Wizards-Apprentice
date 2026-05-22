@@ -331,12 +331,50 @@ var quarter_width = width / 4;
 	
 	#region Water Droplets
 	
-		if(element == "Water" && water_level > 0 && interacting == false
-		&& above_free == true // No platform above
-		&& top_right_free == true // No platform top right
-		&& top_left_free == true) // No platform top left
+		if(element == "Water" && water_level > 0 && interacting == false && above_free == true)
 		{
-			func_create_water_droplet()
+			// Used to detect if water dropping function is used in this step
+			var dropping = false
+			
+			// Preventing issue if platform in top left is a slope
+			if(top_left_free == false)
+			{
+				if(instance_place(x - sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
+				{
+					func_create_water_droplet(0)
+					
+					// State water dropping function has been used in step
+					dropping = true;
+				}
+			}else
+			
+			// Preventing issue if platform in top right is a slope
+			if(top_right_free == false)
+			{
+				if(instance_place(x + sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
+				{
+					func_create_water_droplet(1)
+					
+					// State water dropping function has been used in step
+					dropping = true;
+				}
+			}
+			
+			// If the water droplet function has not been used this step
+			if(dropping == false)
+			{
+				// Create random direction
+				var rand_dir = irandom(1)
+				
+				// Drop to left side
+				if(top_left_free && rand_dir = 1) func_create_water_droplet(1)
+				
+				// Drop to right side
+				if(top_right_free && rand_dir = 0) func_create_water_droplet(0)
+				
+				
+			}
+			
 		}
 		
 	#endregion Water Droplets
