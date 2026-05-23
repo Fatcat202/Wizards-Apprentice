@@ -60,6 +60,15 @@ transfer_id = noone;
 				
 // Stores id of last platform water level was transfered from
 transferred_from = noone
+
+
+// Used to determine the amount of time platform will burn for if flaming oil, calculated with frames
+// Default burn time in seconds
+fuel_default = game_get_speed(gamespeed_fps) * 10;
+// Number of frames remaining
+fuel_left = fuel_default;
+// Rate at which fuel will burn, stored in frames. Modified dynamically
+fuel_burn_rate = 0;
 				
 
 

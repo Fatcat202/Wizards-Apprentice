@@ -18,6 +18,7 @@ var quarter_width = width / 4;
 	}
 #endregion Surface
 
+
 #region Flaming
 
 	if(is_flaming == true && flames_spawned == false)
@@ -58,15 +59,37 @@ var quarter_width = width / 4;
 
 	}
 	
-	// Oil is removed once flames are put out
-	if(flames_spawned == true)
+	// Calculates total number of flames burning to determine fuel burn rate
+	if(is_flaming == true && flames_spawned == true)
 	{
-		if(!instance_exists(flame_0) && !instance_exists(flame_1))
+		var total_flames = 0;
+		
+		// Count total number of active flames
+		if(instance_exists(flame_0)) total_flames++
+		if(instance_exists(flame_1)) total_flames++
+		
+		// Set burn rate to 0 if no flames exist
+		if(!instance_exists(flame_0) && !instance_exists(flame_1)) total_flames = 0;
+		
+		fuel_burn_rate = total_flames
+		
+		// Reduce fuel remaining based on burn rate
+		fuel_left -= fuel_burn_rate
+		
+		// When fuel runs out, remove oil
+		if(fuel_left <= 0)
 		{
+			// Destroy flame objects
+			if(instance_exists(flame_0)) instance_destroy(flame_0)
+			if(instance_exists(flame_1)) instance_destroy(flame_1)
+			
 			scr_element_reset_variables()
 			element = "Empty"
+			
 		}
+		
 	}
+
 	
 	
 
@@ -586,5 +609,6 @@ var quarter_width = width / 4;
 		
 		#endregion Oil Droplets
 	
+
 
 #endregion Inter Platform Element Interactions

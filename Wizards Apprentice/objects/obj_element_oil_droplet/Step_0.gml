@@ -29,13 +29,27 @@
 		
 	}
 	
-	// Flames follow oil droplet
+	
 	if(flames_spawned == true)
 	{
+		// Flames follow oil droplet
 		if(instance_exists(flame_0))
 		{
 			flame_0.x = x;
 			flame_0.y = y - (sprite_height / 4);
+		}
+		
+		// Decrease fuel remaining each frame
+		fuel_left -= fuel_burn_rate
+		
+		// If fuel left reaches 0
+		if(fuel_left <= 0)
+		{
+			// Destroy flame
+			if(instance_exists(flame_0)) instance_destroy()
+			
+			// Destroy self
+			instance_destroy()
 		}
 	}
 	
