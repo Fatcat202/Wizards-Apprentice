@@ -69,6 +69,10 @@ fuel_default = game_get_speed(gamespeed_fps) * 10;
 fuel_left = fuel_default;
 // Rate at which fuel will burn, stored in frames. Modified dynamically
 fuel_burn_rate = 0;
+
+// Store variables for flame objects
+flame_0 = noone;
+flame_1 = noone;
 				
 
 

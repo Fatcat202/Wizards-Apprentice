@@ -18,8 +18,15 @@ var quarter_width = width / 4;
 	}
 #endregion Surface
 
-
 #region Flaming
+
+
+	if(element != "Oil")
+	{
+		// Destroy flame objects
+		if(instance_exists(flame_0)) instance_destroy(flame_0)
+		if(instance_exists(flame_1)) instance_destroy(flame_1)		
+	}
 
 	if(is_flaming == true && flames_spawned == false)
 	{
