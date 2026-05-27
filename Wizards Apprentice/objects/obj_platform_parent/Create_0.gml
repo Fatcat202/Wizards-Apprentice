@@ -209,8 +209,8 @@ function func_create_water_droplet(dir)
 		// Decrease own water level by 1
 		water_level--;
 		
-		// If water level reaches under 0
-		if(water_level < 0)
+		// If water level reaches 0 or under
+		if(water_level <= 0)
 		{
 			// Set element to empty
 			element = "Empty"
@@ -260,8 +260,8 @@ function func_create_oil_droplet(dir)
 		// Decrease own oil level by 1
 		oil_level--;
 		
-		// If oil level reaches under 0
-		if(oil_level < 0)
+		// If oil level reaches 0 or under
+		if(oil_level <= 0)
 		{
 			// Set element to empty
 			element = "Empty"

@@ -153,10 +153,10 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 		// Prevent water from spreading to platform located under another platform
 		if(own_element == "Water" && other_id.above_free == false)
 		{
-			exit
+			exit;
 		}
 		
-		if(own_element == "Water" && own_id.water_level > 0 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
+		if(own_element == "Water" && own_id.water_level > 1 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{
 			if(other_element == "Empty")
 			{
@@ -190,10 +190,13 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Start timer to transfer water level
 				if(own_id.spreading_water_timer >= own_id.spreading_water_length)
 				{
-					var level = own_id.water_level
+					// Verify total amount to transfer
+					var trans_total = own_id.water_level - 1
+					if(trans_total < 1) trans_total = 1
+					
 					// Transfer water level
-					other_id.water_level += level;
-					own_id.water_level -= level
+					other_id.water_level += trans_total;
+					own_id.water_level -= trans_total
 					
 					// Reset timer
 					other_id.spreading_water_timer = 0;
@@ -217,23 +220,19 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			// Start timer to spread water between platforms
 			if(own_id.spreading_water_timer >= own_id.spreading_water_length)
 			{
-				var level = own_id.water_level
 				if(other_id.element == "Empty" || other_id.element == "Water")
 				{
-					//show_debug_message("Level = " + string(level))
-						
-					if(!object_is_ancestor(other_id.object_index, obj_platform_aa_slope_parent) && other_id.element == "Water")
-					{
-						// Set minimum water level
-						if(level == 0) level = 1;
-					}
-						
+					//show_debug_message("Level = " + string(trans_total))
+					
+					// Verify total amount to transfer
+					var trans_total = own_id.water_level - 1
+					if(trans_total < 1) trans_total = 1
 						
 					// Change other element to water
 					other_id.element = "Water";
 					// Transfer water level
-					other_id.water_level += level;
-					own_id.water_level = 0
+					other_id.water_level += trans_total;
+					own_id.water_level -= trans_total
 					
 					// Clear own element
 					own_id.element = "Empty"
@@ -262,7 +261,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			exit;
 		}
 		
-		if(own_element == "Oil" && own_id.oil_level > 0 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
+		if(own_element == "Oil" && own_id.oil_level > 1 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{
 			if(other_element == "Empty")
 			{
@@ -274,10 +273,16 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				{
 					// Change element to oil
 					other_id.element = "Oil";
-					// Decrease own oil level by 1
-					own_id.oil_level -= 1;
+
+					// Verify total amount to transfer
+					var trans_total = own_id.oil_level - 1
+					if(trans_total < 1) trans_total = 1
+					
+					// Decrease own oil level to 1
+					own_id.oil_level = 1;
+					
 					// Transfer oil level
-					other_id.oil_level += own_id.oil_level;
+					other_id.oil_level += trans_total;
 					// Reset timer
 					other_id.spreading_oil_timer = 0;
 					own_id.spreading_oil_timer = 0;
@@ -299,10 +304,13 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Start timer to transfer oil level
 				if(own_id.spreading_oil_timer >= own_id.spreading_oil_length)
 				{
-					var level = own_id.oil_level
+					// Verify total amount to transfer
+					var trans_total = own_id.oil_level - 1
+					if(trans_total < 1) trans_total = 1
+					
 					// Transfer oil level
-					other_id.oil_level += level;
-					own_id.oil_level -= level
+					other_id.oil_level += trans_total;
+					own_id.oil_level -= trans_total
 					
 					// Reset timer
 					other_id.spreading_oil_timer = 0;
@@ -333,19 +341,12 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				if(other_id.element == "Empty" || other_id.element == "Oil")
 				{
 					//show_debug_message("Level = " + string(level))
-						
-					if(!object_is_ancestor(other_id.object_index, obj_platform_aa_slope_parent) && other_id.element == "Oil")
-					{
-						// Set minimum oil level
-						if(level == 0) level = 1;
-					}
-						
-						
+										
 					// Change other element to oil
 					other_id.element = "Oil";
 					// Transfer oil level
 					other_id.oil_level += level;
-					own_id.oil_level = 0
+					own_id.oil_level -= level
 					
 					// Transfer flames to other platform
 					other_id.is_flaming = own_id.is_flaming;

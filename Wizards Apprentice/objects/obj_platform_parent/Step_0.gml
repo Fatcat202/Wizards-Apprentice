@@ -245,7 +245,7 @@ var quarter_width = width / 4;
 	
 	
 			// If water, check water levels of platform to left and right, transfer to lowest level
-			if(element == "Water" && water_level > 0)
+			if(element == "Water" && water_level > 1)
 			{
 				// Platform id to right and left
 				var right_id = instance_place(x + check_distance, y, obj_platform_parent)
@@ -391,7 +391,7 @@ var quarter_width = width / 4;
 	
 	
 			// If oil, check oil levels of platform to left and right, transfer to lowest level
-			if(element == "Oil" && oil_level > 0)
+			if(element == "Oil" && oil_level > 1)
 			{
 				// Platform id to right and left
 				var right_id = instance_place(x + check_distance, y, obj_platform_parent)
@@ -524,7 +524,7 @@ var quarter_width = width / 4;
 	
 		#region Water Droplets
 	
-			if(element == "Water" && water_level > 0 && interacting == false && above_free == true)
+			if(element == "Water" && water_level > 1 && interacting == false && above_free == true)
 			{
 				// Used to detect if water dropping function is used in this step
 				var dropping = false;
@@ -575,7 +575,7 @@ var quarter_width = width / 4;
 	
 		#region Oil Droplets
 	
-				if(element == "Oil" && oil_level > 0 && interacting == false && above_free == true)
+				if(element == "Oil" && oil_level > 1 && interacting == false && above_free == true)
 				{
 					// Used to detect if oil dropping function is used in this step
 					var dropping = false

@@ -131,6 +131,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 		{
 			
 			platform_id.element = "Water"
+			platform_id.water_level += spell_id.level;
 		}
 		
 		// Cover platform with oil
@@ -138,6 +139,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 		{
 			
 			platform_id.element = "Oil"
+			platform_id.oil_level += spell_id.level;
 		}
 	}
 }
