@@ -10,6 +10,7 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Attacks","folderPath":"folders/Objects/Attacks.yy","name":"Attacks","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"AOE","folderPath":"folders/Objects/Attacks/AOE.yy","name":"AOE","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -72,6 +73,7 @@
   },
   "name":"Wizards Apprentice",
   "resources":[
+    {"id":{"name":"fnt_platform_debug","path":"fonts/fnt_platform_debug/fnt_platform_debug.yy",},},
     {"id":{"name":"Elements","path":"notes/Elements/Elements.yy",},},
     {"id":{"name":"Plans","path":"notes/Plans/Plans.yy",},},
     {"id":{"name":"game_manager","path":"objects/game_manager/game_manager.yy",},},

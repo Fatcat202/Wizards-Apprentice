@@ -43,3 +43,4 @@ surface_free(surf)
 
 // End shader
 shader_reset();
+

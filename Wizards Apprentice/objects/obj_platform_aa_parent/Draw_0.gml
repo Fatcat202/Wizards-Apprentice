@@ -294,3 +294,19 @@ surface_free(surf)
 
 // End shader
 shader_reset();
+
+
+#region Debug
+
+	// Debug display settings
+	draw_set_font(fnt_platform_debug)
+	draw_set_halign(fa_middle)
+	draw_set_valign(fa_center)
+
+	// Display Water Level
+//	draw_text(x, y, string(water_level))
+	
+	// Display Oil Level
+	draw_text(x, y, string(oil_level))
+	
+#endregion Debug
