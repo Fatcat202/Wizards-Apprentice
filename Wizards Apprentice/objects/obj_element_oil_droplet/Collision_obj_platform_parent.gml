@@ -5,8 +5,7 @@ if(other.element == "Empty")
 {
 	// Change element to oil
 	other.element = "Oil"
-	// Decrease level
-	level -= 1;
+
 	// Increment oil level
 	other.oil_level += level;
 	

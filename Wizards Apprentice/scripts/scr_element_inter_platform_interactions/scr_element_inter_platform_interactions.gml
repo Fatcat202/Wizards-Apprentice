@@ -155,7 +155,8 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 		{
 			exit;
 		}
-		
+				
+		// Water spreading to other platforms normally
 		if(own_element == "Water" && own_id.water_level > 1 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{
 			if(other_element == "Empty")
@@ -261,6 +262,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			exit;
 		}
 		
+		// Oil spreading to other platforms normally
 		if(own_element == "Oil" && own_id.oil_level > 1 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{
 			if(other_element == "Empty")
@@ -337,16 +339,20 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 			// Start timer to spread oil between platforms
 			if(own_id.spreading_oil_timer >= own_id.spreading_oil_length)
 			{
-				var level = own_id.oil_level
+
 				if(other_id.element == "Empty" || other_id.element == "Oil")
 				{
 					//show_debug_message("Level = " + string(level))
 										
+					// Verify total amount to transfer
+					var trans_total = own_id.oil_level - 1
+					if(trans_total < 1) trans_total = 1
+						
 					// Change other element to oil
 					other_id.element = "Oil";
 					// Transfer oil level
-					other_id.oil_level += level;
-					own_id.oil_level -= level
+					other_id.oil_level += trans_total;
+					own_id.oil_level -= trans_total
 					
 					// Transfer flames to other platform
 					other_id.is_flaming = own_id.is_flaming;

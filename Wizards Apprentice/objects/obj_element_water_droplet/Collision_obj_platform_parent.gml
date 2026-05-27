@@ -5,8 +5,6 @@ if(other.element == "Empty")
 {
 	// Change element to water
 	other.element = "Water"
-	// Decrease level
-	level -= 1;
 	// Increment water level
 	other.water_level += level;
 	
