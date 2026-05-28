@@ -195,6 +195,9 @@ function func_create_water_droplet(dir)
 			{
 				level : 1
 			})
+			
+			// Decrease own water level by 1
+			water_level--;
 		}else
 	
 		// Create left
@@ -204,10 +207,12 @@ function func_create_water_droplet(dir)
 			{
 				level : 1
 			})
+			
+			// Decrease own water level by 1
+			water_level--;
 		}
 		
-		// Decrease own water level by 1
-		water_level--;
+
 		
 		// If water level reaches 0 or under
 		if(water_level <= 0)
@@ -245,6 +250,10 @@ function func_create_oil_droplet(dir)
 				level : 1,
 				is_flaming : is_flaming
 			})
+			
+			// Decrease own oil level by 1
+			oil_level--;
+			
 		}else
 	
 		// Create left
@@ -255,10 +264,13 @@ function func_create_oil_droplet(dir)
 				level : 1,
 				is_flaming : is_flaming
 			})
+			
+			// Decrease own oil level by 1
+			oil_level--;
+
 		}
 		
-		// Decrease own oil level by 1
-		oil_level--;
+
 		
 		// If oil level reaches 0 or under
 		if(oil_level <= 0)

@@ -321,6 +321,18 @@ var quarter_width = width / 4;
 						transfer_id = higher_id;
 					}
 				
+				}else
+				
+				// Transfer right if free
+				if(!right_free && left_free)
+				{
+					transfer_id = right_id
+				}else
+				
+				// Transfer left if free
+				if(right_free && !left_free)
+				{
+					transfer_id = left_id
 				}
 
 					// If own platforms water level is higher than the water level of highest to the left or right
@@ -465,6 +477,18 @@ var quarter_width = width / 4;
 						transfer_id = higher_id;
 					}
 				
+				}else
+				
+				// Transfer right if free
+				if(!right_free && left_free)
+				{
+					transfer_id = right_id
+				}else
+				
+				// Transfer left if free
+				if(right_free && !left_free)
+				{
+					transfer_id = left_id
 				}
 
 					// If own platforms oil level is higher than the oil level of highest to the left or right
@@ -496,7 +520,7 @@ var quarter_width = width / 4;
 		#region Check Directions
 	
 			// Check right
-			if(place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 0)
+			if(!right_free && interacting == false && rand_dir == 0)
 			{
 				other_id = instance_place(x + check_distance, y, obj_platform_parent)
 
@@ -509,7 +533,7 @@ var quarter_width = width / 4;
 			}else
 	
 			// Check left
-			if(place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && rand_dir == 1)
+			if(!left_free && interacting == false && rand_dir == 1)
 			{
 				other_id = instance_place(x - check_distance, y, obj_platform_parent)
 		
@@ -536,7 +560,7 @@ var quarter_width = width / 4;
 					if(instance_place(x - sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
 					{
 						func_create_water_droplet(0);
-					
+
 						// State water dropping function has been used in step
 						dropping = true;
 					}
@@ -548,7 +572,7 @@ var quarter_width = width / 4;
 					if(instance_place(x + sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
 					{
 						func_create_water_droplet(1);
-					
+
 						// State water dropping function has been used in step
 						dropping = true;
 					}

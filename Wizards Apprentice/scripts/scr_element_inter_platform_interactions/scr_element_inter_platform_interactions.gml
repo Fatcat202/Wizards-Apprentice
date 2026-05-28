@@ -183,7 +183,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Increment timer
 				} own_id.spreading_water_timer++
 				
-			}else if(other_element == "Water" && other_id.water_level < own_id.water_level)
+			}else
+			
+			if(other_element == "Water" && other_id.water_level < own_id.water_level)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -298,7 +300,9 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				// Increment timer
 				} own_id.spreading_oil_timer++
 				
-			}else if(other_element == "Oil" && other_id.oil_level < own_id.oil_level)
+			}else
+			
+			if(other_element == "Oil" && other_id.oil_level < own_id.oil_level)
 			{
 				// Declare an interaction has started
 				interacting = true;
