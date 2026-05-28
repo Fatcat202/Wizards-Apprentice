@@ -26,7 +26,6 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 	 if(own_element == "Empty" && other_element == "Empty") exit;
 
 
-
 	#region Flaming Oil
 		
 		if(own_element == "Oil" && own_id.is_flaming == true)
@@ -166,7 +165,8 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				
 				// Start timer spread water between platforms
 				if(own_id.spreading_water_timer >= own_id.spreading_water_length)
-				{
+				{	
+					
 					// Change element to water
 					other_id.element = "Water";
 					// Decrease own water level by 1
@@ -194,8 +194,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				if(own_id.spreading_water_timer >= own_id.spreading_water_length)
 				{
 					// Verify total amount to transfer
-					var trans_total = own_id.water_level - 1
-					if(trans_total < 1) trans_total = 1
+					var trans_total = determine_level_transfer(own_id.water_level, other_id.water_level);
 					
 					// Transfer water level
 					other_id.water_level += trans_total;
@@ -311,8 +310,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				if(own_id.spreading_oil_timer >= own_id.spreading_oil_length)
 				{
 					// Verify total amount to transfer
-					var trans_total = own_id.oil_level - 1
-					if(trans_total < 1) trans_total = 1
+					var trans_total = determine_level_transfer(own_id.oil_level, other_id.oil_level);
 					
 					// Transfer oil level
 					other_id.oil_level += trans_total;

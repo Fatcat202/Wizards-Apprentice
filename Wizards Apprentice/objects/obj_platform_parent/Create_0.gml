@@ -289,3 +289,32 @@ function func_create_oil_droplet(dir)
 	} oil_drop_timer++
 
 }
+
+function determine_level_transfer(own_level, other_level)
+{
+	// Must pass through own and other platforms water/oil levels for the purposes of allowing
+	// function use for both types of levels
+		
+	// Returns the number of levels to transfer to other platform
+		
+	if(own_level != other_level)
+	{
+		// Determine difference between levels
+		var gross_level = abs(own_level - other_level)
+			
+		// Split total difference in half to share between platforms
+		var modified_level = floor(gross_level / 2)
+			
+		// Ensure modified level has a minimum of 1
+		if(modified_level < 1) modified_level = 1;
+			
+		// Return total number of levels to be transfered between platforms
+		return modified_level;
+			
+	}else
+	{
+		// Return 1 level to be transfered if both platform levels are equal
+		return 1
+	}
+		
+}
