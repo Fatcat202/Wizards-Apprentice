@@ -307,6 +307,13 @@ shader_reset();
 	if(water_level > 0) draw_text(x, y, "WL" + string(water_level))
 	
 	// Display Oil Level
-	if(oil_level > 0) draw_text(x, y, "OL" + string(oil_level))
+	if(oil_level > 0)
+	{
+		// Displaying oil level
+		draw_text(x, y-5, "OL" + string(oil_level))
+		
+		// Displaying fuel_left
+		draw_text(x, y+5, "FL" + string(fuel_left))
+	}
 	
 #endregion Debug
