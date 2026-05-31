@@ -308,6 +308,9 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 					
 						// Decrease own oil level to 1
 						own_id.oil_level = 1;
+						
+						// Transfer fuel remaining to other platform
+						other_id.fuel_left = own_id.fuel_left
 					
 						// Transfer oil level
 						other_id.oil_level += trans_total;
@@ -386,7 +389,10 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 						// Transfer oil level
 						other_id.oil_level += trans_total;
 						own_id.oil_level -= trans_total
-					
+						
+						// Transfer fuel remaining to other platform
+						other_id.fuel_left = own_id.fuel_left
+						
 						// Transfer flames to other platform
 						other_id.is_flaming = own_id.is_flaming;
 					

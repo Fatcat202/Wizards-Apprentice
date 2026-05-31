@@ -1,17 +1,23 @@
 /// @description Gravity
 
-#region Gravity
+#region Movement
 
 	// Increment gravity
 	move_spd_v -= global.grav;
 
 	// Set max speed of droplet
-	if(move_spd_v > move_spd_max) move_spd_v = move_spd_max
+	if(move_spd_v < move_spd_max) move_spd_v = move_spd_max
 
 	// Move object
 	y -= move_spd_v
+	x += move_spd_h
+	
+	// Droplet faces the direction it is moving
+	image_angle = point_direction(x, y, x-move_spd_h, y + move_spd_v) - 90
+	
+	show_debug_message("move_spd_v: " + string(move_spd_v))
 
-#endregion Gravity
+#endregion Movement
 
 #region Flaming
 

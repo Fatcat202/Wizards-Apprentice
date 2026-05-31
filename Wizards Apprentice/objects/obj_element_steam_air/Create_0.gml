@@ -9,5 +9,5 @@ element = "Steam"
 // Set alarm before steam dissipates
 alarm_set(0, duration * game_get_speed(gamespeed_fps))
 
-// No movement speed
-move_spd_v = 0;
+// Movement speed floating upwards
+move_spd_v = 0.25;

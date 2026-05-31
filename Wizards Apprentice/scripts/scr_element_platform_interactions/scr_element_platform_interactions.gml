@@ -55,7 +55,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 		// Fire + Water
 		if(spell_element == "Fire")
 		{
-			scr_element_reset_variables()
+			scr_element_reset_variables(platform_id)
 			platform_id.element = "Steam"
 			
 			// Create steam effect
@@ -68,7 +68,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 		// Ice + Water
 		if(spell_element == "Ice")
 		{
-			scr_element_reset_variables()
+			scr_element_reset_variables(platform_id)
 			platform_id.element = "Ice"
 		}
 		
@@ -105,6 +105,55 @@ function scr_element_platform_interactions(spell_id, platform_id)
 			platform_id.is_flaming = true;
 
 		}	
+		
+		// Flaming Oil + Water
+		if(platform_id.is_flaming == true && spell_element == "Water")
+		{
+			// Create a number of flaming oil droplets equal to level of water spell
+			// splitting remaining fuel in platform between them.
+			// Throw oil droplets in random directions
+			// with gravity affecting them and facing the direction they fly
+			
+			
+			// Store level of spell to determine number of oil droplets and steam objects
+			var spell_level = spell_id.level;
+			
+			// Total fuel after split between each droplet and platform
+			var fuel_split = platform_id.fuel_left / (spell_level + 1)
+			
+			// Reduce platform fuel
+			platform_id.fuel_left = fuel_split;
+			
+			for(var i = 0; i < spell_level; i++)
+			{
+				
+				// Create random speed of droplet
+				var rand_spd = random_range(-4, 4)
+				
+				// Create random deviation in x origin point on platform
+				var rand_x = random_range(-10, 10)
+				
+				
+				
+				// Create oil droplet, throwing it in random direction
+				droplet = instance_create_layer(platform_id.x + rand_x, platform_id.y - platform_id.sprite_height - 5, "Spells", obj_element_oil_droplet,
+				{
+					fuel_left : fuel_split,
+					is_flaming : true,
+					move_spd_v : 6,
+					move_spd_h : rand_spd
+					
+				})
+				
+				
+				// Create steam object for each water level in location droplet is spawned
+				steam = instance_create_layer(platform_id.x + rand_x, platform_id.y - platform_id.sprite_height - 5, "Spells", obj_element_steam_air)
+			
+			
+			}
+			
+			
+		}
 	}else
 	
 	// if platform is steaming

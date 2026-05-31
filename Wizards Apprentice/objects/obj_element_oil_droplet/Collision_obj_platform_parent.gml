@@ -9,6 +9,9 @@ if(other.element == "Empty")
 	// Increment oil level
 	other.oil_level += level;
 	
+	// Transfer fuel left
+	other.fuel_left = fuel_left;
+	
 	// Transfer flaming state
 	if(is_flaming == true) other.is_flaming = true;
 	

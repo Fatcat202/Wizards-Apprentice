@@ -46,7 +46,6 @@ function scr_element_spell_interactions(own_id, other_id)
 		
 	#endregion Ice - Fire = Water
 	
-	
 	#region Water - Fire = Steam
 	
 		// Check if interaction is Water - Fire
@@ -118,7 +117,7 @@ function scr_element_spell_interactions(own_id, other_id)
 		
 	#endregion Water + Shock = Charged Water
 	
-		#region Steam + Shock = Charged Steam
+	#region Steam + Shock = Charged Steam
 	
 		// Check if interaction is Steam + Shock
 		if((own_element == "Shock" && other_element == "Steam") || (own_element = "Steam" && other_element == "Shock"))
