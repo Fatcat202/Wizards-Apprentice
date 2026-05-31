@@ -78,21 +78,34 @@ var quarter_width = width / 4;
 		// Set burn rate to 0 if no flames exist
 		if(!instance_exists(flame_0) && !instance_exists(flame_1)) total_flames = 0;
 		
-		fuel_burn_rate = total_flames
+		// Set burn rate to total flame objects
+//		fuel_burn_rate = total_flames
+
+		fuel_burn_rate = 1;
 		
 		// Reduce fuel remaining based on burn rate
 		fuel_left -= fuel_burn_rate
 		
-		// When fuel runs out, remove oil
+		// When fuel runs out, decrease oil level
 		if(fuel_left <= 0)
+		{
+			// Decrease oil level
+			oil_level--;
+			
+			// Reset fuel level
+			fuel_left = fuel_default
+			
+		}
+		
+		// Remove oil if reaching oil level of 0
+		if(oil_level <= 0)
 		{
 			// Destroy flame objects
 			if(instance_exists(flame_0)) instance_destroy(flame_0)
 			if(instance_exists(flame_1)) instance_destroy(flame_1)
 			
 			scr_element_reset_variables()
-			element = "Empty"
-			
+			element = "Empty"			
 		}
 		
 	}

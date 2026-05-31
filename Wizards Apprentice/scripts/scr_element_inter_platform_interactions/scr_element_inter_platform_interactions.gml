@@ -1,5 +1,5 @@
 
-function scr_element_inter_platform_interactions(own_id, other_id)
+function scr_element_inter_platform_interactions(own_id = id, other_id)
 {
 	// Used for logic for element interactions between different platforms
 	
@@ -11,6 +11,12 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 		Flaming Oil touching Water = Water becomes Steam
 	
 	*/
+	
+	// Exit script if other_id is not properly passed through to prevent crash
+	if(!instance_exists(other_id))
+	{
+		exit;
+	}
 	
 	
 	// Used for calling other elements variables
@@ -42,7 +48,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 				    if(instance_exists(other_id))
 				    {
 						// Turn platform to flaming oil
-						other_id.is_flaming = true;
+						if(other_id.is_flaming != true) other_id.is_flaming = true;
 						// Reset timer
 						spreading_fire_timer = 0;
 						// Set interacting to false
@@ -337,7 +343,7 @@ function scr_element_inter_platform_interactions(own_id, other_id)
 						// Transfer oil level
 						other_id.oil_level += trans_total;
 						own_id.oil_level -= trans_total
-					
+
 						// Reset timer
 						other_id.spreading_oil_timer = 0;
 						own_id.spreading_oil_timer = 0;
