@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_increment_all_alarms",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_increment_all_alarms",
+  "parent":{
+    "name":"Pause",
+    "path":"folders/Scripts/Pause.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

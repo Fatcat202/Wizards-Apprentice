@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_part_systems_set_auto_update",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_part_systems_set_auto_update",
+  "parent":{
+    "name":"Pause",
+    "path":"folders/Scripts/Pause.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

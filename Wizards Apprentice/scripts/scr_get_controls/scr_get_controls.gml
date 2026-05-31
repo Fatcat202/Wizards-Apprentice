@@ -29,6 +29,6 @@ function scr_get_controls()
 	//Misc
 	global.cont_attack = mouse_check_button_pressed(mb_left)
 	global.cont_block = mouse_check_button(mb_right)
-	global.cont_menu = keyboard_check(ord(vk_escape));
+	global.cont_esc_menu = keyboard_check_pressed(vk_escape);
 	
 }

@@ -38,6 +38,21 @@
 	
 	
 		#endregion Camera
+		
+		#region Pausing
+		
+			// Declares a cutscene is active
+			global.cutscene_active = false;
+			
+			// Declares the game is paused
+			global.game_paused = false;
+			
+				// Specify the type of game pause
+				global.game_esc_paused = false;
+				global.game_death_paused = false;
+				global.show_inventory = false;
+			
+		#endregion Pausing
 	
 		#region Database
 	
@@ -224,12 +239,14 @@
 
 	// Resolution
 		// Default resolution
-		view_width = 640;
-		view_height = 360;
+			// Game resolution
+			global.res_w = 640;
+			global.res_h = 360;
 	
 		// Used for full screen
-//		view_width = 1960;
-//		view_height = 1080;
+			// Game resolution
+//			global.res_w = 1960;
+//			global.res_h = 1080;
 
 	// Scaling (hardcoded for now)
 	window_scale = 1;
@@ -237,9 +254,9 @@
 	//window_set_fullscreen(true)
 
 	// Set size of window and center it
-	window_set_size(view_width * window_scale, view_height * window_scale);
+	window_set_size(global.res_w * window_scale, global.res_h * window_scale);
 	alarm[0] = 1;
 
-	surface_resize(application_surface, view_width * window_scale, view_height * window_scale);
+	surface_resize(application_surface, global.res_w * window_scale, global.res_h * window_scale);
 
 #endregion Camera
