@@ -114,7 +114,6 @@ function scr_element_platform_interactions(spell_id, platform_id)
 			// Throw oil droplets in random directions
 			// with gravity affecting them and facing the direction they fly
 			
-			
 			// Store level of spell to determine number of oil droplets and steam objects
 			var spell_level = spell_id.level;
 			
@@ -126,14 +125,11 @@ function scr_element_platform_interactions(spell_id, platform_id)
 			
 			for(var i = 0; i < spell_level; i++)
 			{
-				
 				// Create random speed of droplet
 				var rand_spd = random_range(-4, 4)
 				
 				// Create random deviation in x origin point on platform
 				var rand_x = random_range(-10, 10)
-				
-				
 				
 				// Create oil droplet, throwing it in random direction
 				droplet = instance_create_layer(platform_id.x + rand_x, platform_id.y - platform_id.sprite_height - 5, "Spells", obj_element_oil_droplet,
@@ -145,14 +141,9 @@ function scr_element_platform_interactions(spell_id, platform_id)
 					
 				})
 				
-				
 				// Create steam object for each water level in location droplet is spawned
 				steam = instance_create_layer(platform_id.x + rand_x, platform_id.y - platform_id.sprite_height - 5, "Spells", obj_element_steam_air)
-			
-			
 			}
-			
-			
 		}
 	}else
 	
