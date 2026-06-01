@@ -1,4 +1,4 @@
 /// @description Credits
 
 // Send player to starting map
-room_goto(rm_testing_0);
+room_goto(rm_wizard_tower);

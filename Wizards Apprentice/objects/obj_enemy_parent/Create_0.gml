@@ -3,6 +3,7 @@
 // Inherit the parent event
 event_inherited();
 
+
 #region Determening Enemy for Stats
 
 	// Read name of object and assigns it to object_name
@@ -100,43 +101,44 @@ event_inherited();
 
 #endregion
 
+
 #region Enemy AI States
 
 
-	state_free = function()
+	state_idle = function()
 	{
 		
-		state = state_free
+//		show_debug_message("State: Idle")
+		state_behavior = state_idle;
 		
 	}
 	
 	state_patrol = function()
 	{
 		
-		scr_enemy_patrol();
+//		show_debug_message("State: Patrol")
+		state_behavior = state_patrol;
 
 	}
 	
 	state_attack = function()
 	{
 		
-		
+//		show_debug_message("State: Attack")
+		state_behavior = state_attack;
 
 	}
 	
 	state_retreat = function()
 	{
 		
-		
+//		show_debug_message("State: Retreat")
+		state_behavior = state_retreat;
 
 	}
 
-	state_behavior = state_free;
+	state_behavior = state_idle;
 
 #endregion Enemy AI States
-
-
-
-
 
 

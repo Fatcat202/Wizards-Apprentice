@@ -14,6 +14,16 @@
 		
 		// Gravity, used for deceleration when jumping and acceleration when falling
 		global.grav = 0.275
+		
+		// Size of cells used for pathing
+		global.cell_size = 16
+		
+		// MP Grid used for pathing
+		global.mp_grid = mp_grid_create(0, 0, room_width / global.cell_size, room_height / global.cell_size, global.cell_size, global.cell_size);
+			// Update grid to show positions of obstacles
+			mp_grid_clear_all(global.mp_grid)
+			mp_grid_add_instances(global.mp_grid, obj_collision_parent, true);
+	
 	
 		#region Camera
 	

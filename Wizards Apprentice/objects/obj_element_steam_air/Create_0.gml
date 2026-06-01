@@ -1,7 +1,7 @@
 /// @description
 
-// Duration of steam
-duration = 2
+// Duration of steam in seconds
+duration = 5
 
 // Defined element for interactions
 element = "Steam"
