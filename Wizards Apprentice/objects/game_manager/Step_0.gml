@@ -3,7 +3,7 @@
 scr_get_controls();
 
 #region Pausing
-	show_debug_message("global.cont_esc_menu: " + string(global.cont_esc_menu))
+
 	if(global.cont_esc_menu == true)
 	{scr_test()
 		if(global.game_esc_paused == false && instance_exists(obj_player_parent))
