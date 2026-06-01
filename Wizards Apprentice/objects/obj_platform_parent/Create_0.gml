@@ -182,11 +182,11 @@ function func_create_water_droplet(dir)
 {
 
 	// Must pass through direction of water droplet in relation to platform
-	// 0 is right, 1 is left
+	// 0 is right, 1 is left, 2 is below
 	
 	// Start timer to create a droplet, based on spreading water timer
 	if(water_drop_timer >= water_drop_length)
-	{
+	{scr_test()
 
 		// Create right
 		if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && dir == 0)
@@ -204,6 +204,18 @@ function func_create_water_droplet(dir)
 		if(!place_meeting(x - check_distance, y, obj_platform_parent) && interacting == false && dir == 1)
 		{
 			water_droplet = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
+			{
+				level : 1
+			})
+			
+			// Decrease own water level by 1
+			water_level--;
+		}else
+		
+		// Create below
+		if(!place_meeting(x , y + check_distance, obj_platform_parent) && interacting == false && dir == 2)
+		{
+			water_droplet = instance_create_layer(x, y + sprite_get_height(sprite_index), "Spells", obj_element_water_droplet,
 			{
 				level : 1
 			})
@@ -236,7 +248,7 @@ function func_create_oil_droplet(dir)
 {
 
 	// Must pass through direction of oil droplet in relation to platform
-	// 0 is right, 1 is left
+	// 0 is right, 1 is left, 2 is below
 	
 	// Start timer to create a droplet, based on spreading oil timer
 	if(oil_drop_timer >= oil_drop_length)
@@ -268,6 +280,19 @@ function func_create_oil_droplet(dir)
 			// Decrease own oil level by 1
 			oil_level--;
 
+		}else
+		
+		// Create below
+		if(!place_meeting(x , y + check_distance, obj_platform_parent) && interacting == false && dir == 2)
+		{
+			oil_droplet = instance_create_layer(x, y + sprite_get_height(sprite_index), "Spells", obj_element_oil_droplet,
+			{
+				level : 1,
+				is_flaming : is_flaming
+			})
+			
+			// Decrease own oil level by 1
+			oil_level--;
 		}
 		
 
