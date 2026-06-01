@@ -15,36 +15,38 @@ function draw_element_above(rotation = 0, x_shift = 0, y_shift = 0)
 {
 	// ID of platform above
 	var above_id = instance_place(x, y - sprite_height, obj_platform_parent);
-	
-	// If platform above has an element
-	if(above_id.element != "Empty")
+	if(instance_exists(above_id))
 	{
-		// Set default element to draw to null
-		var element_draw = noone;
-		
-		// If water
-		if(above_id.element == "Water")
+		// If platform above has an element
+		if(above_id.element != "Empty")
 		{
-			// Set element sprite
-			element_draw = spr_element_water
-		}else
+			// Set default element to draw to null
+			var element_draw = noone;
 		
-		// If ice
-		if(above_id.element == "Ice")
-		{
-			// Set element sprite
-			element_draw = spr_element_ice
-		}else
+			// If water
+			if(above_id.element == "Water")
+			{
+				// Set element sprite
+				element_draw = spr_element_water
+			}else
 		
-		// If oil
-		if(above_id.element == "Oil")
-		{
-			// Set element sprite
-			element_draw = spr_element_oil
+			// If ice
+			if(above_id.element == "Ice")
+			{
+				// Set element sprite
+				element_draw = spr_element_ice
+			}else
+		
+			// If oil
+			if(above_id.element == "Oil")
+			{
+				// Set element sprite
+				element_draw = spr_element_oil
+			}
+		
+			// Draw element sprite
+			draw_sprite_ext(element_draw, 0, 0 + sprite_xoffset + x_shift, 0 + sprite_yoffset + y_shift, image_xscale, image_xscale, rotation, c_white, 1)
 		}
-		
-		// Draw element sprite
-		draw_sprite_ext(element_draw, 0, 0 + sprite_xoffset + x_shift, 0 + sprite_yoffset + y_shift, image_xscale, image_xscale, rotation, c_white, 1)
 	}
 }
 

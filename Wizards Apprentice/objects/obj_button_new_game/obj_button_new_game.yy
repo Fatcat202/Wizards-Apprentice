@@ -1,16 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_button_quit_game",
+  "%Name":"obj_button_new_game",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_button_quit_game",
+  "name":"obj_button_new_game",
   "overriddenProperties":[],
   "parent":{
-    "name":"Buttons",
-    "path":"folders/Objects/Menu/Buttons.yy",
+    "name":"Main Menu Buttons",
+    "path":"folders/Objects/Menu/Buttons/Main Menu Buttons.yy",
   },
   "parentObjectId":{
     "name":"obj_menu_button_parent",
