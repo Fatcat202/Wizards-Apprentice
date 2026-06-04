@@ -90,6 +90,8 @@ freezing_time = 5;
 spreading_fire_time = 0.5;
 // Timer for ice to melt
 melting_time = 4;
+// Timer for water to evaporate
+evaporation_time = 2
 // Time for water to spread to other platforms
 spreading_water_time = 0.5;
 // Time for oil to spread to other platforms
@@ -116,6 +118,10 @@ spreading_fire_timer = 0
 // Used for timer when turning ice to water
 melting_ice_length = game_get_speed(gamespeed_fps) * melting_time
 melting_ice_timer = 0
+
+// Used for timer when making water steam
+evaporation_length = game_get_speed(gamespeed_fps) * evaporation_time
+evaporation_timer = 0
 
 // Used for timer for spreading water between platforms
 spreading_water_length = game_get_speed(gamespeed_fps) * spreading_water_time
