@@ -13,9 +13,10 @@ if(other.element == "Empty")
 	other.fuel_left = fuel_left;
 	
 	// Transfer flaming state
-	if(is_flaming == true) other.is_flaming = true;
+	other.is_flaming = is_flaming;
 	
 }else
+
 
 // If oil, transfer level
 if(other.element == "Oil")
@@ -25,6 +26,12 @@ if(other.element == "Oil")
 	
 	// Transfer flaming state
 	if(is_flaming == true) other.is_flaming = true;
+}else
+
+// If water, cause platform to steam
+if(other.element == "Water" && is_flaming == true)
+{
+	other.is_steaming = true
 }
 
 // Debug

@@ -15,7 +15,7 @@
 	// Droplet faces the direction it is moving
 	image_angle = point_direction(x, y, x-move_spd_h, y + move_spd_v) - 90
 	
-	show_debug_message("move_spd_v: " + string(move_spd_v))
+//	show_debug_message("move_spd_v: " + string(move_spd_v))
 
 #endregion Movement
 
