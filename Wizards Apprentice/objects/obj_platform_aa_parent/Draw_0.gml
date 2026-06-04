@@ -306,7 +306,13 @@ shader_reset();
 	draw_set_valign(fa_center)
 
 	// Display Water Level
-	if(water_level > 0) draw_text(x, y, "WL" + string(water_level))
+	if(water_level > 0) 
+	{
+		draw_text(x, y - 5, "WL" + string(water_level))
+	
+		// Displaying fuel_left
+		draw_text(x, y+5, "FL" + string(fuel_left))
+	}
 	
 	// Display Oil Level
 	if(oil_level > 0)

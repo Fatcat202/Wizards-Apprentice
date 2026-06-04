@@ -87,30 +87,27 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 			if(other_element == "Water")
 			{
 				// Declare an interaction has started
-				interacting = true;
+				other_id.interacting = true;
 				
 				// Start timer to evaporate water
-				if(evaporation_timer >= evaporation_length)
+				if(other_id.evaporation_timer >= other_id.evaporation_length)
 				{
 					
 					if(instance_exists(other_id))
 				    {
-						scr_element_reset_variables()
-						// Turn platform to steam
-						other_id.element = "Steam"
 					
 						// Create steam effect
 						other_id.is_steaming = true;
 					
 						// Reset timer
-						evaporation_timer = 0;
+						other_id.evaporation_timer = 0;
 					
 						// Set interacting to false
-						interacting = false;
+						other_id.interacting = false;
 					}
 					
 					// Increment timer
-				}else evaporation_timer++
+				}else other_id.evaporation_timer++
 			}
 		
 		}
@@ -132,9 +129,21 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 				{
 					if(instance_exists(other_id))
 				    {
-						scr_element_reset_variables()
-						// Turn platform to ice
+						// Destroy steam object, if it exists
+						if(instance_exists(steam)) instance_destroy(steam, true)
+						
+						// Remove steam
+						other_id.is_steaming = false;
+			
+						// Reset Fuel
+						other_id.fuel_left = other_id.fuel_default
+			
+						// Remove charge
+						other_id.is_charged = false;
+			
+						// Set element to ice
 						other_id.element = "Ice"
+						
 						// Reset timer
 						freeze_timer = 0;
 					
@@ -195,6 +204,7 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 					other_id.spreading_water_timer = 0;
 					own_id.spreading_water_timer = 0;
 					
+
 					// Set interacting to false
 					interacting = false;
 					
@@ -257,6 +267,11 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 						// Transfer water level
 						other_id.water_level += trans_total;
 						own_id.water_level -= trans_total
+						
+						// Transfer fuel remaining to other platform
+						other_id.fuel_left = own_id.fuel_left
+						// Transfer steam to other platform
+						other_id.is_steaming = own_id.is_steaming;
 					
 						// Clear own element
 						own_id.element = "Empty"
@@ -392,7 +407,6 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 						
 						// Transfer fuel remaining to other platform
 						other_id.fuel_left = own_id.fuel_left
-						
 						// Transfer flames to other platform
 						other_id.is_flaming = own_id.is_flaming;
 					

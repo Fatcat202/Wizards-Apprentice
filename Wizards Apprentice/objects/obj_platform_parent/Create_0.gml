@@ -62,19 +62,27 @@ transfer_id = noone;
 transferred_from = noone
 
 
-// Used to determine the amount of time platform will burn for if flaming oil, calculated with frames
-// Default burn time in seconds
+// Used to determine the amount of time platform will burn for if flaming oil or steam if steaming water
+// Calculated with frames
+
+// Default fuel capacity in seconds
 fuel_default = game_get_speed(gamespeed_fps) * 10;
 // Number of frames remaining
 fuel_left = fuel_default;
-// Rate at which fuel will burn, stored in frames. Modified dynamically
-fuel_burn_rate = 0;
+
+// Rate at which fuel will burn
+fuel_burn_rate = 1;
+
+// Rate at which fuel will steam
+fuel_burn_rate = 2;
 
 // Store variables for flame objects
 flame_0 = noone;
 flame_1 = noone;
-				
 
+// Store variables for  objects
+steam = noone
+				
 
 // Time for water to freeze
 freezing_time = 5;
@@ -82,8 +90,6 @@ freezing_time = 5;
 spreading_fire_time = 0.5;
 // Timer for ice to melt
 melting_time = 4;
-// Time for water to evaporate
-evaporation_time = 4;
 // Time for water to spread to other platforms
 spreading_water_time = 0.5;
 // Time for oil to spread to other platforms
@@ -110,10 +116,6 @@ spreading_fire_timer = 0
 // Used for timer when turning ice to water
 melting_ice_length = game_get_speed(gamespeed_fps) * melting_time
 melting_ice_timer = 0
-
-// Used for timer when turning water platform to steam
-evaporation_length = game_get_speed(gamespeed_fps) * evaporation_time
-evaporation_timer = 0
 
 // Used for timer for spreading water between platforms
 spreading_water_length = game_get_speed(gamespeed_fps) * spreading_water_time

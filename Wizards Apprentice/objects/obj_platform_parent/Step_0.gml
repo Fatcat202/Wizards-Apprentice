@@ -139,6 +139,75 @@ var quarter_width = width / 4;
 		}
 	}
 	
+	
+	if(element != "Water")
+	{
+		// Destroy flame objects
+		if(instance_exists(steam)) instance_destroy(steam)	
+	}
+
+	if(is_steaming == true && steam_spawned == false)
+	{
+	
+		// Spawn steam object
+		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam_platform,
+		{
+			platform_id : id
+		});
+	
+		// State steam are now spawned to prevent duplication
+		steam_spawned = true;
+		
+		// Rotate and shift flame sprites to match slope angle
+		if(object_index == obj_platform_aa_slope_left)
+		{
+			steam.image_angle = 45
+			steam.y += half_height + quarter_height
+		}
+		if(object_index == obj_platform_aa_slope_right)
+		{
+			steam.image_angle = 315
+			steam.y += quarter_height
+		}
+
+	}
+	
+
+	if(is_steaming == true && steam_spawned == true)
+	{
+		
+		// Reduce fuel remaining based on burn rate
+		fuel_left -= fuel_burn_rate
+		
+		// When fuel runs out, decrease water level
+		if(fuel_left <= 0)
+		{
+			// Decrease water level
+			water_level--;
+			
+			// Reset fuel level
+			fuel_left = fuel_default
+			
+			// End steam effect
+			is_steaming = false;
+			
+			// Destroy steam object
+			if(instance_exists(steam)) instance_destroy(steam)
+			
+		}
+		
+		// Remove water if reaching water level of 0
+		if(water_level <= 0)
+		{
+			// Destroy steam object
+			if(instance_exists(steam)) instance_destroy(steam)
+			
+			scr_element_reset_variables()
+			element = "Empty"			
+		}
+		
+	}
+	
 #endregion Steaming
 
 #region Charged
