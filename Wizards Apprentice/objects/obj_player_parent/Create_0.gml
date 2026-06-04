@@ -98,6 +98,9 @@ event_inherited()
 	// Array of usable spells
 	arr_active_spells[total_spells] = -1
 	
+	// Blank surface to assignment
+	surf = -1
+	
 	#region Hard coded spells for testing
 		arr_active_spells[1] = global.spell_stats[scr_find_spell_index("firebolt")]
 		arr_active_spells[2] = global.spell_stats[scr_find_spell_index("jump")]
@@ -174,21 +177,21 @@ event_inherited()
 
 		#endregion Spell Slot Timers
 	
-	#region Effect Timers
+		#region Effect Timers
 	
-		// Jump spell timers
-			spell_jump_duration = 0;
-			spell_jump_timer = 0;
-			// Determines if spell if active
-			spell_jump_active = false;
-			// Used for passing through spell slot when duration is over
-			spell_jump_slot = -1;
+			// Jump spell timers
+				spell_jump_duration = 0;
+				spell_jump_timer = 0;
+				// Determines if spell if active
+				spell_jump_active = false;
+				// Used for passing through spell slot when duration is over
+				spell_jump_slot = -1;
 		
 		
 		
 		
 	
-	#endregion Effect Timers
+		#endregion Effect Timers
 	
 #endregion Loading instance stats
 
@@ -231,4 +234,108 @@ event_inherited()
 	state_move = state_idle;
 	
 #endregion Jump States
+
+
+
+spell_surf = -1
+
+function spell_slot_icon(xx, yy, subimage, i, r = 255, g = 255, b = 255)
+{
+	
+	// Called in Draw GUI - Spells
+	
+	// Display surface with spell slot icon drawn to it
+	// Pass through RGB values of background colour of icon (default is white)
+	
+	
+	
+	var spell_width = sprite_get_width(spr_spell_slot_template)
+	var spell_height = sprite_get_height(spr_spell_slot_template)
+	var spell_spacing = (spell_width);
+	var spell_margin_x =  xx - (((total_spells + 1) * spell_width))/2
+	var spell_margin_y = yy * 2 - (spell_height / 2) - 5;
+	
+	func_colour = function(r, g, b) constructor
+	{
+		red = r;
+		green = g;
+		blue = b;
+		
+		// Quick gml to shader conversion
+		static to_shader_value = function(value)
+		{
+			return value / 255;
+		}
+	};
+	
+	// Colour to search for for replacement
+	colour_match = new func_colour(255, 255, 255) // White
+	
+	// Colour to replace matched colour with
+	colour_replace = new func_colour(r, g, b)
+	
+	// Declare uniform values
+	shd_handle_range = shader_get_uniform(shd_replace_colour, "range");
+	shd_handle_match = shader_get_uniform(shd_replace_colour, "colour_match");
+	shd_handle_replace = shader_get_uniform(shd_replace_colour, "colour_replace");
+	
+	
+	// Create shader
+	shader_set(shd_replace_colour);
+	
+	// Set range
+	shader_set_uniform_f(shd_handle_range, 1);
+	
+	// Set colour match value
+	shader_set_uniform_f(shd_handle_match,
+		colour_match.to_shader_value(colour_match.red),
+		colour_match.to_shader_value(colour_match.green),
+		colour_match.to_shader_value(colour_match.blue),
+		);
+	
+	// Set colour replace value
+	shader_set_uniform_f(shd_handle_replace,
+		colour_replace.to_shader_value(colour_replace.red),
+		colour_replace.to_shader_value(colour_replace.green),
+		colour_replace.to_shader_value(colour_replace.blue),
+		);
+
+	// Ensure base texture is set for the surface drawing
+	texture_set_stage(0, surface_get_texture(spell_surf));
+		
+	// Create surface
+	if(!surface_exists(spell_surf))
+	{
+		spell_surf = surface_create(spell_width, spell_height);
+		
+		// Set surface target
+		surface_set_target(spell_surf)
+			draw_clear_alpha(c_black, 0)
+	}else draw_clear_alpha(c_black, 0)
+
+
+	// Draw texture to the surface
+	draw_sprite(arr_active_spells[i].spr, subimage, 0, 0);
+
+
+	// Reset surface target
+	surface_reset_target()
+
+	// Draw surface
+	draw_surface(spell_surf, spell_margin_x + (i * spell_spacing), spell_margin_y - 30);
+
+	// Free memory
+	surface_free(spell_surf)
+
+	// End shader
+	shader_reset();
+	
+}
+
+
+
+
+
+
+
 

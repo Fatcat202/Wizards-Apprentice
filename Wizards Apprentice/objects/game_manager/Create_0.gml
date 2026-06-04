@@ -270,3 +270,5 @@
 	surface_resize(application_surface, global.res_w * window_scale, global.res_h * window_scale);
 
 #endregion Camera
+
+

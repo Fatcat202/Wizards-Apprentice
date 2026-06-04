@@ -136,7 +136,6 @@ var yy = display_get_gui_height() / 2
 	
 #endregion Hearts
 
-
 #region Mana
 
 	// Mana location
@@ -276,18 +275,45 @@ var yy = display_get_gui_height() / 2
 	var spell_margin_x =  xx - (((total_spells + 1) * spell_width))/2
 	var spell_margin_y = yy * 2 - (spell_height / 2) - 5;
 
-
-	
 	for(var i = 1; i <= total_spells; i++)
 	{
+		
 		// Swap sprite image depending on if spell is selected
+		var subimage = 0
+		
+		var r = 0;
+		var g = 0;
+		var b = 0;
+
+		// If not enough mana, change background colour
+		if(active_mana < arr_active_spells[i].mana)
+		{
+			// Light red
+			r = 255;
+			g = 180;
+			b = 180;
+		}else
+		{
+			// If player has enough mana, keep background white
+			
+			r = 255;
+			g = 255;
+			b = 255;
+		}
+		
+		
 		if(active_spell == i)
 		{
-			draw_sprite(arr_active_spells[i].spr, 0, spell_margin_x + (i * spell_spacing), spell_margin_y)
-		} else
+			spell_slot_icon(xx, yy, 0, i, r, g, b)
+		}else
+		
+		if(active_spell != i)
 		{
-			draw_sprite(arr_active_spells[i].spr, 1, spell_margin_x + (i * spell_spacing), spell_margin_y)
+			spell_slot_icon(xx, yy, 1, i, r, g, b)
+			
 		}
+		
+	//	draw_sprite_ext(arr_active_spells[i].spr, subimage, spell_margin_x + (i * spell_spacing), spell_margin_y, 1, 1, 0, tint, 1)
 	}
 
 

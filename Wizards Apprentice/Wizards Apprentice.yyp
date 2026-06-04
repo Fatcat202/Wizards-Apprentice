@@ -199,6 +199,7 @@
     {"id":{"name":"scr_use_mana","path":"scripts/scr_use_mana/scr_use_mana.yy",},},
     {"id":{"name":"shd_platform_display","path":"shaders/shd_platform_display/shd_platform_display.yy",},},
     {"id":{"name":"shd_platform_multi_texture","path":"shaders/shd_platform_multi_texture/shd_platform_multi_texture.yy",},},
+    {"id":{"name":"shd_replace_colour","path":"shaders/shd_replace_colour/shd_replace_colour.yy",},},
     {"id":{"name":"spr_background_rm_main_menu","path":"sprites/spr_background_rm_main_menu/spr_background_rm_main_menu.yy",},},
     {"id":{"name":"spr_background_rm_testing","path":"sprites/spr_background_rm_testing/spr_background_rm_testing.yy",},},
     {"id":{"name":"spr_description_box","path":"sprites/spr_description_box/spr_description_box.yy",},},
