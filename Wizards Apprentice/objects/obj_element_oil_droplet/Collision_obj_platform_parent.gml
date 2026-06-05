@@ -1,11 +1,8 @@
 /// @description Platform Interactions
 
-// Change platform to oil if empty, transfer remaining oil level
-if(other.element == "Empty")
+// If platform has no oil level, transfer existing fuel left
+if(other.oil_level == 0)
 {
-	// Change element to oil
-	other.element = "Oil"
-
 	// Increment oil level
 	other.oil_level += level;
 	
@@ -16,20 +13,19 @@ if(other.element == "Empty")
 	other.is_flaming = is_flaming;
 	
 }else
-
-
-// If oil, transfer level
-if(other.element == "Oil")
+// If oil, transfer level but not fuel left
+if(other.oil_level > 0)
 {
 	// Increment oil level
 	other.oil_level += level;
 	
 	// Transfer flaming state
 	if(is_flaming == true) other.is_flaming = true;
-}else
+}
+
 
 // If water, cause platform to steam
-if(other.element == "Water" && is_flaming == true)
+if(other.water_level > 0 && is_flaming == true)
 {
 	other.is_steaming = true
 }

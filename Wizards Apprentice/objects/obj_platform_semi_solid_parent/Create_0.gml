@@ -13,4 +13,4 @@ semi_solid = true
 	is_wet = false;
 
 	// Determines if platform is icy
-	is_icy = false;
+	is_ice = false;

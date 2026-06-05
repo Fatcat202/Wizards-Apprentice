@@ -17,3 +17,5 @@ enemy_damage = 5;
 
 // Icicle element
 element = "Ice"
+
+is_ice = true;

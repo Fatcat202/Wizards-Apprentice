@@ -1,7 +1,7 @@
 /// @description Spell Interactions
 
 // Interacting with fire spell
-if(other.element == "Fire")
+if(other.is_flaming == true)
 {
 	// Create water droplet
 	water_drop = instance_create_layer(x, y, "Spells", obj_element_water_droplet,

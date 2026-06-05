@@ -18,26 +18,17 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 		exit;
 	}
 	
-	
-	// Used for calling other elements variables
-		// Used for own variables
-		var own_element = own_id.element
-		
-		// Used for calling other elements variables
-		var other_element = other_id.element
-		
-
-
 	// End script if there is no interaction to be had
-	 if(own_element == "Empty" && other_element == "Empty") exit;
+	 if(own_id.water_level == 0 && own_id.oil_level == 0
+		 && other_id.water_level == 0 && other_id.oil_level == 0) exit;
 
 
 	#region Flaming Oil
 		
-		if(own_element == "Oil" && own_id.is_flaming == true)
+		if(own_id.oil_level > 0 && own_id.is_flaming == true)
 		{
 			// Spreading flaming oil
-			if(other_element == "Oil")
+			if(other_id.oil_level > 0)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -60,7 +51,7 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 			}else
 			
 			// Melting Ice
-			if(other_element == "Ice")
+			if(other_id.is_ice == true)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -70,9 +61,8 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 				{
 					if(instance_exists(other_id))
 				    {
-						scr_element_reset_variables()
 						// Turn platform to water from ice
-						other_id.element = "Water"
+						is_ice = false
 					
 						// Set interacting to false
 						interacting = false;
@@ -84,7 +74,7 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 			
 			
 			// Evaporating Water
-			if(other_element == "Water")
+			if(other_id.water_level > 0)
 			{
 				// Declare an interaction has started
 				other_id.interacting = true;
@@ -92,10 +82,8 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 				// Start timer to evaporate water
 				if(other_id.evaporation_timer >= other_id.evaporation_length)
 				{
-					
 					if(instance_exists(other_id))
 				    {
-					
 						// Create steam effect
 						other_id.is_steaming = true;
 					
@@ -109,7 +97,6 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 					// Increment timer
 				}else other_id.evaporation_timer++
 			}
-		
 		}
 
 		
@@ -117,9 +104,9 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 	
 	#region Water Freezing
 
-		if(own_element == "Ice")
+		if(own_id.is_ice == true)
 		{
-			if(other_element == "Water")
+			if(other_id.water_level > 0)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -142,7 +129,7 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 						other_id.is_charged = false;
 			
 						// Set element to ice
-						other_id.element = "Ice"
+						other_id.is_ice = true
 						
 						// Reset timer
 						freeze_timer = 0;
@@ -160,9 +147,9 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 	
 	#region Charge Spreading
 		
-		if(own_element == "Water" && own_id.is_charged == true)
+		if(own_id.water_level > 0 && own_id.is_charged == true)
 		{
-			if(other_element == "Water" && other_id.is_charged == false)
+			if(other_id.water_level > 0 && other_id.is_charged == false)
 			{
 				// Electrify other platform
 				other_id.is_charged = true
@@ -177,15 +164,16 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 	#region Water Spreading
 
 		// Prevent water from spreading to platform located under another platform
-		if(own_element == "Water" && other_id.above_free == false)
+		if(own_id.water_level > 0 && other_id.above_free == false)
 		{
 			exit;
 		}
 				
 		// Water spreading to other platforms normally
-		if(own_element == "Water" && own_id.water_level > 1 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
+		if(own_id.water_level > 1 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{
-			if(other_element == "Empty")
+			// Spreading to other platform without water
+			if(other_id.water_level == 0)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -193,9 +181,6 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 				// Start timer spread water between platforms
 				if(own_id.spreading_water_timer >= own_id.spreading_water_length)
 				{	
-					
-					// Change element to water
-					other_id.element = "Water";
 					// Decrease own water level by 1
 					own_id.water_level -= 1;
 					// Transfer water level
@@ -213,7 +198,8 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 				
 			}else
 			
-			if(other_element == "Water" && other_id.water_level < own_id.water_level)
+			// Water spreading to platform with water
+			if(other_id.water_level > 0 && other_id.water_level < own_id.water_level)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -243,7 +229,7 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 		}else
 		
 		// Water sliding down slopes
-		if(own_id.element == "Water" && (own_id.object_index == obj_platform_aa_slope_left || own_id.object_index == obj_platform_aa_slope_right))
+		if(own_id.water_level > 0 && (own_id.object_index == obj_platform_aa_slope_left || own_id.object_index == obj_platform_aa_slope_right))
 		{
 
 			// Declare an interaction has started
@@ -252,31 +238,24 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 			// Start timer to spread water between platforms
 			if(own_id.spreading_water_timer >= own_id.spreading_water_length)
 			{
-				if(other_id.element == "Empty" || other_id.element == "Water")
-				{
-					if(instance_exists(other_id))
-				    {
-						//show_debug_message("Level = " + string(trans_total))
+
+				//show_debug_message("Level = " + string(trans_total))
 					
-						// Verify total amount to transfer
-						var trans_total = own_id.water_level - 1
-						if(trans_total < 1) trans_total = 1
+				// Verify total amount to transfer
+				var trans_total = own_id.water_level - 1
+				if(trans_total < 1) trans_total = 1
 						
-						// Change other element to water
-						other_id.element = "Water";
-						// Transfer water level
-						other_id.water_level += trans_total;
-						own_id.water_level -= trans_total
+				// Transfer water level
+				other_id.water_level += trans_total;
+				own_id.water_level -= trans_total
 						
-						// Transfer fuel remaining to other platform
-						other_id.fuel_left = own_id.fuel_left
-						// Transfer steam to other platform
-						other_id.is_steaming = own_id.is_steaming;
+				// Transfer fuel remaining to other platform
+				other_id.fuel_left = own_id.fuel_left
+				// Transfer steam to other platform
+				other_id.is_steaming = own_id.is_steaming;
 					
-						// Clear own element
-						own_id.element = "Empty"
-					}
-				}
+				with(own_id) { scr_element_reset_variables() }
+
 				
 				// Reset timer
 				other_id.spreading_water_timer = 0;
@@ -296,15 +275,16 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 	#region Oil Spreading
 
 		// Prevent oil from spreading to platform located under another platform
-		if(own_element == "Oil" && other_id.above_free == false)
+		if(own_id.oil_level > 0 && other_id.above_free == false)
 		{
 			exit;
 		}
 		
 		// Oil spreading to other platforms normally
-		if(own_element == "Oil" && own_id.oil_level > 1 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
+		if(own_id.oil_level > 1 && (own_id.object_index != obj_platform_aa_slope_left && own_id.object_index != obj_platform_aa_slope_right))
 		{
-			if(other_element == "Empty")
+			// Spreading to platform without oil
+			if(other_id.oil_level == 0)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -314,8 +294,6 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 				{
 				    if(instance_exists(other_id))
 				    {
-						// Change element to oil
-						other_id.element = "Oil";
 
 						// Verify total amount to transfer
 						var trans_total = own_id.oil_level - 1
@@ -345,7 +323,8 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 				
 			}else
 			
-			if(other_element == "Oil" && other_id.oil_level < own_id.oil_level)
+			// Spreading to platform with oil
+			if(other_id.oil_level > 0 && other_id.oil_level < own_id.oil_level)
 			{
 				// Declare an interaction has started
 				interacting = true;
@@ -353,25 +332,24 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 				// Start timer to transfer oil level
 				if(own_id.spreading_oil_timer >= own_id.spreading_oil_length)
 				{
-					if(instance_exists(other_id))
-				    {
-						// Verify total amount to transfer
-						var trans_total = determine_level_transfer(own_id.oil_level, other_id.oil_level);
-					
-						// Transfer oil level
-						other_id.oil_level += trans_total;
-						own_id.oil_level -= trans_total
 
-						// Reset timer
-						other_id.spreading_oil_timer = 0;
-						own_id.spreading_oil_timer = 0;
+					// Verify total amount to transfer
+					var trans_total = determine_level_transfer(own_id.oil_level, other_id.oil_level);
 					
-						// Transfer flames to other platform
-						other_id.is_flaming = own_id.is_flaming;
+					// Transfer oil level
+					other_id.oil_level += trans_total;
+					own_id.oil_level -= trans_total
+
+					// Reset timer
+					other_id.spreading_oil_timer = 0;
+					own_id.spreading_oil_timer = 0;
 					
-						// Set interacting to false
-						interacting = false;
-					}
+					// Transfer flames to other platform
+					other_id.is_flaming = own_id.is_flaming;
+					
+					// Set interacting to false
+					interacting = false;
+					
 					
 				// Increment timer
 				} own_id.spreading_oil_timer++
@@ -379,7 +357,7 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 		}else
 		
 		// Oil sliding down slopes
-		if(own_id.element == "Oil" && (own_id.object_index == obj_platform_aa_slope_left || own_id.object_index == obj_platform_aa_slope_right))
+		if(own_id.oil_level > 0 && (own_id.object_index == obj_platform_aa_slope_left || own_id.object_index == obj_platform_aa_slope_right))
 		{
 
 			// Declare an interaction has started
@@ -389,31 +367,23 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 			if(own_id.spreading_oil_timer >= own_id.spreading_oil_length)
 			{
 
-				if(other_id.element == "Empty" || other_id.element == "Oil")
-				{
-					if(instance_exists(other_id))
-				    {
-						//show_debug_message("Level = " + string(level))
+				//show_debug_message("Level = " + string(level))
 										
-						// Verify total amount to transfer
-						var trans_total = own_id.oil_level - 1
-						if(trans_total < 1) trans_total = 1
+				// Verify total amount to transfer
+				var trans_total = own_id.oil_level - 1
+				if(trans_total < 1) trans_total = 1
 					
-						// Change other element to oil
-						other_id.element = "Oil";
-						// Transfer oil level
-						other_id.oil_level += trans_total;
-						own_id.oil_level -= trans_total
+				// Transfer oil level
+				other_id.oil_level += trans_total;
+				own_id.oil_level -= trans_total
 						
-						// Transfer fuel remaining to other platform
-						other_id.fuel_left = own_id.fuel_left
-						// Transfer flames to other platform
-						other_id.is_flaming = own_id.is_flaming;
+				// Transfer fuel remaining to other platform
+				other_id.fuel_left = own_id.fuel_left
+				// Transfer flames to other platform
+				other_id.is_flaming = own_id.is_flaming;
 					
-						// Clear own element
-						own_id.element = "Empty"
-					}
-				}
+				// Clear own element
+				with(own_id) { scr_element_reset_variables() }
 				
 				// Reset timer
 				other_id.spreading_oil_timer = 0;
@@ -426,9 +396,7 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 			} own_id.spreading_oil_timer++
 
 		}
-		
-		
+
 	#endregion Oil Spreading
-	
-	
+
 }

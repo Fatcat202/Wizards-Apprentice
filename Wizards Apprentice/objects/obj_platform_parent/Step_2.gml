@@ -1,56 +1,62 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description Droplets / Reset
 
-if(water_level > 0 && above_free == false)
-{
-	// Instantly create droplet
-	water_drop_timer = water_drop_length;
-	
-	if(below_free)
+#region Water Droplets
+	if(water_level > 0 && above_free == false)
 	{
-		func_create_water_droplet(2)
-	}else
+		// Instantly create droplet
+		water_drop_timer = water_drop_length;
 	
-	if(right_free)
-	{
-		func_create_water_droplet(0)
-	}else
+		if(below_free)
+		{
+			func_create_water_droplet(2)
+		}else
 	
-	if(left_free)
-	{
-		func_create_water_droplet(1)
-	}else
-	{
-		scr_element_reset_variables()
-		element = "Empty"
-	}
+		if(right_free)
+		{
+			func_create_water_droplet(0)
+		}else
 	
+		if(left_free)
+		{
+			func_create_water_droplet(1)
+		}else
+		{
+			scr_element_reset_variables()
+		}
+#endregion Water Droplets
 	
 }else
 
-if(oil_level > 0 && above_free == false)
-{
-	// Instantly create droplet
-	oil_drop_timer = oil_drop_length;
-	
-	if(below_free)
+#region Oil Droplets
+
+	if(oil_level > 0 && above_free == false)
 	{
-		func_create_oil_droplet(2)
-	}else
+		// Instantly create droplet
+		oil_drop_timer = oil_drop_length;
 	
-	if(right_free)
-	{
-		func_create_oil_droplet(0)
-	}else
+		if(below_free)
+		{
+			func_create_oil_droplet(2)
+		}else
 	
-	if(left_free)
-	{
-		func_create_oil_droplet(1)
-	}else
-	{
-		scr_element_reset_variables()
-		element = "Empty"
-	}
+		if(right_free)
+		{
+			func_create_oil_droplet(0)
+		}else
 	
-	
+		if(left_free)
+		{
+			func_create_oil_droplet(1)
+		}else
+		{
+			scr_element_reset_variables()
+		}
 }
+
+#endregion Oil Droplets
+
+
+
+// Reset variables if no element applies
+if(water_level == 0 && oil_level == 0) scr_element_reset_variables()
+

@@ -5,7 +5,7 @@ scr_get_controls();
 #region Pausing
 
 	if(global.cont_esc_menu == true)
-	{scr_test()
+	{
 		if(global.game_esc_paused == false && instance_exists(obj_player_parent))
 		{
 			global.game_esc_paused = true;

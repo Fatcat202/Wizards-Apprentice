@@ -21,10 +21,6 @@ subimage = 0
 // Surface the sprite and all modifications are drawn to
 surf = -1;
 
-// Default is set to Empty
-// May also be set to "Water", "Ice", or "Oil"
-element = "Empty"
-
 // Used for gathering and holding ID of other platform being interacted with
 other_id = noone
 
@@ -47,7 +43,10 @@ steam_spawned = false;
 is_flaming = false;
 
 // Determines if flames are spawned to prevent duplication
-flames_spawned = false
+flames_spawned = false;
+
+// Determines if platform is ice
+is_ice = false;
 
 // Used for spreading water effect. Represents number of platforms to spread to
 water_level = 0;
@@ -74,7 +73,7 @@ fuel_left = fuel_default;
 fuel_burn_rate = 1;
 
 // Rate at which fuel will steam
-fuel_burn_rate = 2;
+fuel_steam_rate = 1.5;
 
 // Store variables for flame objects
 flame_0 = noone;
@@ -159,9 +158,10 @@ function func_elements(xx = 0, yy = 0, xx_scale = image_xscale, yy_scale = image
 	// Check for elements, and draw if activated
 
 	// Stores sprite of element to draw
-	var element_draw = noone
+	 element_draw = noone
 
-	if(element == "Water")
+	// Water
+	if(water_level > 0 && oil_level == 0 && is_ice == false)
 	{
 		// Check if water is charged
 		if(is_charged == true)
@@ -171,19 +171,59 @@ function func_elements(xx = 0, yy = 0, xx_scale = image_xscale, yy_scale = image
 		{
 			element_draw = spr_element_water
 		}
-	}else if(element == "Ice")
+	}else 
+	
+	// Ice
+	if(water_level > 0 && oil_level == 0 && is_ice == true)
 	{
 		element_draw = spr_element_ice
 	
-	}else if(element == "Oil")
+	}else 
+	
+	// Oil
+	if(water_level == 0 && oil_level > 0 && is_ice == false)
 	{
 		element_draw = spr_element_oil
+	}else
+	
+	// Oil and Water
+	if(water_level > 0 && oil_level > 0 && is_ice == false)
+	{
+		// Check if water is charged
+		if(is_charged == true)
+		{
+			element_draw = spr_element_oil_water_charged
+		}else
+		{
+			element_draw = spr_element_oil_water
+		}
+	}else
+	
+	// Oil and Ice
+	if(water_level > 0 && oil_level > 0 && is_ice == true)
+	{
+		element_draw = spr_element_oil_ice
+	}else
+	
+	// No Element
+	if(water_level == 0 && oil_level == 0 && is_ice == false)
+	{
+		// Draw nothing
+	}else
+	{
+		// No element combination could be found
+		
+		element_draw = spr_plat_aa_square;
+		
+		show_error("ERROR: NO ELEMENT DETERMINED", false)
 	}
 	
+	// Draw element sprite
 	if(element_draw != noone)
 	{
 		draw_sprite_ext(element_draw, 0, xx + sprite_xoffset, yy + sprite_yoffset, xx_scale, yy_scale, rot, c_white, 1)
 	}
+	
 }
 
 function func_create_water_droplet(dir)
@@ -194,7 +234,7 @@ function func_create_water_droplet(dir)
 	
 	// Start timer to create a droplet, based on spreading water timer
 	if(water_drop_timer >= water_drop_length)
-	{scr_test()
+	{
 
 		// Create right
 		if(!place_meeting(x + check_distance, y, obj_platform_parent) && interacting == false && dir == 0)
@@ -234,14 +274,11 @@ function func_create_water_droplet(dir)
 		
 
 		
-		// If water level reaches 0 or under
+		// If water level reaches 0 or under, set as empty
 		if(water_level <= 0)
 		{
-			// Set element to empty
-			element = "Empty"
+			scr_element_reset_variables()
 			
-			// Reset water level to 0
-			water_level = 0;
 		}
 
 		// Reset timer
@@ -305,14 +342,10 @@ function func_create_oil_droplet(dir)
 		
 
 		
-		// If oil level reaches 0 or under
+		// If oil level reaches 0 or under, reset as empty
 		if(oil_level <= 0)
 		{
-			// Set element to empty
-			element = "Empty"
-			
-			// Reset oil level to 0
-			oil_level = 0;
+			scr_element_reset_variables()
 		}
 
 		// Reset timer

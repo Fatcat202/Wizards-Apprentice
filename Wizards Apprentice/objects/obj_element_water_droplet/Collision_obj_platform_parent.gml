@@ -1,17 +1,15 @@
 /// @description Platform Interactions
 
 // Change platform to water if empty, transfer remaining water level
-if(other.element == "Empty")
+if(other.water_level == 0 && other.oil_level == 0 && other.is_ice == false)
 {
-	// Change element to water
-	other.element = "Water"
 	// Increment water level
 	other.water_level += level;
 	
 }else
 
 // If water, transfer level
-if(other.element == "Water")
+if(other.water_level > 0)
 {
 	// Increment water level
 	other.water_level += level;
@@ -19,13 +17,13 @@ if(other.element == "Water")
 }else
 
 // Store water level when Ice to release when thawed
-if(other.element == "Ice")
+if(other.is_ice == true)
 {
 	other.water_level += level;
 }else
 
 // If flaming, creating flaming oil droplet and steam, like with water spells
-if(other.element == "Oil" && other.is_flaming == true)
+if(other.oil_level > 0 && other.is_flaming == true)
 {		
 	// Total fuel after split between each droplet and platform
 	var fuel_split = other.fuel_left / (level + 1)

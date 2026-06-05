@@ -31,9 +31,7 @@ function scr_spell_water_splash(target_x = mouse_x, target_y = mouse_y)
 
 	});
 	
-	
 	// Set cooldown time depending on spell slot selected
 	scr_set_spell_cooldown(_cooldown)
-	
-	
+
 }

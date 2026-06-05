@@ -10,6 +10,8 @@ var half_width = width / 2;
 var quarter_width = width / 4;
 
 
+
+
 #region Surface
 	// Recreate surface if destroyed
 	if(!surface_exists(surf))
@@ -20,14 +22,15 @@ var quarter_width = width / 4;
 
 #region Flaming
 
-
-	if(element != "Oil")
+	// If not oil, remove flame objects
+	if(oil_level == 0)
 	{
 		// Destroy flame objects
 		if(instance_exists(flame_0)) instance_destroy(flame_0)
 		if(instance_exists(flame_1)) instance_destroy(flame_1)		
 	}
 
+	// Spawning/controlling flames
 	if(is_flaming == true && flames_spawned == false)
 	{
 	
@@ -104,8 +107,7 @@ var quarter_width = width / 4;
 			if(instance_exists(flame_0)) instance_destroy(flame_0)
 			if(instance_exists(flame_1)) instance_destroy(flame_1)
 			
-			scr_element_reset_variables()
-			element = "Empty"			
+			scr_element_reset_variables()		
 		}
 		
 	}
@@ -139,13 +141,14 @@ var quarter_width = width / 4;
 		}
 	}
 	
-	
-	if(element != "Water")
+	// If not water, remove steam objects
+	if(water_level == 0)
 	{
 		// Destroy flame objects
 		if(instance_exists(steam)) instance_destroy(steam)	
 	}
 
+	// Spawn and control steam objects
 	if(is_steaming == true && steam_spawned == false)
 	{
 	
@@ -172,12 +175,13 @@ var quarter_width = width / 4;
 
 	}
 	
-
+	
+	// Fuel Steam
 	if(is_steaming == true && steam_spawned == true)
 	{
-		
+
 		// Reduce fuel remaining based on burn rate
-		fuel_left -= fuel_burn_rate
+		fuel_left -= fuel_steam_rate
 		
 		// When fuel runs out, decrease water level
 		if(fuel_left <= 0)
@@ -202,8 +206,7 @@ var quarter_width = width / 4;
 			// Destroy steam object
 			if(instance_exists(steam)) instance_destroy(steam)
 			
-			scr_element_reset_variables()
-			element = "Empty"			
+			scr_element_reset_variables()		
 		}
 		
 	}
@@ -212,7 +215,8 @@ var quarter_width = width / 4;
 
 #region Charged
 	
-	if(element != "Water")
+	// If not water, remove charge
+	if(water_level == 0)
 	{
 		is_charged = false
 		
@@ -222,12 +226,6 @@ var quarter_width = width / 4;
 
 #region Water Level
 	
-	// Reset water level if not water based element
-	if(element == "Fire" || element == "Oil")
-	{
-		water_level = 0;
-	}
-	
 	// Lock water level at a minimum of 0
 	if(water_level < 0) water_level = 0;
 	
@@ -235,22 +233,93 @@ var quarter_width = width / 4;
 
 #region Oil Level
 	
-	// Reset water level if not oil
-	if(element != "Oil")
-	{
-		oil_level = 0;
-	}
-	
 	// Lock oil level at a minimum of 0
 	if(oil_level < 0) oil_level = 0;
 	
 #endregion Oil Level
 
+#region Water + Flaming Oil Interaction
+
+	if(water_level > 0 && is_flaming == true)
+	{
+		// Create a number of flaming oil droplets equal to level of water spell
+		// splitting remaining fuel in platform between them.
+		// Throw oil droplets in random directions
+		// with gravity affecting them and facing the direction they fly
+		
+		
+		// If more water
+		if(water_level > oil_level)
+		{
+			// Subtract oil from water
+			water_level -= oil_level
+			
+			// Set oil level to 0
+			oil_level = 0
+			
+			var total_levels = water_level - oil_level;
+		}else
+		
+		// If more oil
+		if(water_level < oil_level)
+		{
+			// Subtract oil from water
+			oil_level -= water_level
+			
+			// Set water level to 0
+			water_level = 0
+			
+			var total_levels = oil_level - water_level;
+		}else 
+		
+		// If equal throw 1 level of oil, but leave platform steaming
+		if(water_level == oil_level)
+		{
+			var total_levels = oil_level;
+			
+			scr_element_reset_variables()
+			
+			water_level = 1
+			is_steaming = true
+		}
+			
+		// Total fuel after split between each droplet and platform
+		var fuel_split = fuel_left / (total_levels + 1);
+
+		// Reduce platform fuel
+		fuel_left = fuel_split;
+			
+		for(var i = 0; i < total_levels; i++)
+		{
+			// Create random speed of droplet
+			var rand_spd = random_range(-4, 4)
+				
+			// Create random deviation in x origin point on platform
+			var rand_x = random_range(-10, 10)
+				
+			// Create oil droplet, throwing it in random direction
+			droplet = instance_create_layer(x + rand_x, y - sprite_height - 5, "Spells", obj_element_oil_droplet,
+			{
+				fuel_left : fuel_split,
+				is_flaming : true,
+				move_spd_v : 6,
+				move_spd_h : rand_spd
+					
+			});
+				
+			// Create steam object for each water level in location droplet is spawned
+			steam = instance_create_layer(x + rand_x, y - sprite_height - 5, "Spells", obj_element_steam_air)
+			
+
+		}
+	}
+
+#endregion Water + Flaming Oil Interaction
 
 #region Inter Platform Element Interactions
 
 	// Do not run checks if there is no interaction to begin
-	if(element != "Empty")
+	if(water_level != 0 || oil_level != 0)
 	{
 
 		// Check in each direction for touching platforms. Run inter-element script for each direction
@@ -259,7 +328,6 @@ var quarter_width = width / 4;
 		var rand_dir = irandom(1);
 	
 		//show_debug_message("rand_dir = " + string(rand_dir))
-	
 	
 		// Continue ongoing interaction
 		if(interacting == true)
@@ -276,24 +344,19 @@ var quarter_width = width / 4;
 		#region Water transfer
 	
 
-	
 			#region Slopes
 		
 		
 				// Water sliding down slopes
-				if(element == "Water" && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
+				if(water_level > 0 && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
 				{
 					if(object_index == obj_platform_aa_slope_left)
 					{
 						if(bottom_left_free == false)
 						{
 							other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
-						
-							// Freeze water on slopes if in contact with ice
-							if(element == "Water" && other_id.element == "Ice")
-							{
-								element = "Ice"
-							}else scr_element_inter_platform_interactions(id, other_id)
+								
+							scr_element_inter_platform_interactions(id, other_id)
 						}else
 						{	// Create droplet going off slope
 						
@@ -308,11 +371,7 @@ var quarter_width = width / 4;
 						{
 							other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
 
-							// Freeze water on slopes if in contact with ice
-							if(element == "Water" && other_id.element == "Ice")
-							{
-								element = "Ice"
-							}else scr_element_inter_platform_interactions(id, other_id)
+							scr_element_inter_platform_interactions(id, other_id)
 						}else
 						{	// Create droplet going off slope
 						
@@ -327,7 +386,7 @@ var quarter_width = width / 4;
 	
 	
 			// If water, check water levels of platform to left and right, transfer to lowest level
-			if(element == "Water" && water_level > 1)
+			if(water_level > 1)
 			{
 				// Platform id to right and left
 				var right_id = instance_place(x + check_distance, y, obj_platform_parent)
@@ -421,7 +480,7 @@ var quarter_width = width / 4;
 					// then transfer water level between, else continue to other checks
 					if(transfer_id != noone)
 					{
-						if(water_level > transfer_id.water_level && (transfer_id.element == "Water" || transfer_id.element == "Empty"))
+						if(water_level > transfer_id.water_level)
 						{
 							// Activate interaction to transfer water level
 							scr_element_inter_platform_interactions(id, transfer_id)
@@ -449,7 +508,7 @@ var quarter_width = width / 4;
 		
 		
 				// Oil sliding down slopes
-				if(element == "Oil" && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
+				if(oil_level > 0 && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
 				{
 					if(object_index == obj_platform_aa_slope_left)
 					{
@@ -485,7 +544,7 @@ var quarter_width = width / 4;
 	
 	
 			// If oil, check oil levels of platform to left and right, transfer to lowest level
-			if(element == "Oil" && oil_level > 1)
+			if(oil_level > 1)
 			{
 				// Platform id to right and left
 				var right_id = instance_place(x + check_distance, y, obj_platform_parent)
@@ -577,7 +636,7 @@ var quarter_width = width / 4;
 					// then transfer oil level between, else continue to other checks
 					if(transfer_id != noone)
 					{
-						if(oil_level > transfer_id.oil_level && (transfer_id.element == "Oil" || transfer_id.element == "Empty"))
+						if(oil_level > transfer_id.oil_level)
 						{
 							// Activate interaction to transfer oil level
 							scr_element_inter_platform_interactions(id, transfer_id)
@@ -594,7 +653,6 @@ var quarter_width = width / 4;
 					// Clear transfer_id to prevent incorrectly stored variable
 					transfer_id = noone
 			
-
 			}else
 	
 		#endregion Oil transfer
@@ -630,7 +688,7 @@ var quarter_width = width / 4;
 	
 		#region Water Droplets
 	
-			if(element == "Water" && water_level > 1 && interacting == false && above_free == true)
+			if(water_level > 1 && interacting == false && above_free == true)
 			{
 				// Used to detect if water dropping function is used in this step
 				var dropping = false;
@@ -681,7 +739,7 @@ var quarter_width = width / 4;
 	
 		#region Oil Droplets
 	
-				if(element == "Oil" && oil_level > 1 && interacting == false && above_free == true)
+				if(oil_level > 1 && interacting == false && above_free == true)
 				{
 					// Used to detect if oil dropping function is used in this step
 					var dropping = false
@@ -732,3 +790,5 @@ var quarter_width = width / 4;
 	}
 
 #endregion Inter Platform Element Interactions
+
+

@@ -23,7 +23,7 @@
 
 	if(is_flaming == true && flames_spawned == false)
 	{
-	scr_test()
+
 		// Spawn flame
 		flame_0 = instance_create_layer(x, y - (sprite_height / 4), "Spells", obj_element_flaming,
 		{

@@ -312,11 +312,6 @@ var yy = display_get_gui_height() / 2
 			spell_slot_icon(xx, yy, 1, i, r, g, b)
 			
 		}
-		
-	//	draw_sprite_ext(arr_active_spells[i].spr, subimage, spell_margin_x + (i * spell_spacing), spell_margin_y, 1, 1, 0, tint, 1)
 	}
 
-
 #endregion Spells
-
-

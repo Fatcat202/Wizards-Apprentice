@@ -253,7 +253,7 @@ function spell_slot_icon(xx, yy, subimage, i, r = 255, g = 255, b = 255)
 	var spell_height = sprite_get_height(spr_spell_slot_template)
 	var spell_spacing = (spell_width);
 	var spell_margin_x =  xx - (((total_spells + 1) * spell_width))/2
-	var spell_margin_y = yy * 2 - (spell_height / 2) - 5;
+	var spell_margin_y = ((yy * 2) - (spell_height / 2)) - 35;
 	
 	func_colour = function(r, g, b) constructor
 	{
@@ -322,7 +322,7 @@ function spell_slot_icon(xx, yy, subimage, i, r = 255, g = 255, b = 255)
 	surface_reset_target()
 
 	// Draw surface
-	draw_surface(spell_surf, spell_margin_x + (i * spell_spacing), spell_margin_y - 30);
+	draw_surface(spell_surf, spell_margin_x + (i * spell_spacing), spell_margin_y);
 
 	// Free memory
 	surface_free(spell_surf)
@@ -331,11 +331,4 @@ function spell_slot_icon(xx, yy, subimage, i, r = 255, g = 255, b = 255)
 	shader_reset();
 	
 }
-
-
-
-
-
-
-
 

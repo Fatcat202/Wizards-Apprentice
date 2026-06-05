@@ -18,34 +18,14 @@ function draw_element_above(rotation = 0, x_shift = 0, y_shift = 0)
 	if(instance_exists(above_id))
 	{
 		// If platform above has an element
-		if(above_id.element != "Empty")
+		if(variable_instance_exists(above_id, "element_draw"))
 		{
-			// Set default element to draw to null
-			var element_draw = noone;
-		
-			// If water
-			if(above_id.element == "Water")
-			{
-				// Set element sprite
-				element_draw = spr_element_water
-			}else
-		
-			// If ice
-			if(above_id.element == "Ice")
-			{
-				// Set element sprite
-				element_draw = spr_element_ice
-			}else
-		
-			// If oil
-			if(above_id.element == "Oil")
-			{
-				// Set element sprite
-				element_draw = spr_element_oil
-			}
+			// Use same sprite as platform above
+			element_draw = above_id.element_draw;
+
 		
 			// Draw element sprite
-			draw_sprite_ext(element_draw, 0, 0 + sprite_xoffset + x_shift, 0 + sprite_yoffset + y_shift, image_xscale, image_xscale, rotation, c_white, 1)
+			if(element_draw != noone) draw_sprite_ext(element_draw, 0, 0 + sprite_xoffset + x_shift, 0 + sprite_yoffset + y_shift, image_xscale, image_xscale, rotation, c_white, 1)
 		}
 	}
 }
@@ -245,11 +225,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		func_elements(0, 0)
 	}
 	
-	
-	
-	
-	
-	
+
 	// Default blank corners
 	var corner_top_left = shader_get_sampler_index(shd_platform_multi_texture, "corner_top_left");
 	texture_set_stage(corner_top_left, sprite_get_texture(spr_plat_aa_corner, 0));
@@ -306,22 +282,17 @@ shader_reset();
 	draw_set_valign(fa_center)
 
 	// Display Water Level
-	if(water_level > 0) 
+	if(water_level > 0 || oil_level > 0) 
 	{
-		draw_text(x, y - 5, "WL" + string(water_level))
-	
-		// Displaying fuel_left
-		draw_text(x, y+5, "FL" + string(fuel_left))
-	}
-	
-	// Display Oil Level
-	if(oil_level > 0)
-	{
-		// Displaying oil level
-		draw_text(x, y-5, "OL" + string(oil_level))
+		// Display water level
+		draw_text(x, y - 10, "WL: " + string(water_level))
 		
+		// Displaying oil level
+		draw_text(x, y, "OL: " + string(oil_level))
+	
 		// Displaying fuel_left
-		draw_text(x, y+5, "FL" + string(fuel_left))
+		draw_text(x, y + 10, "FL: " + string(fuel_left))
 	}
+
 	
 #endregion Debug
