@@ -107,24 +107,27 @@ if(can_move == true)
 	
 	#region Gravity
 	
-		if(!scr_on_ground())
+		if(!flies)
 		{
+			if(!scr_on_ground())
+			{
 
-			move_spd_v -= global.grav;
+				move_spd_v -= global.grav;
 
-			// Gravity Debug
-			//show_debug_message("Gravity On")
-		}else
-		{
-			// Reset y speed if on the ground
-			move_spd_v = 0
+				// Gravity Debug
+				//show_debug_message("Gravity On")
+			}else
+			{
+				// Reset y speed if on the ground
+				move_spd_v = 0
 
-			// Reset number of jumps remaining
-			jumps_left = max_jumps
+				// Reset number of jumps remaining
+				jumps_left = max_jumps
 				
-			// Gravity Debug
-			//show_debug_message("jumps_left = " + string(jumps_left))
-			//show_debug_message("Gravity Off")
+				// Gravity Debug
+				//show_debug_message("jumps_left = " + string(jumps_left))
+				//show_debug_message("Gravity Off")
+			}
 		}
 		
 	#endregion Gravity
@@ -137,11 +140,13 @@ if(can_move == true)
 		
 		if(move_spd_h < -move_spd_max) move_spd_h = -move_spd_max;
 		if(move_spd_v < -move_spd_max) move_spd_v = -move_spd_max;
-	
+
 		// Move object horizontally
 		x += move_spd_h
 		// Move object vertically
 		y -= move_spd_v
+		
+		
 	
 	#endregion Move Object
 			
@@ -151,7 +156,22 @@ if(can_move == true)
 		if(move_spd_h < 0)
 		{
 			image_xscale = -1;
-		}else if(move_spd_h > 0) image_xscale = 1;
+		}else
+		
+		if(move_spd_h > 0)
+		{
+			image_xscale = 1;
+		}else
+		
+		if(path_index != -1)
+		{
+
+			if(direction < 90 || direction > 270)
+			{
+				image_xscale = 1
+			}else image_xscale = -1
+
+		}
 		
 	#endregion Flipping Sprite
 	

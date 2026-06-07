@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_goblin_bat",
+    "path":"sprites/spr_goblin_bat/spr_goblin_bat.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

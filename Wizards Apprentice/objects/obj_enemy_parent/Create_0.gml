@@ -112,7 +112,8 @@ event_inherited();
 	
 	
 	// Holds path the enemy has assigned to patrol
-	path_patrol = path_testing_0_0
+	// Must be manually set in object creation code
+	path_patrol = -1
 	
 	// Declares if a patrol has begun
 	patrol_started = false
@@ -197,7 +198,12 @@ event_inherited();
 		// Flight base patrol
 		if(flies == true)
 		{
-			
+			// If path is assigned and has not started
+			if(path_patrol != -1 && path_index == -1)
+			{
+				// Start manually created path
+				path_start(path_patrol, move_spd_max, path_action_restart, 1)
+			}
 		}
 		
 		
