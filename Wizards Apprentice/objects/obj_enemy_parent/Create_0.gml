@@ -32,12 +32,21 @@ event_inherited();
 		// Current Health
 		active_health = max_health;
 		
-	// Movement speed
-	move_spd = global.enemy_stats[index].move_spd;
+	// Max movement speed
+	move_spd_max_default = global.enemy_stats[index].move_spd;
+	
+	// Determines if enemy flies
+	flies = global.enemy_stats[index].flies;
+	
+	// Modifiable max movement speed
+	move_spd_max = move_spd_max_default
+	
+	// Declares if enemy can move
+	can_move = true;
 	
 	// Stores x and y origin points
-	home_x = y;
-	home_y = x;
+	home_x = x;
+	home_y = y;
 	
 	// Movement speed when jumping
 	jump_speed = 5.5;
@@ -97,6 +106,18 @@ event_inherited();
 	max_jumps = 1;
 	// Jumps remaining
 	jumps_left = max_jumps
+	
+	// Jump Height in pixels
+	jump_height = global.cell_size * global.enemy_stats[index].jump_height
+	
+	
+	// Holds path the enemy has assigned to patrol
+	path_patrol = path_testing_0_0
+	
+	// Declares if a patrol has begun
+	patrol_started = false
+	
+	
 
 
 #endregion
@@ -109,31 +130,92 @@ event_inherited();
 	{
 		
 //		show_debug_message("State: Idle")
-		state_behavior = state_idle;
+
+		
+		// Begin patrol if located at spawn point
+		if(point_distance(x, y, home_x, home_y) < (sprite_height + sprite_width) / 2)
+		{
+			state_behavior = state_patrol;
+		}
 		
 	}
 	
 	state_patrol = function()
 	{
-		
 //		show_debug_message("State: Patrol")
-		state_behavior = state_patrol;
 
+		// Ground based patrol
+		if(flies == false)
+		{
+			// If starting a new patrol
+			if(patrol_started == false)
+			{
+				// Random number for direction to move
+				var rand_dir = irandom(1)
+			
+				// Select direction to begin patrol
+				
+				// Start left
+				if(rand_dir == 0)
+				{
+					move_dir = -1; 
+				}else
+				
+				// Start right
+				if(rand_dir == 1)
+				{
+					move_dir = 1;
+				}
+			
+				// Declare a patrol has started
+				patrol_started = true
+			
+			}else
+		
+			if(patrol_started == true)
+			{
+				var check_dist = (global.cell_size * 1.5) * move_dir
+				
+				// No horizontal collision or ledge
+				if(!place_meeting(x + move_spd_h, y, obj_platform_parent)
+				&& place_meeting(x + check_dist, y + 1, obj_platform_parent))
+				{
+					// Accelerate
+					move_spd_h += (h_acel * move_dir)
+				}else
+				{
+					// Switch direction
+					move_dir *= -1
+					
+					// Swap direction
+					move_spd_h *= -1
+						
+				}
+			}
+		}else
+		
+		// Flight base patrol
+		if(flies == true)
+		{
+			
+		}
+		
+		
+		
 	}
 	
 	state_attack = function()
-	{
-		
+	{	
 //		show_debug_message("State: Attack")
-		state_behavior = state_attack;
+
+
 
 	}
 	
 	state_retreat = function()
-	{
-		
+	{		
 //		show_debug_message("State: Retreat")
-		state_behavior = state_retreat;
+
 
 	}
 

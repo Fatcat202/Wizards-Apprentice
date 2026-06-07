@@ -11,7 +11,7 @@ scr_health_and_mana_test()
 // Used to provide debug outputs for health, mana, and drain
 //scr_health_and_mana_debug()
 
-#region Pathing Update
+#region Grid Update
 
 	if(instance_exists(obj_enemy_parent))
 	{
@@ -22,7 +22,7 @@ scr_health_and_mana_test()
 		if(alarm_get(0) <= 0) alarm_set(0, count)
 	}
 	
-#endregion Pathing Update
+#endregion Grid Update
 
 
 #region Controls

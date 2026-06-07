@@ -32,6 +32,8 @@
     {"$GMFolder":"","%Name":"Solid","folderPath":"folders/Objects/Platforms/Solid.yy","name":"Solid","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Auto Assign","folderPath":"folders/Objects/Platforms/Solid/Auto Assign.yy","name":"Auto Assign","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Stone","folderPath":"folders/Objects/Platforms/Solid/Stone.yy","name":"Stone","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Paths","folderPath":"folders/Paths.yy","name":"Paths","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"rm_testing_0","folderPath":"folders/Paths/rm_testing_0.yy","name":"rm_testing_0","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Demo","folderPath":"folders/Rooms/Demo.yy","name":"Demo","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Testing","folderPath":"folders/Rooms/Testing.yy","name":"Testing","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -151,6 +153,8 @@
     {"id":{"name":"obj_spell_wall_of_ice","path":"objects/obj_spell_wall_of_ice/obj_spell_wall_of_ice.yy",},},
     {"id":{"name":"obj_spell_water_splash","path":"objects/obj_spell_water_splash/obj_spell_water_splash.yy",},},
     {"id":{"name":"obj_wall_player_parent","path":"objects/obj_wall_player_parent/obj_wall_player_parent.yy",},},
+    {"id":{"name":"path_testing_0_0","path":"paths/path_testing_0_0/path_testing_0_0.yy",},},
+    {"id":{"name":"path_testing_0_1","path":"paths/path_testing_0_1/path_testing_0_1.yy",},},
     {"id":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
     {"id":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
     {"id":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
@@ -292,11 +296,15 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
-    {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
-    {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
-    {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
-    {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
+    {"children":[
+        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
+        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
+      ],"groupName":"Testing",},
+    {"children":[
+        {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
+        {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
+      ],"groupName":"Demo",},
   ],
   "templateType":"game",
   "TextureGroups":[

@@ -1,0 +1,18 @@
+{
+  "$GMPath":"",
+  "%Name":"path_testing_0_1",
+  "closed":false,
+  "kind":0,
+  "name":"path_testing_0_1",
+  "parent":{
+    "name":"rm_testing_0",
+    "path":"folders/Paths/rm_testing_0.yy",
+  },
+  "points":[
+    {"speed":100.0,"x":65.54606,"y":958.1939,},
+    {"speed":100.0,"x":383.1931,"y":960.33295,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}

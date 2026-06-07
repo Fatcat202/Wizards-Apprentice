@@ -8,7 +8,7 @@ function scr_on_ground(obj = id)
 		if(place_meeting(x, y + 0.5, obj_collision_parent) && scr_is_solid(x, y + 0.5) && !scr_check_semi_solid(x, y + 0.5))
 		{
 			// Used to prevent thinking the ceiling is the floor
-			var quarter_sprite = sprite_get_height(object_get_sprite(obj_player_parent)) / 4
+			var quarter_sprite = sprite_get_height(object_get_sprite(object_index)) / 4
 			if(!place_meeting(x, y - quarter_sprite, obj_collision_parent) || !scr_is_solid(x, y - quarter_sprite))
 			{
 				// Debug message
