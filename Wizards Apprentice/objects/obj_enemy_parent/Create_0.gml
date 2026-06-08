@@ -195,7 +195,7 @@ event_inherited();
 		
 			if(patrol_started == true)
 			{
-				var check_dist = (global.cell_size * 1.5) * move_dir
+				var check_dist = (global.cell_size) * move_dir
 				
 				// No horizontal collision or ledge
 				if(!place_meeting(x + move_spd_h, y, obj_platform_parent)
