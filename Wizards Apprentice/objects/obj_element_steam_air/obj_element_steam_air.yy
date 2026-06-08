@@ -15,8 +15,8 @@
     "path":"folders/Objects/Elemental Effects.yy",
   },
   "parentObjectId":{
-    "name":"obj_element_parent",
-    "path":"objects/obj_element_parent/obj_element_parent.yy",
+    "name":"obj_element_steam_parent",
+    "path":"objects/obj_element_steam_parent/obj_element_steam_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

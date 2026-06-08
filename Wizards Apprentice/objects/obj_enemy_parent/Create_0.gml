@@ -118,10 +118,23 @@ event_inherited();
 	// Declares if a patrol has begun
 	patrol_started = false
 	
+	// Declares if the player is visible
+	player_visible = false
+	
+	// X and Y Cords for targeting path goal. Allow for traveling to last known location
+	target_x = -1
+	target_y = -1
+	
+	// Range at which an enemy can see the player
+	vision_range = global.enemy_stats[index].vision_range;
 	
 
 
+
 #endregion
+
+
+
 
 
 #region Enemy AI States
@@ -131,6 +144,13 @@ event_inherited();
 	{
 		
 //		show_debug_message("State: Idle")
+
+		// Search for player and change state to attack if found
+		scr_player_search()
+		if(player_visible == true)
+		{
+			state_behavior = state_attack;
+		}
 
 		
 		// Begin patrol if located at spawn point
@@ -207,6 +227,12 @@ event_inherited();
 		}
 		
 		
+		// Search for player and change to attack state if found
+		scr_player_search()
+		if(player_visible == true)
+		{
+			state_behavior = state_attack;
+		}
 		
 	}
 	
@@ -214,13 +240,21 @@ event_inherited();
 	{	
 //		show_debug_message("State: Attack")
 
-
+		// End path
+		if(path_index != -1)
+		{
+			path_end()
+		}
+		
+		// Decelerate till stopping
+		if(move_spd_h > 0) move_spd_h -= h_decel;
+		if(move_spd_h < 0) move_spd_h = 0;
 
 	}
 	
-	state_retreat = function()
+	state_return_home = function()
 	{		
-//		show_debug_message("State: Retreat")
+//		show_debug_message("State: Return Home")
 
 
 	}
