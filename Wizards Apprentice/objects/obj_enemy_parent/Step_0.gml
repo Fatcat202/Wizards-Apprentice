@@ -141,12 +141,12 @@ if(can_move == true)
 				
 		#endregion Slopes
 		
+		// Declare movement direction
 		if(move_spd_h > 0) move_dir = 1
 		if(move_spd_h < 0) move_dir = -1
 				
 		var check_dist = (global.cell_size) * move_dir
-				
-		// No horizontal collision or ledge
+		// Prevent falling off ledge
 		if(!place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent))
 		{
 			move_spd_h = 0

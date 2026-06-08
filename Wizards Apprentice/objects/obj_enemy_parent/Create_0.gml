@@ -101,7 +101,8 @@ event_inherited();
 	collision_speed = global.collision_distance
 	
 	// Used to determine if the enemy is solid for the purposes of semi solid objects
-	semi_solid = false
+	// Flying enemies are always semi solid
+	semi_solid = flies;
 	
 	// Normal max jumps
 	base_max_jumps = 0;

@@ -7,7 +7,7 @@ function scr_player_search()
 	if(point_distance(x, y, player_x, player_y) <= vision_range)
 	{
 		// Check there are no platforms or steam blocking vision
-		if(!collision_line(x, y, player_x, player_y, obj_platform_parent, true, false)
+		if(!collision_line(x, y, player_x, player_y, obj_platform_solid_parent, true, false)
 			&& !collision_line(x, y, player_x, player_y, obj_element_steam_parent, true, false))
 		{
 			
