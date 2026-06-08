@@ -59,6 +59,9 @@ event_inherited();
 	// Current vertical move speed, used for acceleraton/deceleration
 	move_spd_v = 0;
 	
+	// Direction the enemy is moving. -1 is left, 1 is right
+	move_dir = 0;
+	
 	// Horizontal movement acceleration rate. 0 is instant, 1 is nothing
 		// Default modifier
 		h_acel_default = 0.5
@@ -128,13 +131,13 @@ event_inherited();
 	// Range at which an enemy can see the player
 	vision_range = global.enemy_stats[index].vision_range;
 	
+	// Delay in seconds before entering idle state
+	idle_state_delay = game_get_speed(gamespeed_fps) * 1
+	
 
 
 
 #endregion
-
-
-
 
 
 #region Enemy AI States
@@ -150,6 +153,8 @@ event_inherited();
 		if(player_visible == true)
 		{
 			state_behavior = state_attack;
+				
+			scr_reset_enemy_movement()
 		}
 
 		
@@ -232,6 +237,9 @@ event_inherited();
 		if(player_visible == true)
 		{
 			state_behavior = state_attack;
+			
+			scr_reset_enemy_movement()
+			
 		}
 		
 	}
@@ -240,15 +248,49 @@ event_inherited();
 	{	
 //		show_debug_message("State: Attack")
 
-		// End path
-		if(path_index != -1)
+		// Reset player coords
+		scr_player_search()
+		
+		// If a walking enemy
+		if(flies == false)
 		{
-			path_end()
+			// Stop enemy when reaching target
+			if(x > target_x - 2 && x < target_x + 2)
+			{
+				// Stop movement
+				move_spd_h = 0;
+				
+				// Set alarm to enter idle state
+				if(alarm_get(0) == -1)
+				{
+					alarm_set(0, idle_state_delay)
+				}
+			}else
+			
+			// Move right to target_x
+			if(x < target_x)
+			{
+				move_spd_h += h_acel
+			}else
+			
+			// Move left to target_x
+			if(x > target_x)
+			{
+				move_spd_h -= h_acel
+			}
+			
+			
+			
+		}else
+		
+		
+		// If a flying enemy
+		if(flies == true)
+		{
+			// Implement A*
 		}
 		
-		// Decelerate till stopping
-		if(move_spd_h > 0) move_spd_h -= h_decel;
-		if(move_spd_h < 0) move_spd_h = 0;
+		
 
 	}
 	

@@ -4,7 +4,7 @@ function scr_on_ground(obj = id)
 {
 	with(obj)
 	{
-		// Check if the player is on the ground
+		// Check if the character is on the ground
 		if(place_meeting(x, y + 0.5, obj_collision_parent) && scr_is_solid(x, y + 0.5) && !scr_check_semi_solid(x, y + 0.5))
 		{
 			// Used to prevent thinking the ceiling is the floor
@@ -29,7 +29,5 @@ function scr_on_ground(obj = id)
 				
 			return false
 		}
-		
 	}
-
 }

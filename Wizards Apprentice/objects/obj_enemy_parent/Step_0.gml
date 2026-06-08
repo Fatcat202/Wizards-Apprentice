@@ -70,40 +70,7 @@ if(can_move == true)
 		
 	#endregion Changing Modifiers Based On Platform Element
 	
-	#region Slopes
-			
-		// Used for sub pixel collisions to ensure accuracy
-		var sub_pixel = 0.5
-			
-		// Check for horizontal collision
-		if(place_meeting(x + move_spd_h, y, obj_platform_parent))
-		{
-			// Check for slope to go up
-			if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent))
-			{
-				// Go up slope
-				while(place_meeting(x + move_spd_h, y, obj_collision_parent))
-				{
-					y -= sub_pixel
-				}
-			}else
-			{
-				// Preventing getting stuck with collision objects horizontaly
-				move_spd_h = 0
-			}
-		}
-			
-		// Check for slope to go down
-		if(move_spd_v >= 0 && !place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && place_meeting(x + move_spd_h, y + abs(move_spd_h) + 1, obj_collision_parent))
-		{
-			// Go down slope
-			while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent))
-			{
-					y += sub_pixel
-			}
-		}
-				
-	#endregion Slopes
+
 	
 	#region Gravity
 	
@@ -111,7 +78,6 @@ if(can_move == true)
 		{
 			if(!scr_on_ground())
 			{
-
 				move_spd_v -= global.grav;
 
 				// Gravity Debug
@@ -129,51 +95,88 @@ if(can_move == true)
 				//show_debug_message("Gravity Off")
 			}
 		}
-		
+	
 	#endregion Gravity
 	
 	#region Move Object
-	
-		// Locking max movement speed
-		if(move_spd_h > move_spd_max) move_spd_h = move_spd_max;
-		if(move_spd_v > move_spd_max) move_spd_v = move_spd_max;
+
+		// Set max horizontal movement speed
+		move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
+		// Set and apply terminal velocity
+		if(move_spd_v < term_vel) move_spd_v = term_vel;
 		
-		if(move_spd_h < -move_spd_max) move_spd_h = -move_spd_max;
-		if(move_spd_v < -move_spd_max) move_spd_v = -move_spd_max;
+
+		#region Slopes
+			
+			// Used for sub pixel collisions to ensure accuracy
+			var sub_pixel = 0.5
+			
+			// Check for horizontal collision
+			if(place_meeting(x + move_spd_h, y, obj_platform_parent))
+			{
+				// Check for slope to go up
+				if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent))
+				{
+					// Go up slope
+					while(place_meeting(x + move_spd_h, y, obj_collision_parent))
+					{
+						y -=  sub_pixel
+					}
+				}else
+				{	
+					// Preventing getting stuck with collision objects horizontaly
+					move_spd_h = 0
+				}
+			}
+			
+			// Check for slope to go down
+			if(move_spd_v >= 0 && !place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && place_meeting(x + move_spd_h, y + abs(move_spd_h) + 1, obj_collision_parent))
+			{
+				// Go down slope
+				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent))
+				{
+						y += sub_pixel
+				}
+			}
+				
+		#endregion Slopes
+		
+		if(move_spd_h > 0) move_dir = 1
+		if(move_spd_h < 0) move_dir = -1
+				
+		var check_dist = (global.cell_size) * move_dir
+				
+		// No horizontal collision or ledge
+		if(!place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent))
+		{
+			move_spd_h = 0
+		}
+				
 
 		// Move object horizontally
 		x += move_spd_h
 		// Move object vertically
 		y -= move_spd_v
-		
-		
+
 	
 	#endregion Move Object
-			
+	
 	#region Flipping Sprite
 	
-		// Flip sprite when moving
-		if(move_spd_h < 0)
+		// Flip sprite when moving	
+		if(move_dir = 1)
 		{
-			image_xscale = -1;
-		}else
+			image_xscale = 1
+		}else 
 		
-		if(move_spd_h > 0)
+		if(move_dir = -1)
 		{
-			image_xscale = 1;
-		}else
-		
-		if(path_index != -1)
-		{
-
-			if(direction < 90 || direction > 270)
-			{
-				image_xscale = 1
-			}else image_xscale = -1
-
+			image_xscale = -1
 		}
+
 		
 	#endregion Flipping Sprite
+			
 	
 	#region Collisions
 	
