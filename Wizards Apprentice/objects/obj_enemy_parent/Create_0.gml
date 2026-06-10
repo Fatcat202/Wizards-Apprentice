@@ -49,10 +49,10 @@ event_inherited();
 	home_y = y;
 	
 	// Movement speed when jumping
-	jump_speed = 5.5;
+	jump_speed = 8;
 
 	//Terminal Velocity
-	term_vel = -(jump_speed + 2)
+	term_vel = -7.5
 	
 	// Current horizontal move speed, used for acceleraton/deceleration
 	move_spd_h = 0;
@@ -90,7 +90,6 @@ event_inherited();
 		plat_spd_decel_ice = 2.3
 	
 	
-	
 	// Variable to determine if enemy is walking
 	is_walking = false;
 	
@@ -104,16 +103,8 @@ event_inherited();
 	// Flying enemies are always semi solid
 	semi_solid = flies;
 	
-	// Normal max jumps
-	base_max_jumps = 0;
-	// Adjusted jumps
-	max_jumps = 1;
-	// Jumps remaining
-	jumps_left = max_jumps
-	
-	// Jump Height in pixels
-	jump_height = global.cell_size * global.enemy_stats[index].jump_height
-	
+	// Declares enemy is capable of jumping
+	can_jump = global.enemy_stats[index].can_jump
 	
 	// Holds path the enemy has assigned to patrol
 	// Must be manually set in object creation code
@@ -135,10 +126,15 @@ event_inherited();
 	// Delay in seconds before entering idle state
 	idle_state_delay = game_get_speed(gamespeed_fps) * 1
 	
+	// Random 0 or 1 integer used to shift enemy off players head, determines direction
+	rand_shift_dir = -1
+	
+	// Alarm to reset target coords if player is not visible for a set time
+	player_visible_timer = game_get_speed(gamespeed_fps) * 5
 
 
 
-#endregion
+#endregion Loading instance stats
 
 
 #region Enemy AI States
@@ -149,6 +145,10 @@ event_inherited();
 		
 //		show_debug_message("State: Idle")
 
+		// Reset target coords
+		target_x = -1
+		target_y = -1
+
 		// Search for player and change state to attack if found
 		scr_player_search()
 		if(player_visible == true)
@@ -156,15 +156,10 @@ event_inherited();
 			state_behavior = state_attack;
 				
 			scr_reset_enemy_movement()
-		}
+		}		
+		// Begin patrol
+		state_behavior = state_patrol;
 
-		
-		// Begin patrol if located at spawn point
-		if(point_distance(x, y, home_x, home_y) < (sprite_height + sprite_width) / 2)
-		{
-			state_behavior = state_patrol;
-		}
-		
 	}
 	
 	state_patrol = function()
@@ -197,26 +192,48 @@ event_inherited();
 				// Declare a patrol has started
 				patrol_started = true
 			
-			}else
-		
+			}
 			if(patrol_started == true)
 			{
-				var check_dist = (global.cell_size) * move_dir
+				var check_dist = (global.cell_size / 2) * move_dir
 				
-				// No horizontal collision or ledge
-				if(!place_meeting(x + move_spd_h, y, obj_platform_parent)
-				&& place_meeting(x + check_dist, y + 1, obj_platform_parent))
-				{
-					// Accelerate
-					move_spd_h += (h_acel * move_dir)
+				// Checks if there is a horizontal platform collision
+				var h_coll = place_meeting(x + move_spd_h * 2, y, obj_platform_parent)
+				// Detects if enemy can step onto platform
+				var plat_step = !place_meeting(x + move_spd_h * 2, y - global.cell_size, obj_platform_parent)
+				
+				// ledge detected
+				var ledge = !place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent)
+				// Detects if ledge would be a low fall
+				var low_fall = place_meeting(x + check_dist, y + global.cell_size*2, obj_platform_parent)
+				
+				
+				show_debug_message("h_coll: " + string(h_coll))
+				show_debug_message("plat_step: " + string(plat_step))
+				show_debug_message("ledge: " + string(ledge))
+				show_debug_message("low_fall: " + string(low_fall))
+			
+				
+				// No horizontal collision, or can step up on platform
+				if(h_coll == false || (h_coll == true && plat_step == true))
+				{	// If no ledge, or fall is a short drop
+					if(ledge == false || (ledge == true && low_fall == true))
+					{
+						// Accelerate
+						move_spd_h += (h_acel * move_dir)
+					}else
+					{
+						// Switch direction
+						move_dir *= -1
+						// Swap direction
+						move_spd_h *= -1
+					}
 				}else
 				{
 					// Switch direction
 					move_dir *= -1
-					
 					// Swap direction
-					move_spd_h *= -1
-						
+					move_spd_h *= -1		
 				}
 			}
 		}else
@@ -252,6 +269,15 @@ event_inherited();
 		// Reset player coords
 		scr_player_search()
 		
+		
+	
+		// Reset target coords if player is no longer visible for set time
+		if(player_visible == false)
+		{
+			if(alarm_get(1) == -1) alarm_set(1, player_visible_timer)
+		}else alarm_set(1, -1)
+		
+		
 		// If a walking enemy
 		if(flies == false)
 		{
@@ -268,6 +294,7 @@ event_inherited();
 				}
 			}else
 			
+
 			// Move right to target_x
 			if(x < target_x)
 			{
@@ -280,6 +307,14 @@ event_inherited();
 				move_spd_h -= h_acel
 			}
 			
+			// Trigger the enemy to jump
+			if(place_meeting(x, y, obj_jump_spot)) 
+			{
+				scr_enemy_jump()
+			}
+			
+
+			
 			
 			
 		}else
@@ -290,17 +325,9 @@ event_inherited();
 		{
 			// Implement A*
 		}
-		
-		
 
 	}
 	
-	state_return_home = function()
-	{		
-//		show_debug_message("State: Return Home")
-
-
-	}
 
 	state_behavior = state_idle;
 

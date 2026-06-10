@@ -3,7 +3,7 @@
 
 **PLAYER STATS**
 
-	Vigor: Determines health
+	Vitality: Determines health
 	Intelligence: Determines mana
 	Dexterity: Jump distance/height, movement and speed. Higher number makes platforming easier
 	Charisma: Provides a discount in shops
@@ -99,7 +99,28 @@
 	More advanced enemies, often in large groups or have debuff effects
 		
 	-Shambler zombie: Basic undead, more health but less damage
-	-Shambler skeleton Basic undead, hits harder but less health
+	-Shambler skeleton: Basic undead, hits harder but less health
+
+
+**ENEMY TYPES**
+
+	*Casters*
+	
+	- Advanced enemies with a larger moveset from other enemies:
+		- Teleportation: Able to teleport back to home points both themselves and other enemies
+			(Workaround to having enemies return to patrol points)
+		- Shielding: Able to place element shields on themselves and others
+		- Spell Attacks: Able to use a variety of spell attacks with elemental effects
+		- Alarm: Alert other nearby enemies to the players location
+	
+	*Melee*
+		- Basic melee enemies, charge at the player to smack them
+		
+	*Ranged*
+		- Basic ranged enemies, move to line of sight with the player, then attempt to shoot with ranged attack
+	
+	*Fliers*
+		- Flying melee/ranged enemies. Function the same as either enemy type, but targets player based on A* algorithm
 
 
 

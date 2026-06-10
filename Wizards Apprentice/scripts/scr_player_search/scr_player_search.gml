@@ -2,6 +2,12 @@ function scr_player_search()
 {
 	var player_x = obj_player_parent.x
 	var player_y = obj_player_parent.y
+	
+	if(obj_player_parent.invisible == true)
+	{
+		player_visible = false
+		exit;
+	}
 		
 	// Player is within range
 	if(point_distance(x, y, player_x, player_y) <= vision_range)
@@ -20,6 +26,9 @@ function scr_player_search()
 			
 			// Reset idle state alarm
 			alarm_set(0, -1)
+			
+			// Reset player not visible idle state alarm
+			alarm_set(1, -1)
 		}else
 		{
 			player_visible = false;

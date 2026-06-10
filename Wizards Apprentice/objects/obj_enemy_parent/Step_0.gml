@@ -70,35 +70,14 @@ if(can_move == true)
 		
 	#endregion Changing Modifiers Based On Platform Element
 	
-
-	
-	#region Gravity
-	
-		if(!flies)
-		{
-			if(!scr_on_ground())
-			{
-				move_spd_v -= global.grav;
-
-				// Gravity Debug
-				//show_debug_message("Gravity On")
-			}else
-			{
-				// Reset y speed if on the ground
-				move_spd_v = 0
-
-				// Reset number of jumps remaining
-				jumps_left = max_jumps
-				
-				// Gravity Debug
-				//show_debug_message("jumps_left = " + string(jumps_left))
-				//show_debug_message("Gravity Off")
-			}
-		}
-	
-	#endregion Gravity
 	
 	#region Move Object
+
+		// Cause enemy to fall if hitting head on ceiling
+		if(place_meeting(x, y - 2, obj_collision_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2))
+		{
+			if(move_spd_v > 0) move_spd_v = 0
+		}
 
 		// Set max horizontal movement speed
 		move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
@@ -142,14 +121,58 @@ if(can_move == true)
 		#endregion Slopes
 		
 		// Declare movement direction
-		if(move_spd_h > 0) move_dir = 1
-		if(move_spd_h < 0) move_dir = -1
-				
+		if(move_spd_h > 0)
+		{
+			move_dir = 1
+		}else
+		if(move_spd_h < 0)
+		{
+			move_dir = -1
+		}
+		
+		// Short jump over adjacent platform
+		scr_step_over_platform()
+		
 		var check_dist = (global.cell_size) * move_dir
-		// Prevent falling off ledge
-		if(!place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent))
+		
+		// ledge detected
+		var ledge = !place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent)
+		// Detects if ledge would be a low fall
+		var low_fall = place_meeting(x + check_dist,y + global.cell_size*2, obj_platform_parent)
+				
+		
+		// Cause enemy to fall off player head if landing on player
+		if(place_meeting(x, y + 2, obj_player_parent))
+		{
+			if(rand_shift_dir == -1) rand_shift_dir = irandom(1)
+			
+			// Shift left
+			if(rand_shift_dir == 0)
+			{
+				move_spd_h -= 2
+			}else
+			
+			// Shift right
+			if(rand_shift_dir == 1)
+			{
+				move_spd_h += 2
+			}
+		}else rand_shift_dir = -1
+		
+		// Enemy stops movement if within the width of the player sprite to the player
+		if(point_distance(x, y, obj_player_parent.x, obj_player_parent.y) < sprite_get_width(spr_player)
+		&& !place_meeting(x, y + 2, obj_player_parent))
 		{
 			move_spd_h = 0
+		}
+		
+		// If target is below enemy, activate semi solid to pass through platforms
+		if(target_y > y)
+		{
+			semi_solid = true;
+		}else
+		{
+			semi_solid = false;
 		}
 				
 
@@ -160,6 +183,30 @@ if(can_move == true)
 
 	
 	#endregion Move Object
+	
+	
+	#region Gravity
+	
+		if(!flies)
+		{
+			if(!scr_on_ground())
+			{
+				move_spd_v -= global.grav;
+
+				// Gravity Debug
+				//show_debug_message("Gravity On")
+			}else
+			{
+				// Reset y speed if on the ground
+				move_spd_v = 0
+				
+				// Gravity Debug
+				//show_debug_message("Gravity Off")
+			}
+		}
+	
+	#endregion Gravity
+	
 	
 	#region Flipping Sprite
 	

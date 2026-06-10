@@ -69,6 +69,8 @@ event_inherited()
 		plat_spd_decel_ice = 2.3
 	
 	
+	// Determines if the player is invisible
+	invisible = false
 	
 	// Variable to determine if player is walking
 	is_walking = false;
