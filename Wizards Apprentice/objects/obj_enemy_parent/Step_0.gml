@@ -136,9 +136,9 @@ if(can_move == true)
 		var check_dist = (global.cell_size) * move_dir
 		
 		// ledge detected
-		var ledge = !place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent)
+//		var ledge = !place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent)
 		// Detects if ledge would be a low fall
-		var low_fall = place_meeting(x + check_dist,y + global.cell_size*2, obj_platform_parent)
+//		var low_fall = place_meeting(x + check_dist,y + global.cell_size*2, obj_platform_parent)
 				
 		
 		// Cause enemy to fall off player head if landing on player
@@ -159,22 +159,25 @@ if(can_move == true)
 			}
 		}else rand_shift_dir = -1
 		
-		// Enemy stops movement if within the width of the player sprite to the player
-		if(point_distance(x, y, obj_player_parent.x, obj_player_parent.y) < sprite_get_width(spr_player)
-		&& !place_meeting(x, y + 2, obj_player_parent))
-		{
-			move_spd_h = 0
-		}
+		#region Distance to Player Check
+			// Enemy stops movement if within the width of the player sprite to the player
+			if(point_distance(x, y, obj_player_parent.x, obj_player_parent.y) < sprite_get_width(spr_player)
+			&& !place_meeting(x, y + 2, obj_player_parent))
+			{
+				move_spd_h = 0
+			}
+		#endregion Distance to Player Check
 		
-		// If target is below enemy, activate semi solid to pass through platforms
-		if(target_y > y)
-		{
-			semi_solid = true;
-		}else
-		{
-			semi_solid = false;
-		}
-				
+		#region Semi-Solid Passthrough
+			// If target is below enemy, activate semi solid to pass through platforms
+			if(target_y > y)
+			{
+				semi_solid = true;
+			}else
+			{
+				semi_solid = false;
+			}
+		#endregion Semi-Solid Passthrough	
 
 		// Move object horizontally
 		x += move_spd_h

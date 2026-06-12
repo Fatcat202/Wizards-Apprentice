@@ -4,7 +4,10 @@ function scr_step_over_platform()
 {
 	
 	// Distance to check for collision
-	var check_dis = move_spd_h * 2
+	var check_dis = abs(move_spd_h * 2) * move_dir
+	
+	// Check to ensure check_dis is not 0
+	if(check_dis == 0) check_dis = 1 * move_dir
 	
 	// Checks if there is a horizontal platform collision
 	var h_coll = place_meeting(x + check_dis, y, obj_platform_parent)
@@ -22,7 +25,7 @@ function scr_step_over_platform()
 		if(plat_step && plat_is_slope == false)
 		{
 			// Short hop to mantle platform
-			move_spd_v = 3.5
+			move_spd_v = 4
 			
 			
 			// Teleport onto platform

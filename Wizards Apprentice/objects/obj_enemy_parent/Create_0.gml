@@ -142,7 +142,7 @@ event_inherited();
 
 	state_idle = function()
 	{
-		
+
 //		show_debug_message("State: Idle")
 
 		// Reset target coords
@@ -195,12 +195,20 @@ event_inherited();
 			}
 			if(patrol_started == true)
 			{
+				
+				// Used for checking for ledges
 				var check_dist = (global.cell_size / 2) * move_dir
 				
+				// Distance to check for collisions for stepping up over platforms
+				var move_check = abs(move_spd_h * 2) * move_dir
+				
+				// Check to ensure move_check is not 0
+				if(move_check == 0) move_check = 1 * move_dir
+				
 				// Checks if there is a horizontal platform collision
-				var h_coll = place_meeting(x + move_spd_h * 2, y, obj_platform_parent)
+				var h_coll = place_meeting(x + move_check, y, obj_platform_parent)
 				// Detects if enemy can step onto platform
-				var plat_step = !place_meeting(x + move_spd_h * 2, y - global.cell_size, obj_platform_parent)
+				var plat_step = !place_meeting(x + move_check, y - global.cell_size, obj_platform_parent)
 				
 				// ledge detected
 				var ledge = !place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent)
@@ -286,7 +294,7 @@ event_inherited();
 			{
 				// Stop movement
 				move_spd_h = 0;
-				
+
 				// Set alarm to enter idle state
 				if(alarm_get(0) == -1)
 				{
