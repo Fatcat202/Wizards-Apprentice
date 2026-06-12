@@ -73,22 +73,21 @@ if(can_move == true)
 	
 	#region Move Object
 
-		// Cause enemy to fall if hitting head on ceiling
-		if(place_meeting(x, y - 2, obj_collision_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2))
-		{
-			if(move_spd_v > 0) move_spd_v = 0
-		}
 
-		// Set max horizontal movement speed
-		move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
-		// Set and apply terminal velocity
-		if(move_spd_v < term_vel) move_spd_v = term_vel;
+		#region Collision above
 		
-
+			// Cause enemy to fall if hitting head on ceiling
+			if(place_meeting(x, y - 2, obj_collision_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2))
+			{
+				if(move_spd_v > 0) move_spd_v = 0
+			}
+			
+		#endregion Collision above
+		
 		#region Slopes
 			
-			// Used for sub pixel collisions to ensure accuracy
-			var sub_pixel = 0.5
+			// Distance to move object to navigate slope
+			var move_dis = 1
 			
 			// Check for horizontal collision
 			if(place_meeting(x + move_spd_h, y, obj_platform_parent))
@@ -99,7 +98,7 @@ if(can_move == true)
 					// Go up slope
 					while(place_meeting(x + move_spd_h, y, obj_collision_parent))
 					{
-						y -=  sub_pixel
+						y -=  move_dis
 					}
 				}else
 				{	
@@ -112,52 +111,48 @@ if(can_move == true)
 			if(move_spd_v >= 0 && !place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && place_meeting(x + move_spd_h, y + abs(move_spd_h) + 1, obj_collision_parent))
 			{
 				// Go down slope
-				while(!place_meeting(x + move_spd_h, y + sub_pixel, obj_collision_parent))
+				while(!place_meeting(x + move_spd_h, y + move_dis, obj_collision_parent))
 				{
-						y += sub_pixel
+						y += move_dis
 				}
 			}
 				
 		#endregion Slopes
 		
-		// Declare movement direction
-		if(move_spd_h > 0)
-		{
-			move_dir = 1
-		}else
-		if(move_spd_h < 0)
-		{
-			move_dir = -1
-		}
+		#region Declaring movement direction
+			// Declare movement direction
+			if(move_spd_h > 0)
+			{
+				move_dir = 1
+			}else
+			if(move_spd_h < 0)
+			{
+				move_dir = -1
+			}
+		#endregion Declaring movement direction
 		
 		// Short jump over adjacent platform
 		scr_step_over_platform()
-		
-		var check_dist = (global.cell_size) * move_dir
-		
-		// ledge detected
-//		var ledge = !place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent)
-		// Detects if ledge would be a low fall
-//		var low_fall = place_meeting(x + check_dist,y + global.cell_size*2, obj_platform_parent)
-				
-		
-		// Cause enemy to fall off player head if landing on player
-		if(place_meeting(x, y + 2, obj_player_parent))
-		{
-			if(rand_shift_dir == -1) rand_shift_dir = irandom(1)
-			
-			// Shift left
-			if(rand_shift_dir == 0)
+					
+		#region Sliding off player
+			// Cause enemy to fall off player head if landing on player
+			if(place_meeting(x, y + 2, obj_player_parent))
 			{
-				move_spd_h -= 2
-			}else
+				if(rand_shift_dir == -1) rand_shift_dir = irandom(1)
 			
-			// Shift right
-			if(rand_shift_dir == 1)
-			{
-				move_spd_h += 2
-			}
-		}else rand_shift_dir = -1
+				// Shift left
+				if(rand_shift_dir == 0)
+				{
+					move_spd_h -= 2
+				}else
+			
+				// Shift right
+				if(rand_shift_dir == 1)
+				{
+					move_spd_h += 2
+				}
+			}else rand_shift_dir = -1
+		#endregion Sliding off player
 		
 		#region Distance to Player Check
 			// Enemy stops movement if within the width of the player sprite to the player
@@ -178,6 +173,15 @@ if(can_move == true)
 				semi_solid = false;
 			}
 		#endregion Semi-Solid Passthrough	
+		
+		#region Setting Max Speed
+		
+			// Set max horizontal movement speed
+			move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
+			// Set and apply terminal velocity
+			if(move_spd_v < term_vel) move_spd_v = term_vel;
+		
+		#endregion Setting Max Speed
 
 		// Move object horizontally
 		x += move_spd_h

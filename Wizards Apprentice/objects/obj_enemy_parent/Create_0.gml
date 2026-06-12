@@ -276,9 +276,8 @@ event_inherited();
 
 		// Reset player coords
 		scr_player_search()
-		
-		
-	
+
+
 		// Reset target coords if player is no longer visible for set time
 		if(player_visible == false)
 		{
@@ -303,6 +302,28 @@ event_inherited();
 			}else
 			
 
+			// Range to search for nearest jump_spot
+			j_range = 20
+
+			// Nearest obj_jump_spot
+			var jump_spot = collision_circle(x, y, j_range, obj_jump_spot, false, false)
+			// Detect for nearby jump spot, if within range then move towards it to jump
+			if(y > target_y + 32 && jump_spot != noone)
+			{
+				// Move right to jump_spot x
+				if(x < jump_spot.x)
+				{
+					move_spd_h += h_acel
+				}else
+			
+				// Move left to jump_spot x
+				if(x > jump_spot.x)
+				{
+					move_spd_h -= h_acel
+				}
+				
+			}else
+			
 			// Move right to target_x
 			if(x < target_x)
 			{
@@ -310,21 +331,19 @@ event_inherited();
 			}else
 			
 			// Move left to target_x
-			if(x > target_x)
+			if(x >= target_x)
 			{
 				move_spd_h -= h_acel
 			}
+
 			
 			// Trigger the enemy to jump
 			if(place_meeting(x, y, obj_jump_spot)) 
 			{
 				scr_enemy_jump()
 			}
-			
 
-			
-			
-			
+
 		}else
 		
 		
