@@ -8,7 +8,7 @@ function scr_enemy_jump()
 	jump_speed = 10
 	
 	// Offset used to ensure a height difference between target_y and enemy y
-	var offset = 10
+	var offset = global.cell_size * 2
 
 	// Check if enemy is capable of jumping
 	if(can_jump == true)
@@ -21,8 +21,20 @@ function scr_enemy_jump()
 			// Check if enemy is on ground to jump
 			if(scr_on_ground() == true)
 			{
-				// Set vertical movement to jump speed
-				move_spd_v = jump_speed
+				// Gather directon of target point
+				var dir = point_direction(x, y, target_x, target_y)
+				
+				
+				// Set move speeds based on direction and overall jump speed
+				move_spd_h = lengthdir_x(jump_speed, dir)
+				move_spd_v = -lengthdir_y(jump_speed, dir)
+				
+				// Declare enemy is jumping
+				is_jumping = true
+				
+				// Start can_jump timer and prevent further jumping
+				can_jump = false
+
 			}
 		}
 	}

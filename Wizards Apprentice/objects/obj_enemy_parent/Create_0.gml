@@ -130,8 +130,38 @@ event_inherited();
 	rand_shift_dir = -1
 	
 	// Alarm to reset target coords if player is not visible for a set time
-	player_visible_timer = game_get_speed(gamespeed_fps) * 5
+	player_visible_timer = game_get_speed(gamespeed_fps) * 3.5
 
+
+	// Array holding all target nodes for tracking player
+	target_nodes = []
+
+
+	// Time in seconds between being able to create new target node
+	target_time = 0.1
+	// Time in seconds between being able to jump
+	can_jump_time = 1
+
+	// Length of cooldown
+	target_cooldown_length = game_get_speed(gamespeed_fps) * target_time
+	// Cooldown timer
+	target_cooldown_timer = 0;
+	
+	// Length of cooldown
+	can_jump_cooldown_length = game_get_speed(gamespeed_fps) * can_jump_time
+	// Cooldown timer
+	can_jump_cooldown_timer = 0;
+		
+		
+		
+	// Determines if enemy may set a new target
+	can_target = true;
+	
+	//	Determines if enemy can jump
+	is_jumping = false
+	
+	// Total time in seconds enemy can continue to see player without line of sight
+	wall_hack_timer = game_get_speed(gamespeed_fps) * 0.25
 
 
 #endregion Loading instance stats
@@ -148,6 +178,9 @@ event_inherited();
 		// Reset target coords
 		target_x = -1
 		target_y = -1
+		
+		// Clear target nodes
+		scr_clear_target_nodes()
 
 		// Search for player and change state to attack if found
 		scr_player_search()
@@ -211,16 +244,16 @@ event_inherited();
 				var plat_step = !place_meeting(x + move_check, y - global.cell_size, obj_platform_parent)
 				
 				// ledge detected
-				var ledge = !place_meeting(x + check_dist, y + global.cell_size, obj_platform_parent)
+				var ledge = !place_meeting(x + check_dist, y + 1, obj_platform_parent)
 				// Detects if ledge would be a low fall
 				var low_fall = place_meeting(x + check_dist, y + global.cell_size*2, obj_platform_parent)
 				
-				
+			/*	
 				show_debug_message("h_coll: " + string(h_coll))
 				show_debug_message("plat_step: " + string(plat_step))
 				show_debug_message("ledge: " + string(ledge))
 				show_debug_message("low_fall: " + string(low_fall))
-			
+			*/
 				
 				// No horizontal collision, or can step up on platform
 				if(h_coll == false || (h_coll == true && plat_step == true))
@@ -288,40 +321,58 @@ event_inherited();
 		// If a walking enemy
 		if(flies == false)
 		{
-			// Stop enemy when reaching target
-			if(x > target_x - 2 && x < target_x + 2)
-			{
-				// Stop movement
-				move_spd_h = 0;
-
-				// Set alarm to enter idle state
-				if(alarm_get(0) == -1)
-				{
-					alarm_set(0, idle_state_delay)
-				}
-			}else
-			
-
-			// Range to search for nearest jump_spot
-			j_range = 20
-
-			// Nearest obj_jump_spot
-			var jump_spot = collision_circle(x, y, j_range, obj_jump_spot, false, false)
-			// Detect for nearby jump spot, if within range then move towards it to jump
-			if(y > target_y + 32 && jump_spot != noone)
-			{
-				// Move right to jump_spot x
-				if(x < jump_spot.x)
-				{
-					move_spd_h += h_acel
-				}else
-			
-				// Move left to jump_spot x
-				if(x > jump_spot.x)
-				{
-					move_spd_h -= h_acel
-				}
+			// Range to reset coords
+			var target_range = 5
 				
+			// Delete target node from array when reaching within range
+			if(x > target_x - target_range && x < target_x + target_range)
+			{
+
+				var first_node = array_first(target_nodes)
+				
+				// If target_node array is being targeted
+				if(array_first(target_nodes) != undefined)
+				{
+					// Remove first target node from array and destroy instance
+					instance_destroy(array_shift(target_nodes))
+
+					// If array is now empty and the player is not visible
+					if(array_length(target_nodes) == 0 && player_visible == false)
+					{
+						// Set alarm to enter idle state
+						if(alarm_get(0) == -1)
+						{
+							alarm_set(0, idle_state_delay)
+						}
+					}else
+					
+					if(player_visible == false)
+					{	// Target next node in array
+						var new_first_node = array_first(target_nodes)
+						
+						// Set new coords
+						target_x = new_first_node.x
+						target_y = new_first_node.y
+						
+					}
+				}
+			}
+
+			// Range to reset speed for the purposes of preventing spinning
+			var target_range = 1
+			if(x > target_x - target_range && x < target_x + target_range)
+			{
+				move_spd_h = 0
+				
+				// If array is now empty and the player is not visible
+				if(array_length(target_nodes) == 0 && player_visible == false)
+				{
+					// Set alarm to enter idle state
+					if(alarm_get(0) == -1)
+					{
+						alarm_set(0, idle_state_delay)
+					}
+				}
 			}else
 			
 			// Move right to target_x
@@ -331,33 +382,59 @@ event_inherited();
 			}else
 			
 			// Move left to target_x
-			if(x >= target_x)
+			if(x > target_x)
 			{
 				move_spd_h -= h_acel
 			}
 
 			
-			// Trigger the enemy to jump
-			if(place_meeting(x, y, obj_jump_spot)) 
+			if(!collision_line(x, y, target_x, target_y, obj_platform_solid_parent, false, false))
 			{
+				// Trigger the enemy to jump
 				scr_enemy_jump()
 			}
+			
+			
+			#region Avoid Ledges
 
-
+				if(is_jumping == false)
+				{
+					// Used for checking for ledges
+					var check_dist = (global.cell_size / 2) * move_dir
+				
+					// Set check distance to 0 if not moving
+					if(move_spd_h == 0) check_dist = 0
+			
+					// ledge detected
+					var ledge = !place_meeting(x + check_dist, y + 1, obj_platform_parent)
+					// Detects if ledge would be a low fall
+					var low_fall = place_meeting(x + check_dist, y + global.cell_size*2, obj_platform_parent)
+				
+					// If no ledge, or fall is a short drop
+					if((target_y + global.cell_size >= y || ledge == false) || (ledge == true && low_fall == true))
+					{
+						// Continue normally
+					}else
+					{			
+						// Set move speed to 0
+						move_spd_h = 0
+					}	
+				}
+				
+			#endregion Avoid Ledges
+			
+			
 		}else
 		
 		
 		// If a flying enemy
 		if(flies == true)
 		{
-			// Implement A*
+			// ** IMPLEMENT A* **
 		}
-
 	}
-	
 
 	state_behavior = state_idle;
 
 #endregion Enemy AI States
-
 

@@ -2,6 +2,8 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_step_over_platform()
 {
+	// Cancel script if not on the ground
+	if(scr_on_ground() == false) exit;
 	
 	// Distance to check for collision
 	var check_dis = abs(move_spd_h * 2) * move_dir
