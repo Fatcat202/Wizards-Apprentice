@@ -47,9 +47,6 @@ event_inherited();
 	// Stores x and y origin points
 	home_x = x;
 	home_y = y;
-	
-	// Movement speed when jumping
-	jump_speed = 6.5;
 
 	//Terminal Velocity
 	term_vel = -7.5
@@ -135,7 +132,12 @@ event_inherited();
 
 	// Array holding all target nodes for tracking player
 	target_nodes = []
+	
+	// Movement speed when jumping
+	jump_speed = 6.5;
 
+	// Allow jumping speed to by dynamically altered with each jump
+	jumping_speed_h_max = 3.2
 
 	// Time in seconds between being able to create new target node
 	target_time = 0.1
@@ -172,6 +174,9 @@ event_inherited();
 	
 	// Total time in seconds enemy can continue to see player without line of sight
 	wall_hack_timer = game_get_speed(gamespeed_fps) * 0.25
+	
+	
+
 
 
 #endregion Loading instance stats

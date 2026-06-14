@@ -77,12 +77,6 @@ scr_enemy_timers()
 	
 		#region Move Object
 		
-			#region is_jumping
-			
-				// Reset is_jumping when on the ground
-				if(scr_on_ground() == true) is_jumping = false;
-				
-			#endregion is_jumping
 
 			#region Collision above
 		
@@ -195,9 +189,21 @@ scr_enemy_timers()
 			#endregion Semi-Solid Passthrough	
 		
 			#region Setting Max Speed
-		
-				// Set max horizontal movement speed
-				move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
+				
+				// If jumping, set max speed to jump speed.
+				// Maintain speed set when jumping as max until no longer jumping
+				if(is_jumping == true)
+				{
+					// Set max horizontal movement speed
+					move_spd_h = clamp(move_spd_h, -jumping_speed_h_max, jumping_speed_h_max)
+				}else
+				// If not jumping, set max h speed normally
+				if(is_jumping == false)
+				{
+					// Set max horizontal movement speed
+					move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
+				}
+
 				// Set and apply terminal velocity
 				if(move_spd_v < term_vel) move_spd_v = term_vel;
 		
@@ -207,6 +213,23 @@ scr_enemy_timers()
 			x += move_spd_h
 			// Move object vertically
 			y -= move_spd_v
+			
+			#region is_jumping
+			
+				// Reset is_jumping when on the ground
+				if(scr_on_ground() == true)
+				{
+					is_jumping = false;
+				}
+				
+			#endregion is_jumping
+			
+		//	if(is_jumping == true)
+			{
+				show_debug_message("move_spd_h: " + string(move_spd_h))
+				show_debug_message("move_spd_v: " + string(move_spd_v))
+			}
+
 			
 			
 			#region Gravity
