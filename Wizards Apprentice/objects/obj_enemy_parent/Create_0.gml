@@ -145,6 +145,8 @@ event_inherited();
 	can_jump_time = 1
 	// Time in seconds before gravity kicks in when jumping
 	grav_delay_time = 0.225
+	// Time in seconds before enemy can set a new path
+	pathing_free_time = 0.2
 
 	// Length of cooldown
 	target_cooldown_length = game_get_speed(gamespeed_fps) * target_time
@@ -160,6 +162,11 @@ event_inherited();
 	grav_delay_cooldown_length = game_get_speed(gamespeed_fps) * grav_delay_time
 	// Cooldown timer
 	grav_delay_cooldown_timer = 0;
+	
+	// Length of cooldown
+	pathing_free_cooldown_length = game_get_speed(gamespeed_fps) * pathing_free_time
+	// Cooldown timer
+	pathing_free_cooldown_timer = 0;
 		
 		
 		
@@ -169,11 +176,16 @@ event_inherited();
 	//	Determines if enemy can jump
 	is_jumping = false
 	
+	// Determines if the enemy can set a new path
+	pathing_free = true
+	
 	// Declares if gravity delay is active when jumping
 	grav_delay = false
 	
 	// Total time in seconds enemy can continue to see player without line of sight
-	wall_hack_timer = game_get_speed(gamespeed_fps) * 0.25
+	wall_hack_timer = game_get_speed(gamespeed_fps) * 0.4
+	
+	attack_path = path_add()
 	
 	
 
@@ -438,7 +450,7 @@ event_inherited();
 						move_spd_h = 0
 						
 						// Clear nodes to not get locked in place
-						scr_clear_target_nodes()
+						scr_clear_target_nodes()	
 					}	
 				}
 				

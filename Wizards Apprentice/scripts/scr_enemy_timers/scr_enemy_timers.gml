@@ -14,8 +14,7 @@ function scr_enemy_timers()
 			
 			// Reset timer
 			target_cooldown_timer = 0;
-	
-	
+
 		}else target_cooldown_timer++
 		
 	#endregion Target Cooldown
@@ -31,8 +30,7 @@ function scr_enemy_timers()
 			
 			// Reset timer
 			can_jump_cooldown_timer = 0;
-	
-	
+
 		}else can_jump_cooldown_timer++
 		
 	#endregion Can Jump Cooldown
@@ -49,10 +47,26 @@ function scr_enemy_timers()
 			
 			// Reset timer
 			grav_delay_cooldown_timer = 0;
-	
-	
+
 		}else grav_delay_cooldown_timer++
 		
-	#endregion Can Jump Cooldown
+	#endregion Gravity Delay Cooldown
+	
+	
+	#region Pathing Free Cooldown
+		
+		// Ticks counter until enemy may create a new path for pathfinding
+	
+		if(pathing_free_cooldown_timer >= pathing_free_cooldown_length)
+		{
+			// Declare enemy can set a new path
+			pathing_free = true;
+			
+			// Reset timer
+			pathing_free_cooldown_timer = 0;
+
+		}else pathing_free_cooldown_timer++
+		
+	#endregion Pathing Free Cooldown
 
 }

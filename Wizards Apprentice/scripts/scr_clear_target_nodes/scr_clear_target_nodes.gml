@@ -9,7 +9,7 @@ function scr_clear_target_nodes()
 		with(target_nodes[i]) instance_destroy()
 
 	}
-	
+
 	// Clear target nodes array
 	target_nodes = []
 }

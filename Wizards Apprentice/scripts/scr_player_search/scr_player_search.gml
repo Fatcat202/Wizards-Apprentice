@@ -7,6 +7,8 @@ function scr_player_search()
 	// Declares if enemy has direct line of sight to the player
 	var direct_los = false
 	
+	making_path = false
+	
 	// Check if the player is invisible
 	if(obj_player_parent.invisible == true)
 	{
@@ -18,7 +20,7 @@ function scr_player_search()
 	if(point_distance(x, y, player_x, player_y) <= vision_range)
 	{
 		// Check there are no platforms or steam blocking vision
-		if(!collision_line(x, y, player_x, player_y, obj_platform_solid_parent, true, false)
+		if(!collision_line(x, y, player_x, player_y, obj_platform_solid_parent, false, false)
 			&& !collision_line(x, y, player_x, player_y, obj_element_steam_parent, true, false))
 		{
 			// Declare player as visible
@@ -48,8 +50,8 @@ function scr_player_search()
 				target_x = player_x;
 				target_y = player_y;
 				
-				// Clear all target nodes
-				scr_clear_target_nodes()
+				// Clear all target nodes if pathing was not just used
+				if(pathing_free) scr_clear_target_nodes()
 
 			}else
 			{
@@ -66,12 +68,74 @@ function scr_player_search()
 					}
 
 				}
+				
+				// Check for platforms between target and enemy
+				var plats = collision_line(x, y, target_x, target_y, obj_platform_solid_parent, false, true)
+				// If nodes exist, next node is below the enemy, and there is a solid platform between, start A* pathfinding
+				if(target_y > y &&  plats != noone && pathing_free == true)
+				{scr_test()
 					
-				if(can_target == true)
+					scr_clear_target_nodes()
+					
+					// Create new attack path
+					scr_create_attack_path(target_x, target_y)
+					
+					if(path_exists(attack_path))
+					{
+						// Get number of points on path
+						var num_points_total = path_get_number(attack_path)
+						
+						var num_points = num_points_total
+						
+						var temp_array = []
+						
+						show_debug_message("num_points: " + string(num_points))
+						
+						var pos = 0;
+						// Create nodes along path
+						for(var i = 0; i < num_points; i++)
+						{	
+							var xx = path_get_point_x(attack_path, i)
+							var yy = path_get_point_y(attack_path, i)
+							
+							if(y < yy)
+							{
+								// Create target node
+								var target_node = instance_create_layer(xx, yy, "Target_Nodes", obj_target_node)
+							
+								// Hold instances in array
+								temp_array[pos] = target_node
+								
+								// Increment position
+								pos++
+							}
+						}
+							
+						var test_node = array_first(temp_array)
+						if(test_node != undefined)
+						{
+						// Combine new target nodes into begining of target_nodes array
+							target_nodes = array_concat(temp_array, target_nodes)
+						}
+						
+						path_delete(attack_path)
+						
+						// Declares a path is being made
+						making_path = true
+
+					}else
+					{
+						show_error("ERROR: Attack Path Not Found", false);
+					}
+			
+				}
+				
+					
+				if(can_target == true && making_path = false)
 				{
 				
 					// Create target node
-					target_node = instance_create_layer(player_x, player_y, "Target_Nodes", obj_target_node)
+					var target_node = instance_create_layer(player_x, player_y, "Target_Nodes", obj_target_node)
 
 					// Add target node to array
 					array_push(target_nodes, target_node)

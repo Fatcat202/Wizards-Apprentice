@@ -1,6 +1,9 @@
 /// @description Enemy AI
 
 
+
+
+
 // Run enemy AI states
 state_behavior()
 
@@ -224,14 +227,7 @@ scr_enemy_timers()
 				}
 				
 			#endregion is_jumping
-			
-		//	if(is_jumping == true)
-			{
-				show_debug_message("move_spd_h: " + string(move_spd_h))
-				show_debug_message("move_spd_v: " + string(move_spd_v))
-			}
 
-			
 			
 			#region Gravity
 	
