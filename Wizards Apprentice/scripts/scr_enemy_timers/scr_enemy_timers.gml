@@ -36,5 +36,23 @@ function scr_enemy_timers()
 		}else can_jump_cooldown_timer++
 		
 	#endregion Can Jump Cooldown
+	
+	
+	#region Gravity Delay Cooldown
+		
+		// Ticks counter to determine if enemy gravity on or off when jumping
+	
+		if(grav_delay_cooldown_timer >= grav_delay_cooldown_length)
+		{
+			// Declare enemy gravity delay to be off
+			grav_delay = false;
+			
+			// Reset timer
+			grav_delay_cooldown_timer = 0;
+	
+	
+		}else grav_delay_cooldown_timer++
+		
+	#endregion Can Jump Cooldown
 
 }

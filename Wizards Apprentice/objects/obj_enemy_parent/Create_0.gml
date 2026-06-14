@@ -49,7 +49,7 @@ event_inherited();
 	home_y = y;
 	
 	// Movement speed when jumping
-	jump_speed = 8;
+	jump_speed = 6.5;
 
 	//Terminal Velocity
 	term_vel = -7.5
@@ -141,6 +141,8 @@ event_inherited();
 	target_time = 0.1
 	// Time in seconds between being able to jump
 	can_jump_time = 1
+	// Time in seconds before gravity kicks in when jumping
+	grav_delay_time = 0.225
 
 	// Length of cooldown
 	target_cooldown_length = game_get_speed(gamespeed_fps) * target_time
@@ -151,6 +153,11 @@ event_inherited();
 	can_jump_cooldown_length = game_get_speed(gamespeed_fps) * can_jump_time
 	// Cooldown timer
 	can_jump_cooldown_timer = 0;
+	
+	// Length of cooldown
+	grav_delay_cooldown_length = game_get_speed(gamespeed_fps) * grav_delay_time
+	// Cooldown timer
+	grav_delay_cooldown_timer = 0;
 		
 		
 		
@@ -159,6 +166,9 @@ event_inherited();
 	
 	//	Determines if enemy can jump
 	is_jumping = false
+	
+	// Declares if gravity delay is active when jumping
+	grav_delay = false
 	
 	// Total time in seconds enemy can continue to see player without line of sight
 	wall_hack_timer = game_get_speed(gamespeed_fps) * 0.25
@@ -410,13 +420,12 @@ event_inherited();
 					// Detects if ledge would be a low fall
 					var low_fall = place_meeting(x + check_dist, y + global.cell_size*2, obj_platform_parent)
 					
-					show_debug_message("ledge: " + string(ledge))
-					show_debug_message("low_fall: " + string(low_fall))
+			//		show_debug_message("ledge: " + string(ledge))
+			//		show_debug_message("low_fall: " + string(low_fall))
 				
 					// If no ledge, or fall is a short drop
 					if((target_y + global.cell_size >= y) || (ledge == false) || (ledge == true && low_fall == true))
 					{
-						
 						// Continue normally
 					}else
 					{			
@@ -429,11 +438,9 @@ event_inherited();
 				}
 				
 			#endregion Avoid Ledges
-			
-			
+
 		}else
-		
-		
+
 		// If a flying enemy
 		if(flies == true)
 		{

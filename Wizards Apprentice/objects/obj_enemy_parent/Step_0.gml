@@ -83,8 +83,6 @@ scr_enemy_timers()
 				if(scr_on_ground() == true) is_jumping = false;
 				
 			#endregion is_jumping
-			
-
 
 			#region Collision above
 		
@@ -191,6 +189,8 @@ scr_enemy_timers()
 				{
 					semi_solid = false;
 				}
+				
+			//	show_debug_message("semi_solid: " + string(semi_solid))
 			
 			#endregion Semi-Solid Passthrough	
 		
@@ -207,34 +207,37 @@ scr_enemy_timers()
 			x += move_spd_h
 			// Move object vertically
 			y -= move_spd_v
+			
+			
+			#region Gravity
+	
+				if(!flies)
+				{
+					if(!scr_on_ground())
+					{
+						// Apply gravity if grav_delay is off
+						if(grav_delay == false) move_spd_v -= global.grav;
+
+						// Gravity Debug
+						//show_debug_message("Gravity On")
+						//show_debug_message("grav_delay: " + string(grav_delay))
+					}else
+					{
+						// Reset y speed if on the ground
+						move_spd_v = 0
+				
+						// Gravity Debug
+						//show_debug_message("Gravity Off")
+					}
+				}
+	
+			#endregion Gravity
 
 	
 		#endregion Move Object
-	
-	
-		#region Gravity
-	
-			if(!flies)
-			{
-				if(!scr_on_ground())
-				{
-					move_spd_v -= global.grav;
 
-					// Gravity Debug
-					//show_debug_message("Gravity On")
-				}else
-				{
-					// Reset y speed if on the ground
-					move_spd_v = 0
-				
-					// Gravity Debug
-					//show_debug_message("Gravity Off")
-				}
-			}
-	
-		#endregion Gravity
-	
-	
+
+
 		#region Flipping Sprite
 	
 			// Flip sprite when moving	

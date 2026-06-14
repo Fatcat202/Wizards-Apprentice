@@ -3,9 +3,6 @@
 function scr_enemy_jump()
 {
 	// Function to cause enemy to "jump".
-
-	// Temp variable for testing
-	jump_speed = 10
 	
 	// Offset used to ensure a height difference between target_y and enemy y
 	var offset = global.cell_size * 2
@@ -31,6 +28,9 @@ function scr_enemy_jump()
 				
 				// Declare enemy is jumping
 				is_jumping = true
+				
+				// Activate gravity delay
+				grav_delay = true
 				
 				// Start can_jump timer and prevent further jumping
 				can_jump = false
