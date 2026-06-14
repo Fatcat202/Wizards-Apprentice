@@ -76,6 +76,14 @@ scr_enemy_timers()
 	
 	
 		#region Move Object
+		
+			#region is_jumping
+			
+				// Reset is_jumping when on the ground
+				if(scr_on_ground() == true) is_jumping = false;
+				
+			#endregion is_jumping
+			
 
 
 			#region Collision above
@@ -185,8 +193,6 @@ scr_enemy_timers()
 				}
 			
 			#endregion Semi-Solid Passthrough	
-			
-
 		
 			#region Setting Max Speed
 		
