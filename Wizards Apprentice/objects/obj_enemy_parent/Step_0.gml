@@ -176,7 +176,7 @@ scr_enemy_timers()
 			#region Semi-Solid Passthrough
 		
 				// If target is below enemy, activate semi solid to pass through platforms
-				if(target_y > y)
+				if(target_y - global.cell_size > y || is_jumping == true)
 				{
 					semi_solid = true;
 				}else
@@ -220,6 +220,7 @@ scr_enemy_timers()
 				if(scr_on_ground() == true)
 				{
 					is_jumping = false;
+					
 				}
 				
 			#endregion is_jumping

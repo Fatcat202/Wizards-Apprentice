@@ -12,7 +12,7 @@ function scr_enemy_jump()
 	{
 		// Check if target_y is higher than enemy
 		if(target_y < y - offset
-		&& point_distance(x, y, obj_player_parent.x, obj_player_parent.y) > 64)
+		&& point_distance(x, y, obj_player_parent.x, obj_player_parent.y) >= offset)
 		{
 			// Check if enemy is on ground to jump
 			if(scr_on_ground() == true)
