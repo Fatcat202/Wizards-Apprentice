@@ -38,6 +38,9 @@ event_inherited();
 	// Determines if enemy flies
 	flies = global.enemy_stats[index].flies;
 	
+	// Determines if enemy is a caster
+	caster = global.enemy_stats[index].caster;
+	
 	// Modifiable max movement speed
 	move_spd_max = move_spd_max_default
 	
@@ -346,7 +349,7 @@ event_inherited();
 		
 		
 		// If a walking enemy
-		if(flies == false)
+		if(flies == false && caster == false)
 		{
 			// Range to reset coords
 			var target_range = 5
@@ -459,9 +462,19 @@ event_inherited();
 		}else
 
 		// If a flying enemy
-		if(flies == true)
+		if(flies == true && caster == false)
 		{
 			// ** IMPLEMENT A* **
+			
+			
+			
+		}else
+		
+		if(caster == true)
+		{
+			// Implement caster logic
+			
+			
 		}
 	}
 

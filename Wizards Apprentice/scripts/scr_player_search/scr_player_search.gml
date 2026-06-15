@@ -1,5 +1,8 @@
 function scr_player_search()
 {
+	
+	// Used to locate the player by ground based enemies
+	
 	// Player coords
 	var player_x = obj_player_parent.x
 	var player_y = obj_player_parent.y

@@ -184,7 +184,7 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_stats(_hp = -1, _damage = -1, _atk_spd = -1, _move_spd = -1, _flies = -1, _can_jump = -1, _vision_range = -1) constructor {
+				function enemy_stats(_hp = -1, _damage = -1, _atk_spd = -1, _move_spd = -1, _flies = -1, _can_jump = -1, _vision_range = -1, _caster = -1) constructor {
 				
 					hp = _hp
 					damage = _damage
@@ -193,6 +193,7 @@ randomise()
 					flies = _flies
 					can_jump = _can_jump
 					vision_range = _vision_range
+					caster = _caster
 
 				}
 
@@ -218,6 +219,7 @@ randomise()
 					global.enemy_stats[yy].flies = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].can_jump = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].vision_range = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
+					global.enemy_stats[yy].caster = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					
 				}
 
