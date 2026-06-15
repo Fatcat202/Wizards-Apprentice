@@ -207,6 +207,7 @@
     {"id":{"name":"scr_spell_wall_of_fire","path":"scripts/scr_spell_wall_of_fire/scr_spell_wall_of_fire.yy",},},
     {"id":{"name":"scr_spell_wall_of_ice","path":"scripts/scr_spell_wall_of_ice/scr_spell_wall_of_ice.yy",},},
     {"id":{"name":"scr_spell_water_splash","path":"scripts/scr_spell_water_splash/scr_spell_water_splash.yy",},},
+    {"id":{"name":"scr_sprite_direction","path":"scripts/scr_sprite_direction/scr_sprite_direction.yy",},},
     {"id":{"name":"scr_step_over_platform","path":"scripts/scr_step_over_platform/scr_step_over_platform.yy",},},
     {"id":{"name":"scr_test","path":"scripts/scr_test/scr_test.yy",},},
     {"id":{"name":"scr_texture_auto_assign","path":"scripts/scr_texture_auto_assign/scr_texture_auto_assign.yy",},},

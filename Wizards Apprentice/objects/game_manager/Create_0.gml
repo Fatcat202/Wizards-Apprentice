@@ -20,6 +20,9 @@ randomise()
 		// Size of cells used for pathing
 		global.cell_size = 32
 		
+		// Half size of cells
+		global.half_cell = global.cell_size/2
+		
 		// MP Grid used for pathing
 		global.mp_grid = mp_grid_create(0, 0, room_width / (global.cell_size/2), room_height / (global.cell_size/2), (global.cell_size/2), (global.cell_size/2));
 			// Update grid to show positions of obstacles
@@ -148,7 +151,6 @@ randomise()
 					global.arr_spell_index_name[n] = ds_grid_get(ds_spell_stats_csv, 0, n);
 				}
 			
-				var grid_height = ds_grid_height(ds_spell_stats_csv)	
 	
 				// Cleanup DS grid
 				ds_grid_destroy(ds_spell_stats_csv);
@@ -231,8 +233,7 @@ randomise()
 					// Sets 1st place in array as names
 					global.arr_enemy_index_name[n] = ds_grid_get(ds_enemy_stats_csv, 0, n);
 				}
-			
-				var grid_height = ds_grid_height(ds_enemy_stats_csv)	
+				
 	
 				// Cleanup DS grid
 				ds_grid_destroy(ds_enemy_stats_csv);
