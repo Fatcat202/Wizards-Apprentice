@@ -185,6 +185,8 @@ scr_health_and_mana_test()
 				semi_solid = true
 			}else semi_solid = false
 			
+		//	show_debug_message("semi_solid: " + string(semi_solid))
+			
 		#endregion Semi Solid
 			
 		#region Moving Sprite
@@ -225,7 +227,7 @@ scr_health_and_mana_test()
 				var sub_pixel = 0.5
 			
 				// Check for horizontal collision
-				if(place_meeting(x + move_spd_h, y, obj_platform_parent))
+				if(place_meeting(x + move_spd_h, y, obj_platform_solid_parent))
 				{
 					// Check for slope to go up
 					if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent))
