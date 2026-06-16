@@ -228,108 +228,168 @@ event_inherited();
 	state_patrol = function()
 	{
 //		show_debug_message("State: Patrol")
-
-		// Ground based patrol
-		if(flies == false)
-		{
-			// If starting a new patrol
-			if(patrol_started == false)
+	
+		#region Ground Enemy Patrol
+			if(flies == false)
 			{
-				// Random number for direction to move
-				var rand_dir = irandom(1)
-			
-				// Select direction to begin patrol
-				
-				// Start left
-				if(rand_dir == 0)
+				// If starting a new patrol
+				if(patrol_started == false)
 				{
-					move_dir = -1; 
-				}else
-				
-				// Start right
-				if(rand_dir == 1)
-				{
-					move_dir = 1;
-				}
+					// Random number for direction to move
+					var rand_dir = irandom(1)
 			
-				// Declare a patrol has started
-				patrol_started = true
-			
-			}
-			if(patrol_started == true)
-			{
+					// Select direction to begin patrol
 				
-				// Used for checking for ledges
-				var check_dist = (global.cell_size / 2) * move_dir
-				
-				// Distance to check for collisions for stepping up over platforms
-				var move_check = abs(move_spd_h * 2) * move_dir
-				
-				// Check to ensure move_check is not 0
-				if(move_check == 0) move_check = 1 * move_dir
-				
-				// Checks if there is a horizontal platform collision
-				var h_coll = place_meeting(x + move_check, y, obj_platform_parent)
-				// Detects if enemy can step onto platform
-				var plat_step = !place_meeting(x + move_check, y - global.cell_size, obj_platform_parent)
-				
-				// ledge detected
-				var ledge = !place_meeting(x + check_dist, y + 1, obj_platform_parent)
-				// Detects if ledge would be a low fall
-				var low_fall = place_meeting(x + check_dist, y + global.cell_size*2, obj_platform_parent)
-				
-			/*	
-				show_debug_message("h_coll: " + string(h_coll))
-				show_debug_message("plat_step: " + string(plat_step))
-				show_debug_message("ledge: " + string(ledge))
-				show_debug_message("low_fall: " + string(low_fall))
-			*/
-				
-				// No horizontal collision, or can step up on platform
-				if(h_coll == false || (h_coll == true && plat_step == true))
-				{	// If no ledge, or fall is a short drop
-					if(ledge == false || (ledge == true && low_fall == true))
+					// Start left
+					if(rand_dir == 0)
 					{
-						// Accelerate
-						move_spd_h += (h_acel * move_dir)
+						move_dir = -1; 
+					}else
+				
+					// Start right
+					if(rand_dir == 1)
+					{
+						move_dir = 1;
+					}
+			
+					// Declare a patrol has started
+					patrol_started = true
+			
+				}
+				if(patrol_started == true)
+				{
+				
+					// Used for checking for ledges
+					var check_dist = (global.cell_size / 2) * move_dir
+				
+					// Distance to check for collisions for stepping up over platforms
+					var move_check = abs(move_spd_h * 2) * move_dir
+				
+					// Check to ensure move_check is not 0
+					if(move_check == 0) move_check = 1 * move_dir
+				
+					// Checks if there is a horizontal platform collision
+					var h_coll = place_meeting(x + move_check, y, obj_platform_parent)
+					// Detects if enemy can step onto platform
+					var plat_step = !place_meeting(x + move_check, y - global.cell_size, obj_platform_parent)
+				
+					// ledge detected
+					var ledge = !place_meeting(x + check_dist, y + 1, obj_platform_parent)
+					// Detects if ledge would be a low fall
+					var low_fall = place_meeting(x + check_dist, y + global.cell_size*2, obj_platform_parent)
+				
+				/*	
+					show_debug_message("h_coll: " + string(h_coll))
+					show_debug_message("plat_step: " + string(plat_step))
+					show_debug_message("ledge: " + string(ledge))
+					show_debug_message("low_fall: " + string(low_fall))
+				*/
+				
+					// No horizontal collision, or can step up on platform
+					if(h_coll == false || (h_coll == true && plat_step == true))
+					{	// If no ledge, or fall is a short drop
+						if(ledge == false || (ledge == true && low_fall == true))
+						{
+							// Accelerate
+							move_spd_h += (h_acel * move_dir)
+						}else
+						{
+							// Switch direction
+							move_dir *= -1
+							// Swap direction
+							move_spd_h *= -1
+						}
 					}else
 					{
 						// Switch direction
 						move_dir *= -1
 						// Swap direction
-						move_spd_h *= -1
+						move_spd_h *= -1		
 					}
+				}
+			}else
+		
+		#endregion Ground Based Patrol
+		
+		#region Flying Enemy Patrol
+		
+			if(flies == true)
+			{
+				var sprite_size = (sprite_width + sprite_height) / 2
+				
+				// If path is assigned, has not started, and is within range of patrol start (width of sprite)
+				if(path_patrol != -1 && path_index == -1
+				&& (point_distance(x, y, path_get_x(path_patrol, 0), path_get_y(path_patrol, 0)) <= sprite_width
+				|| point_distance(x, y, path_get_x(path_patrol, 0), path_get_y(path_patrol, 0)) <= sprite_height))
+				{	
+					
+//					show_debug_message("Starting Assigned Patrol")
+					
+					if(path_exists(attack_path)) path_delete(attack_path)
+					
+					// Start manually created path
+					path_start(path_patrol, move_spd_max, path_action_restart, 1)
+				}else
+			
+			
+				// If path is assigned, but is located elsewhere return to path with pathfinding
+				if(path_patrol != -1 && path_index == -1)
+				{
+//					show_debug_message("Returning to Assigned Path")
+					
+					// Return to path
+					scr_create_attack_path(path_get_x(path_patrol, 0), path_get_y(path_patrol, 0), true)
+					
+					path_start(attack_path, move_spd_max, path_action_stop, 1)
+					
+					if(x == path_get_x(attack_path, 1) && y == path_get_y(attack_path, 1))
+					{
+						path_delete(attack_path)
+					}
+				
+				}else
+			
+				// If no path is assigned, fly back and forth looking out for the player
+				if(path_patrol == -1)
+				{
+					// Move left and right, flipping direction when touching a wall
+					
+//					show_debug_message("Patrolling Left and Right")
+					
+				
+				
+				}else
+				
+				// Moving on path
+				if(path_index != -1)
+				{
+				//	show_debug_message("Moving on Patrol Path");
 				}else
 				{
-					// Switch direction
-					move_dir *= -1
-					// Swap direction
-					move_spd_h *= -1		
+					show_error("Error: No Patrol Moveset Found", false);
 				}
+				
+				
+				// Set sprite direction
+				scr_sprite_direction(direction)
+
 			}
-		}else
 		
-		// Flight base patrol
-		if(flies == true)
-		{
-			// If path is assigned and has not started
-			if(path_patrol != -1 && path_index == -1)
+		#endregion Flying Enemy Patrol
+		
+		#region Enter Attack State
+		
+			// Search for player and change to attack state if found
+			scr_player_search()
+			if(player_visible == true)
 			{
-				// Start manually created path
-				path_start(path_patrol, move_spd_max, path_action_restart, 1)
+				state_behavior = state_attack;
+			
+				scr_reset_enemy_movement()
+			
 			}
-		}
 		
-		
-		// Search for player and change to attack state if found
-		scr_player_search()
-		if(player_visible == true)
-		{
-			state_behavior = state_attack;
-			
-			scr_reset_enemy_movement()
-			
-		}
+		#endregion Enter Attack State
 		
 	}
 	

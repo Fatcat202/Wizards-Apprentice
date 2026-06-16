@@ -1,6 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scr_create_attack_path(_target_x = target_x, _target_y = target_y)
+function scr_create_attack_path(_target_x = target_x, _target_y = target_y, diag = false)
 {
 	
 	// Used to create path from enemy to target_x and target_y
@@ -25,6 +25,6 @@ function scr_create_attack_path(_target_x = target_x, _target_y = target_y)
 	
 	
 		// Draw new path
-		mp_grid_path(global.mp_grid, attack_path, x, y, position_x, position_y, false);
+		mp_grid_path(global.mp_grid, attack_path, x, y, position_x, position_y, diag);
 	}
 }

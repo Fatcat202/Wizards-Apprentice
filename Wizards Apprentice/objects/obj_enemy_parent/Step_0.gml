@@ -78,5 +78,3 @@ scr_enemy_timers()
 		
 #endregion Collisions
 
-
-
