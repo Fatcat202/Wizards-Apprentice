@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_shop",
-    "path":"sprites/spr_shop/spr_shop.yy",
+    "name":"spr_interact_shop",
+    "path":"sprites/spr_interact_shop/spr_interact_shop.yy",
   },
   "spriteMaskId":null,
   "visible":true,

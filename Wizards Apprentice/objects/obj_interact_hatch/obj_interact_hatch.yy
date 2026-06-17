@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_hatch",
-    "path":"sprites/spr_hatch/spr_hatch.yy",
+    "name":"spr_interact_hatch",
+    "path":"sprites/spr_interact_hatch/spr_interact_hatch.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -3,6 +3,7 @@
   "%Name":"obj_interact_portal_gate",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_interact_portal_gate",
@@ -33,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_portal_gate",
-    "path":"sprites/spr_portal_gate/spr_portal_gate.yy",
+    "name":"spr_interact_portal_gate",
+    "path":"sprites/spr_interact_portal_gate/spr_interact_portal_gate.yy",
   },
   "spriteMaskId":null,
   "visible":true,

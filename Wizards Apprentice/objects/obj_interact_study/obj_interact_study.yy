@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_study",
-    "path":"sprites/spr_study/spr_study.yy",
+    "name":"spr_interact_study",
+    "path":"sprites/spr_interact_study/spr_interact_study.yy",
   },
   "spriteMaskId":null,
   "visible":true,

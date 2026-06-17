@@ -1,17 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_npc_parent",
-  "eventList":[],
+  "%Name":"obj_interact_wizard",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_npc_parent",
+  "name":"obj_interact_wizard",
   "overriddenProperties":[],
   "parent":{
-    "name":"NPCs",
-    "path":"folders/Objects/Characters/NPCs.yy",
+    "name":"Objects",
+    "path":"folders/Objects/Interactables/Objects.yy",
   },
   "parentObjectId":{
-    "name":"obj_character",
-    "path":"objects/obj_character/obj_character.yy",
+    "name":"obj_interactable_parent",
+    "path":"objects/obj_interactable_parent/obj_interactable_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -30,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_interact_wizard",
+    "path":"sprites/spr_interact_wizard/spr_interact_wizard.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
