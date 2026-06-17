@@ -29,6 +29,12 @@ function scr_texture_auto_assign()
 			
 		break;
 		
+		case "rm_wizard_tower":
+		
+			room_texture = "Stone";
+			
+		break;
+		
 		default: // Default Option
 		
 		show_error("ERROR: CANNOT FIND PLATFORM TEXTURE", false);

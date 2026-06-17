@@ -310,12 +310,12 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
     {"children":[
         {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
         {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
       ],"groupName":"Testing",},
     {"children":[
-        {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
         {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
         {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
       ],"groupName":"Demo",},
