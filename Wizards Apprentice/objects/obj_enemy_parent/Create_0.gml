@@ -188,9 +188,14 @@ event_inherited();
 	// Total time in seconds enemy can continue to see player without line of sight
 	wall_hack_timer = game_get_speed(gamespeed_fps) * 0.4
 	
+	// Path used for attacking, or returning to patrol point
 	attack_path = path_add()
 	
+	// Declares if enemy is creating its own flight patrol
+	flying_patrol = false
 	
+	// Declares home has been reached
+	returned_home = false
 
 
 
@@ -332,46 +337,116 @@ event_inherited();
 				}else
 			
 			
-				// If path is assigned, but is located elsewhere return to path with pathfinding
-				if(path_patrol != -1 && path_index == -1)
+				// If located elsewhere from starting point, return to start to resume path
+				if(path_index == -1 && returned_home == false)
 				{
 //					show_debug_message("Returning to Assigned Path")
 					
-					// Return to path
-					scr_create_attack_path(path_get_x(path_patrol, 0), path_get_y(path_patrol, 0), true)
-					
-					path_start(attack_path, move_spd_max, path_action_stop, 1)
-					
-					if(x == path_get_x(attack_path, 1) && y == path_get_y(attack_path, 1))
+					// If path manually assigned, return to path start point
+					if(path_patrol != -1)
 					{
-						path_delete(attack_path)
+					
+						// Return to path
+						scr_create_attack_path(path_get_x(path_patrol, 0), path_get_y(path_patrol, 0), true)
+					
+						path_start(attack_path, move_spd_max, path_action_stop, 1)
+					
+						if(x == path_get_x(attack_path, 1) && y == path_get_y(attack_path, 1))
+						{
+							path_delete(attack_path)
+							
+							// Declares home has been reached
+							returned_home = true
+						}
+					
+						// Set flying patrol false
+						flying_patrol = false
+					}else
+					
+					// If no path manually assigned, return to start position
+					if(path_patrol == -1)
+					{
+						// Return to home position
+						scr_create_attack_path(home_x, home_y, true)
+					
+						path_start(attack_path, move_spd_max, path_action_stop, 1)
+						
+						// End path when reaching home
+						if(x == home_x && y == home_y)
+						{
+							if(path_exists(attack_path)) path_delete(attack_path)
+							
+							// Declares home has been reached
+							returned_home = true
+						}
 					}
+					
+					scr_sprite_direction()
 				
 				}else
 			
 				// If no path is assigned, fly back and forth looking out for the player
-				if(path_patrol == -1)
+				if(path_patrol == -1 && path_index == -1 && returned_home == true)
 				{
 					// Move left and right, flipping direction when touching a wall
 					
 //					show_debug_message("Patrolling Left and Right")
 					
-				
-				
+					// Check if patrol has started. If not, set speed
+					if(flying_patrol == false)
+					{
+						move_spd_h = move_spd_max;
+						
+						// Set flying patrol true
+						flying_patrol = true
+						
+						// Store starting y position for wave
+						start_y = y;
+					}
+					
+					
+					// Height of sine wave
+					var	wave_height = 15;
+					
+					// Move object
+					x += move_spd_h
+					y = start_y + (sin(current_time/500) * wave_height)
+					
+					#region Sprite Flip
+						if(move_spd_h > 0)
+						{
+							image_xscale = 1
+						}
+
+						if(move_spd_h < 0)
+						{
+							image_xscale = -1
+						}
+					#endregion Sprite Flip
+
+					// Flip direction when reaching wall
+					if(place_meeting(x + move_spd_h, y, obj_platform_solid_parent))
+					{
+						move_spd_h *= -1
+					}
+
+
 				}else
 				
 				// Moving on path
 				if(path_index != -1)
 				{
 				//	show_debug_message("Moving on Patrol Path");
+				
+					// Set flying patrol false
+					flying_patrol = false
 				}else
 				{
 					show_error("Error: No Patrol Moveset Found", false);
+					
+					// Set flying patrol false
+					flying_patrol = false
 				}
-				
-				
-				// Set sprite direction
-				scr_sprite_direction(direction)
 
 			}
 		
@@ -383,6 +458,17 @@ event_inherited();
 			scr_player_search()
 			if(player_visible == true)
 			{
+				flying_patrol = false
+				
+				// Destroy attack path if it exists
+				if(path_exists(attack_path))
+				{
+					path_delete(attack_path)
+				}
+				
+				// Declares home has not been reached
+				returned_home = false
+				
 				state_behavior = state_attack;
 			
 				scr_reset_enemy_movement()
@@ -837,6 +923,8 @@ event_inherited();
 					
 
 				}else
+				
+				if(can_move == false)
 				{	
 					// Delete path if unable to move
 					if(path_exists(attack_path)) path_delete(attack_path);

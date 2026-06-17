@@ -7,6 +7,7 @@ state_behavior()
 // Increment enemy timers
 scr_enemy_timers()
 
+
 #region Collisions
 	
 	// Force objects outside of other objects if stuck or overlaping
