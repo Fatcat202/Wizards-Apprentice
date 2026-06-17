@@ -6,7 +6,6 @@ if(collision_circle(x, y, sprite_size*1.5, obj_player_parent, true, false) != no
 	{
 		// Display button to interact
 		
-		scr_test()
 		// If interact button pressed when within range, start object specific action
 		if(global.cont_interact == true)
 		{
