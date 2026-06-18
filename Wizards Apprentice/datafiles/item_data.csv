@@ -1,0 +1,5 @@
+,spr,scr,main_var,duration,price,min_level,title,description
+health_potion_light,spr_health_potion_light,scr_health_potion,2,0,50,1,Light Health Potion,Heal 2
+health_potion_moderate,spr_health_potion_moderate,scr_health_potion,3,0,100,1,Moderate Health Potion,Heal 3
+health_potion_severe,spr_health_potion_severe,scr_health_potion,4,0,150,1,Severe Health Potion,Heal 4
+health_potion_critical,spr_health_potion_critical,scr_health_potion,5,0,200,1,Critical Health Potion,Heal 5

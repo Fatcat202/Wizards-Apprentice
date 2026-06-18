@@ -2,6 +2,23 @@
 // Randomise variables in testing
 randomise()
 
+
+
+#region Enums
+	
+	enum item_names // Positions of items in database array
+	{
+		empty,
+		health_potion_light,
+		health_potion_moderate,
+		health_potion_severe,
+		health_potion_critical
+	}
+
+#endregion Enums
+
+
+
 #region Global Variables
 
 	#region Variables
@@ -68,7 +85,37 @@ randomise()
 				global.show_inventory = false;
 			
 		#endregion Pausing
+		
+		#region Inventory
+		
+			// Toggles showing the inventory
+			global.show_inventory = false
+			
+			// Total number of inventory slots
+			global.inventory_slots = 15
+			
+			// Player inventory
+			global.inventory = array_create(global.inventory_slots, -1)
 	
+			// Shop inventory 2D array
+			for(var i = 0; i <= 4; i++)
+			{
+				for(var j = 0; j <= 12; j++)
+				{
+					global.inventory_shop[i][j] = -1;
+				}
+			}
+			
+			// End inventory pause state
+			global.end_inventory_pause = false;
+			
+			// Total player gold
+			global.party_gold = 1000;
+
+
+
+		#endregion Inventory
+
 		#region Database
 	
 			#region Spell Stats
@@ -246,12 +293,224 @@ randomise()
 				
 				
 			#endregion Enemy Stats
+
+			#region Item Stats
+				
+				// Create item_index_length for tracking total number of item in csv
+				global.item_index_length = 0;
+
+				// Create item_stats array for tracking stats
+				global.item_stats[0] = 0;
+
+				// Initialize item index arrays
+				global.arr_item_index_name[0] = "No valid item name";
 	
+	
+
+				var ds_item_stats_csv = load_csv("item_data.csv");
+
+				// Ensure the grid is valid
+				if (ds_item_stats_csv == -1) {
+				    show_error("Failed to load CSV file.", true);
+				    exit;
+				}
+
+				// Initialize stats dictionary constructor
+				function item_stats(_spr = spr_placeholder, _scr = -1, _main_var = -1, _duration = -1, _price = -1, _min_level = -1, _title = "No Title", _desc = "No Description") constructor {
+				
+					spr = _spr
+					scr = _scr
+					main_var = _main_var
+					duration = _duration
+					price = _price
+					min_level = _min_level
+					title = _title
+					desc = _desc
+
+				}
+
+				// Declare length of item index based on adjusted CSV height
+				global.item_index_length = ds_grid_height(ds_item_stats_csv) - 1
+			
+				// Create item_stats struct array
+				for(var i = 1; i <= global.item_index_length; i++)
+				{
+					global.item_stats[i] = new item_stats();
+				}
+
+				// Assign all values from CSV file into stats database structs
+				for(var i = 0; i < global.item_index_length; i++)
+				{
+					var yy = i + 1;
+					var xx = 1;
+					global.item_stats[yy].spr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].scr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].main_var = real(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].duration = real(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].price = real(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].min_level = real(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].title = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].desc = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++
+				}
+
+
+				// Assign data to item index arrays
+				for(var p = 0; p < global.item_index_length; p++)
+				{
+					var n = p + 1;
+					// Sets 1st place in array as names
+					global.arr_item_index_name[n] = ds_grid_get(ds_item_stats_csv, 0, n);
+				}
+				
+	
+				// Cleanup DS grid
+				ds_grid_destroy(ds_item_stats_csv);
+			
+				// Debug testing
+				
+				//	show_debug_message("item Constructor List: " + string(global.item_stats))
+				//	show_debug_message("global.item_index_length: " + string(global.item_index_length))
+				//	show_debug_message("global.arr_item_index_name: " + string(global.arr_item_index_name))
+				
+				
+			#endregion Item Stats
 	
 		#endregion Database
+		
+		#region Inventory Contents
+
+			#region Player Inventory Contents
+		
+				// Row 1
+				global.inventory[0] = global.item_stats[item_names.health_potion_light];
+				global.inventory[1] = global.item_stats[item_names.health_potion_moderate];
+				global.inventory[2] = global.item_stats[item_names.health_potion_severe];
+				global.inventory[3] = global.item_stats[item_names.health_potion_critical];
+				global.inventory[4] = -1;
+	
+				// Row 2
+				global.inventory[5] = -1;
+				global.inventory[6] = -1;
+				global.inventory[7] = -1;
+				global.inventory[8] = -1;
+				global.inventory[9] = -1;
 
 	
-	#endregion Variables
+				// Row 3
+				global.inventory[10] = -1;
+				global.inventory[11] = -1;
+				global.inventory[12] = -1;
+				global.inventory[13] = -1;
+				global.inventory[14] = -1;
+
+			#endregion Player Inventory Contents
+			
+			#region Shop Contents
+	
+				var p = 0;
+	
+				#region Page 1
+	
+					p += 1;
+		
+					// Row 1
+					global.inventory_shop[p, 0] = global.item_stats[item_names.health_potion_light];
+					global.inventory_shop[p, 1] = global.item_stats[item_names.health_potion_moderate];
+					global.inventory_shop[p, 2] = global.item_stats[item_names.health_potion_severe];
+					global.inventory_shop[p, 3] = global.item_stats[item_names.health_potion_critical];
+	
+					// Row 2
+					global.inventory_shop[p, 4] = -1;
+					global.inventory_shop[p, 5] = -1;
+					global.inventory_shop[p, 6] = -1;
+					global.inventory_shop[p, 7] = -1;
+	
+					// Row 3
+					global.inventory_shop[p, 8] = -1;
+					global.inventory_shop[p, 9] = -1;
+					global.inventory_shop[p, 10] = -1;
+					global.inventory_shop[p, 11] = -1;
+
+				#endregion Page 1
+	
+				#region Page 2
+	
+					p += 1;
+	
+					// Row 1
+					global.inventory_shop[p, 0] = -1;
+					global.inventory_shop[p, 1] = -1;
+					global.inventory_shop[p, 2] = -1;
+					global.inventory_shop[p, 3] = -1;
+	
+					// Row 2
+					global.inventory_shop[p, 4] = -1;
+					global.inventory_shop[p, 5] = -1;
+					global.inventory_shop[p, 6] = -1;
+					global.inventory_shop[p, 7] = -1;
+	
+					// Row 3
+					global.inventory_shop[p, 8] = -1;
+					global.inventory_shop[p, 9] = -1;
+					global.inventory_shop[p, 10] = -1;
+					global.inventory_shop[p, 11] = -1;
+
+				#endregion Page 2
+	
+				#region Page 3
+	
+					p += 1;
+	
+					// Row 1
+					global.inventory_shop[p, 0] = -1;
+					global.inventory_shop[p, 1] = -1;
+					global.inventory_shop[p, 2] = -1;
+					global.inventory_shop[p, 3] = -1;
+	
+					// Row 2
+					global.inventory_shop[p, 4] = -1;
+					global.inventory_shop[p, 5] = -1;
+					global.inventory_shop[p, 6] = -1;
+					global.inventory_shop[p, 7] = -1;
+	
+					// Row 3
+					global.inventory_shop[p, 8] = -1;
+					global.inventory_shop[p, 9] = -1;
+					global.inventory_shop[p, 10] = -1;
+					global.inventory_shop[p, 11] = -1;
+
+				#endregion Page 3
+	
+				#region Page 4
+	
+					p += 1;
+	
+					// Row 1
+					global.inventory_shop[p, 0] = -1;
+					global.inventory_shop[p, 1] = -1;
+					global.inventory_shop[p, 2] = -1;
+					global.inventory_shop[p, 3] = -1;
+	
+					// Row 2
+					global.inventory_shop[p, 4] = -1;
+					global.inventory_shop[p, 5] = -1;
+					global.inventory_shop[p, 6] = -1;
+					global.inventory_shop[p, 7] = -1;
+	
+					// Row 3
+					global.inventory_shop[p, 8] = -1;
+					global.inventory_shop[p, 9] = -1;
+					global.inventory_shop[p, 10] = -1;
+					global.inventory_shop[p, 11] = -1;
+
+				#endregion Page 4
+
+			#endregion Shop Contents
+
+	
+			#endregion Variables
+			
+		#endregion Inventory Contents
 
 
 #endregion Global Variables

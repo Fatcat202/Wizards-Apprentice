@@ -1,0 +1,8 @@
+function scr_health_potion()
+{
+	var _item = item;
+	with(obj_player_parent)
+	{
+		scr_heal(global.inventory[_item].main_var)
+	}
+}
