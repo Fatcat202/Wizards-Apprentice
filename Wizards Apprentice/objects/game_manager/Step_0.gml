@@ -87,4 +87,11 @@ scr_get_controls();
 		}
 	#endregion Exit Shop
 	
+	
+	// Declare if game is paused
+	if(global.show_inventory || global.game_esc_paused)
+	{
+		global.game_paused = true;
+	}else global.game_paused = false;
+	
 #endregion Pausing

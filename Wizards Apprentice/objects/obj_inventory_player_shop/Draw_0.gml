@@ -18,14 +18,18 @@ if(global.show_inventory == true)
 	// Inventory text
 	draw_set_font(fnt_menu)
 		draw_set_halign(fa_left)
-			draw_text(x_pos + 5, y_pos, "Party")
+			draw_set_valign(fa_top)
+				draw_text(x_pos + 5, y_pos, "Party")
+			draw_set_valign(fa_middle)
 		draw_set_halign(fa_center)
 	draw_set_font(fnt_default)
 
 	// Gold counter
 	draw_set_font(fnt_menu)
 		draw_set_halign(fa_right)
-			draw_text(x_pos + inv_width - 25, y_pos, "GOLD: " + string(global.party_gold))
+			draw_set_valign(fa_top)
+				draw_text(x_pos + inv_width - 25, y_pos, "GOLD: " + string(global.party_gold))
+			draw_set_valign(fa_middle)
 		draw_set_halign(fa_center)
 	draw_set_font(fnt_default)
 
