@@ -102,7 +102,7 @@ state_free = function()
 		// Create control menu
 		var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
 			menu.title = global.inventory[slot_hover].title;
-			menu.description = global.inventory[slot_hover].description;
+			menu.description = global.inventory[slot_hover].desc;
 			menu.item = slot_hover
 			
 		// Set use button pos
