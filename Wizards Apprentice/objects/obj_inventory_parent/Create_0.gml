@@ -103,6 +103,8 @@ state_free = function()
 			
 		var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
 			use.item = slot_hover;
+			use.inventory = global.inventory
+			use.inventory_slots = global.inventory_slots
 
 			
 		// Indicate mb_right is being held

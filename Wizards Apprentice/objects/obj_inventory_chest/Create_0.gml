@@ -2,8 +2,6 @@
 // You can write your code in this editor
 
 
-
-
 // Gap between slots and edge of inventory
 spacer = 12;
 
@@ -18,12 +16,12 @@ inv_height = 64 + (((inventory_slots) div inventory_row_length) + 1) * 64;
 x_pos = global.cam_target_x + (global.res_w) - ((global.res_w / 2) / 2) - (inv_width / 2) + (spacer * 2);
 y_pos = global.cam_target_y + (global.res_h / 2) - (inv_height / 2) + (spacer * 2) - 20;
 
-// buy button pos
-x_pos_buy = 0;
-y_pos_buy = 0;
-
-// Array holding sprites for each button page
-arr_page_sprites = [spr_shop_page_1, spr_shop_page_2, spr_shop_page_3, spr_shop_page_4];
+// Use button pos
+x_pos_take = 0;
+y_pos_take = 0;
+// Use button pos
+x_pos_use = 0;
+y_pos_use = 0;
 
 
 // Inventory Controls
@@ -73,8 +71,20 @@ state_free = function()
 		if(!position_meeting(mouse_x, mouse_y, obj_item_control_menu))
 		{
 			instance_destroy(obj_item_control_menu);
-			if(instance_exists(obj_button_buy)) instance_destroy(obj_button_buy);
+			if(instance_exists(obj_button_take)) instance_destroy(obj_button_take);
+			if(instance_exists(obj_button_use)) instance_destroy(obj_button_use);
 		}
+	}
+	
+	// Begin drag with left click
+	if(mouse_check_button(mb_left) && slot_hover != -1 && inventory_hover != -1 && !position_meeting(mouse_x, mouse_y, obj_item_control_menu))
+	{
+		
+		//Enter drag state
+		state = state_drag;
+		item_drag = inventory_hover;
+		inventory_drag = inventory_hover;
+		slot_drag = slot_hover;
 	}
 	
 	
@@ -83,7 +93,8 @@ state_free = function()
 	{
 		// Destroy control menu if active
 		if(instance_exists(obj_item_control_menu)) instance_destroy(obj_item_control_menu)
-		if(instance_exists(obj_button_buy)) instance_destroy(obj_button_buy);
+		if(instance_exists(obj_button_take)) instance_destroy(obj_button_take);
+		if(instance_exists(obj_button_use)) instance_destroy(obj_button_use);
 		
 		// Clamp pos
 		xx = clamp(mouse_x, global.cam_x, global.cam_x + global.res_w - (sprite_get_width(spr_item_control_menu)));
@@ -94,17 +105,25 @@ state_free = function()
 			menu.title = arr_inventory_chest[slot_hover].title;
 			menu.description = arr_inventory_chest[slot_hover].desc;
 			menu.item = slot_hover
-
 			
-		// Set buy button pos
-		x_pos_buy = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
-		y_pos_buy = menu.y + 40
+		// Set take button pos
+		x_pos_take = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+		y_pos_take = menu.y + 55
+		
+		// Set use button pos
+		x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+		y_pos_use = menu.y + 20
 			
 			
-		var take = instance_create_layer(x_pos_buy, y_pos_buy, "Menu_Buttons", obj_button_take)
+		var take = instance_create_layer(x_pos_take, y_pos_take, "Menu_Buttons", obj_button_take)
 			take.item = slot_hover;
 			take.inventory = arr_inventory_chest
 			take.inventory_slots = inventory_slots
+			
+		var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
+			use.item = slot_hover;
+			use.inventory = arr_inventory_chest
+			use.inventory_slots = inventory_slots
 
 			
 		// Indicate mb_right is being held
@@ -138,4 +157,24 @@ state_free = function()
 		
 	}
 }
+	
 
+state_drag = function()
+{
+	mouse_over();
+	
+	if(!mouse_check_button(mb_left))
+	{
+		//Swap with slot if hovering
+		if(slot_hover != -1) scr_inventory_swap(slot_drag, slot_hover, arr_inventory_chest)
+		
+		//Return to free state
+		state = state_free;
+		item_drag = -1;
+		inventory_drag = -1;
+		slot_drag = -1;
+	}
+}
+
+// Set state
+state = state_free;

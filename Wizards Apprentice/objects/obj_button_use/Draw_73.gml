@@ -8,7 +8,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
 //Draw Text
-if(global.inventory[item] != -1)
+if(inventory[item] != -1)
 {
 	var text = "USE"
 	draw_text(x, y, text);
