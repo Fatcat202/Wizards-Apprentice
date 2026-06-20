@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Inventory",
-    "path":"folders/Objects/Inventory.yy",
+    "path":"folders/Objects/Menu/Inventory.yy",
   },
   "parentObjectId":{
     "name":"obj_inventory_parent",

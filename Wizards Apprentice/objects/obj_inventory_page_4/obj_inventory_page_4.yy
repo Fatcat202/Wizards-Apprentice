@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_inventory_player",
+  "%Name":"obj_inventory_page_4",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_inventory_player",
+  "name":"obj_inventory_page_4",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inventory",
-    "path":"folders/Objects/Menu/Inventory.yy",
+    "name":"Shop Page Buttons",
+    "path":"folders/Objects/Menu/Inventory/Shop Page Buttons.yy",
   },
   "parentObjectId":{
-    "name":"obj_inventory_parent",
-    "path":"objects/obj_inventory_parent/obj_inventory_parent.yy",
+    "name":"obj_shop_page_parent",
+    "path":"objects/obj_shop_page_parent/obj_shop_page_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_shop_page_4",
+    "path":"sprites/spr_shop_page_4/spr_shop_page_4.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

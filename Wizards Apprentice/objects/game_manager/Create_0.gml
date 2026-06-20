@@ -96,11 +96,14 @@ randomise()
 			
 			// Player inventory
 			global.inventory = array_create(global.inventory_slots, -1)
-	
+			
+			
+			var num_pages = 4
+			var num_slots = 12
 			// Shop inventory 2D array
-			for(var i = 0; i <= 4; i++)
+			for(var i = 0; i <= num_pages; i++)
 			{
-				for(var j = 0; j <= 12; j++)
+				for(var j = 0; j <= num_slots; j++)
 				{
 					global.inventory_shop[i][j] = -1;
 				}

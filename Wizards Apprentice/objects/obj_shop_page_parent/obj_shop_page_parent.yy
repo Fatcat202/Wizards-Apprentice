@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Shop Page Buttons",
-    "path":"folders/Objects/Inventory/Shop Page Buttons.yy",
+    "path":"folders/Objects/Menu/Inventory/Shop Page Buttons.yy",
   },
   "parentObjectId":null,
   "persistent":false,

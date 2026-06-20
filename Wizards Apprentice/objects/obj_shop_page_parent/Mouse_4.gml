@@ -1,4 +1,4 @@
 /// @description Select Page
 
 // Set page active in shop
-obj_inventory_shop.active_page = page
+inventory_id.active_page = page

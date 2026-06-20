@@ -1,19 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"obj_shop_page_2",
+  "%Name":"obj_button_give",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":73,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_shop_page_2",
+  "name":"obj_button_give",
   "overriddenProperties":[],
   "parent":{
-    "name":"Shop Page Buttons",
-    "path":"folders/Objects/Inventory/Shop Page Buttons.yy",
+    "name":"Item Buttons",
+    "path":"folders/Objects/Menu/Inventory/Item Buttons.yy",
   },
   "parentObjectId":{
-    "name":"obj_shop_page_parent",
-    "path":"objects/obj_shop_page_parent/obj_shop_page_parent.yy",
+    "name":"obj_menu_button_parent",
+    "path":"objects/obj_menu_button_parent/obj_menu_button_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -33,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_shop_page_2",
-    "path":"sprites/spr_shop_page_2/spr_shop_page_2.yy",
+    "name":"spr_button_multi_shop",
+    "path":"sprites/spr_button_multi_shop/spr_button_multi_shop.yy",
   },
   "spriteMaskId":null,
   "visible":true,

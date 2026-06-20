@@ -3,7 +3,7 @@
 
 image_speed = 0;
 
-if(obj_inventory_shop.active_page == page)
+if(inventory_id.active_page == page)
 {
 	image_index = 1
 }else image_index = 0

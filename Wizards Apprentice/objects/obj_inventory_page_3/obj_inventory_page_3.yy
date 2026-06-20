@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_shop_page_4",
+  "%Name":"obj_inventory_page_3",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_shop_page_4",
+  "name":"obj_inventory_page_3",
   "overriddenProperties":[],
   "parent":{
     "name":"Shop Page Buttons",
-    "path":"folders/Objects/Inventory/Shop Page Buttons.yy",
+    "path":"folders/Objects/Menu/Inventory/Shop Page Buttons.yy",
   },
   "parentObjectId":{
     "name":"obj_shop_page_parent",
@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_shop_page_4",
-    "path":"sprites/spr_shop_page_4/spr_shop_page_4.yy",
+    "name":"spr_shop_page_3",
+    "path":"sprites/spr_shop_page_3/spr_shop_page_3.yy",
   },
   "spriteMaskId":null,
   "visible":true,
