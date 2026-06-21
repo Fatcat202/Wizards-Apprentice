@@ -15,7 +15,7 @@ var num_slots = inventory_slots
 // Inventory array
 for(var i = 0; i <= num_slots; i++)
 {
-	arr_inventory_chest[i] = -1;
+	inventory[i] = -1;
 }
 
 

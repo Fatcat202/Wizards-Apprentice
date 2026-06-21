@@ -20,7 +20,7 @@ if(!global.game_esc_paused && !instance_exists(obj_inventory_player))
 		instance_create_layer(0, 0, "Inventory", obj_inventory_chest,
 		{
 			chest_gold : chest_gold,
-			arr_inventory_chest : arr_inventory_chest,
+			inventory : inventory,
 			inventory_slots : inventory_slots
 		});
 

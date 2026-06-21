@@ -89,7 +89,7 @@ state_free = function()
 	
 	
 	// Create control menu with right click
-	if(mouse_check_button(mb_right) && slot_hover != -1 && inventory_hover != -1 && arr_inventory_chest[slot_hover] != -1)
+	if(mouse_check_button(mb_right) && slot_hover != -1 && inventory_hover != -1 && inventory[slot_hover] != -1)
 	{
 		// Destroy control menu if active
 		if(instance_exists(obj_item_control_menu)) instance_destroy(obj_item_control_menu)
@@ -102,8 +102,8 @@ state_free = function()
 		
 		// Create control menu
 		var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
-			menu.title = arr_inventory_chest[slot_hover].title;
-			menu.description = arr_inventory_chest[slot_hover].desc;
+			menu.title = inventory[slot_hover].title;
+			menu.description = inventory[slot_hover].desc;
 			menu.item = slot_hover
 			
 		// Set take button pos
@@ -117,12 +117,12 @@ state_free = function()
 			
 		var take = instance_create_layer(x_pos_take, y_pos_take, "Menu_Buttons", obj_button_take)
 			take.item = slot_hover;
-			take.inventory = arr_inventory_chest
+			take.inventory = inventory
 			take.inventory_slots = inventory_slots
 			
 		var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
 			use.item = slot_hover;
-			use.inventory = arr_inventory_chest
+			use.inventory = inventory
 			use.inventory_slots = inventory_slots
 
 			
@@ -166,7 +166,7 @@ state_drag = function()
 	if(!mouse_check_button(mb_left))
 	{
 		//Swap with slot if hovering
-		if(slot_hover != -1) scr_inventory_swap(slot_drag, slot_hover, arr_inventory_chest)
+		if(slot_hover != -1) scr_inventory_swap(slot_drag, slot_hover, inventory)
 		
 		//Return to free state
 		state = state_free;

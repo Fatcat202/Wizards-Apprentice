@@ -6,6 +6,8 @@
 spacer = 12;
 
 inventory_row_length = 4;
+
+inventory_slots = global.inventory_slots
 		
 // Width and height of inventory
 inv_width = 24 + inventory_row_length * 64;
@@ -117,7 +119,7 @@ state_free = function()
 		var give = instance_create_layer(x_pos_sell, y_pos_sell, "Menu_Buttons", obj_button_give)
 			give.item = slot_hover;
 			give.inventory_slots = obj_inventory_chest.inventory_slots
-			give.chest_inventory = obj_inventory_chest.arr_inventory_chest;
+			give.chest_inventory = obj_inventory_chest.inventory;
 			
 		var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
 			use.item = slot_hover;
