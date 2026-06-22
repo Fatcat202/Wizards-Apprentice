@@ -1,7 +1,7 @@
 /// @description On Click
 
 // Check if the party has enough gold
-if(global.party_gold >= global.inventory_shop[active_page, item].price)
+if(global.player_gold >= global.inventory_shop[active_page, item].price)
 {
 	
 	var index = 0;
@@ -17,7 +17,7 @@ if(global.party_gold >= global.inventory_shop[active_page, item].price)
 	scr_inventory_add(index, global.inventory_slots, global.inventory)
 
 	// Decrease party gold as per item price
-	global.party_gold -= global.inventory_shop[active_page, item].price
+	global.player_gold -= global.inventory_shop[active_page, item].price
 }else
 {
 	show_debug_message("Not enough gold")

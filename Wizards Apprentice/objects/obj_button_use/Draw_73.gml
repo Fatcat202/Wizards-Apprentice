@@ -1,5 +1,7 @@
 /// @description Draw
 
+draw_self()
+
 // Set Font
 draw_set_font(fnt_menu)
 

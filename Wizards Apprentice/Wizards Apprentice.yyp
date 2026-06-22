@@ -120,6 +120,7 @@
     {"id":{"name":"obj_button_save_game","path":"objects/obj_button_save_game/obj_button_save_game.yy",},},
     {"id":{"name":"obj_button_sell","path":"objects/obj_button_sell/obj_button_sell.yy",},},
     {"id":{"name":"obj_button_start","path":"objects/obj_button_start/obj_button_start.yy",},},
+    {"id":{"name":"obj_button_take_gold","path":"objects/obj_button_take_gold/obj_button_take_gold.yy",},},
     {"id":{"name":"obj_button_take","path":"objects/obj_button_take/obj_button_take.yy",},},
     {"id":{"name":"obj_button_use","path":"objects/obj_button_use/obj_button_use.yy",},},
     {"id":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},},

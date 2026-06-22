@@ -113,7 +113,7 @@ randomise()
 			global.end_inventory_pause = false;
 			
 			// Total player gold
-			global.party_gold = 1000;
+			global.player_gold = 1000;
 
 
 

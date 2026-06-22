@@ -1,7 +1,6 @@
 /// @description Text
 
 draw_self()
-
 // Set Font
 draw_set_font(fnt_menu)
 
@@ -12,7 +11,7 @@ draw_set_valign(fa_middle);
 
 
 //Draw Text
-if(inventory[item] != -1)
+if(chest_gold > 0)
 {
 	var text = "TAKE"
 	draw_text(x, y, text);

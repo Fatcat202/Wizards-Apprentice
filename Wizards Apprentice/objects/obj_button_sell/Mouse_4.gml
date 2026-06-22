@@ -3,7 +3,7 @@
 
 
 // Sell item for 1/2 price
-global.party_gold += floor((global.inventory[item].price / 2))
+global.player_gold += floor((global.inventory[item].price / 2))
 
 // Remove item from inventory
 scr_inventory_remove(global.inventory, global.inventory_slots, item)

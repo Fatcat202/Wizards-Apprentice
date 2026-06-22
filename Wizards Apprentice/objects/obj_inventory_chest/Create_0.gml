@@ -2,6 +2,13 @@
 // You can write your code in this editor
 
 
+// Manually set inventory in creation event in room using:
+// inventory["Inventory Slot Here"] = global.item_stats[item_names."Item Name Here"]
+
+// Manually set gold in create event using:
+// chest_gold = "Set Gold Here"
+
+
 // Gap between slots and edge of inventory
 spacer = 12;
 
@@ -32,6 +39,11 @@ slot_drag = -1;
 item_drag = -1;
 state = -1;
 held = false;
+
+// Take Gold button
+take_gold = noone
+
+
 
 
 	
