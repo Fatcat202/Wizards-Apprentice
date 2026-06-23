@@ -3,6 +3,7 @@
 
 function scr_get_controls()
 {
+
 	// Horizontal Movement
 	global.cont_left = keyboard_check(ord("A"));
 	global.cont_right = keyboard_check(ord("D"));

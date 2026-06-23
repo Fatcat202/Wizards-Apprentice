@@ -103,6 +103,9 @@ randomise()
 			
 			// Total player gold
 			global.player_gold = 1000;
+			
+			// Declares if the player can be controlled
+			global.can_control_player = true
 
 
 
