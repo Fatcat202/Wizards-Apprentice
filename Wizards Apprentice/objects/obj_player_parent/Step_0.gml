@@ -42,7 +42,7 @@ if(global.can_control_player == false) exit;
 	
 			// Detects platform ID below player
 			var plat_id = instance_place(x, y + 1, obj_platform_parent)
-			if(plat_id != noone)
+			if(plat_id != noone && (plat_id.object_index != obj_platform_void && plat_id.object_index != obj_platform_void_slope))
 			{
 				
 				if(plat_id.oil_level > 0)

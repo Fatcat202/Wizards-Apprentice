@@ -1,1 +1,1 @@
-next_room = rm_level_00
+next_room = rm_wizard_tower_cellar

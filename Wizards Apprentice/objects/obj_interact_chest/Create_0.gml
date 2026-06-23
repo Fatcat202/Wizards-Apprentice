@@ -21,4 +21,4 @@ for(var i = 0; i <= num_slots; i++)
 
 
 // Can assign items in creation code using:
-// arr_inventory_chest["slot"] = global.item_stats[item_names."enter_name_here"]
+// inventory["slot"] = global.item_stats[item_names."enter_name_here"]

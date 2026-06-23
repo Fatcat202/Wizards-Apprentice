@@ -7,6 +7,11 @@ above_free = !place_meeting(x, y - global.cell_size, obj_platform_parent)
 
 below_free = !place_meeting(x, y + global.cell_size, obj_platform_parent)
 
+// X and Y coords setting where in next room player should be placed on transfer
+// Set in instance creation code
+target_x = -1
+target_y = -1
+
 if(above_free == true)
 {
 //	show_debug_message("Above Free")

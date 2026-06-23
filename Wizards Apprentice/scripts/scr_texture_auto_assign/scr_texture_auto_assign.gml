@@ -35,6 +35,18 @@ function scr_texture_auto_assign()
 			
 		break;
 		
+		case "rm_wizard_tower_cellar":
+		
+			room_texture = "Stone";
+			
+		break;
+		
+		case "rm_wizard_tower_top":
+		
+			room_texture = "Stone";
+			
+		break;
+		
 		case "rm_level_00":
 		
 			room_texture = "Stone";

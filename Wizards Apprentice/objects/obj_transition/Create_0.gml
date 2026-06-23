@@ -16,5 +16,4 @@ delaying = false;
 delaying_time = game_get_speed(gamespeed_fps) * 1;
 delaying_timer = 0;
 
-
-
+target_instance = -1
