@@ -96,18 +96,7 @@ randomise()
 			
 			// Player inventory
 			global.inventory = array_create(global.inventory_slots, -1)
-			
-			
-			var num_pages = 4
-			var num_slots = 12
-			// Shop inventory 2D array
-			for(var i = 0; i <= num_pages; i++)
-			{
-				for(var j = 0; j <= num_slots; j++)
-				{
-					global.inventory_shop[i][j] = -1;
-				}
-			}
+
 			
 			// End inventory pause state
 			global.end_inventory_pause = false;
@@ -407,108 +396,6 @@ randomise()
 				global.inventory[14] = -1;
 
 			#endregion Player Inventory Contents
-			
-			#region Shop Contents
-	
-				var p = 0;
-	
-				#region Page 1
-	
-					p += 1;
-		
-					// Row 1
-					global.inventory_shop[p, 0] = global.item_stats[item_names.health_potion_light];
-					global.inventory_shop[p, 1] = global.item_stats[item_names.health_potion_moderate];
-					global.inventory_shop[p, 2] = global.item_stats[item_names.health_potion_severe];
-					global.inventory_shop[p, 3] = global.item_stats[item_names.health_potion_critical];
-	
-					// Row 2
-					global.inventory_shop[p, 4] = -1;
-					global.inventory_shop[p, 5] = -1;
-					global.inventory_shop[p, 6] = -1;
-					global.inventory_shop[p, 7] = -1;
-	
-					// Row 3
-					global.inventory_shop[p, 8] = -1;
-					global.inventory_shop[p, 9] = -1;
-					global.inventory_shop[p, 10] = -1;
-					global.inventory_shop[p, 11] = -1;
-
-				#endregion Page 1
-	
-				#region Page 2
-	
-					p += 1;
-	
-					// Row 1
-					global.inventory_shop[p, 0] = -1;
-					global.inventory_shop[p, 1] = -1;
-					global.inventory_shop[p, 2] = -1;
-					global.inventory_shop[p, 3] = -1;
-	
-					// Row 2
-					global.inventory_shop[p, 4] = -1;
-					global.inventory_shop[p, 5] = -1;
-					global.inventory_shop[p, 6] = -1;
-					global.inventory_shop[p, 7] = -1;
-	
-					// Row 3
-					global.inventory_shop[p, 8] = -1;
-					global.inventory_shop[p, 9] = -1;
-					global.inventory_shop[p, 10] = -1;
-					global.inventory_shop[p, 11] = -1;
-
-				#endregion Page 2
-	
-				#region Page 3
-	
-					p += 1;
-	
-					// Row 1
-					global.inventory_shop[p, 0] = -1;
-					global.inventory_shop[p, 1] = -1;
-					global.inventory_shop[p, 2] = -1;
-					global.inventory_shop[p, 3] = -1;
-	
-					// Row 2
-					global.inventory_shop[p, 4] = -1;
-					global.inventory_shop[p, 5] = -1;
-					global.inventory_shop[p, 6] = -1;
-					global.inventory_shop[p, 7] = -1;
-	
-					// Row 3
-					global.inventory_shop[p, 8] = -1;
-					global.inventory_shop[p, 9] = -1;
-					global.inventory_shop[p, 10] = -1;
-					global.inventory_shop[p, 11] = -1;
-
-				#endregion Page 3
-	
-				#region Page 4
-	
-					p += 1;
-	
-					// Row 1
-					global.inventory_shop[p, 0] = -1;
-					global.inventory_shop[p, 1] = -1;
-					global.inventory_shop[p, 2] = -1;
-					global.inventory_shop[p, 3] = -1;
-	
-					// Row 2
-					global.inventory_shop[p, 4] = -1;
-					global.inventory_shop[p, 5] = -1;
-					global.inventory_shop[p, 6] = -1;
-					global.inventory_shop[p, 7] = -1;
-	
-					// Row 3
-					global.inventory_shop[p, 8] = -1;
-					global.inventory_shop[p, 9] = -1;
-					global.inventory_shop[p, 10] = -1;
-					global.inventory_shop[p, 11] = -1;
-
-				#endregion Page 4
-
-			#endregion Shop Contents
 
 	
 			#endregion Variables

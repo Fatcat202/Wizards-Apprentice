@@ -34,31 +34,20 @@ if(global.show_inventory == true)
 	draw_set_font(fnt_default)
 
 	// Draw inventory slots
-	for(var i = 0; i < global.inventory_slots; i++)
+	for(var i = 0; i < inventory_slots; i++)
 	{
 		var xx = x_pos + (i mod inventory_row_length) * 64;
 		var yy = y_pos + (i div inventory_row_length) * 64 + 40;
-		var hover = (inventory_hover == id) && (slot_hover == i)
+		var hover = (obj_mouse.inventory_hover == id) && (obj_mouse.slot_hover == i)
 		draw_sprite(spr_inventory_slot, hover, xx, yy)
-		if(global.inventory[i] != -1)
+		if(inventory[i] != -1)
 		{
 			var alpha = 1;
-			if(inventory_drag == id && slot_drag == i) alpha = 0.5;
+			if(obj_mouse.inventory_drag == id && obj_mouse.slot_drag == i) alpha = 0.5;
 			draw_set_alpha(alpha)
-				draw_sprite(global.inventory[i].spr, 0, xx, yy);
+				draw_sprite(inventory[i].spr, 0, xx, yy);
 			draw_set_alpha(1)
 		}
 	}	
-	
-	// Item Alpha when dragged
-	if(slot_drag != -1)
-	{
-		if(global.inventory[slot_drag] != -1)
-		{
-			draw_set_alpha(0.5)
-				draw_sprite(global.inventory[slot_drag].spr, 0, mouse_x, mouse_y)
-			draw_set_alpha(1)
-		}
-	}
 
 }

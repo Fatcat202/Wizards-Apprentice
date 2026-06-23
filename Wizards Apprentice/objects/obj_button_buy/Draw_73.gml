@@ -11,9 +11,9 @@ draw_set_valign(fa_middle);
 
 
 //Draw Text
-if(global.inventory_shop[active_page, item] != -1)
+if(inventory[item] != -1)
 {
-	var text = "BUY  " + string(global.inventory_shop[active_page, item].price)
+	var text = "BUY  " + string(inventory[item].price)
 	draw_text(x, y, text);
 }
 

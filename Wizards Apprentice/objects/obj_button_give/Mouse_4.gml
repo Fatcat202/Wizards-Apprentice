@@ -43,4 +43,4 @@ global.inventory[item] = -1
 
 // Destroy self and menu
 instance_destroy(obj_item_control_menu)
-instance_destroy(obj_button_take)
+instance_destroy(obj_button_give)

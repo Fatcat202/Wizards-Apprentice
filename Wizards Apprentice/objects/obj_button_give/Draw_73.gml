@@ -10,7 +10,7 @@ draw_set_valign(fa_middle);
 
 
 
-//Draw Text
+// Draw Text
 if(global.inventory[item] != -1)
 {
 	var text = "GIVE"

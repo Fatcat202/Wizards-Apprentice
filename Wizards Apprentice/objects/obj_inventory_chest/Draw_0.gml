@@ -29,12 +29,12 @@ if(global.show_inventory == true)
 	{
 		var xx = x_pos + (i mod inventory_row_length) * 64;
 		var yy = y_pos + (i div inventory_row_length) * 64 + 40;
-		var hover = (inventory_hover == id) && (slot_hover == i)
+		var hover = (obj_mouse.inventory_hover == id) && (obj_mouse.slot_hover == i)
 		draw_sprite(spr_inventory_slot, hover, xx, yy)
 		if(inventory[i] != -1)
 		{
 			var alpha = 1;
-			if(inventory_drag == id && slot_drag == i) alpha = 0.5;
+			if(obj_mouse.inventory_drag == id && obj_mouse.slot_drag == i) alpha = 0.5;
 			draw_set_alpha(alpha)
 				draw_sprite(inventory[i].spr, 0, xx, yy);
 			draw_set_alpha(1)
@@ -60,7 +60,6 @@ if(global.show_inventory == true)
 	draw_set_font(fnt_default)
 	
 	
-	
 	// Take Gold Button
 	if(!instance_exists(take_gold) && chest_gold > 0)
 	{
@@ -68,19 +67,4 @@ if(global.show_inventory == true)
 		take_gold.chest_gold = chest_gold;
 		take_gold.chest_id = id;
 	}
-	
-
-	// Item Alpha when dragged
-	if(slot_drag != -1)
-	{
-		if(inventory[slot_drag] != -1)
-		{
-			draw_set_alpha(0.5)
-				draw_sprite(inventory[slot_drag].spr, 0, mouse_x, mouse_y)
-			draw_set_alpha(1)
-		}
-	}
-	
-	
-
 }
