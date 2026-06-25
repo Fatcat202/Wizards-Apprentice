@@ -9,6 +9,8 @@ function scr_inventory_pause()
 	
 	// Pauses all particle systems
 	scr_part_systems_set_auto_update();
+	
+	global.show_inventory = true;
 
 	// Set pause image
 //	scr_pause_image()

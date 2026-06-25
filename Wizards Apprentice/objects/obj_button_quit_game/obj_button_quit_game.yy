@@ -9,8 +9,8 @@
   "name":"obj_button_quit_game",
   "overriddenProperties":[],
   "parent":{
-    "name":"Buttons",
-    "path":"folders/Objects/Menu/Buttons.yy",
+    "name":"ESC Menu Buttons",
+    "path":"folders/Objects/Menu/Buttons/ESC Menu Buttons.yy",
   },
   "parentObjectId":{
     "name":"obj_menu_button_parent",

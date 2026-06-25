@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 // Prevent inventory pausing
-if(!global.game_esc_paused && !instance_exists(obj_inventory_player))
+if(!global.game_paused)
 {
 	// Activate Inventory Pause
 	if(global.show_inventory = false)

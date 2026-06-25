@@ -451,7 +451,7 @@ if(global.can_control_player == false) exit;
 					*/
 
 					// Execute spell script if off cooldown
-					if(spell_cooldown_1 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_1 == false) script_execute(global.active_spells[active_spell].scr);
 
 				break;
 
@@ -465,7 +465,7 @@ if(global.can_control_player == false) exit;
 					*/
 					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_2 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_2 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 
@@ -479,7 +479,7 @@ if(global.can_control_player == false) exit;
 					*/
 					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_3 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_3 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 				
@@ -492,7 +492,7 @@ if(global.can_control_player == false) exit;
 					show_debug_message("Spell: " + string(global.spell_stats[active_spell]))
 					*/
 					// Execute spell script if off cooldown
-					if(spell_cooldown_4 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_4 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 				
@@ -506,7 +506,7 @@ if(global.can_control_player == false) exit;
 					*/
 					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_5 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_5 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 				
@@ -520,7 +520,7 @@ if(global.can_control_player == false) exit;
 					*/
 					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_6 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_6 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 				
@@ -534,7 +534,7 @@ if(global.can_control_player == false) exit;
 					*/
 					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_7 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_7 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 				
@@ -548,7 +548,7 @@ if(global.can_control_player == false) exit;
 					*/
 					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_8 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_8 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 
@@ -562,7 +562,7 @@ if(global.can_control_player == false) exit;
 					*/
 					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_9 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_9 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 				
@@ -576,7 +576,7 @@ if(global.can_control_player == false) exit;
 					*/
 					
 					// Execute spell script if off cooldown
-					if(spell_cooldown_10 == false) script_execute(arr_active_spells[active_spell].scr);
+					if(spell_cooldown_10 == false) script_execute(global.active_spells[active_spell].scr);
 					
 				break;
 			}

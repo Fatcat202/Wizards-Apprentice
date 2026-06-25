@@ -98,9 +98,6 @@ randomise()
 			global.inventory = array_create(global.inventory_slots, -1)
 
 			
-			// End inventory pause state
-			global.end_inventory_pause = false;
-			
 			// Total player gold
 			global.player_gold = 1000;
 			
@@ -136,6 +133,40 @@ randomise()
 			global.player_xp_next_level = global.player_level * 1000;
 			
 		#endregion Player Stats
+		
+		#region Spellbook
+		
+			// Number of slots per row
+			global.spellbook_row_length = 6;
+			
+			// Number of rows
+			global.spellbook_row_number = 3;
+			
+			// Number of spells per page
+			global.spells_per_page = global.spellbook_row_number * global.spellbook_row_length;
+	
+			// Total pages in spellbook
+			global.spellbook_total_pages = 2;
+	
+			// Set all slots in spellbook to -1
+			// Loop through pages
+			for(var p = 0; p <= global.spellbook_total_pages; p++)
+			{	
+				// Loop through slots on each page
+				for(var i = 0; i < global.spells_per_page; i++)
+				{
+					// Set spellbook slots to -1
+					global.spellbook[p, i] = -1;
+				}
+			}
+			
+			// Page buttons
+			global.arr_page_buttons = [obj_button_page_1, obj_button_page_2, obj_button_page_3, obj_button_page_4];
+			
+			// Array of usable spells
+			global.active_spells = []
+			
+		#endregion Spellbook
 
 		#region Database
 	
@@ -161,7 +192,7 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function spell_stats(_spell_level = -1, _spell_damage = -1, _spell_atk_speed = -1, _spell_cooldown = -1, _spell_mana = -1, _spell_memory = -1, _spell_uses = -1, _spell_duration = -1, _spell_element = -1, _spell_title = "Empty", _spell_desc = "Empty", _spell_spr = spr_spell_slot_placeholder, _spell_script = -1) constructor {
+				function spell_stats(_spell_level = -1, _spell_damage = -1, _spell_atk_speed = -1, _spell_cooldown = -1, _spell_mana = -1, _spell_memory = -1, _spell_uses = -1, _spell_duration = -1, _spell_element = -1, _spell_title = "Empty", _spell_desc = "Empty", _spell_spr = -1, _spell_script = -1) constructor {
 				
 					level = _spell_level
 					damage = _spell_damage
@@ -427,6 +458,68 @@ randomise()
 				global.inventory[14] = -1;
 
 			#endregion Player Inventory Contents
+			
+			#region Hard coded spells for testing
+			
+				global.active_spells[1] = global.spell_stats[scr_find_spell_index("firebolt")]
+				global.active_spells[2] = global.spell_stats[scr_find_spell_index("jump")]
+				global.active_spells[3] = global.spell_stats[scr_find_spell_index("heal")]
+				global.active_spells[4] = global.spell_stats[scr_find_spell_index("icicle")]
+				global.active_spells[5] = global.spell_stats[scr_find_spell_index("jolt")]
+				global.active_spells[6] = global.spell_stats[scr_find_spell_index("wall of fire")]
+				global.active_spells[7] = global.spell_stats[scr_find_spell_index("wall of ice")]
+				global.active_spells[8] = global.spell_stats[scr_find_spell_index("fireball")]
+				global.active_spells[9] = global.spell_stats[scr_find_spell_index("water splash")]
+				global.active_spells[10] = global.spell_stats[scr_find_spell_index("oil splash")]
+				//show_debug_message("global.active_spells = " + string(global.active_spells))
+				
+			#endregion Hard coded spells for testing
+			
+			#region Spellbook Testing Contents
+
+				#region Page 1
+				
+					// Page and Slot
+					var page = 1
+					var slot = 0
+				
+				
+					global.spellbook[page, slot] = global.spell_stats[scr_find_spell_index("firebolt")];
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+				
+				#endregion Page 1
+				
+				#region Page 2
+				/*
+					page++;
+					slot = 0
+					
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+					global.spellbook[page, slot] = -1;
+					slot++
+				*/
+				#endregion Page 2
+				
+			#endregion Spellbook Testing Contents
 
 
 		#endregion Inventory Contents

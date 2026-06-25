@@ -286,7 +286,7 @@ var yy = display_get_gui_height() / 2
 		var b = 0;
 
 		// If not enough mana, change background colour
-		if(active_mana < arr_active_spells[i].mana)
+		if(active_mana < global.active_spells[i].mana)
 		{
 			// Light red
 			r = 255;

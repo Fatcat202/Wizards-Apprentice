@@ -1,7 +1,7 @@
 function scr_pause_image()
 {
 	layer_create(600, "Pause_Sprites");
-	with(obj_attack_parent)
+	with(all)
 	{
 
 		var sprite = layer_sprite_create("Pause_Sprites", x, y, sprite_index);

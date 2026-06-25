@@ -17,6 +17,7 @@ scr_get_controls();
 				// Create ESC Menu object
 				instance_create_layer(0, 0, "Game_Manager", obj_esc_menu);
 				instance_activate_object(obj_esc_menu)
+				
 			}else
 		
 			// End Pause
@@ -36,32 +37,25 @@ scr_get_controls();
 		
 		if(global.cont_inventory == true)
 		{
-			// Prevent inventory pausing
-			if(!global.game_esc_paused && !instance_exists(obj_inventory_player_shop))
-			{
-				// Activate Inventory Pause
-				if(global.show_inventory = false)
-				{
-					global.show_inventory = true;
-						
-					scr_inventory_pause()
-		
-					// Create Inventory Menu object
-					instance_create_layer(0, 0, "Inventory", obj_inventory_player);
+			// Create/destroy player inventory
 
-				}else // Deactivate Inventory Pause
+			// Activate Inventory Pause
+			if(global.show_inventory == false && global.game_esc_paused == false)
+			{
+				scr_test()
+				if(!instance_exists(obj_study_menu))
 				{
-					global.show_inventory = false;
-		
-					// Resume (Rest located in obj_player_parent Create)
-					global.end_inventory_pause = true;
-		
-					instance_activate_all()
-		
-					// Create Inventory Menu object
-					instance_destroy(obj_inventory_player);
-					layer_destroy_instances("Inventory");
+					instance_create_layer(x, y, "Inventory", obj_inventory_player)
 				}
+				
+				scr_inventory_pause()
+
+			}else
+				
+			// Deactivate Inventory Pause
+			if(global.show_inventory == true && instance_exists(obj_inventory_player))
+			{
+				scr_inventory_resume()
 			}
 		}
 	
@@ -69,23 +63,26 @@ scr_get_controls();
 	
 	#region Exit Shop
 	
-		if((global.show_inventory == true && !instance_exists(obj_inventory_player)) 
-		&& (global.cont_inventory == true || global.cont_esc_menu || global.cont_interact))
+		if((global.show_inventory == true && instance_exists(obj_inventory_shop)) 
+		&& (global.cont_inventory == true || global.cont_esc_menu == true || global.cont_interact == true))
 		{
-			
-			global.show_inventory = false;
-		
-			// Resume (Rest located in obj_player_parent Create)
-			global.end_inventory_pause = true;
-		
-			instance_activate_all()
-		
-			// Create Inventory Menu object
-			instance_destroy(obj_inventory_player);
-			layer_destroy_instances("Inventory");
-			
+			scr_inventory_resume()
+				
 		}
+		
 	#endregion Exit Shop
+	
+	#region Exit Study
+		
+		if((global.show_inventory == true && instance_exists(obj_study_menu))
+		&& (global.cont_inventory == true || global.cont_esc_menu == true || global.cont_interact == true))
+		{
+
+			scr_spellbook_resume()
+
+		}
+		
+	#endregion Exit Study
 	
 	
 	// Declare if game is paused

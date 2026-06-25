@@ -9,8 +9,8 @@
   "name":"obj_help_screen",
   "overriddenProperties":[],
   "parent":{
-    "name":"Buttons",
-    "path":"folders/Objects/Menu/Buttons.yy",
+    "name":"ESC Menu Buttons",
+    "path":"folders/Objects/Menu/Buttons/ESC Menu Buttons.yy",
   },
   "parentObjectId":null,
   "persistent":false,

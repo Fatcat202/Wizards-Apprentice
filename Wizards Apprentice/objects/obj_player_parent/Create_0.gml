@@ -100,25 +100,9 @@ event_inherited()
 	// Total number of spells memorised
 	total_spells = 10
 	
-	// Array of all known spells
-	arr_spellbook[total_spells] = -1
-	
-	// Array of usable spells
-	arr_active_spells[total_spells] = -1
 
-	#region Hard coded spells for testing
-		arr_active_spells[1] = global.spell_stats[scr_find_spell_index("firebolt")]
-		arr_active_spells[2] = global.spell_stats[scr_find_spell_index("jump")]
-		arr_active_spells[3] = global.spell_stats[scr_find_spell_index("heal")]
-		arr_active_spells[4] = global.spell_stats[scr_find_spell_index("icicle")]
-		arr_active_spells[5] = global.spell_stats[scr_find_spell_index("jolt")]
-		arr_active_spells[6] = global.spell_stats[scr_find_spell_index("wall of fire")]
-		arr_active_spells[7] = global.spell_stats[scr_find_spell_index("wall of ice")]
-		arr_active_spells[8] = global.spell_stats[scr_find_spell_index("fireball")]
-		arr_active_spells[9] = global.spell_stats[scr_find_spell_index("water splash")]
-		arr_active_spells[10] = global.spell_stats[scr_find_spell_index("oil splash")]
-		//show_debug_message("arr_active_spells = " + string(arr_active_spells))
-	#endregion Hard coded spells for testing
+
+
 
 	#region Timers
 	
@@ -237,8 +221,6 @@ event_inherited()
 	
 #endregion Jump States
 
-
-
 spell_surf = -1
 
 function spell_slot_icon(xx, yy, subimage, i, r = 255, g = 255, b = 255)
@@ -317,7 +299,7 @@ function spell_slot_icon(xx, yy, subimage, i, r = 255, g = 255, b = 255)
 
 
 	// Draw texture to the surface
-	draw_sprite(arr_active_spells[i].spr, subimage, 0, 0);
+	draw_sprite(global.active_spells[i].spr, subimage, 0, 0);
 
 
 	// Reset surface target
