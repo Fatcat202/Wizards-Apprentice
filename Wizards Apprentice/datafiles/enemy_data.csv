@@ -1,6 +1,6 @@
-,_hp,_damage,_atk_spd,_move_spd,_flies,_can_jump,_vision_range,_caster
-goblin_thug,10,1,0.5,2,FALSE,TRUE,250,FALSE
-goblin_brute,25,3,1,1,FALSE,TRUE,250,FALSE
-goblin_slinger,15,1,1,2,FALSE,TRUE,250,FALSE
-goblin_bat,10,1,0.5,2,TRUE,FALSE,250,FALSE
-goblin_shaman,20,2,2,1,FALSE,TRUE,250,TRUE
+,_hp,_damage,_atk_spd,_move_spd,_flies,_can_jump,_vision_range,_caster,xp
+goblin_thug,10,1,0.5,2,FALSE,TRUE,250,FALSE,75
+goblin_brute,25,3,1,1,FALSE,TRUE,250,FALSE,150
+goblin_slinger,15,1,1,2,FALSE,TRUE,250,FALSE,100
+goblin_bat,10,1,0.5,2,TRUE,FALSE,250,FALSE,75
+goblin_shaman,20,2,2,1,FALSE,TRUE,250,TRUE,400

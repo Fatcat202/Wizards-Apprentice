@@ -24,7 +24,6 @@ scr_health_and_mana_test()
 	
 #endregion Grid Update
 
-
 // Deactivate player controls
 if(global.can_control_player == false) exit;
 

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_player_timers",
+  "%Name":"scr_update_player_stats",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_player_timers",
+  "name":"scr_update_player_stats",
   "parent":{
     "name":"Player",
     "path":"folders/Scripts/Player.yy",

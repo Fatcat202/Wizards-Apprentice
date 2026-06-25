@@ -110,6 +110,32 @@ randomise()
 
 
 		#endregion Inventory
+		
+		#region Player Stats
+			
+			// Held and created here, used to determine characteristics of the player
+			
+			// Normally set to 1 when not testing
+			global.vitality = 1;
+			global.intelligence = 1;
+			global.dexterity = 1;
+			global.memory = 1;
+			global.charisma = 1;
+			
+			
+			// Total number of assigned levels
+			global.player_level = 1;
+			
+			// Holds levels to be assigned
+			global.player_free_level = 0;
+			
+			// Total player xp
+			global.player_xp = 0;
+			
+			// XP needed for next level
+			global.player_xp_next_level = global.player_level * 1000;
+			
+		#endregion Player Stats
 
 		#region Database
 	
@@ -228,7 +254,7 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_stats(_hp = -1, _damage = -1, _atk_spd = -1, _move_spd = -1, _flies = -1, _can_jump = -1, _vision_range = -1, _caster = -1) constructor {
+				function enemy_stats(_hp = -1, _damage = -1, _atk_spd = -1, _move_spd = -1, _flies = -1, _can_jump = -1, _vision_range = -1, _caster = -1, _xp = -1) constructor {
 				
 					hp = _hp
 					damage = _damage
@@ -238,6 +264,7 @@ randomise()
 					can_jump = _can_jump
 					vision_range = _vision_range
 					caster = _caster
+					xp = _xp
 
 				}
 
@@ -264,6 +291,7 @@ randomise()
 					global.enemy_stats[yy].can_jump = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].vision_range = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].caster = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
+					global.enemy_stats[yy].xp = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					
 				}
 
@@ -400,12 +428,11 @@ randomise()
 
 			#endregion Player Inventory Contents
 
-	
-			#endregion Variables
-			
+
 		#endregion Inventory Contents
 
-
+	#endregion Variables
+	
 #endregion Global Variables
 
 #region Camera

@@ -5,7 +5,7 @@ event_inherited()
 	
 	// Health
 		// Normal max health
-		base_max_health = 6
+		base_max_health = 1 + global.vitality;
 		// Adjusted max health after drain
 		max_health = base_max_health;
 		// Total health drained from normal max
@@ -15,7 +15,7 @@ event_inherited()
 
 	// Mana
 		// Normal max mana
-		base_max_mana = 10
+		base_max_mana = 1 + global.intelligence
 		// Adjusted max mana after drain
 		max_mana = base_max_mana;
 		// Total mana drained from normal max
@@ -26,31 +26,28 @@ event_inherited()
 
 	// Max speed
 		// Default modifier
-		move_spd_max_default = 4;
+		move_spd_max_default = 3.9 + (global.dexterity * 0.1);
 		// Used to modify speeds
 		move_spd_max = move_spd_max_default;
-
-	// Movement speed when jumping
-	jump_speed = 5.5;
-
-	//Terminal Velocity
-	term_vel = -(jump_speed + 2)
+		// Movement speed when jumping
+		jump_speed = 5.4 + (global.dexterity * 0.1);
+		//Terminal Velocity
+		term_vel = -(jump_speed + 2)
+		// Horizontal movement acceleration rate. 0 is instant, 1 is nothing
+			// Default modifier
+			h_acel_default = 0.5
+			// Modifier to be used
+			h_acel = h_acel_default
+		// Horizontal movement deceleration rate. 0 is instant, 1 is nothing
+			// Default modifier
+			h_decel_default = 0.4
+			// Modifier to be used
+			h_decel = h_decel_default
 	
 	// Current horizontal move speed, used for acceleraton/deceleration
 	move_spd_h = 0;
 	// Current vertical move speed, used for acceleraton/deceleration
 	move_spd_v = 0;
-	
-	// Horizontal movement acceleration rate. 0 is instant, 1 is nothing
-		// Default modifier
-		h_acel_default = 0.5
-		// Modifier to be used
-		h_acel = h_acel_default
-	// Horizontal movement deceleration rate. 0 is instant, 1 is nothing
-		// Default modifier
-		h_decel_default = 0.4
-		// Modifier to be used
-		h_decel = h_decel_default
 	
 	// Used for modifying movement speed when the player is on a specific platform element
 	
@@ -71,6 +68,9 @@ event_inherited()
 	
 	// Determines if the player is invisible
 	invisible = false
+	
+	// Blank surface to assignment
+	surf = -1
 	
 	// Variable to determine if player is walking
 	is_walking = false;
@@ -94,15 +94,18 @@ event_inherited()
 	// Actively selected spell
 	active_spell = 1;
 	
+	// Variable determining total spells player will be able to select between in spellbook, alongside spell cost
+	memory = global.memory;
+	
 	// Total number of spells memorised
 	total_spells = 10
 	
+	// Array of all known spells
+	arr_spellbook[total_spells] = -1
+	
 	// Array of usable spells
 	arr_active_spells[total_spells] = -1
-	
-	// Blank surface to assignment
-	surf = -1
-	
+
 	#region Hard coded spells for testing
 		arr_active_spells[1] = global.spell_stats[scr_find_spell_index("firebolt")]
 		arr_active_spells[2] = global.spell_stats[scr_find_spell_index("jump")]
@@ -114,7 +117,6 @@ event_inherited()
 		arr_active_spells[8] = global.spell_stats[scr_find_spell_index("fireball")]
 		arr_active_spells[9] = global.spell_stats[scr_find_spell_index("water splash")]
 		arr_active_spells[10] = global.spell_stats[scr_find_spell_index("oil splash")]
-	
 		//show_debug_message("arr_active_spells = " + string(arr_active_spells))
 	#endregion Hard coded spells for testing
 
@@ -188,11 +190,9 @@ event_inherited()
 				spell_jump_active = false;
 				// Used for passing through spell slot when duration is over
 				spell_jump_slot = -1;
-		
-		
-		
-		
-	
+
+
+
 		#endregion Effect Timers
 	
 #endregion Loading instance stats
