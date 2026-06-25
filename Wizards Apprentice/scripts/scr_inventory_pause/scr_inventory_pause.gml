@@ -11,7 +11,7 @@ function scr_inventory_pause()
 	scr_part_systems_set_auto_update();
 
 	// Set pause image
-	scr_pause_image()
+//	scr_pause_image()
 
 
 	// Deactivate all but those needed
