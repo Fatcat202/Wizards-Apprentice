@@ -166,6 +166,9 @@ randomise()
 			// Array of usable spells
 			global.active_spells = []
 			
+			// Max number of active spell slots
+			global.max_spell_slots = 10;
+			
 		#endregion Spellbook
 
 		#region Database
@@ -461,16 +464,16 @@ randomise()
 			
 			#region Hard coded spells for testing
 			
-				global.active_spells[1] = global.spell_stats[scr_find_spell_index("firebolt")]
-				global.active_spells[2] = global.spell_stats[scr_find_spell_index("jump")]
-				global.active_spells[3] = global.spell_stats[scr_find_spell_index("heal")]
-				global.active_spells[4] = global.spell_stats[scr_find_spell_index("icicle")]
-				global.active_spells[5] = global.spell_stats[scr_find_spell_index("jolt")]
-				global.active_spells[6] = global.spell_stats[scr_find_spell_index("wall of fire")]
-				global.active_spells[7] = global.spell_stats[scr_find_spell_index("wall of ice")]
-				global.active_spells[8] = global.spell_stats[scr_find_spell_index("fireball")]
-				global.active_spells[9] = global.spell_stats[scr_find_spell_index("water splash")]
-				global.active_spells[10] = global.spell_stats[scr_find_spell_index("oil splash")]
+				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("firebolt")]
+				global.active_spells[0, 2] = global.spell_stats[scr_find_spell_index("jump")]
+				global.active_spells[0, 3] = global.spell_stats[scr_find_spell_index("heal")]
+				global.active_spells[0, 4] = global.spell_stats[scr_find_spell_index("icicle")]
+				global.active_spells[0, 5] = global.spell_stats[scr_find_spell_index("jolt")]
+				global.active_spells[0, 6] = global.spell_stats[scr_find_spell_index("wall of fire")]
+				global.active_spells[0, 7] = global.spell_stats[scr_find_spell_index("wall of ice")]
+				global.active_spells[0, 8] = global.spell_stats[scr_find_spell_index("fireball")]
+				global.active_spells[0, 9] = global.spell_stats[scr_find_spell_index("water splash")]
+				global.active_spells[0, 10] = global.spell_stats[scr_find_spell_index("oil splash")]
 				//show_debug_message("global.active_spells = " + string(global.active_spells))
 				
 			#endregion Hard coded spells for testing

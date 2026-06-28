@@ -28,6 +28,8 @@
 	item_drag = -1;
 	state = -1;
 	held = false;
+	page_hover = 0;
+	page_drag = 0;
 
 #endregion Variables
 
@@ -38,6 +40,7 @@
 	{
 		slot_hover = -1;
 		inventory_hover = noone;
+		page_hover = 0;
 	
 		#region Inventory
 			with(obj_inventory_parent)
@@ -67,7 +70,6 @@
 			}
 		#endregion Inventory
 		
-		
 		#region Spellbook
 		
 			with(obj_study_spellbook)
@@ -90,6 +92,8 @@
 			
 							// Inventory ID
 							other.inventory_hover = id;
+							
+							other.page_hover = active_page;
 						}
 					}
 				}
@@ -100,7 +104,7 @@
 				if(point_in_rectangle(mouse_x, mouse_y, mem_spell_x - spacer, mem_spell_y - spacer, mem_spell_x + mem_spell_width, mem_spell_y + mem_spell_height))
 				{
 					// Create mouse over boxes for spell slots
-					for(var i = 1; i < array_length(global.active_spells); i++)
+					for(var i = 1; i < spell_slots+1; i++)
 					{
 						
 						var xx = mem_spell_x-spacer + (i-1) * 48;
@@ -115,6 +119,8 @@
 			
 							// Inventory ID
 							other.inventory_hover = id;
+							
+							other.page_hover = 0
 						}
 					}
 				}
@@ -320,6 +326,117 @@
 			{
 				mouse_over()
 				
+				// Destroy control menu if control menu is active with left click
+				if((mouse_check_button(mb_left) || mouse_check_button(mb_right)) && instance_exists(obj_item_control_menu) && !held)
+				{
+					if(!position_meeting(mouse_x, mouse_y, obj_item_control_menu))
+					{
+						instance_destroy(obj_item_control_menu);
+					}
+				}
+	
+				// Begin drag with left click
+				if(mouse_check_button(mb_left) && slot_hover != -1 && slot_hover < inventory_hover.spell_slots+1 
+				&& !position_meeting(mouse_x, mouse_y, obj_item_control_menu))
+				{
+				//	show_debug_message("slot_hover" + string(slot_hover))
+					if(inventory_hover.inventory[page_hover, slot_hover] == -1) exit;
+
+					//Enter drag state
+					state = state_drag;
+					item_drag = inventory_hover.inventory[page_hover, slot_hover];
+					inventory_drag = inventory_hover;
+					slot_drag = slot_hover;
+					page_drag = page_hover
+				}
+	
+	
+				// Create control menu with right click
+				if(mouse_check_button(mb_right) && slot_hover != -1 && slot_hover < inventory_hover.inventory_slots)
+				{
+					if(inventory_hover.inventory[page_hover, slot_hover] == -1) exit;
+			
+					// Destroy control menu if active
+					if(instance_exists(obj_item_control_menu)) instance_destroy(obj_item_control_menu)
+					if(instance_exists(obj_button_use)) instance_destroy(obj_button_use);
+		
+		
+					// Menu Pos
+					x_pos = global.cam_target_x + (global.res_w / 2) - (inventory_hover.inv_width / 2) + (inventory_hover.spacer * 2);
+					y_pos = global.cam_target_y + (global.res_h / 2) - (inventory_hover.inv_height / 2) + (inventory_hover.spacer * 2) - 20;
+			
+					var xx = clamp(mouse_x, global.cam_x, global.cam_x + global.res_w - (sprite_get_width(spr_item_control_menu)));
+					var yy = clamp(mouse_y, global.cam_y + (sprite_get_height(spr_item_control_menu) / 2), global.cam_y + global.res_h - (sprite_get_height(spr_item_control_menu) / 2));
+		
+					if(inventory_hover.object_index == obj_inventory_shop)
+					{
+				
+						// Create control menu
+						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
+							menu.title = inventory_hover.inventory[page_hover, slot_hover].title;
+							menu.description = inventory_hover.inventory[page_hover, slot_hover].desc;
+							menu.item = inventory_hover.inventory[page_hover, slot_hover]
+				
+					}else
+					{
+						// Create control menu
+						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
+							menu.title = inventory_hover.inventory[page_hover, slot_hover].title;
+							menu.description = inventory_hover.inventory[page_hover, slot_hover].desc;
+							menu.item = inventory_hover.inventory[page_hover, slot_hover]
+					}
+
+
+					if(inventory_hover.object_index == obj_study_spellbook)
+					{
+						// Set use button pos
+						x_pos_give = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+						y_pos_give = menu.y + 55
+		
+						// Set use button pos
+						x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+						y_pos_use = menu.y + 20
+				
+						var memorize = instance_create_layer(x_pos_give, y_pos_give, "Menu_Buttons", obj_button_memorize)
+				
+					}else
+			
+					if(inventory_hover.object_index == obj_study_active_spells)
+					{
+						// Set use button pos
+						x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+						y_pos_use = menu.y + 40
+
+						var forget = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_forget)
+
+
+					}else
+					{
+						show_debug_message("No Inventory Found");
+					}
+
+					// Indicate mb_right is being held
+					held = true;
+				}
+	
+				// Set held to false when no longer held
+				if(!mouse_check_button(mb_right))
+				{
+					held = false;	
+				}
+	
+				// Update positions when held
+				if(mouse_check_button(mb_right) && instance_exists(obj_item_control_menu) && held)
+				{
+					// Clamp pos
+					xx = clamp(mouse_x, global.cam_x, global.cam_x + global.res_w - (sprite_get_width(spr_item_control_menu)));
+					yy = clamp(mouse_y, global.cam_y + (sprite_get_height(spr_item_control_menu) / 2), global.cam_y + global.res_h - (sprite_get_height(spr_item_control_menu) / 2));
+		
+					// Menu
+					obj_item_control_menu.x = xx
+					obj_item_control_menu.y = yy
+
+				}
 				
 			}
 		
@@ -340,16 +457,96 @@
 			show_debug_message("slot_hover" + string(slot_hover))
 			*/
 			
-			//Swap with slot if hovering
-			if(slot_hover != -1 && inventory_hover.object_index != obj_inventory_shop) scr_inventory_swap(inventory_drag, slot_drag, inventory_hover, slot_hover)
+			if(instance_exists(obj_inventory_parent))
+			{
+				//Swap with slot if hovering
+				if(slot_hover != -1 && inventory_hover.object_index != obj_inventory_shop) scr_inventory_swap(inventory_drag, slot_drag, inventory_hover, slot_hover)
+			}else
+			
+			if(instance_exists(obj_study_menu))
+			{
+				// Add or remove selected spell from active spell list
+				
+				if(slot_hover != -1)
+				{
+					// From spellbook
+					if(inventory_drag.object_index == obj_study_spellbook)
+					{
+						// Total of memory used and memory of spell being dragged
+						var memory_to_use = global.memory_used + inventory_drag.inventory[page_drag, slot_drag].memory;
+						
+						// Check if the selected spell has already been memorized
+						var duplicate = false;
+						for(var i = 1; i < global.max_spell_slots+1; i++)
+						{
+							if(inventory_drag.inventory[page_drag, slot_drag] == inventory_hover.inventory[0, i])
+							{
+								duplicate = true;
+							}
+						}
+						
+
+						if(memory_to_use <= global.memory && duplicate == false)
+						{
+							// If slot is open, transfer
+							if(inventory_hover.inventory[0, slot_hover] == -1)
+							{
+								// Transfer to active spells
+								inventory_hover.inventory[0, slot_hover] = inventory_drag.inventory[page_drag, slot_drag]
+							}else
+							
+							// If slot is not open, search for open slot
+							if(inventory_hover.inventory[0, slot_hover] != -1)
+							{
+								for(var i = 1; i < inventory_hover.spell_slots+1; i++)
+								{
+									if(inventory_hover.inventory[0, i] == -1)
+									{
+										// Transfer to active spells
+										inventory_hover.inventory[0, i] = inventory_drag.inventory[page_drag, slot_drag]
+										break;
+									}
+								}
+							}
+						}
+						
+						
+						
+					}else
+					
+					// From active spells
+					if(inventory_drag.object_index == obj_study_active_spells)
+					{
+						// To spellbook
+						if(inventory_hover.object_index == obj_study_spellbook) 
+						{
+							// Clear slot
+							inventory_drag.inventory[0, slot_drag] = -1
+						}
+						
+						// To active spells
+						if(inventory_hover.object_index == obj_study_active_spells)
+						{
+							// Swap slot
+							var item_from = inventory_drag.inventory[0, slot_drag];
+							inventory_drag.inventory[0, slot_drag] = inventory_hover.inventory[0, slot_hover];
+							inventory_hover.inventory[0, slot_hover] = item_from;
+						}
+						
+					}
+				}
+
+			}
+		
 		
 			//Return to free state
 			state = state_free;
 			item_drag = -1;
 			inventory_drag = -1;
 			slot_drag = -1;
+			page_hover = 0;
+			page_drag = 0;
 			
-
 		}
 	}
 

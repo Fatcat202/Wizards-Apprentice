@@ -1,8 +1,10 @@
 event_inherited()
 
+scr_memory_used()
+
 #region Loading instance stats
 
-	
+
 	// Health
 		// Normal max health
 		base_max_health = 1 + global.vitality;
@@ -223,7 +225,7 @@ event_inherited()
 
 spell_surf = -1
 
-function spell_slot_icon(xx, yy, subimage, i, r = 255, g = 255, b = 255)
+function func_spell_slot_icon(sprite, xx, yy, subimage, i, r = 255, g = 255, b = 255)
 {
 	
 	// Called in Draw GUI - Spells
@@ -299,7 +301,7 @@ function spell_slot_icon(xx, yy, subimage, i, r = 255, g = 255, b = 255)
 
 
 	// Draw texture to the surface
-	draw_sprite(global.active_spells[i].spr, subimage, 0, 0);
+	draw_sprite(sprite, subimage, 0, 0);
 
 
 	// Reset surface target

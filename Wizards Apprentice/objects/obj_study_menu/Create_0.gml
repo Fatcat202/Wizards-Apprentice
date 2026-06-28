@@ -22,9 +22,9 @@ page_stats = function()
 	// Destroy spellbook objects
 	if(instance_exists(obj_study_spellbook)) instance_destroy(obj_study_spellbook)
 	if(instance_exists(obj_study_active_spells)) instance_destroy(obj_study_active_spells)
-	
-	
-	
+
+
+
 }
 
 // Start on stats page

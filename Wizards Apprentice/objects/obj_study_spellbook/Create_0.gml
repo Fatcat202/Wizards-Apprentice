@@ -2,6 +2,8 @@
 // You can write your code in this editor
 #region Spellbook
 
+	inventory = global.spellbook
+
 	// Gap between slots and edge of spellbook
 	spacer = 12;
 
@@ -20,9 +22,6 @@
 	// Spellbook Page being shown
 	active_page = 1
 	
-	// memoery being used by memorised spells
-	memory_used = 0
-	
 	// Total number of pages
 	pages = global.spellbook_total_pages
 	
@@ -30,3 +29,5 @@
 
 
 #endregion Spellbook
+
+scr_memory_used()

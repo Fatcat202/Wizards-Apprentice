@@ -245,6 +245,7 @@
     {"id":{"name":"scr_inventory_swap","path":"scripts/scr_inventory_swap/scr_inventory_swap.yy",},},
     {"id":{"name":"scr_is_solid","path":"scripts/scr_is_solid/scr_is_solid.yy",},},
     {"id":{"name":"scr_mana_drain","path":"scripts/scr_mana_drain/scr_mana_drain.yy",},},
+    {"id":{"name":"scr_memory_used","path":"scripts/scr_memory_used/scr_memory_used.yy",},},
     {"id":{"name":"scr_on_ground","path":"scripts/scr_on_ground/scr_on_ground.yy",},},
     {"id":{"name":"scr_part_systems_set_auto_update","path":"scripts/scr_part_systems_set_auto_update/scr_part_systems_set_auto_update.yy",},},
     {"id":{"name":"scr_pause_image","path":"scripts/scr_pause_image/scr_pause_image.yy",},},

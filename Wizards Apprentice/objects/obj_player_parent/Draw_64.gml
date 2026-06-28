@@ -281,36 +281,35 @@ var yy = display_get_gui_height() / 2
 		// Swap sprite image depending on if spell is selected
 		var subimage = 0
 		
-		var r = 0;
-		var g = 0;
-		var b = 0;
+		var r = 255;
+		var g = 255;
+		var b = 255;
+		
+		if(global.active_spells[0, i] != -1)
+		{
+			// If not enough mana, change background colour
+			if(active_mana < global.active_spells[0, i].mana)
+			{
+				// Light red
+				r = 255;
+				g = 180;
+				b = 180;
+			}
 
-		// If not enough mana, change background colour
-		if(active_mana < global.active_spells[i].mana)
-		{
-			// Light red
-			r = 255;
-			g = 180;
-			b = 180;
+
+			if(active_spell == i)
+			{
+				func_spell_slot_icon(global.active_spells[0, i].spr, xx, yy, 0, i, r, g, b)
+			}else
+		
+			if(active_spell != i)
+			{
+				func_spell_slot_icon(global.active_spells[0, i].spr, xx, yy, 1, i, r, g, b)
+			
+			}
 		}else
 		{
-			// If player has enough mana, keep background white
-			
-			r = 255;
-			g = 255;
-			b = 255;
-		}
-		
-		
-		if(active_spell == i)
-		{
-			spell_slot_icon(xx, yy, 0, i, r, g, b)
-		}else
-		
-		if(active_spell != i)
-		{
-			spell_slot_icon(xx, yy, 1, i, r, g, b)
-			
+			func_spell_slot_icon(spr_spell_slot_template, xx, yy, 1, i, r, g, b)
 		}
 	}
 
