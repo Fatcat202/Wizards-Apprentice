@@ -14,6 +14,15 @@ randomise()
 		health_potion_severe,
 		health_potion_critical
 	}
+	
+	enum stats // Positions of stats
+	{
+		VITALITY,
+		DEXTERITY,
+		INTELLIGENCE,
+		MEMORY,
+		CHARISMA
+	}
 
 #endregion Enums
 
@@ -118,6 +127,8 @@ randomise()
 			global.dexterity = 1;
 			global.memory = 1;
 			global.charisma = 1;
+			
+			global.stat_max = 20;
 			
 			
 			// Total number of assigned levels

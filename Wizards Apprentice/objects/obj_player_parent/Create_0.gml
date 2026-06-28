@@ -101,9 +101,6 @@ scr_memory_used()
 	
 	// Total number of spells memorised
 	total_spells = 10
-	
-
-
 
 
 	#region Timers
