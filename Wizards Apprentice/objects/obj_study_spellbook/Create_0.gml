@@ -25,6 +25,8 @@
 	
 	// Total number of pages
 	pages = global.spellbook_total_pages
+	
+	spell_slots = global.spells_per_page
 
 
 #endregion Spellbook

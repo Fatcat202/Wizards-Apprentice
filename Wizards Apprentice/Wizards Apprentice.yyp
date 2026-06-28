@@ -201,6 +201,7 @@
     {"id":{"name":"obj_spell_wall_of_fire","path":"objects/obj_spell_wall_of_fire/obj_spell_wall_of_fire.yy",},},
     {"id":{"name":"obj_spell_wall_of_ice","path":"objects/obj_spell_wall_of_ice/obj_spell_wall_of_ice.yy",},},
     {"id":{"name":"obj_spell_water_splash","path":"objects/obj_spell_water_splash/obj_spell_water_splash.yy",},},
+    {"id":{"name":"obj_spellbook_parent","path":"objects/obj_spellbook_parent/obj_spellbook_parent.yy",},},
     {"id":{"name":"obj_study_active_spells","path":"objects/obj_study_active_spells/obj_study_active_spells.yy",},},
     {"id":{"name":"obj_study_menu","path":"objects/obj_study_menu/obj_study_menu.yy",},},
     {"id":{"name":"obj_study_spellbook","path":"objects/obj_study_spellbook/obj_study_spellbook.yy",},},

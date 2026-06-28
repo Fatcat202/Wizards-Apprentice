@@ -1,21 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_study_spellbook",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_spellbook_parent",
+  "eventList":[],
   "managed":true,
-  "name":"obj_study_spellbook",
+  "name":"obj_spellbook_parent",
   "overriddenProperties":[],
   "parent":{
     "name":"Study",
     "path":"folders/Objects/Menu/Study.yy",
   },
-  "parentObjectId":{
-    "name":"obj_spellbook_parent",
-    "path":"objects/obj_spellbook_parent/obj_spellbook_parent.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

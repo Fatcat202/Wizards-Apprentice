@@ -12,7 +12,10 @@
     "name":"Study",
     "path":"folders/Objects/Menu/Study.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_spellbook_parent",
+    "path":"objects/obj_spellbook_parent/obj_spellbook_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
