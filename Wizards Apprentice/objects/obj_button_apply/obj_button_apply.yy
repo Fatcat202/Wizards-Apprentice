@@ -10,8 +10,8 @@
   "name":"obj_button_apply",
   "overriddenProperties":[],
   "parent":{
-    "name":"Item Buttons",
-    "path":"folders/Objects/Menu/Inventory/Item Buttons.yy",
+    "name":"Study Buttons",
+    "path":"folders/Objects/Menu/Buttons/Study Buttons.yy",
   },
   "parentObjectId":{
     "name":"obj_menu_button_parent",
