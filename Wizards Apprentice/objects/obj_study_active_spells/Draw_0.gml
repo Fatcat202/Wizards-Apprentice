@@ -7,8 +7,8 @@ draw_sprite_stretched
 	0,
 	mem_spell_x - spacer,
 	mem_spell_y - spacer,
-	mem_spell_width,
-	mem_spell_height
+	inv_width,
+	inv_height
 );
 			
 			

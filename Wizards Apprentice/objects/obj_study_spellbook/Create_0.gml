@@ -8,11 +8,11 @@
 	spacer = 12;
 
 	// Width and height of inventory
-	spellbook_width = 24 + (global.spellbook_row_length + 1.5) * 48;
-	spellbook_height = 64 + (((global.spells_per_page - 1) div global.spellbook_row_length) + 1) * 48;
+	inv_width = 24 + (global.spellbook_row_length + 1.5) * 48;
+	inv_height = 64 + (((global.spells_per_page - 1) div global.spellbook_row_length) + 1) * 48;
 
-	x_pos = global.cam_target_x + (global.res_w / 2) - (spellbook_width / 2) + (spacer * 2);
-	y_pos = global.cam_target_y + (global.res_h / 2) - (spellbook_height / 2) + (spacer * 2) - 60;
+	x_pos = global.cam_target_x + (global.res_w / 2) - (inv_width / 2) + (spacer * 2);
+	y_pos = global.cam_target_y + (global.res_h / 2) - (inv_height / 2) + (spacer * 2) - 60;
 	
 	// Pages position
 	

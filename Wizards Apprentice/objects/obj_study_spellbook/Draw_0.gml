@@ -7,8 +7,8 @@ draw_sprite_stretched
 	0,
 	x_pos - spacer,
 	y_pos - spacer,
-	spellbook_width,
-	spellbook_height
+	inv_width,
+	inv_height
 );
 
 // Inventory text
@@ -22,7 +22,7 @@ scr_text_reset()
 draw_set_font(fnt_menu_small)
 	draw_set_halign(fa_right)
 		draw_set_valign(fa_top)
-			draw_text(x_pos + spellbook_width - 25, y_pos + 10, "MEMORY: " + string(global.memory_used) + " / " + string(global.memory))
+			draw_text(x_pos + inv_width - 25, y_pos + 10, "MEMORY: " + string(global.memory_used) + " / " + string(global.memory))
 scr_text_reset()
 			
 			

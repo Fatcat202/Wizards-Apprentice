@@ -18,6 +18,12 @@
 	// Buy button position
 	x_pos_buy = 0;
 	y_pos_buy = 0;
+	// Forget button position
+	x_pos_forget = 0;
+	y_pos_forget = 0;
+	// Memorize button position
+	x_pos_memorize = 0;
+	y_pos_memorize = 0;
 
 
 	// Inventory Controls
@@ -74,7 +80,7 @@
 		
 			with(obj_study_spellbook)
 			{
-				if(point_in_rectangle(mouse_x, mouse_y, x_pos - spacer, y_pos - spacer, x_pos + spellbook_width, y_pos + spellbook_height))
+				if(point_in_rectangle(mouse_x, mouse_y, x_pos - spacer, y_pos - spacer, x_pos + inv_width, y_pos + inv_height))
 				{
 					// Create mouse over boxes for spell slots
 					for(var i = 0; i < spell_slots; i++)
@@ -101,7 +107,7 @@
 			
 			with(obj_study_active_spells)
 			{
-				if(point_in_rectangle(mouse_x, mouse_y, mem_spell_x - spacer, mem_spell_y - spacer, mem_spell_x + mem_spell_width, mem_spell_y + mem_spell_height))
+				if(point_in_rectangle(mouse_x, mouse_y, mem_spell_x - spacer, mem_spell_y - spacer, mem_spell_x + inv_width, mem_spell_y + inv_height))
 				{
 					// Create mouse over boxes for spell slots
 					for(var i = 1; i < spell_slots+1; i++)
@@ -352,7 +358,7 @@
 	
 	
 				// Create control menu with right click
-				if(mouse_check_button(mb_right) && slot_hover != -1 && slot_hover < inventory_hover.inventory_slots)
+				if(mouse_check_button(mb_right) && slot_hover != -1 && slot_hover < inventory_hover.spell_slots+1)
 				{
 					if(inventory_hover.inventory[page_hover, slot_hover] == -1) exit;
 			
@@ -367,48 +373,41 @@
 			
 					var xx = clamp(mouse_x, global.cam_x, global.cam_x + global.res_w - (sprite_get_width(spr_item_control_menu)));
 					var yy = clamp(mouse_y, global.cam_y + (sprite_get_height(spr_item_control_menu) / 2), global.cam_y + global.res_h - (sprite_get_height(spr_item_control_menu) / 2));
-		
-					if(inventory_hover.object_index == obj_inventory_shop)
-					{
-				
-						// Create control menu
-						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
-							menu.title = inventory_hover.inventory[page_hover, slot_hover].title;
-							menu.description = inventory_hover.inventory[page_hover, slot_hover].desc;
-							menu.item = inventory_hover.inventory[page_hover, slot_hover]
-				
-					}else
+
+					if(!instance_exists(obj_item_control_menu))
 					{
 						// Create control menu
 						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
 							menu.title = inventory_hover.inventory[page_hover, slot_hover].title;
 							menu.description = inventory_hover.inventory[page_hover, slot_hover].desc;
-							menu.item = inventory_hover.inventory[page_hover, slot_hover]
+							menu.spell = inventory_hover.inventory[page_hover, slot_hover]
 					}
+					
 
 
 					if(inventory_hover.object_index == obj_study_spellbook)
 					{
-						// Set use button pos
-						x_pos_give = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
-						y_pos_give = menu.y + 55
-		
-						// Set use button pos
-						x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
-						y_pos_use = menu.y + 20
+						// Set memorize button pos
+						x_pos_memorize = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+						y_pos_memorize = menu.y + 55
 				
-						var memorize = instance_create_layer(x_pos_give, y_pos_give, "Menu_Buttons", obj_button_memorize)
-				
+						var memorize = instance_create_layer(x_pos_memorize, y_pos_memorize, "Menu_Buttons", obj_button_memorize)
+							memorize.spell = inventory_hover.inventory[page_hover, slot_hover]
+							memorize.inventory_hover = inventory_hover
+							memorize.slot_hover = slot_hover;
+							memorize.page_hover = page_hover;
+							memorize.slot_hover = slot_hover;
+							
 					}else
 			
 					if(inventory_hover.object_index == obj_study_active_spells)
 					{
-						// Set use button pos
-						x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
-						y_pos_use = menu.y + 40
+						// Set use forget pos
+						x_pos_forget = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+						y_pos_forget = menu.y + 55
 
-						var forget = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_forget)
-
+						var forget = instance_create_layer(x_pos_forget, y_pos_forget, "Menu_Buttons", obj_button_forget)
+							forget.slot = slot_hover
 
 					}else
 					{

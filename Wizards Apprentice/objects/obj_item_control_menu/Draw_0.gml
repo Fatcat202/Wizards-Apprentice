@@ -9,6 +9,7 @@ xx = x + spr_width / 2;
 yy = y + spr_height / 2;
 
 title_y = y - 60;
+memory_y = y - 40;
 description_y = title_y + 40;
 
 
@@ -26,8 +27,18 @@ draw_set_valign(fa_top);
 		// Write Title
 		draw_text_ext(xx, title_y, title, 14, 150);
 		
+		// Write memory, if applicable
+		if(instance_exists(obj_study_menu))
+		{
+			var memory_text = "Memory: " + string(spell.memory)
+			
+			draw_text_ext(xx, memory_y, memory_text, 14, 150);
+		}
+		
 		// Write Description
 		draw_text_ext(xx, description_y, description, 14, 140);
+		
+
 		
 	draw_set_font(fnt_default);
 draw_set_halign(h_align);
