@@ -3,6 +3,22 @@
 function scr_enemy_timers()
 {
 
+	#region Attacks
+	
+		#region Melee Default
+		
+			if(atk_melee_default_timer >= atk_melee_default_time)
+			{
+				atk_melee_default_cooldown = false;
+				atk_melee_default_timer = 0;	
+			}else atk_melee_default_timer++;
+		
+		#endregion Melee Default
+	
+	
+	#endregion Attacks
+
+
 	#region Target Cooldown
 		
 		// Ticks up counter until next target node may be created
@@ -18,6 +34,7 @@ function scr_enemy_timers()
 		}else target_cooldown_timer++
 		
 	#endregion Target Cooldown
+
 
 	#region Can Jump Cooldown
 		

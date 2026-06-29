@@ -197,8 +197,20 @@ event_inherited();
 	// Declares home has been reached
 	returned_home = false
 
-
-
+	#region Timers
+		
+		#region Attack Timers
+				
+				// Default melee attack timer
+				atk_melee_default_cooldown = false;
+				atk_melee_default_timer = 0;
+				atk_melee_default_time = 0
+				
+		#endregion Attack Timers
+		
+	#endregion Timer Initialization
+	
+	
 #endregion Loading instance stats
 
 
@@ -486,6 +498,9 @@ event_inherited();
 		// Reset player coords
 		scr_player_search()
 
+
+
+		
 
 		// Reset target coords if player is no longer visible for set time
 		if(player_visible == false)
@@ -869,10 +884,10 @@ event_inherited();
 			if(flies == true && caster == false)
 			{
 				// Target coords set to player coords in scr_player_search
-			/*	
-				if(path_exists(attack_path)) path_delete(attack_path);
-				attack_path = path_add()
-			*/
+				
+			//	if(path_exists(attack_path)) path_delete(attack_path);
+			//	attack_path = path_add()
+			
 				#region Player Proximity Stop
 					
 					// Cancel movement if within width of player sprite
@@ -919,7 +934,7 @@ event_inherited();
 				{	
 
 					// Move towards first point 
-					mp_potential_step(target_x, target_y, move_spd_max, true);
+					mp_potential_step_object(target_x, target_y, move_spd_max, obj_collision_parent);
 					
 
 				}else
@@ -927,7 +942,7 @@ event_inherited();
 				if(can_move == false)
 				{	
 					// Delete path if unable to move
-					if(path_exists(attack_path)) path_delete(attack_path);
+					if(path_exists(attack_path)) path_delete(attack_path); 
 				}
 			
 			
@@ -953,17 +968,10 @@ event_inherited();
 			}
 			
 		#endregion CASTERS
-		
-		
-		#region Attack
-		
-			// Run enemy specific attack script
-			var attack = global.enemy_stats[index].attack_scr
-		//	show_debug_message(string(attack))
-			if(attack != -1) attack()
-
-		#endregion Attack
+	
 	}
+	
+	
 
 	state_behavior = state_idle;
 

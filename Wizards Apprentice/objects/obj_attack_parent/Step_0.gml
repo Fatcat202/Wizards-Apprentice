@@ -10,4 +10,14 @@ if(element_delay_timer > element_delay_length)
 
 
 // Destroying self if level decreases under zero for the purposes of spell interactions
-if(level < 0) instance_destroy()
+if(level < 0 && element != "Empty") instance_destroy()
+
+if(element == "Water")
+{
+	water_level = level
+}else
+
+if(element == "Oil")
+{
+	oil_level = level
+}

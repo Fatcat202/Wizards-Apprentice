@@ -14,13 +14,6 @@ element_delay_timer = 0;
 element_delay_length = 3;
 element_delay_active = false;
 
-if(element == "Water")
-{
-	water_level = level
-}else
-
-if(element == "Oil")
-{
-	oil_level = level
-}
+// Default element is empty
+element = "Empty"
 

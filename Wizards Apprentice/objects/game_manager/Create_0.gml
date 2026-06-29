@@ -299,11 +299,9 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_stats(_hp = -1, _damage = -1, _atk_spd = -1, _move_spd = -1, _flies = -1, _can_jump = -1, _vision_range = -1, _caster = -1, _xp = -1, _attack_scr = -1) constructor {
+				function enemy_stats(_hp = -1, _move_spd = -1, _flies = -1, _can_jump = -1, _vision_range = -1, _caster = -1, _xp = -1, _attack_scr = -1) constructor {
 				
 					hp = _hp
-					damage = _damage
-					atk_spd = _atk_spd
 					move_spd = _move_spd
 					flies = _flies
 					can_jump = _can_jump
@@ -330,8 +328,6 @@ randomise()
 					var xx = 1;
 				
 					global.enemy_stats[yy].hp = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
-					global.enemy_stats[yy].damage = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
-					global.enemy_stats[yy].atk_spd = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].move_spd = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].flies = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].can_jump = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
@@ -444,6 +440,91 @@ randomise()
 				
 				
 			#endregion Item Stats
+			
+			#region Enemy Attack Stats
+				
+				// Create enemy_attack_index_length for tracking total number of enemy_attack in csv
+				global.enemy_attack_index_length = 0;
+
+				// Create enemy_attack_stats array for tracking stats
+				global.enemy_attack_stats[0] = 0;
+
+				// Initialize enemy_attack index arrays
+				global.arr_enemy_attack_index_name[0] = "No valid enemy_attack name";
+	
+
+				var ds_enemy_attack_stats_csv = load_csv("enemy_attack_data.csv");
+
+				// Ensure the grid is valid
+				if (ds_enemy_attack_stats_csv == -1) {
+				    show_error("Failed to load CSV file.", true);
+				    exit;
+				}
+
+				// Initialize stats dictionary constructor
+				function enemy_attack_stats(_damage = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _element = "Empty", _attack_scr = -1, _sprite = -1, _is_visible = -1) constructor {
+				
+					damage = _damage
+					atk_spd = _atk_spd
+					atk_range = _atk_range
+					duration = _duration
+					level = _level
+					element = _element
+					attack_scr = _attack_scr
+					sprite = _sprite
+					is_visible = _is_visible
+				}
+
+				// Declare length of enemy_attack index based on adjusted CSV height
+				global.enemy_attack_index_length = ds_grid_height(ds_enemy_attack_stats_csv) - 1
+			
+				// Create enemy_attack_stats struct array
+				for(var i = 1; i <= global.enemy_attack_index_length; i++)
+				{
+					global.enemy_attack_stats[i] = new enemy_attack_stats();
+				}
+
+				// Assign all values from CSV file into stats database structs
+				for(var i = 0; i < global.enemy_attack_index_length; i++)
+				{
+					var yy = i + 1;
+					var xx = 1;
+				
+					global.enemy_attack_stats[yy].damage = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].atk_spd = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].atk_range = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].duration = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].level = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].element = string(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].attack_scr = asset_get_index(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].sprite = asset_get_index(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].is_visible = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+										
+				}
+
+
+				// Assign data to enemy_attack index arrays
+				for(var p = 0; p < global.enemy_attack_index_length; p++)
+				{
+					var n = p + 1;
+					// Sets 1st place in array as names
+					global.arr_enemy_attack_index_name[n] = ds_grid_get(ds_enemy_attack_stats_csv, 0, n);
+				}
+				
+	
+				// Cleanup DS grid
+				ds_grid_destroy(ds_enemy_attack_stats_csv);
+			
+				// Debug testing
+				
+				//	show_debug_message("enemy_attack Constructor List: " + string(global.enemy_attack_stats))
+				//	show_debug_message("global.enemy_attack_index_length: " + string(global.enemy_attack_index_length))
+				//	show_debug_message("global.arr_enemy_attack_index_name: " + string(global.arr_enemy_attack_index_name))
+				
+				
+			#endregion Enemy Attack Stats
+
+			
 	
 		#endregion Database
 		
