@@ -299,12 +299,13 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_stats(_hp = -1, _move_spd = -1, _flies = -1, _can_jump = -1, _vision_range = -1, _caster = -1, _xp = -1, _attack_scr = -1) constructor {
+				function enemy_stats(_hp = -1, _move_spd = -1, _flies = -1, _can_jump = -1, _min_range = -1, _vision_range = -1, _caster = -1, _xp = -1, _attack_scr = -1) constructor {
 				
 					hp = _hp
 					move_spd = _move_spd
 					flies = _flies
 					can_jump = _can_jump
+					min_range = _min_range
 					vision_range = _vision_range
 					caster = _caster
 					xp = _xp
@@ -331,6 +332,7 @@ randomise()
 					global.enemy_stats[yy].move_spd = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].flies = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].can_jump = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
+					global.enemy_stats[yy].min_range = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].vision_range = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].caster = bool(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
 					global.enemy_stats[yy].xp = real(ds_grid_get(ds_enemy_stats_csv, xx, yy)); xx++;
@@ -462,7 +464,7 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_attack_stats(_damage = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _element = "Empty", _attack_scr = -1, _sprite = -1, _is_visible = -1) constructor {
+				function enemy_attack_stats(_damage = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _element = "Empty", _attack_scr = -1, _sprite = -1, _is_visible = -1, _move_spd = -1) constructor {
 				
 					damage = _damage
 					atk_spd = _atk_spd
@@ -473,6 +475,7 @@ randomise()
 					attack_scr = _attack_scr
 					sprite = _sprite
 					is_visible = _is_visible
+					move_spd = _move_spd
 				}
 
 				// Declare length of enemy_attack index based on adjusted CSV height
@@ -499,7 +502,8 @@ randomise()
 					global.enemy_attack_stats[yy].attack_scr = asset_get_index(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].sprite = asset_get_index(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].is_visible = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
-										
+					global.enemy_attack_stats[yy].move_spd = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+								
 				}
 
 

@@ -123,6 +123,9 @@ event_inherited();
 	// Range at which an enemy can see the player
 	vision_range = global.enemy_stats[index].vision_range;
 	
+	// Range at which enemy will stop moving closer to player
+	min_range = global.enemy_stats[index].min_range;
+	
 	// Delay in seconds before entering idle state
 	idle_state_delay = game_get_speed(gamespeed_fps) * 1
 	
@@ -778,10 +781,15 @@ event_inherited();
 					#endregion Sliding off player
 		
 					#region Distance to Player Check
-		
+						
+						// Stop movement toward player when within a set range, and when in line of sight
+						
+						if(min_range == -1) min_range = sprite_get_width(spr_player)
+						
 						// Enemy stops movement if within the width of the player sprite to the player
-						if(point_distance(x, y, obj_player_parent.x, obj_player_parent.y) < sprite_get_width(spr_player)
-						&& !place_meeting(x, y + 2, obj_player_parent))
+						if(point_distance(x, y, obj_player_parent.x, obj_player_parent.y) < min_range
+						&& !place_meeting(x, y + 2, obj_player_parent)
+						&& player_visible == true)
 						{
 							move_spd_h = 0
 						}

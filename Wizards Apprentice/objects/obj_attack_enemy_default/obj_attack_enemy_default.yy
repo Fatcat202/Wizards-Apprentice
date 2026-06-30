@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"obj_melee_enemy_default",
+  "%Name":"obj_attack_enemy_default",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player_parent","path":"objects/obj_player_parent/obj_player_parent.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -8,15 +8,15 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_melee_enemy_default",
+  "name":"obj_attack_enemy_default",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemy Melee",
-    "path":"folders/Objects/Attacks/Melee/Enemy Melee.yy",
+    "name":"Attacks",
+    "path":"folders/Objects/Attacks.yy",
   },
   "parentObjectId":{
-    "name":"obj_melee_parent",
-    "path":"objects/obj_melee_parent/obj_melee_parent.yy",
+    "name":"obj_attack_parent",
+    "path":"objects/obj_attack_parent/obj_attack_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

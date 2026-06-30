@@ -14,4 +14,5 @@ function scr_gather_enemy_attack_stats(attack_name)
 	attack_scr = global.enemy_attack_stats[attack_index].attack_scr
 	sprite = global.enemy_attack_stats[attack_index].sprite
 	is_visible = global.enemy_attack_stats[attack_index].is_visible
+	move_spd = global.enemy_attack_stats[attack_index].move_spd
 }

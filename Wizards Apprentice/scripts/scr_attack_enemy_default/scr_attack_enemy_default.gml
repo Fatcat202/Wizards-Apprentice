@@ -1,5 +1,5 @@
 
-function scr_attack_melee_default(attack_name)
+function scr_attack_enemy_default(attack_name)
 {
 	
 	// Pass through name of attack as string to pull stats
@@ -10,18 +10,22 @@ function scr_attack_melee_default(attack_name)
 	// Check if cooldown is active
 	if(atk_melee_default_cooldown = true) exit;
 	
-	var distance_to_target = point_distance(x, y, target_x, target_y)
+	var atk_target_x = obj_player_parent.x
+	var atk_target_y = obj_player_parent.y
+	
+	// Do not allow attack if player is not directly visible
+	if(player_visible == false) exit;
+	var distance_to_target = point_distance(x, y, atk_target_x, atk_target_y)
 
 	if(can_attack == true && distance_to_target <= atk_range)
 	{
 		// Create attack object
-		var melee = instance_create_layer(x, y, "Spells", obj_melee_enemy_default);
+		var melee = instance_create_layer(x, y, "Spells", obj_attack_enemy_default);
 		
 			// Set variables
-			melee.direction = point_direction(x, y, target_x, target_y);
+			melee.direction = point_direction(x, y, atk_target_x, atk_target_y);
 			melee.image_angle = melee.direction;
-			melee.image_xscale = distance_to_target / sprite_get_width(sprite);
-			melee.enemy_object = object_index;
+			
 			
 			scr_send_enemy_attack_stats(melee)
 			

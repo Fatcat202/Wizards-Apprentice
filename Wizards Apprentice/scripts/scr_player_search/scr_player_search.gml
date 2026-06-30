@@ -45,7 +45,7 @@ function scr_player_search()
 		if(player_visible == true)
 		{
 			// Range to target player directly, rather than with nodes
-			direct_target_range = 100
+			var direct_target_range = 100
 			// Check if player is within direct targeting range
 			if(point_distance(x, y, player_x, player_y) <= direct_target_range && direct_los == true)
 			{

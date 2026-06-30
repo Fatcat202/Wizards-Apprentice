@@ -1,6 +1,6 @@
-,_hp,_move_spd,_flies,_can_jump,_vision_range,_caster,_xp,_attack_scr
-goblin_thug,10,2,FALSE,TRUE,250,FALSE,75,scr_attack_goblin_thug
-goblin_brute,25,1,FALSE,TRUE,250,FALSE,150,scr_attack_goblin_brute
-goblin_slinger,15,2,FALSE,TRUE,250,FALSE,100,scr_attack_goblin_slinger
-goblin_bat,10,2,TRUE,FALSE,250,FALSE,75,scr_attack_goblin_bat
-goblin_shaman,20,1,FALSE,TRUE,250,TRUE,400,scr_attack_goblin_shaman
+,_hp,_move_spd,_flies,_can_jump,_min_range,_vision_range,_caster,_xp,_attack_scr
+goblin_thug,10,2,FALSE,TRUE,-1,250,FALSE,75,scr_attack_goblin_thug
+goblin_brute,25,1,FALSE,TRUE,-1,250,FALSE,150,scr_attack_goblin_brute
+goblin_slinger,15,2,FALSE,TRUE,125,250,FALSE,100,scr_attack_goblin_slinger
+goblin_bat,10,2,TRUE,FALSE,-1,250,FALSE,75,scr_attack_goblin_bat
+goblin_shaman,20,1,FALSE,TRUE,125,250,TRUE,400,scr_attack_goblin_shaman

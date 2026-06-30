@@ -4,6 +4,8 @@ function scr_element_platform_interactions(spell_id, platform_id)
 	// Used for interactions between spells and platforms
 	
 	
+	if(platform_id.object_index = obj_platform_void) exit;
+	
 	// Used for spell variables
 	var spell_element = spell_id.element
 	

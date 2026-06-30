@@ -5,6 +5,8 @@ function scr_send_enemy_attack_stats(attack_var)
 	// Pass through attack object name
 	// Send struct variables to attack object
 	
+	attack_var.enemy_object = object_index;
+	
 	attack_var.damage = damage;
 	attack_var.atk_spd = atk_spd;
 	attack_var.atk_range = atk_range;
@@ -15,5 +17,6 @@ function scr_send_enemy_attack_stats(attack_var)
 	attack_var.sprite = sprite;
 	attack_var.sprite_index = sprite;
 	attack_var.visible = is_visible;
+	attack_var.move_spd = move_spd;
 	
 }
