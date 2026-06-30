@@ -3,8 +3,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 {
 	// Used for interactions between spells and platforms
 	
-	
-	if(platform_id.object_index = obj_platform_void) exit;
+	if(platform_id.object_index == obj_platform_void) exit;
 	
 	// Used for spell variables
 	var spell_element = spell_id.element
@@ -13,14 +12,9 @@ function scr_element_platform_interactions(spell_id, platform_id)
 	var plat_is_steaming = platform_id.is_steaming;
 
 	
-	// ** MUST BE CHANGED FOR REFACTOR TO TEST SPELL ELEMENT, THEN PLATFORM ELEMENT **
-	
-	
 	// Debug
 	//show_debug_message("spell_element = " + string(spell_element))
 	//show_debug_message("platform_element = " + string(platform_element))
-	
-
 	
 
 	if(spell_id.element == "Fire")
@@ -70,9 +64,6 @@ function scr_element_platform_interactions(spell_id, platform_id)
 			// Start flames
 			platform_id.is_flaming = true
 		}
-		
-
-		
 	}else
 	
 	if(spell_id.element == "Water")
@@ -94,9 +85,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 		{
 			// Transfer level as water level
 			platform_id.water_level += spell_id.level;
-		}
-		
-		
+		}	
 	}else
 	
 	if(spell_id.element == "Oil")
@@ -126,8 +115,6 @@ function scr_element_platform_interactions(spell_id, platform_id)
 		{
 			scr_throw_oil_droplet(spell_id, platform_id);
 		}
-		
-		
 	}else
 	
 	if(spell_id.element == "Steam")

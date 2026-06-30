@@ -1,5 +1,5 @@
 ,damage,atk_spd,atk_range,duration,level,element,attack_scr,sprite,is_visible,move_spd
-goblin_thug_attack,1,0.5,40,-1,1,Empty,-1,spr_attack_melee_default,TRUE,-1
-goblin_brute_attack,3,1,40,-1,1,Empty,-1,spr_attack_melee_default,TRUE,-1
+goblin_thug_attack,1,0.5,40,-1,1,Empty,-1,spr_attack_melee_sword,TRUE,-1
+goblin_brute_attack,3,1,40,-1,1,Empty,-1,spr_attack_melee_sword,TRUE,-1
 goblin_slinger_attack,1,1,150,10,1,Empty,-1,spr_attack_rock,TRUE,6
 goblin_bat_attack,1,0.5,40,-1,1,Empty,-1,spr_attack_melee_default,FALSE,-1
