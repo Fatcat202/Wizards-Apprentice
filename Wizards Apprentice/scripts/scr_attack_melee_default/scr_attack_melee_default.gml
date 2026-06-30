@@ -21,13 +21,10 @@ function scr_attack_melee_default(attack_name)
 			melee.direction = point_direction(x, y, target_x, target_y);
 			melee.image_angle = melee.direction;
 			melee.image_xscale = distance_to_target / sprite_get_width(sprite);
-			melee.element = element;
-			melee.sprite = sprite;
-			melee.sprite_index = sprite;
-			melee.damage = damage;
-			melee.level = level;
 			melee.enemy_object = object_index;
-			melee.visible = is_visible;
+			
+			scr_send_enemy_attack_stats(melee)
+			
 			
 		// Set timer
 		atk_melee_default_cooldown = true;

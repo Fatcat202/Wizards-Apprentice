@@ -12,6 +12,14 @@
 
 **SPELL IDEAS**
 
+
+
+	Potential Modular Spells:
+		- Expand on default attack script/object variables to allow for "modularization" of spells
+		- For example, allowing the player to create their own spells through selecting different characteristics
+		- such as shape, element, and status effects.
+
+
 	*Cantrips*
 		Starter spells, use no mana
 	X	-Jolt: Ranged electric

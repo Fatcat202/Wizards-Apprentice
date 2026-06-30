@@ -7,15 +7,6 @@ state_behavior()
 // Increment enemy timers
 scr_enemy_timers()
 
-
-#region Attack
-		
-	// Run enemy specific attack script
-	var attack = global.enemy_stats[index].attack_scr
-//	show_debug_message(string(attack))
-	if(attack != -1) attack()
-
-#endregion Attack
 		
 
 #region Collisions
