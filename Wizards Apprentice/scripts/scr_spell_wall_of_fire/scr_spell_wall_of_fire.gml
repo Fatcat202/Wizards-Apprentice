@@ -23,7 +23,7 @@ function scr_spell_wall_of_fire()
 		var wall_angle = image_angle
 	
 		// Sprite height of spr_wall_of_fire
-		var spr_height = sprite_get_height(_spr)
+		var spr_height = sprite_get_height(spr)
 		//show_debug_message("spr_height = " + string(spr_height))
 	
 
@@ -154,32 +154,18 @@ function scr_spell_wall_of_fire()
 	#endregion Wall Logic
 
 	// Prevent use of spell if not enough mana. Expend mana if player has enough
-	if(scr_use_mana(_mana) == false) exit
+	if(scr_use_mana(mana) == false) exit
 
 	// Create wall instance
-	fire_wall = instance_create_layer(location_x + x_offset, location_y + y_offset, "Spells", obj_spell_wall_of_fire,
-	{
-		level : _level,
-		damage : _damage,
-		atk_speed : _atk_speed,
-		cooldown : _cooldown,
-		mana : _mana,
-		memory : _memory,
-		uses : _uses,
-		duration : _duration,
-		element : _element,
-		title : _title,
-		desc : _desc,
-		spr : _spr,
-		scr : _scr,
+	fire_wall = instance_create_layer(location_x + x_offset, location_y + y_offset, "Spells", obj_spell_wall_of_fire)
+		scr_push_spell_data(fire_wall)
 		
-		location_x : location_x,
-		location_y : location_y,
-		image_yscale : wall_height,
-		image_angle : wall_angle
+		fire_wall.location_x = location_x
+		fire_wall.location_y = location_y
+		fire_wall.image_yscale = wall_height
+		fire_wall.image_angle = wall_angle
 
-	});
 	
 	// Set cooldown time depending on spell slot selected
-	scr_set_spell_cooldown(_cooldown)
+	scr_set_spell_cooldown(cooldown)
 }

@@ -184,6 +184,7 @@ randomise()
 
 		#region Database
 	
+	
 			#region Spell Stats
 			
 				// Create spell_index_length for tracking total number of spell in csv
@@ -206,21 +207,26 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function spell_stats(_spell_level = -1, _spell_damage = -1, _spell_atk_speed = -1, _spell_cooldown = -1, _spell_mana = -1, _spell_memory = -1, _spell_uses = -1, _spell_duration = -1, _spell_element = -1, _spell_title = "Empty", _spell_desc = "Empty", _spell_spr = -1, _spell_script = -1) constructor {
+				function spell_stats(_level = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _damage = -1, _move_spd = -1, _cooldown = -1, _mana = -1, _memory = -1, _uses = -1, _duration = -1, _title = "Empty", _desc = "Empty", _spr = -1, _script = -1) constructor {
 				
-					level = _spell_level
-					damage = _spell_damage
-					atk_spd = _spell_atk_speed
-					cooldown = _spell_cooldown
-					mana = _spell_mana
-					memory = _spell_memory
-					uses = _spell_uses
-					duration = _spell_duration
-					element = _spell_element
-					title = _spell_title
-					desc = _spell_desc
-					spr = _spell_spr
-					scr = _spell_script
+					level = _level					// Level of spell, used for some calculations
+					water_level = _water_level		// Water level of spell
+					oil_level = _oil_level			// Oil level of spell
+					is_ice = _is_ice				// Declares if made of ice
+					is_flaming = _is_flaming		// Declares if flaming
+					is_steaming = _is_steaming		// Declare if steaming
+					is_charged = _is_charged		// Declares if electrically charged
+					damage = _damage				// Sets damage of spell
+					move_spd = _move_spd			// Sets movement speed of spell, -1 is melee
+					cooldown = _cooldown			// Sets cooldown between attacks
+					mana = _mana					// Sets mana cost of spell
+					memory = _memory				// Sets memory cost of spell
+					uses = _uses					// Sets number of times spell may be used per "casting"
+					duration = _duration			// Sets duration before attack deletes itself. -1 is end of animation
+					title = _title					// Sets spell title
+					desc = _desc					// Sets spell description
+					spr = _spr						// Sets spell icon sprite
+					scr = _script					// Script for spell functionality
 
 				}
 
@@ -240,14 +246,19 @@ randomise()
 					var xx = 1;
 				
 					global.spell_stats[yy].level = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].water_level = bool(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].oil_level = bool(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].is_ice = bool(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].is_flaming = bool(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].is_steaming = bool(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].is_charged = bool(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].damage = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
-					global.spell_stats[yy].atk_speed = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].move_spd = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].cooldown = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].mana = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].memory = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].uses = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].duration = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
-					global.spell_stats[yy].element = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].title = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].description = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++
 					global.spell_stats[yy].spr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
@@ -464,18 +475,23 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_attack_stats(_damage = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _element = "Empty", _attack_scr = -1, _sprite = -1, _is_visible = -1, _move_spd = -1) constructor {
+				function enemy_attack_stats(_damage = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _attack_scr = -1, _sprite = -1, _is_visible = -1, _move_spd = -1) constructor {
 				
-					damage = _damage
-					atk_spd = _atk_spd
-					atk_range = _atk_range
-					duration = _duration
-					level = _level
-					element = _element
-					attack_scr = _attack_scr
-					sprite = _sprite
-					is_visible = _is_visible
-					move_spd = _move_spd
+					damage = _damage				// Sets damage of attack
+					water_level = _water_level		// Sets water level, defining if water is present
+					oil_level = _oil_level			// Sets oil level, defining if oil is present
+					is_ice = _is_ice				// Declares if ice
+					is_flaming = _is_flaming		// Declares if fire
+					is_steaming = _is_steaming		// Declares if steaming
+					is_charged = _is_charged		// Declares if electrically charged
+					atk_spd = _atk_spd				// Declares time between attacks
+					atk_range = _atk_range			// Declares range of attack
+					duration = _duration			// Declares time before attack is destroyed, -1 means end of animation
+					level = _level					// Declares level of spell for some calculations
+					attack_scr = _attack_scr		// Allows pass through of unique qualities of attack
+					sprite = _sprite				// Sprite of attack
+					is_visible = _is_visible		// Declares if attack is invisible or now
+					move_spd = _move_spd			// Sets movement speed of attack, -1 makes attack a melee attack
 				}
 
 				// Declare length of enemy_attack index based on adjusted CSV height
@@ -493,12 +509,17 @@ randomise()
 					var yy = i + 1;
 					var xx = 1;
 				
-					global.enemy_attack_stats[yy].damage = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].damage = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;	
+					global.enemy_attack_stats[yy].water_level = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].oil_level = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].is_ice = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].is_flaming = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].is_steaming = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].is_charged = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].atk_spd = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].atk_range = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].duration = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].level = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
-					global.enemy_attack_stats[yy].element = string(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].attack_scr = asset_get_index(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].sprite = asset_get_index(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].is_visible = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
@@ -529,7 +550,6 @@ randomise()
 			#endregion Enemy Attack Stats
 
 			
-	
 		#endregion Database
 		
 		#region Inventory Contents

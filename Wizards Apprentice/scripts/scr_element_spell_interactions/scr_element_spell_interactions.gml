@@ -9,16 +9,14 @@ function scr_element_spell_interactions(own_id, other_id)
 	// Used for calling other elements variables
 		
 		// Used for own variables
-		var own_element = own_id.element
 		var own_level = own_id.level
 	
 		// Used for calling other elements variables
-		var other_element = other_id.element
 		var other_level = other_id.level
 
 	
 	// Cancel script if either effect has no element
-	if(other_element == "None" || own_element == "None") exit;
+	if(scr_has_no_element(own_id) || scr_has_no_element(other_id)) exit;
 	
 	
 	//show_debug_message("Interaction started")
@@ -28,13 +26,15 @@ function scr_element_spell_interactions(own_id, other_id)
 	#region Ice - Fire = Water
 	
 		// Check if interaction is Fire + Ice
-		if((own_element == "Fire" && other_element == "Ice") || (own_element = "Ice" && other_element == "Fire"))
+		if((own_id.is_flaming == true && other_id.is_ice == true) || (own_id.is_ice == true && other_id.is_flaming == true))
 		{
+			
+			var level_difference = abs(own_id.level - other_id.level)
 			
 			// Create water droplet with the level of the element subtracted
 			water_drop = instance_create_layer(x, y, "Spells", obj_element_water_droplet,
 			{
-				level : abs(own_id.level - other_id.level)
+				level : level_difference
 			})
 
 			
@@ -49,7 +49,7 @@ function scr_element_spell_interactions(own_id, other_id)
 	#region Water - Fire = Steam
 	
 		// Check if interaction is Water - Fire
-		if((own_element == "Fire" && other_element == "Water") || (own_element = "Water" && other_element == "Fire"))
+		if((own_id.is_flaming == true && other_id.water_level > 0) || (own_id.water_level > 0 && other_id.is_flaming == true))
 		{
 		
 			/*
@@ -62,6 +62,36 @@ function scr_element_spell_interactions(own_id, other_id)
 				Create steam from amount removed from fire
 				Max level of steam is level of fire
 			*/
+			
+			
+			var level_diff = abs(own_id.level - other_id.level)
+			
+			for(var i = 0; i < level_diff; i++)
+			{
+				var rand_x, rand_y
+				var rand_dis = 50
+				
+				rand_x = x + irandom_range(-rand_dis, rand_dis)
+				rand_y = y + irandom_range(-rand_dis, rand_dis)
+				
+				while(place_meeting(rand_x, rand_y, obj_platform_solid_parent) == true)
+				{
+					rand_x = x + irandom_range(-rand_dis, rand_dis)
+					rand_y = y + irandom_range(-rand_dis, rand_dis)
+				}
+
+				// Create steam with the level of the element subtracted
+				steam = instance_create_layer(rand_x, rand_y, "Spells", obj_element_steam_air,
+				{
+					level : 1
+				})
+			}
+
+			
+			// Lower level of both objects by the others level
+			own_id.level -= other_level
+			other_id.level -= own_level
+			
 		
 		}
 		
@@ -70,7 +100,7 @@ function scr_element_spell_interactions(own_id, other_id)
 	#region Steam - Ice = Water
 	
 		// Check if interaction is Ice - Steam
-		if((own_element == "Ice" && other_element == "Steam") || (own_element = "Steam" && other_element == "Ice"))
+		if((own_id.is_ice == true && other_id.is_steaming == true) || (own_id.is_steaming == true && other_id.is_ice == true))
 		{
 		
 			/*
@@ -91,7 +121,7 @@ function scr_element_spell_interactions(own_id, other_id)
 	#region Ice + Water = Ice
 	
 		// Check if interaction is Ice + Water
-		if((own_element == "Ice" && other_element == "Water") || (own_element = "Water" && other_element == "Ice"))
+		if((own_id.is_ice == true && other_id.water_level > 0) || (own_id.water_level > 0 && other_id.is_ice == true))
 		{
 		
 			/*
@@ -106,12 +136,11 @@ function scr_element_spell_interactions(own_id, other_id)
 	#region Water + Shock = Charged Water
 	
 		// Check if interaction is Water + Shock
-		if((own_element == "Shock" && other_element == "Water") || (own_element = "Water" && other_element == "Shock"))
+		if((own_id.is_charged == true && other_id.water_level > 0) || (own_id.water_level > 0 && other_id.is_charged == true))
 		{
 		
-			/*
-				Add shock effect to existing water
-			*/
+			other_id.is_charged = true;
+			own_id.is_charged = true;
 		
 		}
 		
@@ -120,12 +149,11 @@ function scr_element_spell_interactions(own_id, other_id)
 	#region Steam + Shock = Charged Steam
 	
 		// Check if interaction is Steam + Shock
-		if((own_element == "Shock" && other_element == "Steam") || (own_element = "Steam" && other_element == "Shock"))
+		if((own_id.is_charged == true && other_id.is_steaming == true) || (own_id.is_steaming == true && other_id.is_charged == true))
 		{
 		
-			/*
-				Add shock effect to existing steam
-			*/
+			other_id.is_charged = true;
+			own_id.is_charged = true;
 		
 		}
 		
@@ -141,14 +169,11 @@ function scr_element_spell_interactions(own_id, other_id)
 	
 	
 	// Destroy objects if reaching under level 0 or under
-
 	if(other_id.level <= 0) with(other_id)
 	{
 		//show_debug_message(string(other_id.title) + " Destroyed")
 		instance_destroy()
 	}
-
-	
 	if(own_id.level <= 0) with(own_id)
 	{
 		//show_debug_message(string(own_id.title) + " Destroyed")

@@ -1,7 +1,7 @@
 /// @description Spell Interactions
 
 // Interacting with ice spell
-if(other.element == "Ice")
+if(other.is_ice == true)
 {
 	// Create water droplet
 	water_drop = instance_create_layer(x, y, "Spells", obj_element_water_droplet,

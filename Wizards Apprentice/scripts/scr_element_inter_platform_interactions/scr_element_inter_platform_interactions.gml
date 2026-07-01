@@ -18,6 +18,9 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 		exit;
 	}
 	
+	// Prevent interactions with void to prevent crash
+	if(other_id.object_index == obj_platform_void) exit;
+	
 	// End script if there is no interaction to be had
 	 if(own_id.water_level == 0 && own_id.oil_level == 0
 		 && other_id.water_level == 0 && other_id.oil_level == 0) exit;

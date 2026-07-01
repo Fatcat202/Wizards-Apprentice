@@ -6,18 +6,23 @@ function scr_pull_spell_data(spell_name)
 	spell_index = scr_find_spell_index(string(spell_name))
 	
 	// Pull relevant details for easier to use variables
-	_level = global.spell_stats[spell_index].level
-	_damage = global.spell_stats[spell_index].damage
-	_atk_speed = global.spell_stats[spell_index].atk_speed
-	_cooldown = global.spell_stats[spell_index].cooldown
-	_mana = global.spell_stats[spell_index].mana
-	_memory = global.spell_stats[spell_index].memory
-	_uses = global.spell_stats[spell_index].uses
-	_duration = global.spell_stats[spell_index].duration
-	_element = global.spell_stats[spell_index].element
-	_title = global.spell_stats[spell_index].title
-	_desc = global.spell_stats[spell_index].desc
-	_spr = global.spell_stats[spell_index].spr
-	_scr = global.spell_stats[spell_index].scr
+	level = global.spell_stats[spell_index].level
+	water_level = global.spell_stats[spell_index].water_level
+	oil_level = global.spell_stats[spell_index].oil_level
+	is_ice = global.spell_stats[spell_index].is_ice
+	is_flaming = global.spell_stats[spell_index].is_flaming
+	is_steaming = global.spell_stats[spell_index].is_steaming
+	is_charged = global.spell_stats[spell_index].is_charged
+	damage = global.spell_stats[spell_index].damage
+	move_spd = global.spell_stats[spell_index].move_spd
+	cooldown = global.spell_stats[spell_index].cooldown
+	mana = global.spell_stats[spell_index].mana
+	memory = global.spell_stats[spell_index].memory
+	uses = global.spell_stats[spell_index].uses
+	duration = global.spell_stats[spell_index].duration
+	title = global.spell_stats[spell_index].title
+	desc = global.spell_stats[spell_index].desc
+	spr = global.spell_stats[spell_index].spr
+	scr = global.spell_stats[spell_index].scr
 	
 }

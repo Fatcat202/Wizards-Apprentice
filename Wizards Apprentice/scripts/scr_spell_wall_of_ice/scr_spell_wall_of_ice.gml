@@ -16,7 +16,7 @@ function scr_spell_wall_of_ice()
 		var location_x = mouse_x
 	
 		// Sprite height of spr_wall_of_ice
-		var spr_height = sprite_get_height(_spr)
+		var spr_height = sprite_get_height(spr)
 		//show_debug_message("spr_height = " + string(spr_height))
 	
 
@@ -78,34 +78,20 @@ function scr_spell_wall_of_ice()
 
 
 	// Prevent use of spell if not enough mana. Expend mana if player has enough
-	if(scr_use_mana(_mana) == false) exit
+	if(scr_use_mana(mana) == false) exit
 
 	// Create wall instance
-	ice_wall = instance_create_layer(location_x, location_y, "Spells", obj_spell_wall_of_ice,
-	{
-		level : _level,
-		damage : _damage,
-		atk_speed : _atk_speed,
-		cooldown : _cooldown,
-		mana : _mana,
-		memory : _memory,
-		uses : _uses,
-		duration : _duration,
-		element : _element,
-		title : _title,
-		desc : _desc,
-		spr : _spr,
-		scr : _scr,
+	ice_wall = instance_create_layer(location_x, location_y, "Spells", obj_spell_wall_of_ice)
+		scr_push_spell_data(ice_wall)
 		
-		location_x : location_x,
-		location_y : location_y,
-		image_yscale : wall_height,
+		ice_wall.location_x = location_x
+		ice_wall.location_y = location_y
+		ice_wall.image_yscale = wall_height
 
-	});
 
 	
 	
 	
 	// Set cooldown time depending on spell slot selected
-	scr_set_spell_cooldown(_cooldown)
+	scr_set_spell_cooldown(cooldown)
 }

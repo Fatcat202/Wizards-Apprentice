@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_push_spell_data",
+  "%Name":"scr_send_spell_stats",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_push_spell_data",
+  "name":"scr_send_spell_stats",
   "parent":{
     "name":"Spells",
     "path":"folders/Scripts/Spells.yy",

@@ -142,7 +142,7 @@ var quarter_width = width / 4;
 	}
 	
 	// If not water, remove steam objects
-	if(water_level == 0)
+	if(water_level == 0 || is_steaming == false)
 	{
 		// Destroy flame objects
 		if(instance_exists(steam)) instance_destroy(steam)	
@@ -174,7 +174,6 @@ var quarter_width = width / 4;
 		}
 
 	}
-	
 	
 	// Fuel Steam
 	if(is_steaming == true && steam_spawned == true)

@@ -5,9 +5,6 @@ is_solid = false
 semi_solid = false
 
 
-// Declares if the attack is charged with shock
-is_charged = false;
-
 
 // Used to delay interactions between elements after one completes
 element_delay_timer = 0;
