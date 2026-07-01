@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_clear_target_nodes",
+  "%Name":"scr_plat_movement_modifiers",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_clear_target_nodes",
+  "name":"scr_plat_movement_modifiers",
   "parent":{
     "name":"Ground Scripts",
     "path":"folders/Scripts/Enemy AI/AI Scripts/Movement/Ground Scripts.yy",

@@ -1,1 +1,0 @@
-global.grav = 0

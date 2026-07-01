@@ -18,7 +18,6 @@ function scr_send_enemy_attack_stats(attack_var)
 	attack_var.atk_range = atk_range;
 	attack_var.duration = duration;
 	attack_var.level = level;
-	attack_var.element = element;
 	attack_var.attack_scr = attack_scr;
 	attack_var.sprite = sprite;
 	attack_var.sprite_index = sprite;

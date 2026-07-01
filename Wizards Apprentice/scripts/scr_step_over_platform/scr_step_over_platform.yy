@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_step_over_platform",
   "parent":{
-    "name":"AI Scripts",
-    "path":"folders/Scripts/Enemy AI/AI Scripts.yy",
+    "name":"Ground Scripts",
+    "path":"folders/Scripts/Enemy AI/AI Scripts/Movement/Ground Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

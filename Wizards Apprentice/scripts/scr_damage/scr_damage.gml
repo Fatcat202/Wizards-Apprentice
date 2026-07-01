@@ -1,4 +1,4 @@
-function scr_damage(dmg, _element = element)
+function scr_damage(dmg, _element = -1)
 {
 	// Deals damage to other object, designed to be used in collision events of attacks
 	// Pass through damage and element of attack

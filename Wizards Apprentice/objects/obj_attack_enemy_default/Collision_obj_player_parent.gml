@@ -1,4 +1,4 @@
 /// @description Damage Player
 
 
-scr_damage(damage, element)
+scr_damage(damage)

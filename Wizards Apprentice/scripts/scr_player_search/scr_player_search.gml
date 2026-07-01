@@ -59,7 +59,7 @@ function scr_player_search()
 			}else
 			{
 				// If enemy is a ground based enemy
-				if(flies == false && caster == false)
+				if(flies == false)
 				{
 					
 					// Track player based on target nodes

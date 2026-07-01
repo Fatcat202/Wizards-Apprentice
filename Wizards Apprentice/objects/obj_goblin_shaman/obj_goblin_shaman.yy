@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_goblin_shaman",
+    "path":"sprites/spr_goblin_shaman/spr_goblin_shaman.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

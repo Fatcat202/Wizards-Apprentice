@@ -326,6 +326,21 @@ event_inherited();
 						// Swap direction
 						move_spd_h *= -1		
 					}
+					
+					scr_enemy_slopes()
+					
+					scr_enemy_set_max_speed()
+					
+					// Move object horizontally
+					x += move_spd_h
+					// Move object vertically
+					y -= move_spd_v
+					
+					scr_enemy_gravity()
+					
+					scr_flipping_sprite()
+					
+					
 				}
 			}else
 		
@@ -520,375 +535,51 @@ event_inherited();
 		
 		
 		#region GROUND ENEMIES
+		
 			// If a walking enemy
 			if(flies == false && caster == false)
 			{
-				// Range to reset coords
-				var target_range = 5
 				
-				// Delete target node from array when reaching within range
-				if(x > target_x - target_range && x < target_x + target_range)
-				{
-					// Gather first node
-					var first_node = array_first(target_nodes)
-				
-					// If target_node array is being targeted
-					if(array_first(target_nodes) != undefined)
-					{
-						// Remove first target node from array and destroy instance
-						instance_destroy(array_shift(target_nodes))
+				scr_target_next_node()
 
-						// If array is now empty and the player is not visible
-						if(array_length(target_nodes) == 0 && player_visible == false)
-						{
-							// Set alarm to enter idle state
-							if(alarm_get(0) == -1)
-							{
-								alarm_set(0, idle_state_delay)
-							}
-						}else
-					
-						if(player_visible == false)
-						{	// Target next node in array
-							var new_first_node = array_first(target_nodes)
-						
-							// Set new coords
-							target_x = new_first_node.x
-							target_y = new_first_node.y
-						
-						}
-					}
-				}
+				scr_move_to_target()
 
-				// Range to reset speed for the purposes of preventing spinning
-				var target_range = 1
-				if(x > target_x - target_range && x < target_x + target_range)
-				{
-					move_spd_h = 0
-				
-					// If array is now empty and the player is not visible
-					if(array_length(target_nodes) == 0 && player_visible == false)
-					{
-						// Set alarm to enter idle state
-						if(alarm_get(0) == -1)
-						{
-							alarm_set(0, idle_state_delay)
-						}
-					}
-				}else
+				scr_enemy_activate_jump()
 			
-				// Move right to target_x
-				if(x < target_x)
-				{
-					move_spd_h += h_acel
-				}else
-			
-				// Move left to target_x
-				if(x > target_x)
-				{
-					move_spd_h -= h_acel
-				}
+				scr_avoid_ledges()
 
-			
-				if(!collision_line(x, y, target_x, target_y, obj_platform_solid_parent, false, false))
-				{
-					// Trigger the enemy to jump
-					scr_enemy_jump()
-				}
-			
-			
-				#region Avoid Ledges
-
-					if(is_jumping == false)
-					{
-						// Used for checking for ledges
-						var check_dist = (global.cell_size / 2) * move_dir
-				
-						// Set check distance to 0 if not moving
-						if(move_spd_h == 0) check_dist = 0
-			
-						// ledge detected
-						var ledge = !place_meeting(x + check_dist, y + 1, obj_platform_parent)
-						// Detects if ledge would be a low fall
-						var low_fall = place_meeting(x + check_dist, y + global.cell_size*2, obj_platform_parent)
-					
-				//		show_debug_message("ledge: " + string(ledge))
-				//		show_debug_message("low_fall: " + string(low_fall))
-				
-						// If no ledge, or fall is a short drop
-						if((target_y + global.cell_size >= y) || (ledge == false) || (ledge == true && low_fall == true))
-						{
-							// Continue normally
-						}else
-						{			
-							// Set move speed to 0
-							move_spd_h = 0
-						
-							// Clear nodes to not get locked in place
-							scr_clear_target_nodes()	
-						}	
-					}
-				
-				#endregion Avoid Ledges
-
-				#region Changing Modifiers Based On Platform Element
-	
-					// Detects platform ID below player
-					var plat_id = instance_place(x, y + 1, obj_platform_parent)
-					if(plat_id != noone)
-					{
-				
-						if(plat_id.oil_level > 0)
-						{
-							// Rest any changes
-							scr_reset_move_modifiers();
-				
-							// Change move speed to match
-							plat_spd_mod = plat_spd_oil;
-			
-							// Change acceleration/deceleration
-							h_acel = h_acel_default * plat_spd_mod;
-							h_decel = h_decel_default * plat_spd_mod;
-							// Change max move speed
-							move_spd_max = move_spd_max_default * plat_spd_mod;
-			
-			
-						}else
-					
-						if(plat_id.is_ice == true)
-						{
-							// Rest any changes
-							scr_reset_move_modifiers();
-				
-							// Change acceleration/deceleration
-							h_acel = h_acel_default * plat_spd_acel_ice;
-							h_decel = h_decel_default * plat_spd_decel_ice;
-				
-				
-						}else
-					
-						if(plat_id.water_level > 0)
-						{
-							// Rest any changes
-							scr_reset_move_modifiers();
-						
-							// If the character is standing on a charged water platform
-							if(plat_id.is_charged)
-							{
-	
-								// Determines if the character can be stunned
-								if(can_be_stunned == true)
-								{
-									// Declares the player platform stunned, starting timer until no longer stunned
-									plat_stunned = true
-								}
-							
-							}
-						}else scr_reset_move_modifiers() // Rest any changes when on the ground
-					
-				
-					}else scr_reset_move_modifiers() // Rest any changes when not on the ground
-			
-
-		
-				#endregion Changing Modifiers Based On Platform Element
+				scr_plat_movement_modifiers()
 
 				#region Move Object
 		
-
-					#region Collision above
+					scr_collision_above()
 		
-						// Cause enemy to fall if hitting head on ceiling
-						if(place_meeting(x, y - 2, obj_collision_parent) && scr_is_solid(x, y - 2) && !scr_check_semi_solid(x, y - 2))
-						{
-							if(move_spd_v > 0) move_spd_v = 0
-						}
-			
-					#endregion Collision above
+					scr_enemy_slopes()
 		
-					#region Slopes
-			
-						// Distance to move object to navigate slope
-						var move_dis = 1
-			
-						// Check for horizontal collision
-						if(place_meeting(x + move_spd_h, y, obj_platform_parent))
-						{
-							// Check for slope to go up
-							if(!place_meeting(x + move_spd_h, y - abs(move_spd_h) - 1, obj_collision_parent))
-							{
-								// Go up slope
-								while(place_meeting(x + move_spd_h, y, obj_collision_parent))
-								{
-									y -=  move_dis
-								}
-							}else
-							{	
-								// Preventing getting stuck with collision objects horizontaly
-								move_spd_h = 0
-							}
-						}
-			
-						// Check for slope to go down
-						if(move_spd_v >= 0 && !place_meeting(x + move_spd_h, y + 1, obj_collision_parent) && place_meeting(x + move_spd_h, y + abs(move_spd_h) + 1, obj_collision_parent))
-						{
-							// Go down slope
-							while(!place_meeting(x + move_spd_h, y + move_dis, obj_collision_parent))
-							{
-									y += move_dis
-							}
-						}
-				
-					#endregion Slopes
-		
-					#region Declaring movement direction
-			
-						// Declare movement direction
-						if(move_spd_h > 0)
-						{
-							move_dir = 1
-						}else
-						if(move_spd_h < 0)
-						{
-							move_dir = -1
-						}
-				
-					#endregion Declaring movement direction
-		
-					// Short jump over adjacent platform
+					scr_declare_move_direction()
+					
 					scr_step_over_platform()
 					
-					#region Sliding off player
+					scr_slide_off_player()
 		
-						// Cause enemy to fall off player head if landing on player
-						if(place_meeting(x, y + 2, obj_player_parent))
-						{
-							if(rand_shift_dir == -1) rand_shift_dir = irandom(1)
-			
-							// Shift left
-							if(rand_shift_dir == 0)
-							{
-								move_spd_h -= 2
-							}else
-			
-							// Shift right
-							if(rand_shift_dir == 1)
-							{
-								move_spd_h += 2
-							}
-						}else rand_shift_dir = -1
-			
-					#endregion Sliding off player
+					scr_dis_to_player_check()
 		
-					#region Distance to Player Check
-						
-						// Stop movement toward player when within a set range, and when in line of sight
-						
-						if(min_range == -1) min_range = sprite_get_width(spr_player)
-						
-						// Enemy stops movement if within the width of the player sprite to the player
-						if(point_distance(x, y, obj_player_parent.x, obj_player_parent.y) < min_range
-						&& !place_meeting(x, y + 2, obj_player_parent)
-						&& player_visible == true)
-						{
-							move_spd_h = 0
-						}
-			
-					#endregion Distance to Player Check
+					scr_semi_solid_passthrough()
 		
-					#region Semi-Solid Passthrough
-		
-						// If target is below enemy, activate semi solid to pass through platforms
-						if(target_y - global.cell_size > y || is_jumping == true)
-						{
-							semi_solid = true;
-						}else
-						{
-							semi_solid = false;
-						}
-				
-					//	show_debug_message("semi_solid: " + string(semi_solid))
-			
-					#endregion Semi-Solid Passthrough	
-		
-					#region Setting Max Speed
-				
-						// If jumping, set max speed to jump speed.
-						// Maintain speed set when jumping as max until no longer jumping
-						if(is_jumping == true)
-						{
-							// Set max horizontal movement speed
-							move_spd_h = clamp(move_spd_h, -jumping_speed_h_max, jumping_speed_h_max)
-						}else
-						// If not jumping, set max h speed normally
-						if(is_jumping == false)
-						{
-							// Set max horizontal movement speed
-							move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
-						}
-
-						// Set and apply terminal velocity
-						if(move_spd_v < term_vel) move_spd_v = term_vel;
-		
-					#endregion Setting Max Speed
+					scr_enemy_set_max_speed()
 
 					// Move object horizontally
 					x += move_spd_h
 					// Move object vertically
 					y -= move_spd_v
 			
-					#region is_jumping
+					scr_enemy_set_jumping()
 			
-						// Reset is_jumping when on the ground
-						if(scr_on_ground() == true)
-						{
-							is_jumping = false;
-					
-						}
-				
-					#endregion is_jumping
-			
-					#region Gravity
-	
-						if(!flies)
-						{
-							if(!scr_on_ground())
-							{
-								// Apply gravity if grav_delay is off
-								if(grav_delay == false) move_spd_v -= global.grav;
-
-								// Gravity Debug
-								//show_debug_message("Gravity On")
-								//show_debug_message("grav_delay: " + string(grav_delay))
-							}else
-							{
-								// Reset y speed if on the ground
-								move_spd_v = 0
-				
-								// Gravity Debug
-								//show_debug_message("Gravity Off")
-							}
-						}
-	
-					#endregion Gravity
+					scr_enemy_gravity()
 	
 				#endregion Move Object
 		
-				#region Flipping Sprite
-	
-					// Flip sprite when moving	
-					if(move_dir = 1)
-					{
-						image_xscale = 1
-					}else 
-		
-					if(move_dir = -1)
-					{
-						image_xscale = -1
-					}
-
-		
-				#endregion Flipping Sprite
+				scr_flipping_sprite()
 
 			}else
 		
@@ -963,9 +654,7 @@ event_inherited();
 			
 				// Change sprite direction based on movement
 				scr_sprite_direction()
-				
-				
-			
+
 			}else
 		#endregion FLYING ENEMIES
 
@@ -975,6 +664,14 @@ event_inherited();
 			if(caster == true)
 			{
 				// Implement caster logic
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			}else
