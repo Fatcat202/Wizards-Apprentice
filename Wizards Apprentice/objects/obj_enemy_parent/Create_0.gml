@@ -546,13 +546,13 @@ event_inherited();
 
 				scr_enemy_activate_jump()
 			
-				scr_avoid_ledges()
+				scr_enemy_avoid_ledges()
 
 				scr_plat_movement_modifiers()
 
 				#region Move Object
 		
-					scr_collision_above()
+					scr_enemy_collision_above()
 		
 					scr_enemy_slopes()
 		
@@ -568,10 +568,7 @@ event_inherited();
 		
 					scr_enemy_set_max_speed()
 
-					// Move object horizontally
-					x += move_spd_h
-					// Move object vertically
-					y -= move_spd_v
+					scr_move_enemy()
 			
 					scr_enemy_set_jumping()
 			
@@ -682,7 +679,6 @@ event_inherited();
 		#endregion CASTERS
 	
 	}
-	
 	
 
 	state_behavior = state_idle;

@@ -2,6 +2,9 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_target_next_node()
 {
+	
+	// Used to select next node in array to target
+	
 	// Range to reset coords
 	var target_range = 5
 				

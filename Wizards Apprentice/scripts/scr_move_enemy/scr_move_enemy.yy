@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_avoid_ledges",
+  "%Name":"scr_move_enemy",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_avoid_ledges",
+  "name":"scr_move_enemy",
   "parent":{
     "name":"Ground Scripts",
     "path":"folders/Scripts/Enemy AI/AI Scripts/Movement/Ground Scripts.yy",
