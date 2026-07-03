@@ -549,32 +549,28 @@ event_inherited();
 				scr_enemy_avoid_ledges()
 
 				scr_plat_movement_modifiers()
-
-				#region Move Object
 		
-					scr_enemy_collision_above()
+				scr_enemy_collision_above()
 		
-					scr_enemy_slopes()
+				scr_enemy_slopes()
 		
-					scr_declare_move_direction()
+				scr_declare_move_direction()
 					
-					scr_step_over_platform()
+				scr_step_over_platform()
 					
-					scr_slide_off_player()
+				scr_slide_off_player()
 		
-					scr_dis_to_player_check()
+				scr_dis_to_player_check()
 		
-					scr_semi_solid_passthrough()
+				scr_semi_solid_passthrough()
 		
-					scr_enemy_set_max_speed()
+				scr_enemy_set_max_speed()
 
-					scr_move_enemy()
+				scr_move_enemy()
 			
-					scr_enemy_set_jumping()
+				scr_enemy_set_jumping()
 			
-					scr_enemy_gravity()
-	
-				#endregion Move Object
+				scr_enemy_gravity()
 		
 				scr_flipping_sprite()
 
@@ -665,7 +661,35 @@ event_inherited();
 			
 			
 			
+				scr_target_next_node()
+
+				scr_move_to_target()
 			
+				scr_enemy_avoid_ledges()
+
+				scr_plat_movement_modifiers()
+		
+				scr_enemy_collision_above()
+		
+				scr_enemy_slopes()
+		
+				scr_declare_move_direction()
+					
+				scr_step_over_platform()
+					
+				scr_slide_off_player()
+		
+				scr_dis_to_player_check()
+		
+				scr_semi_solid_passthrough()
+		
+				scr_enemy_set_max_speed()
+
+				scr_move_enemy()
+			
+				scr_enemy_gravity()
+		
+				scr_flipping_sprite()
 			
 			
 			
