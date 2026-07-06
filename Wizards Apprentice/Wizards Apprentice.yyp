@@ -57,6 +57,7 @@
     {"$GMFolder":"","%Name":"Attacks","folderPath":"folders/Scripts/Enemy AI/Attacks.yy","name":"Attacks","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Attack Scripts","folderPath":"folders/Scripts/Enemy AI/Attacks/Attack Scripts.yy","name":"Attack Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Enemy Scripts","folderPath":"folders/Scripts/Enemy AI/Attacks/Enemy Scripts.yy","name":"Enemy Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Saving and Loading","folderPath":"folders/Scripts/Saving and Loading.yy","name":"Saving and Loading","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Inventory","folderPath":"folders/Scripts/Inventory.yy","name":"Inventory","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Items","folderPath":"folders/Scripts/Items.yy","name":"Items","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Pause","folderPath":"folders/Scripts/Pause.yy","name":"Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -282,6 +283,7 @@
     {"id":{"name":"scr_inventory_search","path":"scripts/scr_inventory_search/scr_inventory_search.yy",},},
     {"id":{"name":"scr_inventory_swap","path":"scripts/scr_inventory_swap/scr_inventory_swap.yy",},},
     {"id":{"name":"scr_is_solid","path":"scripts/scr_is_solid/scr_is_solid.yy",},},
+    {"id":{"name":"scr_load_game","path":"scripts/scr_load_game/scr_load_game.yy",},},
     {"id":{"name":"scr_mana_drain","path":"scripts/scr_mana_drain/scr_mana_drain.yy",},},
     {"id":{"name":"scr_memory_used","path":"scripts/scr_memory_used/scr_memory_used.yy",},},
     {"id":{"name":"scr_move_enemy","path":"scripts/scr_move_enemy/scr_move_enemy.yy",},},
@@ -298,6 +300,7 @@
     {"id":{"name":"scr_pull_spell_data","path":"scripts/scr_pull_spell_data/scr_pull_spell_data.yy",},},
     {"id":{"name":"scr_reset_enemy_movement","path":"scripts/scr_reset_enemy_movement/scr_reset_enemy_movement.yy",},},
     {"id":{"name":"scr_reset_move_modifiers","path":"scripts/scr_reset_move_modifiers/scr_reset_move_modifiers.yy",},},
+    {"id":{"name":"scr_save_game","path":"scripts/scr_save_game/scr_save_game.yy",},},
     {"id":{"name":"scr_semi_solid_passthrough","path":"scripts/scr_semi_solid_passthrough/scr_semi_solid_passthrough.yy",},},
     {"id":{"name":"scr_send_enemy_attack_stats","path":"scripts/scr_send_enemy_attack_stats/scr_send_enemy_attack_stats.yy",},},
     {"id":{"name":"scr_send_spell_stats","path":"scripts/scr_send_spell_stats/scr_send_spell_stats.yy",},},
@@ -455,16 +458,16 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
+        {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
+        {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
+        {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
+        {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
+      ],"groupName":"Demo",},
+    {"children":[
         {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
         {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
       ],"groupName":"Testing",},
-    {"children":[
-        {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
-        {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
-        {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
-        {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
-      ],"groupName":"Demo",},
   ],
   "templateType":"game",
   "TextureGroups":[

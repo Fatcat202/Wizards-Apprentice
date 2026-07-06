@@ -13,8 +13,59 @@ state = "none"
 width = sprite_get_width(sprite_index)
 height = sprite_get_height(sprite_index)
 
-x_left = x - (width / 2);
-x_right = x + (width / 2);
-y_top = y - (height / 2);
-y_bottom = y + (height / 2);
+middle = xpos
+
+x_left = xpos - (width / 2);
+x_right = xpos + (width / 2);
+y_top = ypos - (height / 2);
+y_bottom = ypos + (height / 2);
+
+
+
+#region New Game
+
+	#region Name Creation
+	
+	
+	#endregion Name Creation
+
+	#region Stats
+
+		stats_x = middle
+		stats_start_y = y_top + 75
+		stats_gap = 27
+
+		available_level_x = middle
+		available_level_y = y_top + 210
+
+		add_button_x = middle + 80
+		subtract_button_x = middle - 80
+
+
+		temp_vit = global.vitality;
+		temp_dex = global.dexterity;
+		temp_int = global.intelligence;
+		temp_mem = global.memory;
+		temp_cha = global.charisma;
+
+
+		global.starting_levels = 15
+		temp_free_level = global.starting_levels;
+
+		// Buttons
+		add_vit = noone;
+		sub_vit = noone;
+		add_dex = noone;
+		sub_dex = noone;
+		add_int = noone;
+		sub_int = noone;
+		add_mem = noone;
+		sub_mem = noone;
+		add_cha = noone;
+		sub_cha = noone;
+	
+	#endregion Stats
+
+
+#endregion New Game
 
