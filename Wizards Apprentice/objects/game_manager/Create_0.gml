@@ -182,6 +182,39 @@ randomise()
 			
 		#endregion Spellbook
 
+		#region Level Progression
+			
+			function level_prog(_level_name = -1, _level_completed = false) constructor
+			{
+				level_name = _level_name
+				level_completed = _level_completed
+			}
+			
+			// Array holding level_prog structs
+			global.arr_levels = []
+			
+			// Array holding rooms in order of level order. Must be placed manually
+			global.arr_level_order =
+			[
+				rm_level_00,	// Tutorial/Intro Level
+				rm_level_10,	// Start of chapter 1
+				rm_level_11
+			]
+			
+			// Add all levels in level order to levels array as structs, setting level completed to false
+			for(var i = 0; i < array_length(global.arr_level_order); i++)
+			{
+				var level_to_add = new level_prog(global.arr_level_order[i], false)
+				
+				array_push(global.arr_levels, level_to_add)	
+				
+			}
+
+//			show_debug_message("global.arr_levels: " + string(global.arr_levels))
+			
+			
+		#region Level Progression
+		
 		#region Database
 	
 	
