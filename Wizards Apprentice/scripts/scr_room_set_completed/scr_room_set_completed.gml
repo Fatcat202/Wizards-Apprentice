@@ -1,7 +1,7 @@
 
-function scr_room_set_completed(_room = room)
+function scr_room_set_completed(_room = room_get_name(room))
 {
-	// Must pass through room to set as completed, defaults as current room
+	// Must pass through room as string to set as completed, defaults as current room
 				
 	// Set room as completed
 				

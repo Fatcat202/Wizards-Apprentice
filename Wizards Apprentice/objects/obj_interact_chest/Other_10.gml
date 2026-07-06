@@ -2,9 +2,6 @@
 // You can write your code in this editor
 
 
-
-
-
 // Prevent inventory pausing
 if(!global.game_esc_paused && !instance_exists(obj_inventory_player))
 {
@@ -21,7 +18,8 @@ if(!global.game_esc_paused && !instance_exists(obj_inventory_player))
 		{
 			chest_gold : chest_gold,
 			inventory : inventory,
-			inventory_slots : inventory_slots
+			inventory_slots : inventory_slots,
+			chest_id : id
 		});
 
 	}

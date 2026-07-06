@@ -3,7 +3,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 {
 	// Used for interactions between spells and platforms
 	
-	if(platform_id.object_index == obj_platform_void) exit;
+	if(platform_id.object_index == obj_platform_void || platform_id.object_index == obj_platform_void_slope) exit;
 
 	
 	if(spell_id.water_level > 0)
@@ -24,7 +24,7 @@ function scr_element_platform_interactions(spell_id, platform_id)
 		}
 		
 		if(platform_id.is_steaming)
-		{scr_test()
+		{
 			platform_id.is_steaming = false;
 		}
 	}

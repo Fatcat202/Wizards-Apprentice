@@ -8,7 +8,7 @@ function scr_esc_resume()
 	game_set_speed(60, gamespeed_fps);
 
 	// Destroy pause image
-	layer_destroy("Pause_Sprites")
+//	layer_destroy("Pause_Sprites")
 	
 	// Reactivate regular objects
 	instance_activate_all();

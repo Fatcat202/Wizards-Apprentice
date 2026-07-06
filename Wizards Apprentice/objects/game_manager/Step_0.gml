@@ -42,7 +42,7 @@ scr_get_controls();
 			// Activate Inventory Pause
 			if(global.show_inventory == false && global.game_esc_paused == false)
 			{
-				scr_test()
+				
 				if(!instance_exists(obj_study_menu))
 				{
 					instance_create_layer(x, y, "Inventory", obj_inventory_player)
@@ -63,7 +63,7 @@ scr_get_controls();
 	
 	#region Exit Shop
 	
-		if((global.show_inventory == true && instance_exists(obj_inventory_shop)) 
+		if((global.show_inventory == true && (instance_exists(obj_inventory_shop) || instance_exists(obj_inventory_chest))) 
 		&& (global.cont_inventory == true || global.cont_esc_menu == true || global.cont_interact == true))
 		{
 			scr_inventory_resume()

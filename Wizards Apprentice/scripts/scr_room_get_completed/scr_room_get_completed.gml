@@ -5,6 +5,8 @@ function scr_room_get_completed(_room)
 	// Pass through room to check as completed
 	// Returns true or false
 	
+	_room = room_get_name(_room);
+	
 	for(var i = 0; i < array_length(global.arr_levels); i++)
 	{
 		if(global.arr_levels[i].level_name == _room)

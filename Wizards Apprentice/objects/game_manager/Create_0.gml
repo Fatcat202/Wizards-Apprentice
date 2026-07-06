@@ -140,6 +140,9 @@ randomise()
 			// Total player xp
 			global.player_xp = 0;
 			
+			// Name set by player
+			global.player_name = "Apprentice"
+			
 			// XP needed for next level
 			global.player_xp_next_level = global.player_level * 1000;
 			
@@ -184,10 +187,11 @@ randomise()
 
 		#region Level Progression
 			
-			function level_prog(_level_name = -1, _level_completed = false) constructor
+			function level_prog(_level_name = -1, _level_completed = false, _level_chests = -1) constructor
 			{
-				level_name = _level_name
-				level_completed = _level_completed
+				level_name = _level_name			// Holds name of level
+				level_completed = _level_completed	// Marks if level is completed previously
+				level_chests = _level_chests		// Holds data for chests in level
 			}
 			
 			// Array holding level_prog structs
@@ -196,15 +200,19 @@ randomise()
 			// Array holding rooms in order of level order. Must be placed manually
 			global.arr_level_order =
 			[
-				rm_level_00,	// Tutorial/Intro Level
-				rm_level_10,	// Start of chapter 1
-				rm_level_11
+				"rm_level_00",	// Tutorial/Intro Level
+				"rm_level_10",	// Start of chapter 1
+				"rm_level_11"
 			]
+			
+			array_push(global.arr_levels, new level_prog("rm_wizard_tower", false, -1))
+			array_push(global.arr_levels, new level_prog("rm_wizard_tower_top", false, -1))
+			array_push(global.arr_levels, new level_prog("rm_wizard_tower_cellar", false, -1))
 			
 			// Add all levels in level order to levels array as structs, setting level completed to false
 			for(var i = 0; i < array_length(global.arr_level_order); i++)
 			{
-				var level_to_add = new level_prog(global.arr_level_order[i], false)
+				var level_to_add = new level_prog(global.arr_level_order[i], false, -1)
 				
 				array_push(global.arr_levels, level_to_add)	
 				

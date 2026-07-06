@@ -65,6 +65,7 @@ if(global.show_inventory == true)
 	{
 		take_gold = instance_create_layer(take_gold_x_pos, take_gold_y_pos, "Menu_Buttons", obj_button_take_gold)
 		take_gold.chest_gold = chest_gold;
-		take_gold.chest_id = id;
+		take_gold.chest_id = chest_id;
+		take_gold.inventory_id = id;
 	}
 }

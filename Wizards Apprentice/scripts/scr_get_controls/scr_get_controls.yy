@@ -6,7 +6,7 @@
   "name":"scr_get_controls",
   "parent":{
     "name":"Player Movement",
-    "path":"folders/Scripts/Player Movement.yy",
+    "path":"folders/Scripts/Player/Player Movement.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

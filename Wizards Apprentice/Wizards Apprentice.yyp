@@ -65,7 +65,7 @@
     {"$GMFolder":"","%Name":"Inventory Pause","folderPath":"folders/Scripts/Pause/Inventory Pause.yy","name":"Inventory Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Spellbook Pause","folderPath":"folders/Scripts/Pause/Spellbook Pause.yy","name":"Spellbook Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Platforms","folderPath":"folders/Scripts/Platforms.yy","name":"Platforms","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Player Movement","folderPath":"folders/Scripts/Player Movement.yy","name":"Player Movement","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Player Movement","folderPath":"folders/Scripts/Player/Player Movement.yy","name":"Player Movement","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Scripts/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Saving and Loading","folderPath":"folders/Scripts/Saving and Loading.yy","name":"Saving and Loading","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Room Progression","folderPath":"folders/Scripts/Room Progression.yy","name":"Room Progression","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -305,6 +305,7 @@
     {"id":{"name":"scr_reset_enemy_movement","path":"scripts/scr_reset_enemy_movement/scr_reset_enemy_movement.yy",},},
     {"id":{"name":"scr_reset_move_modifiers","path":"scripts/scr_reset_move_modifiers/scr_reset_move_modifiers.yy",},},
     {"id":{"name":"scr_room_get_completed","path":"scripts/scr_room_get_completed/scr_room_get_completed.yy",},},
+    {"id":{"name":"scr_room_load_chests","path":"scripts/scr_room_load_chests/scr_room_load_chests.yy",},},
     {"id":{"name":"scr_room_set_completed","path":"scripts/scr_room_set_completed/scr_room_set_completed.yy",},},
     {"id":{"name":"scr_save_game","path":"scripts/scr_save_game/scr_save_game.yy",},},
     {"id":{"name":"scr_semi_solid_passthrough","path":"scripts/scr_semi_solid_passthrough/scr_semi_solid_passthrough.yy",},},
@@ -464,13 +465,13 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
-        {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
         {"children":[
             {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
           ],"groupName":"Wizard Tower",},
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
+        {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},
             {"roomId":{"name":"rm_level_11","path":"rooms/rm_level_11/rm_level_11.yy",},},

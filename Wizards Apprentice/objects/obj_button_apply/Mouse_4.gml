@@ -14,9 +14,6 @@ with(obj_study_stats)
 	global.player_level += (global.player_free_level - temp_free_level);
 	
 	global.player_free_level = temp_free_level;
-
-	
-	scr_test()
 	
 }
 

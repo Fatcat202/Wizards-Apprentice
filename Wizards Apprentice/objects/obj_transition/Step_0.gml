@@ -6,6 +6,7 @@ if(instance_exists(obj_player_parent))
 	global.can_control_player = false;
 	obj_player_parent.can_damage = false;
 	obj_player_parent.can_be_stunned = false;
+	obj_player_parent.can_attack = true;
 }
 
 // Check if delaying timer is active
@@ -28,10 +29,6 @@ if(delaying == false)
 	{
 		if(timer <= 0)
 		{
-		
-			global.can_control_player = true
-			obj_player_parent.can_damage = true
-			obj_player_parent.can_be_stunned = true
 			instance_destroy()
 		
 		}else timer--;

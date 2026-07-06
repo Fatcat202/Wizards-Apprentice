@@ -40,6 +40,7 @@ shader_set(shd_platform_multi_texture);
 var sampler_other = shader_get_sampler_index(shd_platform_multi_texture, "shape_texture");
 texture_set_stage(sampler_other, sprite_get_texture(sprite_index, subimage));
 
+
 // Ensure base texture is set for the surface drawing
 texture_set_stage(0, surface_get_texture(surf));
 		

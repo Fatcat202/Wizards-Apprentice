@@ -4,7 +4,7 @@ var cam_x = camera_get_view_x(CAMERA);
 var cam_y = camera_get_view_y(CAMERA);
 
 var esc_button_x = cam_x + 320;
-var esc_button_y = cam_y + 80;
+var esc_button_y = cam_y + 65;
 var esc_button_gap = 50;
 	
 
@@ -16,6 +16,10 @@ if(!instance_exists(obj_help_screen))
 	esc_button_y += esc_button_gap;
 	if !instance_exists(obj_button_save_game) {
 	    instance_create_layer(esc_button_x, esc_button_y, "Menu_Buttons", obj_button_save_game);
+	}
+	esc_button_y += esc_button_gap;
+	if !instance_exists(obj_button_load_game) {
+	    instance_create_layer(esc_button_x, esc_button_y, "Menu_Buttons", obj_button_load_game);
 	}
 	esc_button_y += esc_button_gap;
 	if !instance_exists(obj_button_help) {
