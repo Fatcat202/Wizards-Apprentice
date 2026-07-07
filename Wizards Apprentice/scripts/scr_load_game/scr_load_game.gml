@@ -7,7 +7,7 @@ function scr_load_game(file_num = 0, new_room = rm_wizard_tower)
 	
 	
 	// File name
-	var file_name = "savegame" + string(file_num) + ".sav"
+	var file_name = scr_create_file_name(file_num)
 	
 	if(file_exists(file_name))
 	{

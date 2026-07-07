@@ -76,7 +76,7 @@ function scr_save_game(file_num = 0)
 	#region JSON Saving
 	
 		// File name generation
-		var file_name = "savegame" + string(file_num) + ".sav";
+		var file_name = scr_create_file_name(file_num)
 	
 		// Convert array to string to place into json. Use buffer to set in memory
 		var _string = json_stringify(save_data, true);

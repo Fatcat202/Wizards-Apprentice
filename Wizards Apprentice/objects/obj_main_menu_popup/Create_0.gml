@@ -20,6 +20,13 @@ x_right = xpos + (width / 2);
 y_top = ypos - (height / 2);
 y_bottom = ypos + (height / 2);
 
+save_slot_gap = 50
+save_slot_x = middle - 70
+save_slot_y_title = y_top + 25
+save_slot_y = y_top + 10
+slot_text_gap = 80
+
+
 
 
 #region New Game

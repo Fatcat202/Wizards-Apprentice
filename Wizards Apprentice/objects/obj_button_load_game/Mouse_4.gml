@@ -16,11 +16,4 @@ if(room == rm_main_menu)
 		var menu = instance_create_layer(499, 191, "Popup_controller", obj_main_menu_popup)
 			menu.state = "load_game"
 	}
-}else
-
-if(room != rm_main_menu)
-{
-	
-	scr_load_game()
-	
 }
