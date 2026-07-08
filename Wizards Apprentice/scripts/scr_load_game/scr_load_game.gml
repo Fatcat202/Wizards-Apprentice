@@ -47,6 +47,8 @@ function scr_load_game(file_num = 0, new_room = rm_wizard_tower)
 //		show_debug_message("Save Game Loaded! " + _string)
 		
 
+		// Set file num
+		global.file_num = file_num
 		
 		// Go to loaded room	
 		scr_transfer_to_room(new_room)

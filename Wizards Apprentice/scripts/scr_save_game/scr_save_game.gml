@@ -84,6 +84,8 @@ function scr_save_game(file_num = 0)
 		buffer_write(_buffer, buffer_string, _string);
 		buffer_save(_buffer, file_name);
 		buffer_delete(_buffer)
+		
+		global.file_num = file_num
 	
 //		show_debug_message("Game Saved! " + _string)
 	

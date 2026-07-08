@@ -146,6 +146,9 @@ randomise()
 			// XP needed for next level
 			global.player_xp_next_level = global.player_level * 1000;
 			
+			// File number of current save. Set when either saving or loading a file
+			global.file_num = 0;
+			
 		#endregion Player Stats
 		
 		#region Spellbook
