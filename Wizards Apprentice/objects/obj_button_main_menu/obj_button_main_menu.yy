@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"ESC Menu Buttons",
-    "path":"folders/Objects/Menu/Buttons/ESC Menu Buttons.yy",
+    "path":"folders/Objects/Menu/ESC Menu/ESC Menu Buttons.yy",
   },
   "parentObjectId":{
     "name":"obj_menu_button_parent",

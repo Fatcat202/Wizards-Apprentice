@@ -16,4 +16,11 @@ if(room == rm_main_menu)
 		var menu = instance_create_layer(499, 191, "Popup_controller", obj_main_menu_popup)
 			menu.state = "load_game"
 	}
+}else
+
+if(instance_exists(obj_esc_menu))
+{
+	
+    instance_create_layer(global.cam_target_x + (global.res_w / 2), global.cam_target_y + (global.res_h / 2), "Inventory", obj_load_game_screen);
+
 }

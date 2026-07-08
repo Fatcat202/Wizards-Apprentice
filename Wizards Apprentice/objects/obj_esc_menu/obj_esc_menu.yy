@@ -10,8 +10,8 @@
   "name":"obj_esc_menu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Menu",
-    "path":"folders/Objects/Menu.yy",
+    "name":"ESC Menu",
+    "path":"folders/Objects/Menu/ESC Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

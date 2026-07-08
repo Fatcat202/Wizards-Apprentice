@@ -10,8 +10,8 @@
   "name":"obj_main_menu_popup",
   "overriddenProperties":[],
   "parent":{
-    "name":"Menu",
-    "path":"folders/Objects/Menu.yy",
+    "name":"Main Menu",
+    "path":"folders/Objects/Menu/Main Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

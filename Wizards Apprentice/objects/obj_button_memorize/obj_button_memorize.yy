@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Study Buttons",
-    "path":"folders/Objects/Menu/Buttons/Study Buttons.yy",
+    "path":"folders/Objects/Menu/Study/Study Buttons.yy",
   },
   "parentObjectId":{
     "name":"obj_menu_button_parent",

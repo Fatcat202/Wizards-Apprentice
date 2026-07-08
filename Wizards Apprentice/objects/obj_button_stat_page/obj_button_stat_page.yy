@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Study Buttons",
-    "path":"folders/Objects/Menu/Buttons/Study Buttons.yy",
+    "path":"folders/Objects/Menu/Study/Study Buttons.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -9,7 +9,7 @@ draw_set_alpha(1)
 	
 
 // Menu background image
-if(!instance_exists(obj_help_screen))
+if(!instance_exists(obj_help_screen) && !instance_exists(obj_load_game_screen))
 {
 	draw_sprite_stretched
 	(

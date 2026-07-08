@@ -1,4 +1,4 @@
-/// @description Draw Button
+/// @description
 
 draw_sprite_stretched
 (
