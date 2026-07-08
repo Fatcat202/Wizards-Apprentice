@@ -1,5 +1,10 @@
 /// @description Text
 
+
+width = 400
+height = 300
+
+
 help_text =
 
 @"Movement:

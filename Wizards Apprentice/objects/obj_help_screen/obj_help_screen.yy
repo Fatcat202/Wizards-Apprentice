@@ -30,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_help_screen",
-    "path":"sprites/spr_help_screen/spr_help_screen.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

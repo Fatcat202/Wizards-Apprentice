@@ -435,5 +435,4 @@ draw_set_font(fnt_menu_small);
 	}
 
 // Reset Location
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
+scr_text_reset()

@@ -1,10 +1,14 @@
 /// @description Create Buttons
 
-var cam_x = camera_get_view_x(CAMERA);
-var cam_y = camera_get_view_y(CAMERA);
+width = 250
+height = 320
+
+
+var cam_x = global.cam_target_x;
+var cam_y = global.cam_target_y;
 
 var esc_button_x = cam_x + 320;
-var esc_button_y = cam_y + 65;
+var esc_button_y = cam_y + 55;
 var esc_button_gap = 50;
 	
 
