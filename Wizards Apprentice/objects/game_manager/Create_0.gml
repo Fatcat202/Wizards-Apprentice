@@ -1,7 +1,13 @@
+// Destroy self if game_manager already exists
+if(instance_number(game_manager) > 1)
+{
+	instance_destroy()
+	exit;
+}
+
 
 // Randomise variables in testing
 randomise()
-
 
 
 #region Enums
@@ -25,7 +31,6 @@ randomise()
 	}
 
 #endregion Enums
-
 
 
 #region Global Variables
