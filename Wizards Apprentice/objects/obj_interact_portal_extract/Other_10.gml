@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+scr_set_room_number(room)
+
 
 // Save gamestate
 scr_save_game()

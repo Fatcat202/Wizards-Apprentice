@@ -145,6 +145,9 @@ randomise()
 			// Total player xp
 			global.player_xp = 0;
 			
+			// XP earned within a level, to be distributed at level end
+			global.player_earned_xp = 0;
+			
 			// Name set by player
 			global.player_name = "Apprentice"
 			
@@ -194,16 +197,26 @@ randomise()
 		#endregion Spellbook
 
 		#region Level Progression
+		
+			// Gold and level to be granted per level, increasing by level number
+			global.reward_level_gold = 25
+			global.reward_level_xp = 125
 			
-			function level_prog(_level_name = -1, _level_completed = false, _level_chests = -1) constructor
+			// Holds position of room in global.arr_levels
+			global.active_level_num = -1
+			
+			
+			function level_prog(_level_name = -1, _level_completed = false, _level_chests = -1, _reward_gold = -1, _reward_xp = -1) constructor
 			{
 				level_name = _level_name			// Holds name of level
 				level_completed = _level_completed	// Marks if level is completed previously
 				level_chests = _level_chests		// Holds data for chests in level
+				reward_gold = _reward_gold			// Holds gold reward for completing level
+				reward_xp = _reward_xp				// Holds xp reward for completing level
 			}
 			
 			// Array holding level_prog structs
-			global.arr_levels = []
+			global.arr_levels = [];
 			
 			// Array holding rooms in order of level order. Must be placed manually
 			global.arr_level_order =
@@ -213,16 +226,21 @@ randomise()
 				"rm_level_11"
 			]
 			
-			array_push(global.arr_levels, new level_prog("rm_wizard_tower", false, -1))
-			array_push(global.arr_levels, new level_prog("rm_wizard_tower_top", false, -1))
-			array_push(global.arr_levels, new level_prog("rm_wizard_tower_cellar", false, -1))
+			array_push(global.arr_levels, new level_prog("rm_wizard_tower", false, -1, 0, 0));
+			array_push(global.arr_levels, new level_prog("rm_wizard_tower_top", false, -1, 0, 0));
+			array_push(global.arr_levels, new level_prog("rm_wizard_tower_cellar", false, -1, 0, 0));
 			
 			// Add all levels in level order to levels array as structs, setting level completed to false
 			for(var i = 0; i < array_length(global.arr_level_order); i++)
 			{
-				var level_to_add = new level_prog(global.arr_level_order[i], false, -1)
 				
-				array_push(global.arr_levels, level_to_add)	
+				var reward_gold = i * global.reward_level_gold;
+				var reward_xp = i * global.reward_level_xp;
+
+
+				var level_to_add = new level_prog(global.arr_level_order[i], false, -1, reward_gold, reward_xp);
+				
+				array_push(global.arr_levels, level_to_add);
 				
 			}
 

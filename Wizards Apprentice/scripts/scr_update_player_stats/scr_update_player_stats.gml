@@ -5,8 +5,7 @@ function scr_update_player_stats()
 	
 	with(obj_player_parent)
 	{
-		// XP to next level
-		global.player_xp_next_level = (global.player_level+global.player_free_level) * 1000;
+
 		
 		// Memory
 		memory = global.memory;

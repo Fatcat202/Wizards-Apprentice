@@ -3,9 +3,7 @@
 if(active_health <= 0)
 {
 	// Grant player with xp
-	global.player_xp += global.enemy_stats[index].xp
-	
-	scr_player_level_up_check()
+	global.player_earned_xp += global.enemy_stats[index].xp
 	
 	instance_destroy()
 }

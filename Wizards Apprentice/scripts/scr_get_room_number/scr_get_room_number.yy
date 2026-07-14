@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_room_set_completed",
+  "%Name":"scr_get_room_number",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_room_set_completed",
+  "name":"scr_get_room_number",
   "parent":{
     "name":"Room Progression",
     "path":"folders/Scripts/Room Progression.yy",

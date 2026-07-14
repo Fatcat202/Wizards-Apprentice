@@ -13,6 +13,8 @@ if(instance_exists(obj_player_parent))
 	global.cam_target_y = obj_player_parent.y - global.cam_h / 2;
 	
 }else
+
+if(room == "rm_level_end")
 {
 	// If player does not exist, such as in menu screens, set camera to default position
 	

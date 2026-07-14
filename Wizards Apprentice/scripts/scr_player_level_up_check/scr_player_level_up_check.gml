@@ -14,10 +14,10 @@ function scr_player_level_up_check()
 	if(global.player_xp >= global.player_xp_next_level)
 	{
 		// Increase number of available levels
-		global.player_free_level++;  
+		global.player_free_level++; 
 		
-		// Refresh player stats
-		scr_update_player_stats();
+		// XP to next level
+		global.player_xp_next_level = (global.player_level+global.player_free_level) * 1000;
 		
 	}
 }
