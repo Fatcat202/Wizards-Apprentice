@@ -12,6 +12,14 @@ if(instance_exists(obj_player_parent))
 	global.cam_target_x = obj_player_parent.x - global.cam_w / 2;
 	global.cam_target_y = obj_player_parent.y - global.cam_h / 2;
 	
+}else
+{
+	// If player does not exist, such as in menu screens, set camera to default position
+	
+	global.cam_x = 0
+	global.cam_y = 0
+	global.cam_target_x = global.cam_x
+	global.cam_target_y = global.cam_y
 }
 
 // Prevent camera jerking when paused
