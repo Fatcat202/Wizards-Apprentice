@@ -1,11 +1,32 @@
-function scr_damage(dmg, _element = -1)
+function scr_damage(dmg, _water_level = water_level, _oil_level = oil_level, _is_flaming = is_flaming, _is_ice = is_ice, _is_steaming = is_steaming, _is_charged = is_charged)
 {
 	// Deals damage to other object, designed to be used in collision events of attacks
 	// Pass through damage and element of attack
 	with(other)
 	{
+		
+		
+		// Rebuild to first check for element features (is_flaming, water_level, etc.)
+		// Remove shield if matching. Continue to regular damage effect below after
+		// Must pass through all potential element variables into script
+		// Will fix shield issue
+		
+		
+		if((_is_flaming == true && element_shield == "Fire") ||
+		(_is_ice == true && element_shield == "Ice") || 
+		(_is_ice == false && _is_steaming == false && _water_level > 0 && element_shield == "Water") ||
+		(_is_steaming == true && element_shield == "Steam") ||
+		(_oil_level > 0 && element_shield == "Oil") ||
+		(_is_charged == true && element_shield == "Shock"))
+		{
+			element_shield = "Empty"
+			exit;
+		}
+		
+		
+
 	
-		if(element_shield == _element || element_shield == "Empty")
+		if(element_shield == "Empty")
 		{
 		
 			// If enemy has same element shield as attack, or has no element shield then do damage

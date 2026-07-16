@@ -331,10 +331,13 @@ event_inherited();
 					
 					scr_enemy_set_max_speed()
 					
-					// Move object horizontally
-					x += move_spd_h
-					// Move object vertically
-					y -= move_spd_v
+					if(can_move == true)
+					{
+						// Move object horizontally
+						x += move_spd_h
+						// Move object vertically
+						y -= move_spd_v
+					}
 					
 					scr_enemy_gravity()
 					
@@ -438,9 +441,12 @@ event_inherited();
 					// Height of sine wave
 					var	wave_height = 15;
 					
-					// Move object
-					x += move_spd_h
-					y = start_y + (sin(current_time/500) * wave_height)
+					if(can_move == true)
+					{
+						// Move object
+						x += move_spd_h
+						y = start_y + (sin(current_time/500) * wave_height)
+					}
 					
 					#region Sprite Flip
 						if(move_spd_h > 0)
