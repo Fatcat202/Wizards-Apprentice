@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_move_enemy()
 {
-	if(can_move == true)
+	if(can_move == true && is_stunned == false)
 	{
 		// Move object horizontally
 		x += move_spd_h

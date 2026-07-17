@@ -7,7 +7,6 @@ state_behavior()
 // Increment enemy timers
 scr_enemy_timers()
 
-		
 
 #region Collisions
 	

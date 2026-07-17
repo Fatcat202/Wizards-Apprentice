@@ -207,10 +207,10 @@ event_inherited();
 				// Default melee attack timer
 				atk_melee_default_cooldown = false;
 				atk_melee_default_timer = 0;
-				atk_melee_default_time = 0
+				atk_melee_default_time = 0		
 				
 		#endregion Attack Timers
-		
+
 	#endregion Timer Initialization
 	
 	
@@ -331,7 +331,7 @@ event_inherited();
 					
 					scr_enemy_set_max_speed()
 					
-					if(can_move == true)
+					if(can_move == true && is_stunned == false)
 					{
 						// Move object horizontally
 						x += move_spd_h
@@ -342,7 +342,6 @@ event_inherited();
 					scr_enemy_gravity()
 					
 					scr_flipping_sprite()
-					
 					
 				}
 			}else
@@ -441,7 +440,7 @@ event_inherited();
 					// Height of sine wave
 					var	wave_height = 15;
 					
-					if(can_move == true)
+					if(can_move == true && is_stunned == false)
 					{
 						// Move object
 						x += move_spd_h
@@ -637,14 +636,13 @@ event_inherited();
 				// Move on path
 				if(path_exists(attack_path) && can_move)
 				{	
-
 					// Move towards first point 
 					mp_potential_step_object(target_x, target_y, move_spd_max, obj_collision_parent);
 					
 
 				}else
 				
-				if(can_move == false)
+				if(can_move == false && is_stunned == false)
 				{	
 					// Delete path if unable to move
 					if(path_exists(attack_path)) path_delete(attack_path); 
@@ -664,9 +662,7 @@ event_inherited();
 			{
 				// Implement caster logic
 			
-			
-			
-			
+
 				scr_target_next_node()
 
 				scr_move_to_target()
@@ -697,10 +693,7 @@ event_inherited();
 		
 				scr_flipping_sprite()
 			
-			
-			
-			
-			
+
 			}else
 			{
 				show_error("Error: No moveset found", false)

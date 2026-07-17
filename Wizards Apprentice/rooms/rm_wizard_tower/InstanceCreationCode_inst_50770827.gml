@@ -1,2 +1,2 @@
-can_move = false;
+can_move = true;
 

@@ -196,11 +196,13 @@ if(global.can_control_player == false) exit;
 			// Assign input variable defaults
 			var _left = 0;
 			var _right = 0;
-
-			// Determine movement direction based on key presses, prevent self from touching solid objects
-			_left = global.cont_left;
-			_right = global.cont_right;
-
+			
+			if(is_stunned == false)
+			{
+				// Determine movement direction based on key presses, prevent self from touching solid objects
+				_left = global.cont_left;
+				_right = global.cont_right;
+			}
 			// Define if the player is walking
 			if(_right || _left > 0)
 			{
@@ -222,6 +224,7 @@ if(global.can_control_player == false) exit;
 			move_spd_h = clamp(move_spd_h, -move_spd_max, move_spd_max)
 			// Set and apply terminal velocity
 			if(move_spd_v < term_vel) move_spd_v = term_vel;
+
 			
 			#region Slopes
 			
