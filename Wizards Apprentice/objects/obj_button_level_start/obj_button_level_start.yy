@@ -1,19 +1,22 @@
 {
   "$GMObject":"",
-  "%Name":"obj_menu_level_select",
+  "%Name":"obj_button_level_start",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_menu_level_select",
+  "name":"obj_button_level_start",
   "overriddenProperties":[],
   "parent":{
     "name":"Level Select",
     "path":"folders/Objects/Menu/Level Select.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_menu_button_parent",
+    "path":"objects/obj_menu_button_parent/obj_menu_button_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,7 +34,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_menu_button_long",
+    "path":"sprites/spr_menu_button_long/spr_menu_button_long.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

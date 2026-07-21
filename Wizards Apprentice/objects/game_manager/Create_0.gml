@@ -221,14 +221,14 @@ randomise()
 			// Array holding rooms in order of level order. Must be placed manually
 			global.arr_level_order =
 			[
-				"rm_level_00",	// Tutorial/Intro Level
-				"rm_level_10",	// Start of chapter 1
-				"rm_level_11"
+				rm_level_00,	// Tutorial/Intro Level
+				rm_level_10,	// Start of chapter 1
+				rm_level_11
 			]
 			
-			array_push(global.arr_levels, new level_prog("rm_wizard_tower", false, -1, 0, 0));
-			array_push(global.arr_levels, new level_prog("rm_wizard_tower_top", false, -1, 0, 0));
-			array_push(global.arr_levels, new level_prog("rm_wizard_tower_cellar", false, -1, 0, 0));
+			array_push(global.arr_levels, new level_prog(rm_wizard_tower, false, -1, 0, 0));
+			array_push(global.arr_levels, new level_prog(rm_wizard_tower_top, false, -1, 0, 0));
+			array_push(global.arr_levels, new level_prog(rm_wizard_tower_cellar, false, -1, 0, 0));
 			
 			// Add all levels in level order to levels array as structs, setting level completed to false
 			for(var i = 0; i < array_length(global.arr_level_order); i++)
