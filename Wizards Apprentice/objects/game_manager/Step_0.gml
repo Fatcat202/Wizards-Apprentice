@@ -63,7 +63,7 @@ scr_get_controls();
 	
 	#region Exit Shop
 	
-		if((global.show_inventory == true && (instance_exists(obj_inventory_shop) || instance_exists(obj_inventory_chest))) 
+		if((global.show_inventory == true && (instance_exists(obj_inventory_shop) || instance_exists(obj_inventory_chest) || instance_exists(obj_menu_level_select))) 
 		&& (global.cont_inventory == true || global.cont_esc_menu == true || global.cont_interact == true))
 		{
 			scr_inventory_resume()

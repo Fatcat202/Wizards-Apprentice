@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_text_reset",
+  "%Name":"scr_draw_set_text",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_text_reset",
+  "name":"scr_draw_set_text",
   "parent":{
     "name":"Drawing",
     "path":"folders/Scripts/Drawing.yy",
