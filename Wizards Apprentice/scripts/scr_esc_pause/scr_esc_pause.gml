@@ -12,9 +12,9 @@ function scr_esc_pause()
 	// Pauses all particle systems
 	scr_part_systems_set_auto_update();
 	
-	// Set pause image
-//	scr_pause_image()
-	
+	// Create pause image
+	global.pause_image = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,0,0,0);
+
 	
 	// Deactivate all objects except game_manger
 	instance_deactivate_object(all);

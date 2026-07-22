@@ -9,9 +9,6 @@ function scr_inventory_resume()
 	
 	layer_destroy_instances("Inventory");
 	
-	// Destroy pause image
-//	layer_destroy("Pause_Sprites")
-	
 	// Reactivate regular objects
 	instance_activate_all();
 	

@@ -43,12 +43,14 @@ scr_get_controls();
 			if(global.show_inventory == false && global.game_esc_paused == false)
 			{
 				
+				scr_inventory_pause()
+				
 				if(!instance_exists(obj_study_menu))
 				{
 					instance_create_layer(x, y, "Inventory", obj_inventory_player)
 				}
 				
-				scr_inventory_pause()
+				
 
 			}else
 				
