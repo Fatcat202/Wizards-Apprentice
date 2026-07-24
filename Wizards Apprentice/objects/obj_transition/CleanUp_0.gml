@@ -2,6 +2,8 @@
 
 // Ensure pause is undone
 scr_esc_resume()
+scr_inventory_resume()
+scr_spellbook_resume()
 
 // Reset variables
 global.can_control_player = true

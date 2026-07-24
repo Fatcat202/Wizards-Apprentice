@@ -2,7 +2,7 @@
 
 scr_set_room_number()
 
-show_debug_message(global.active_level_num)
+//show_debug_message(global.active_level_num)
 
 // Search through all chests in level. If either no chests or all are empty, set room variable to true
 var chests_empty = true;

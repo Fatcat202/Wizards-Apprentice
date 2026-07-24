@@ -15,7 +15,7 @@ function scr_set_room_number()
 		{
 			global.active_level_num = i;
 			
-			show_debug_message("global.active_level_num: " + string(global.active_level_num))
+//			show_debug_message("global.active_level_num: " + string(global.active_level_num))
 		}
 	}
 }

@@ -7,7 +7,7 @@ function scr_spell_water_splash(target_x = mouse_x, target_y = mouse_y)
 	
 	// Prevent use of spell if not enough mana. Expend mana if player has enough
 	if(scr_use_mana(mana) == false) exit
-	show_debug_message(duration)
+//	show_debug_message(duration)
 
 	water_splash = instance_create_layer(x, y, "Spells", obj_spell_water_splash)
 	
