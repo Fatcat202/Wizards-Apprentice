@@ -317,7 +317,6 @@
     {"id":{"name":"scr_move_to_target","path":"scripts/scr_move_to_target/scr_move_to_target.yy",},},
     {"id":{"name":"scr_on_ground","path":"scripts/scr_on_ground/scr_on_ground.yy",},},
     {"id":{"name":"scr_part_systems_set_auto_update","path":"scripts/scr_part_systems_set_auto_update/scr_part_systems_set_auto_update.yy",},},
-    {"id":{"name":"scr_pause_image","path":"scripts/scr_pause_image/scr_pause_image.yy",},},
     {"id":{"name":"scr_plat_movement_modifiers","path":"scripts/scr_plat_movement_modifiers/scr_plat_movement_modifiers.yy",},},
     {"id":{"name":"scr_platform_shape","path":"scripts/scr_platform_shape/scr_platform_shape.yy",},},
     {"id":{"name":"scr_player_death","path":"scripts/scr_player_death/scr_player_death.yy",},},

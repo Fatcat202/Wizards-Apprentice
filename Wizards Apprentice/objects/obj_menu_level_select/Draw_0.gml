@@ -2,6 +2,9 @@
 // You can write your code in this editor
 
 
+// Draw Pause Image
+draw_sprite(global.pause_image, 0, global.cam_x, global.cam_y)
+
 // Draw inventory image
 draw_sprite_stretched
 (

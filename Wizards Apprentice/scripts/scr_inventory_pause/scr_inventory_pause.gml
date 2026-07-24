@@ -21,4 +21,5 @@ function scr_inventory_pause()
 	instance_activate_object(game_manager);
 	instance_activate_object(obj_inventory_parent)
 	instance_activate_object(obj_mouse)
+	
 }

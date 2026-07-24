@@ -1,6 +1,9 @@
 /// @description UI
 
 
+// Draw Pause Image
+draw_sprite(global.pause_image, 0, global.cam_x, global.cam_y)
+
 var stats_y_count = 0;
 
 #region Sprite

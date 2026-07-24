@@ -12,3 +12,5 @@ if(instance_exists(obj_study_stats)) instance_destroy(obj_study_stats)
 
 if(instance_exists(obj_button_spellbook_page)) instance_destroy(obj_button_spellbook_page)
 if(instance_exists(obj_button_stat_page)) instance_destroy(obj_button_stat_page)
+
+if(sprite_exists(global.pause_image)) sprite_delete(global.pause_image)

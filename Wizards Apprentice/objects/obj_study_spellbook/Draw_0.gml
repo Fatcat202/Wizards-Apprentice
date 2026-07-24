@@ -1,5 +1,6 @@
 /// @description Spellbook
 
+
 // Draw inventory image
 draw_sprite_stretched
 (
