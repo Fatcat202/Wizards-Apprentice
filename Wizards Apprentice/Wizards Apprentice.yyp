@@ -295,7 +295,6 @@
     {"id":{"name":"scr_flipping_sprite","path":"scripts/scr_flipping_sprite/scr_flipping_sprite.yy",},},
     {"id":{"name":"scr_gather_enemy_attack_stats","path":"scripts/scr_gather_enemy_attack_stats/scr_gather_enemy_attack_stats.yy",},},
     {"id":{"name":"scr_get_controls","path":"scripts/scr_get_controls/scr_get_controls.yy",},},
-    {"id":{"name":"scr_get_room_number","path":"scripts/scr_get_room_number/scr_get_room_number.yy",},},
     {"id":{"name":"scr_has_no_element","path":"scripts/scr_has_no_element/scr_has_no_element.yy",},},
     {"id":{"name":"scr_heal","path":"scripts/scr_heal/scr_heal.yy",},},
     {"id":{"name":"scr_health_and_mana_debug","path":"scripts/scr_health_and_mana_debug/scr_health_and_mana_debug.yy",},},
@@ -333,6 +332,7 @@
     {"id":{"name":"scr_semi_solid_passthrough","path":"scripts/scr_semi_solid_passthrough/scr_semi_solid_passthrough.yy",},},
     {"id":{"name":"scr_send_enemy_attack_stats","path":"scripts/scr_send_enemy_attack_stats/scr_send_enemy_attack_stats.yy",},},
     {"id":{"name":"scr_send_spell_stats","path":"scripts/scr_send_spell_stats/scr_send_spell_stats.yy",},},
+    {"id":{"name":"scr_set_room_number","path":"scripts/scr_set_room_number/scr_set_room_number.yy",},},
     {"id":{"name":"scr_set_spell_cooldown","path":"scripts/scr_set_spell_cooldown/scr_set_spell_cooldown.yy",},},
     {"id":{"name":"scr_slide_off_player","path":"scripts/scr_slide_off_player/scr_slide_off_player.yy",},},
     {"id":{"name":"scr_spell_example","path":"scripts/scr_spell_example/scr_spell_example.yy",},},
@@ -491,6 +491,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
     {"children":[
         {"children":[
             {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
@@ -498,7 +499,6 @@
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
           ],"groupName":"Wizard Tower",},
         {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
-        {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_11","path":"rooms/rm_level_11/rm_level_11.yy",},},

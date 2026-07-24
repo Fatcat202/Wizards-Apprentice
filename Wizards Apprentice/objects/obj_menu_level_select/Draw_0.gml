@@ -1,6 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
-
+/// @description
 
 // Draw Pause Image
 draw_sprite(global.pause_image, 0, global.cam_x, global.cam_y)
@@ -23,6 +21,7 @@ scr_draw_set_text(fa_center, fa_middle, fnt_menu, c_black)
 draw_text(level_select_x, level_select_y, "Portal Gate")
 
 #region Slots
+
 	// Draw Level Slots
 	for(var i = 0; i < slots; i++)
 	{
@@ -45,6 +44,7 @@ draw_text(level_select_x, level_select_y, "Portal Gate")
 		// Stop drawing after reaching final level
 		if(global.arr_levels[i+slot_offset].level_completed == false) break;
 	}
+	
 #endregion Slots
 
 #region Level Start
