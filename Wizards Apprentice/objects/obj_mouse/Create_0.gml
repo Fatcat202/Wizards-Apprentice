@@ -133,6 +133,43 @@
 			}
 		
 		#endregion Spellbook
+		
+		#region Level Select
+			
+			with(obj_menu_level_select)
+			{
+				if(point_in_rectangle(mouse_x, mouse_y, x_pos - spacer, y_pos - spacer, x_pos + width, y_pos + height))
+				{
+					// Create mouse over boxes for spell slots
+					for(var i = 0; i < slots; i++)
+					{
+						
+						var xx = x_pos + (i mod row_length) * 64;
+						var yy = y_pos + (i div row_length) * 64 + 40;
+	
+						var spr_width = sprite_get_width(spr_level_button);
+						var spr_height = sprite_get_width(spr_level_button)
+	
+						if(point_in_rectangle(mouse_x, mouse_y, xx, yy, xx + spr_width, yy + spr_height))
+						{
+							// Inventory slot
+							other.slot_hover = i;
+			
+							// Inventory ID
+							other.inventory_hover = id;
+							
+							// Offset of levels to ignore first levels in array
+							other.level_offset = slot_offset
+						}
+						
+						// Stop drawing after reaching final level
+						if(global.arr_levels[i+slot_offset].level_completed == false) break;
+						
+					}
+				}	
+			}
+		
+		#endregion Level Select
 	
 	}
 
@@ -439,7 +476,91 @@
 				
 			}
 		
-		#region Spellbook
+		#endregion Spellbook
+		
+		
+		#region Level Select
+		
+			if(instance_exists(obj_menu_level_select))
+			{
+				mouse_over()
+				
+				// Destroy control menu if control menu is active with left click
+				if((mouse_check_button(mb_left) || mouse_check_button(mb_right)) && instance_exists(obj_item_control_menu) && !held)
+				{
+					if(!position_meeting(mouse_x, mouse_y, obj_item_control_menu))
+					{
+						instance_destroy(obj_item_control_menu);
+					}
+				}
+				
+				// Create control menu with right click
+				if(mouse_check_button(mb_right) && slot_hover != -1 && slot_hover < inventory_hover.slots+1)
+				{
+					if(global.arr_levels[slot_hover+level_offset] == -1) exit;
+			
+					// Destroy control menu if active
+					if(instance_exists(obj_item_control_menu)) instance_destroy(obj_item_control_menu)
+					if(instance_exists(obj_button_use)) instance_destroy(obj_button_use);
+		
+		
+					// Menu Pos
+					x_pos = global.cam_target_x + (global.res_w / 2) - (inventory_hover.width / 2) + (inventory_hover.spacer * 2);
+					y_pos = global.cam_target_y + (global.res_h / 2) - (inventory_hover.height / 2) + (inventory_hover.spacer * 2) - 20;
+			
+					var xx = clamp(mouse_x, global.cam_x, global.cam_x + global.res_w - (sprite_get_width(spr_item_control_menu)));
+					var yy = clamp(mouse_y, global.cam_y + (sprite_get_height(spr_item_control_menu) / 2), global.cam_y + global.res_h - (sprite_get_height(spr_item_control_menu) / 2));
+					
+					
+					// Determine if level has been completed
+					if(global.arr_levels[slot_hover+level_offset].level_completed == true)
+					{
+						var _lvl_complete = "Yes"
+					}else var _lvl_complete = "No"
+
+
+					// Determine if all chests have been found
+					var _chests_found = "No";
+					// TODO: Search room for all chests inside, search all chests to detect if empty
+					
+					
+					if(!instance_exists(obj_item_control_menu))
+					{
+						// Create control menu
+						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
+							menu.title = global.arr_levels[slot_hover+level_offset].level_name	// Level name
+							menu.description = "Level Complete: " + string(_lvl_complete)		// Show if level has been completed
+							menu.chests_found = "All Chests Found: " + string(_chests_found)			// Show if all chests have been found
+					}
+
+
+					// Indicate mb_right is being held
+					held = true;
+				}
+	
+				// Set held to false when no longer held
+				if(!mouse_check_button(mb_right))
+				{
+					held = false;	
+				}
+	
+				// Update positions when held
+				if(mouse_check_button(mb_right) && instance_exists(obj_item_control_menu) && held)
+				{
+					// Clamp pos
+					xx = clamp(mouse_x, global.cam_x, global.cam_x + global.res_w - (sprite_get_width(spr_item_control_menu)));
+					yy = clamp(mouse_y, global.cam_y + (sprite_get_height(spr_item_control_menu) / 2), global.cam_y + global.res_h - (sprite_get_height(spr_item_control_menu) / 2));
+		
+					// Menu
+					obj_item_control_menu.x = xx
+					obj_item_control_menu.y = yy
+
+				}
+				
+				
+			}
+		
+		#endregion Level Select
 		
 	}
 

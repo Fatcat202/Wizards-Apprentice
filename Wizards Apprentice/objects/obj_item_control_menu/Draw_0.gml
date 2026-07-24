@@ -11,6 +11,7 @@ yy = y + spr_height / 2;
 title_y = y - 60;
 memory_y = y - 40;
 description_y = title_y + 40;
+chests_y = description_y + 40
 
 
 h_align = draw_get_halign();
@@ -37,6 +38,12 @@ draw_set_valign(fa_top);
 		
 		// Write Description
 		draw_text_ext(xx, description_y, description, 14, 140);
+		
+		// Write chests found, if applicable
+		if(instance_exists(obj_menu_level_select))
+		{
+			draw_text_ext(xx, chests_y, chests_found, 14, 150)
+		}
 		
 
 		
