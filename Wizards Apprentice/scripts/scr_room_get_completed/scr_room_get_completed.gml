@@ -7,11 +7,11 @@ function scr_room_get_completed(_room)
 	
 	_room = room_get_name(_room);
 	
-	for(var i = 0; i < array_length(global.arr_levels); i++)
+	for(var i = 0; i < global.level_index_length; i++)
 	{
-		if(global.arr_levels[i].level_name == _room)
+		if(asset_get_index(global.level_stats[i].room_name) == _room)
 		{
-			return global.arr_levels[i].level_completed;
+			return global.level_stats[i].level_completed;
 		}
 	}
 }

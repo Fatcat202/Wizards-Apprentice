@@ -10,7 +10,7 @@ row_length = 4;
 // Offset used to ignore wizard tower levels in array, set as first three rooms
 slot_offset = 3
 
-slots = array_length(global.arr_levels) - slot_offset
+slots = global.level_index_length - slot_offset
 
 // Width and height of inventory
 width = 24 + row_length * cell_width;

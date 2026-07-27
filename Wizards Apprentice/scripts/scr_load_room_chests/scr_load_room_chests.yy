@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_room_load_chests",
+  "%Name":"scr_load_room_chests",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_room_load_chests",
+  "name":"scr_load_room_chests",
   "parent":{
     "name":"Saving and Loading",
     "path":"folders/Scripts/Saving and Loading.yy",

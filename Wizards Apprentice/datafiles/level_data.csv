@@ -1,0 +1,7 @@
+level_name,room_name,reward_gold,reward_xp
+Wizard Tower,rm_wizard_tower,0,0
+Wizard Tower Top,rm_wizard_tower_top,0,0
+The Cellar,rm_wizard_tower_cellar,0,0
+Demo Level 1,rm_level_00,50,250
+Demo Level 2,rm_level_10,75,500
+Demo Level 3,rm_level_11,125,1000

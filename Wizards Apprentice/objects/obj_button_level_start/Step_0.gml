@@ -3,7 +3,7 @@
 
 if(selected_level != -1)
 {
-	level_name = global.arr_levels[selected_level].level_name
+	room_name = global.level_stats[selected_level].room_name
 }
 
 // No level selected
@@ -12,12 +12,12 @@ if(selected_level == -1)
 	button_text = "Select Level"
 }else
 
-if(global.arr_levels[selected_level].level_completed == false)
+if(global.level_stats[selected_level].level_completed == false)
 {
 	button_text = "Start Level"
 }else
 
-if(global.arr_levels[selected_level].level_completed == true)
+if(global.level_stats[selected_level].level_completed == true)
 {
 	button_text = "Replay Level"
 }

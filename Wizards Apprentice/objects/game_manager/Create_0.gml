@@ -196,60 +196,7 @@ randomise()
 			
 		#endregion Spellbook
 
-		#region Level Progression
-		
-			// Gold and level to be granted per level, increasing by level number
-			global.reward_level_gold = 25
-			global.reward_level_xp = 125
-			
-			
-			function level_prog(_level_name = -1, _level_completed = false, _level_chests = -1, _level_chests_empty = false, _reward_gold = -1, _reward_xp = -1) constructor
-			{
-				level_name = _level_name			// Holds name of level
-				level_completed = _level_completed	// Marks if level is completed previously
-				level_chests = _level_chests		// Holds data for chests in level
-				level_chests_empty = _level_chests_empty
-				reward_gold = _reward_gold			// Holds gold reward for completing level
-				reward_xp = _reward_xp				// Holds xp reward for completing level
-			}
-			
-			// Array holding level_prog structs
-			global.arr_levels = [];
-			
-			// Array holding rooms in order of level order. Must be placed manually
-			global.arr_level_order =
-			[
-				rm_level_00,	// Tutorial/Intro Level
-				rm_level_10,	// Start of chapter 1
-				rm_level_11
-			]
-			
-			array_push(global.arr_levels, new level_prog(rm_wizard_tower, false, -1, false, 0, 0));
-			array_push(global.arr_levels, new level_prog(rm_wizard_tower_top, false, -1, false, 0, 0));
-			array_push(global.arr_levels, new level_prog(rm_wizard_tower_cellar, false, -1, false, 0, 0));
-			
-			// Add all levels in level order to levels array as structs, setting level completed to false
-			for(var i = 0; i < array_length(global.arr_level_order); i++)
-			{
-				
-				var reward_gold = i * global.reward_level_gold;
-				var reward_xp = i * global.reward_level_xp;
 
-
-				var level_to_add = new level_prog(global.arr_level_order[i], false, -1, false, reward_gold, reward_xp);
-				
-				array_push(global.arr_levels, level_to_add);
-				
-			}
-			
-			
-			// Holds position of room in global.arr_levels
-			global.active_level_num = -1
-
-//			show_debug_message("global.arr_levels: " + string(global.arr_levels))
-			
-			
-		#region Level Progression
 		
 		#region Database
 	
@@ -617,6 +564,89 @@ randomise()
 				
 				
 			#endregion Enemy Attack Stats
+			
+			#region Level Stats
+			
+				// Create level_index_length for tracking total number of level in csv
+				global.level_index_length = 0;
+
+				// Create level_stats array for tracking stats
+				global.level_stats[0] = 0;
+
+				// Initialize level index arrays
+				global.arr_level_index_name[0] = "No valid level name";
+	
+
+				var ds_level_stats_csv = load_csv("level_data.csv");
+
+				// Ensure the grid is valid
+				if (ds_level_stats_csv == -1) {
+				    show_error("Failed to load CSV file.", true);
+				    exit;
+				}
+
+				// Initialize stats dictionary constructor
+				function level_stats(_level_name = -1, _room_name = -1, _reward_gold = -1, _reward_xp = -1, _level_completed = false, _level_chests = -1, _level_chests_empty = false) constructor {
+				
+					// GATHERED FROM CSV
+					level_name = _level_name					// Holds name of level
+					room_name = _room_name						// Holds name of room
+					reward_gold = _reward_gold					// Holds gold reward for completing level
+					reward_xp = _reward_xp						// Holds xp reward for completing level
+					
+					
+					// NOT GATHERED FROM CSV
+					level_completed = _level_completed			// Marks if level is completed previously
+					level_chests = _level_chests				// Holds data for chests in level
+					level_chests_empty = _level_chests_empty	// Declares if all chests in the room are empty
+
+				}
+
+				// Declare length of level index based on adjusted CSV height
+				global.level_index_length = ds_grid_height(ds_level_stats_csv) - 1
+			
+				// Create level_stats struct array
+				for(var i = 1; i <= global.level_index_length; i++)
+				{
+					global.level_stats[i] = new level_stats();
+				}
+
+				// Assign all values from CSV file into stats database structs
+				for(var i = 0; i < global.level_index_length; i++)
+				{
+					var yy = i;
+					var xx = 0;
+
+					global.level_stats[yy].level_name = string(ds_grid_get(ds_level_stats_csv, xx, yy+1)); xx++;
+					global.level_stats[yy].room_name = string(ds_grid_get(ds_level_stats_csv, xx, yy+1)); xx++;
+					global.level_stats[yy].reward_gold = real(ds_grid_get(ds_level_stats_csv, xx, yy+1)); xx++;
+					global.level_stats[yy].reward_xp = real(ds_grid_get(ds_level_stats_csv, xx, yy+1)); xx++;
+				}
+
+				// Assign data to level index arrays
+				for(var p = 0; p < global.level_index_length; p++)
+				{
+					var n = p + 1;
+					// Sets 1st place in array as names
+					global.arr_level_index_name[n] = ds_grid_get(ds_level_stats_csv, 0, n);
+				}
+			
+				// Cleanup DS grid
+				ds_grid_destroy(ds_level_stats_csv);
+
+			
+			// Holds position of room in global.level_stats
+			global.active_level_num = -1;
+
+//			show_debug_message("global.level_stats: " + string(global.level_stats))
+
+				// Debug testing
+				
+			//	show_debug_message("level Constructor List: " + string(global.level_stats))
+			//	show_debug_message("global.level_index_length: " + string(global.level_index_length))
+			//	show_debug_message("global.arr_level_index_name: " + string(global.arr_level_index_name))
+				
+			#endregion Level Stats
 
 			
 		#endregion Database

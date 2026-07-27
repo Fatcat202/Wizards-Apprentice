@@ -4,4 +4,4 @@
 
 scr_save_game()
 
-scr_transfer_to_room(level_name)
+scr_transfer_to_room(room_name)

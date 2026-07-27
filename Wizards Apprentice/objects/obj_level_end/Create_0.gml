@@ -23,9 +23,9 @@
 	room_number = global.active_level_num
 	
 	// Rewards to be granted for level completed
-	level_xp = global.arr_levels[room_number].reward_xp
-	level_gold = global.arr_levels[room_number].reward_gold
-	global.arr_levels[room_number].level_completed = true;
+	level_xp = global.level_stats[room_number].reward_xp
+	level_gold = global.level_stats[room_number].reward_gold
+	global.level_stats[room_number].level_completed = true;
 	
 	
 	// Bonus gold and xp for display

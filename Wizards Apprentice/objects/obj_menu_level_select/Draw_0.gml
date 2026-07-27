@@ -39,10 +39,10 @@ draw_text(level_select_x, level_select_y, "Portal Gate")
 			})
 		}
 	
-	//	show_debug_message(string(global.arr_levels[i+slot_offset]))
+	//	show_debug_message(string(global.level_stats[i+slot_offset]))
 	
 		// Stop drawing after reaching final level
-		if(global.arr_levels[i+slot_offset].level_completed == false) break;
+		if(global.level_stats[i+slot_offset].level_completed == false) break;
 	}
 	
 #endregion Slots

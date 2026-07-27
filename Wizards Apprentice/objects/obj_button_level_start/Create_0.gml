@@ -1,7 +1,7 @@
 /// @description
 
 
-level_name = -1
+room_name = -1
 
 button_text = "Select Level"
 

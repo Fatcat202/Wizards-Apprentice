@@ -7,11 +7,11 @@ function scr_set_room_number()
 	room_name = room_get_name(room)
 //	show_debug_message(room_name)
 	
-	for(var i = 0; i < array_length(global.arr_levels); i++)
+	for(var i = 0; i < global.level_index_length; i++)
 	{
-//		show_debug_message(global.arr_levels[i].level_name)
+//		show_debug_message(global.level_stats[i].room_name)
 		
-		if(room_get_name(global.arr_levels[i].level_name) == room_name)
+		if(global.level_stats[i].room_name == room_name)
 		{
 			global.active_level_num = i;
 			

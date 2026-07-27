@@ -7,4 +7,4 @@ if(instance_exists(obj_button_level_start)) obj_button_level_start.selected_leve
 
 //show_debug_message("room_num: " +string(room_num))
 
-//show_debug_message(string(global.arr_levels[room_num]))
+//show_debug_message(string(global.level_stats[room_num]))

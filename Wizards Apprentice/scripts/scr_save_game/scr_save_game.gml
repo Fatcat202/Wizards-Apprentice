@@ -30,11 +30,11 @@ function scr_save_game(file_num = global.file_num)
 			array_push(level_chests, chest_struct)
 		}
 		
-		for(var i = 0; i < array_length(global.arr_levels); i++)
+		for(var i = 0; i < global.level_index_length; i++)
 		{
-			if(global.arr_levels[i].level_name == room_get_name(room))
+			if(global.level_stats[i].level_name == room_get_name(room))
 			{
-				global.arr_levels[i].level_chests = level_chests
+				global.level_stats[i].level_chests = level_chests
 
 			}
 		}
@@ -63,7 +63,7 @@ function scr_save_game(file_num = global.file_num)
 			spellbook : global.spellbook,
 			inventory : global.inventory,
 		
-			arr_levels : global.arr_levels
+			arr_levels : global.level_stats
 		
 		}
 		// Add data struct to start of save_data array

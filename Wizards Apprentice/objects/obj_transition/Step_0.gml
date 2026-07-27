@@ -19,7 +19,7 @@ if(delaying == false)
 		{
 			state = 1
 			delaying = true
-			room_goto(next_room)
+			room_goto(asset_get_index(next_room))
 		
 		}else timer++;
 	}else

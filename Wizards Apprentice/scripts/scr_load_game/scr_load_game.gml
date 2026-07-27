@@ -40,7 +40,7 @@ function scr_load_game(file_num = 0, new_room = rm_wizard_tower)
 		global.spellbook = global.player_data.spellbook
 		global.inventory = global.player_data.inventory
 		
-		global.arr_levels = global.player_data.arr_levels
+		global.level_stats = global.player_data.arr_levels
 		
 		
 		//show_debug_message(global.player_data)

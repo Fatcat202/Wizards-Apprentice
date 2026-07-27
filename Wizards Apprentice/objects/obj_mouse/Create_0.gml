@@ -163,7 +163,7 @@
 						}
 						
 						// Stop drawing after reaching final level
-						if(global.arr_levels[i+slot_offset].level_completed == false) break;
+						if(global.level_stats[i+slot_offset].level_completed == false) break;
 						
 					}
 				}	
@@ -497,7 +497,7 @@
 				// Create control menu with right click
 				if(mouse_check_button(mb_right) && slot_hover != -1 && slot_hover < inventory_hover.slots+1)
 				{
-					if(global.arr_levels[slot_hover+level_offset] == -1) exit;
+					if(global.level_stats[slot_hover+level_offset] == -1) exit;
 			
 					// Destroy control menu if active
 					if(instance_exists(obj_item_control_menu)) instance_destroy(obj_item_control_menu)
@@ -513,7 +513,7 @@
 					
 					
 					// Determine if level has been completed
-					if(global.arr_levels[slot_hover+level_offset].level_completed == true)
+					if(global.level_stats[slot_hover+level_offset].level_completed == true)
 					{
 						var _lvl_complete = "Yes"
 					}else var _lvl_complete = "No"
@@ -522,9 +522,9 @@
 					// Determine if all chests have been found
 					var _chests_empty = "No";
 					
-					if(global.arr_levels[slot_hover+level_offset].level_completed)
+					if(global.level_stats[slot_hover+level_offset].level_completed)
 					{
-						if(global.arr_levels[slot_hover+level_offset].level_chests_empty == true)
+						if(global.level_stats[slot_hover+level_offset].level_chests_empty == true)
 						{
 							_chests_empty = "Yes";
 						}
@@ -539,7 +539,7 @@
 					{
 						// Create control menu
 						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
-							menu.title = global.arr_levels[slot_hover+level_offset].level_name	// Level name
+							menu.title = global.level_stats[slot_hover+level_offset].level_name	// Level name
 							menu.description = "Level Complete: " + string(_lvl_complete)		// Show if level has been completed
 							menu.chests_found = "All Chests Found: " + string(_chests_empty)	// Show if all chests have been found
 					}

@@ -16,7 +16,8 @@ with(obj_interact_chest)
 		}
 	}
 }
-global.arr_levels[global.active_level_num].level_chests_empty = chests_empty
+//show_debug_message(global.active_level_num)
+global.level_stats[global.active_level_num].level_chests_empty = chests_empty
 
 
 // Save gamestate
