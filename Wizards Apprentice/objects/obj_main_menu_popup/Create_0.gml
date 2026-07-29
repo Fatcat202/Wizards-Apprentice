@@ -26,6 +26,11 @@ save_slot_y_title = y_top + 25
 save_slot_y = y_top + 10
 slot_text_gap = 80
 
+credits_title_x = x
+credits_title_y = y - 100
+
+credits_text_x = x
+credits_text_y = y
 
 
 

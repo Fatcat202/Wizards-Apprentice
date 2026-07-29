@@ -363,7 +363,9 @@ draw_set_font(fnt_menu_small);
 		#region Credits
 			case "credits": // View credits
 		
-				draw_text(x, y, "Credits")
+				draw_text(credits_title_x, credits_title_y, "Credits:")
+				
+				draw_text(credits_text_x, credits_text_y, "Made By: Ethan Bayley")
 		
 			break;
 		#endregion Credits
