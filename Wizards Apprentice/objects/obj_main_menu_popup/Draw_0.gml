@@ -365,7 +365,7 @@ draw_set_font(fnt_menu_small);
 		
 				draw_text(credits_title_x, credits_title_y, "Credits:")
 				
-				draw_text(credits_text_x, credits_text_y, "Made By: Ethan Bayley")
+				draw_text(credits_text_x, credits_text_y, credits_text)
 		
 			break;
 		#endregion Credits

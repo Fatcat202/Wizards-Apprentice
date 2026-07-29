@@ -13,7 +13,7 @@ state = "none"
 width = sprite_get_width(sprite_index)
 height = sprite_get_height(sprite_index)
 
-middle = xpos
+middle = xpos;
 
 x_left = xpos - (width / 2);
 x_right = xpos + (width / 2);
@@ -26,11 +26,14 @@ save_slot_y_title = y_top + 25
 save_slot_y = y_top + 10
 slot_text_gap = 80
 
-credits_title_x = x
-credits_title_y = y - 100
 
-credits_text_x = x
-credits_text_y = y
+// Position of credits title
+credits_title_x = x;
+credits_title_y = y - 100;
+// Position of credits text
+credits_text_x = x;
+credits_text_y = y;
+credits_text = "Made By: Ethan Bayley"
 
 
 
