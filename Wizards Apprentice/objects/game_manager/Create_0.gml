@@ -195,6 +195,16 @@ randomise()
 			global.max_spell_slots = 10;
 			
 		#endregion Spellbook
+		
+		#region Dialogue
+		
+			// Shows current position in wizard dialogue order. 0 Used as default message position
+			global.dialogue_wizard_order = 1
+			
+			// Shows current position in shop dialogue order. 0 Used as default message position
+			global.dialogue_shop_order = 1
+		
+		#endregion Dialogue
 
 
 		

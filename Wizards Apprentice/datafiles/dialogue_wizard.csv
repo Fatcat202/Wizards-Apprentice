@@ -1,0 +1,4 @@
+Order,Suborder,unlocked,Text
+0,0,TRUE,Default Message
+1,0,TRUE,Go on your quest!
+2,0,FALSE,Welcome back! I see you aren't dead!
