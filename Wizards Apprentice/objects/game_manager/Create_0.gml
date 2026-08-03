@@ -203,6 +203,14 @@ randomise()
 			
 			// Shows current position in shop dialogue order. 0 Used as default message position
 			global.dialogue_shop_order = 1
+			
+			// Holds data for wizard dialogue, created when interacting with wizard
+			global.arr_dialogue_wizard = -1
+			
+			// Holds data for wizard dialogue, created when interacting with shop
+			global.arr_dialogue_shop = -1
+			
+			
 		
 		#endregion Dialogue
 

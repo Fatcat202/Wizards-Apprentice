@@ -1,4 +1,5 @@
-Order,Suborder,unlocked,Text
-0,0,TRUE,Default Message
-1,0,TRUE,Go on your quest!
-2,0,FALSE,Welcome back! I see you aren't dead!
+Order,Suborder,unlocked,shown,Text
+0,0,TRUE,FALSE,Default Message
+1,0,TRUE,FALSE,I have a quest for you!
+1,1,TRUE,FALSE,Go to the portal!
+2,0,FALSE,FALSE,Welcome back! I see you aren't dead!

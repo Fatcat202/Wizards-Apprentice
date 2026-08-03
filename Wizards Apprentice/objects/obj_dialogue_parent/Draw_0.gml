@@ -1,4 +1,4 @@
-/// @description Pause Image
+/// @description 
 
 
 // Draw Pause Image
@@ -17,8 +17,8 @@ draw_sprite_stretched
 );
 
 
-// If unlocked, show text
-if(arr_dialogue[position].unlocked == true)
+// If unlocked and not shown, show set dialogue text. Otherwise show default message
+if(arr_dialogue[position].unlocked == true && arr_dialogue[position].shown == false)
 {
 	
 	scr_draw_set_text(fa_middle, fa_center, fnt_default, c_white)
@@ -28,5 +28,15 @@ if(arr_dialogue[position].unlocked == true)
 	
 	scr_text_reset()
 
-
+}else 
+{
+	// Set to default position
+	position = 0;
+	
+	scr_draw_set_text(fa_middle, fa_center, fnt_default, c_white)
+	
+	// Draw default dialogue text
+	draw_text(text_x, text_y, arr_dialogue[position].text)
+	
+	scr_text_reset()
 }

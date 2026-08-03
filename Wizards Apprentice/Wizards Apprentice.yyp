@@ -118,7 +118,6 @@
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"dialogue_shop.csv","CopyToMask":-1,"filePath":"datafiles","name":"dialogue_shop.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"dialogue_wizard.csv","CopyToMask":-1,"filePath":"datafiles","name":"dialogue_wizard.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
-    {"$GMIncludedFile":"","%Name":"dialogue_shop.xlsx","CopyToMask":-1,"filePath":"datafiles/Dialogue","name":"dialogue_shop.xlsx","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"enemy_attack_data.csv","CopyToMask":-1,"filePath":"datafiles","name":"enemy_attack_data.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"enemy_data.csv","CopyToMask":-1,"filePath":"datafiles","name":"enemy_data.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"item_data.csv","CopyToMask":-1,"filePath":"datafiles","name":"item_data.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -151,6 +150,8 @@
     {"id":{"name":"obj_button_credits","path":"objects/obj_button_credits/obj_button_credits.yy",},},
     {"id":{"name":"obj_button_delete_slot","path":"objects/obj_button_delete_slot/obj_button_delete_slot.yy",},},
     {"id":{"name":"obj_button_dialogue_leave","path":"objects/obj_button_dialogue_leave/obj_button_dialogue_leave.yy",},},
+    {"id":{"name":"obj_button_dialogue_next","path":"objects/obj_button_dialogue_next/obj_button_dialogue_next.yy",},},
+    {"id":{"name":"obj_button_dialogue_remind","path":"objects/obj_button_dialogue_remind/obj_button_dialogue_remind.yy",},},
     {"id":{"name":"obj_button_forget","path":"objects/obj_button_forget/obj_button_forget.yy",},},
     {"id":{"name":"obj_button_give","path":"objects/obj_button_give/obj_button_give.yy",},},
     {"id":{"name":"obj_button_help","path":"objects/obj_button_help/obj_button_help.yy",},},
