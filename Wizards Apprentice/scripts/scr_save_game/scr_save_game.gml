@@ -63,12 +63,16 @@ function scr_save_game(file_num = global.file_num)
 			spellbook : global.spellbook,
 			inventory : global.inventory,
 		
-			arr_levels : global.level_stats
+			arr_levels : global.level_stats,
+			
+			arr_dialogue_wizard : global.arr_dialogue_wizard,
+			arr_dialogue_shop : global.arr_dialogue_shop,
+			dialogue_wizard_order : global.dialogue_wizard_order,
+			dialogue_shop_order : global.dialogue_shop_order
 		
 		}
 		// Add data struct to start of save_data array
 		array_push(save_data, global.player_data)
-	
 	
 	#endregion Data collection
 	

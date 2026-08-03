@@ -42,6 +42,10 @@ function scr_load_game(file_num = 0, new_room = rm_wizard_tower)
 		
 		global.level_stats = global.player_data.arr_levels
 		
+		global.arr_dialogue_wizard = global.player_data.arr_dialogue_wizard
+		global.arr_dialogue_shop = global.player_data.arr_dialogue_shop
+		global.dialogue_wizard_order = global.player_data.dialogue_wizard_order
+		global.dialogue_shop_order = global.player_data.dialogue_shop_order
 		
 		//show_debug_message(global.player_data)
 //		show_debug_message("Save Game Loaded! " + _string)

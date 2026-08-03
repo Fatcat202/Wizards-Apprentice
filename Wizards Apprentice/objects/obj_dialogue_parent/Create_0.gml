@@ -10,6 +10,7 @@ scr_dialogue_pause()
 	// ** MUST CHANGE IN EACH CHILD VARIABLE DEFINITIONS**
 	//dialogue_csv_name
 	//order
+	// Global variable for dialogue data to be saved in
 
 	// Position of dialogue within arr_dialogue
 	position = 0;
