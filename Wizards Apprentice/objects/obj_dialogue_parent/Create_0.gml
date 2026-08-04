@@ -16,23 +16,36 @@ scr_dialogue_pause()
 	position = 0;
 	// Suborder within dialogue. Increments as dialogue is moved through, showing text in order
 	suborder = 0;
+	
+	// Typewriter timer
+	typewriter_timer = 0
+	typewriter_time = 2
+	
+	// Text displayed to screen
+	text_display = "";
+	
+	// Position of character to gather from arr_dialogue[position].text
+	str_pos = 1
 
 
 	x_middle = global.cam_x + (global.cam_w/2)
 	y_middle = global.cam_y + (global.cam_h/2)
 
+	// Size of dialogue box
 	width = 475;
 	height = 100;
 	x_pos = x_middle - (width/2);
 	y_pos = y_middle + 75;
 
-
+	// Text Positioning
 	text_x = x_middle;
 	text_y = y_pos + 35;
 	
+	// Leave Button Positioning
 	button_leave_x = x_middle + 175
 	button_leave_y = y_pos + 70
 	
+	// Next/Remind Me Button Positioning
 	button_next_x = x_middle + 175
 	button_next_y = y_pos + 30
 	
@@ -135,6 +148,7 @@ scr_dialogue_pause()
 	}
 
 #endregion Dialogue Initial Position
+
 
 
 

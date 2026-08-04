@@ -24,7 +24,7 @@ if(arr_dialogue[position].unlocked == true && arr_dialogue[position].shown == fa
 	scr_draw_set_text(fa_middle, fa_center, fnt_default, c_white)
 	
 	// Display Text
-	draw_text(text_x, text_y, arr_dialogue[position].text)
+	draw_text(text_x, text_y, text_display)
 	
 	scr_text_reset()
 
@@ -36,7 +36,7 @@ if(arr_dialogue[position].unlocked == true && arr_dialogue[position].shown == fa
 	scr_draw_set_text(fa_middle, fa_center, fnt_default, c_white)
 	
 	// Draw default dialogue text
-	draw_text(text_x, text_y, arr_dialogue[position].text)
+	draw_text(text_x, text_y, text_display)
 	
 	scr_text_reset()
 }

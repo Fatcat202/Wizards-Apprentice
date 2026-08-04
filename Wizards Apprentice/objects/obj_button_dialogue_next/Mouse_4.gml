@@ -8,6 +8,11 @@ with(obj_dialogue_parent)
 	// Increment position
 	position++
 	
+	// Reset text string
+	text_display = ""
+	typewriter_timer = 0
+	str_pos = 1
+	
 	
 	// Check end of all dialogue has not been reached
 	if(position+1 <= dialogue_index_length)

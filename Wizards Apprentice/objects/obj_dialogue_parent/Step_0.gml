@@ -38,3 +38,36 @@
 
 
 #endregion Buttons
+
+
+#region Timer
+	
+	// Typewriter timer							Check string of text_display is not larger or equal to dialogue text
+	if(typewriter_timer >= typewriter_time && string_length(arr_dialogue[position].text) > string_length(text_display))
+	{
+		// Reset timer
+		typewriter_timer = 0;
+		
+		// Gather next character in dialogue text
+		var char = string_char_at(arr_dialogue[position].text, str_pos)
+		
+		
+		// Increment position to gather next timer
+		str_pos++
+		
+		// If next character exists, add to text_display string
+		if(char != 1)
+		{
+
+			text_display += char;
+		}
+
+		
+	}else typewriter_timer++;
+	
+	// Prevent overflow
+	if(typewriter_timer > typewriter_time) typewriter_timer = 0;
+	
+	//show_debug_message(text_display)
+	
+#endregion Timer

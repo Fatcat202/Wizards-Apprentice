@@ -28,5 +28,10 @@ with(obj_dialogue_parent)
 	
 	position = _pos;
 	
+	// Reset text string
+	text_display = ""
+	typewriter_timer = 0
+	str_pos = 1
+	
 	
 }
