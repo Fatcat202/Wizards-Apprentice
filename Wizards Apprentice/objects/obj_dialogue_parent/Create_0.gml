@@ -10,6 +10,7 @@ scr_dialogue_pause()
 	// ** MUST CHANGE IN EACH CHILD VARIABLE DEFINITIONS**
 	//dialogue_csv_name
 	//order
+	//npc_name
 	// Global variable for dialogue data to be saved in
 
 	// Position of dialogue within arr_dialogue
@@ -36,6 +37,10 @@ scr_dialogue_pause()
 	height = 100;
 	x_pos = x_middle - (width/2);
 	y_pos = y_middle + 75;
+	
+	// NPC Name Positioning
+	npc_name_x = x_middle - 175;
+	npc_name_y = y_pos + 35;
 
 	// Text Positioning
 	text_x = x_middle;
