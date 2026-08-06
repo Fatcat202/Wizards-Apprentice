@@ -46,7 +46,7 @@
   "origin":4,
   "parent":{
     "name":"Study",
-    "path":"folders/Sprites/Inventory/Study.yy",
+    "path":"folders/Sprites/Menu/Buttons/Study.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

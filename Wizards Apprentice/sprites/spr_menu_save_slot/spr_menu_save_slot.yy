@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Save Game",
-    "path":"folders/Sprites/Menu/Save Game.yy",
+    "path":"folders/Sprites/Menu/Buttons/Save Game.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

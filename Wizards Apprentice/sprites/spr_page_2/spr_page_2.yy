@@ -27,7 +27,7 @@
   "origin":4,
   "parent":{
     "name":"Pages",
-    "path":"folders/Sprites/Menu/Pages.yy",
+    "path":"folders/Sprites/Menu/Buttons/Pages.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
