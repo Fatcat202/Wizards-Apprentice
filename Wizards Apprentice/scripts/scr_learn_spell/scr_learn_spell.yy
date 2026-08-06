@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_learn_spell",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_learn_spell",
+  "parent":{
+    "name":"Spells",
+    "path":"folders/Scripts/Spells.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
