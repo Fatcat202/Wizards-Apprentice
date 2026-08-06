@@ -2,7 +2,10 @@
 
 
 // Resume Game
-scr_dialogue_resume()
+if(!instance_exists(obj_shop_menu) && !instance_exists(obj_wizard_menu))
+{
+	scr_dialogue_resume()
+}
 
 
 // Set shown messages as "shown" if all messages with matching order have been shown

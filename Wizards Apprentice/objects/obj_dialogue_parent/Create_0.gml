@@ -2,7 +2,10 @@
 
 
 // Pause game upon creation
-scr_dialogue_pause()
+if(!instance_exists(obj_shop_menu) && !instance_exists(obj_wizard_menu))
+{
+	scr_dialogue_pause()
+}
 
 
 #region Variables
@@ -70,7 +73,7 @@ scr_dialogue_pause()
 	// If shop data already exists, load shop data
 	if(object_index == obj_dialogue_shop && global.arr_dialogue_shop != -1)
 	{
-		arr_dialogue = global.arr_dialogue_wizard
+		arr_dialogue = global.arr_dialogue_shop
 		
 		dialogue_index_length = array_length(arr_dialogue)
 	}else

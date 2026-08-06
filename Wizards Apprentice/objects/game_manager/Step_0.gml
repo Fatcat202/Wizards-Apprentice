@@ -65,10 +65,10 @@ scr_get_controls();
 	
 	#region Exit Shop
 	
-		if((global.show_inventory == true && (instance_exists(obj_inventory_shop) || instance_exists(obj_inventory_chest) || instance_exists(obj_menu_level_select))) 
+		if((global.show_inventory == true && (instance_exists(obj_shop_menu)))
 		&& (global.cont_inventory == true || global.cont_esc_menu == true || global.cont_interact == true))
 		{
-			scr_inventory_resume()
+			scr_shop_resume()
 				
 		}
 		
@@ -81,6 +81,19 @@ scr_get_controls();
 		{
 
 			scr_spellbook_resume()
+
+		}
+		
+	#endregion Exit Study
+	
+	
+	#region Exit Wizard
+		
+		if((global.show_inventory == true && instance_exists(obj_wizard_menu))
+		&& (global.cont_inventory == true || global.cont_esc_menu == true || global.cont_interact == true))
+		{
+
+			scr_wizard_resume()
 
 		}
 		

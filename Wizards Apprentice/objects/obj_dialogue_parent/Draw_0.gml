@@ -30,6 +30,7 @@ draw_sprite_stretched
 
 #region Message Text
 
+
 	// If unlocked and not shown, show set dialogue text. Otherwise show default message
 	if(arr_dialogue[position].unlocked == true && arr_dialogue[position].shown == false)
 	{

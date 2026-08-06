@@ -1,4 +1,4 @@
-Order,Suborder,Unlocked,Text
-0,0,TRUE,Default Message
-1,0,TRUE,Hello there!
-2,0,FALSE,I found more things!
+Order,Suborder,Unlocked,shown,Text
+0,0,TRUE,FALSE,Default Message
+1,0,TRUE,FALSE,Hello there!
+2,0,FALSE,FALSE,I found more things!
