@@ -22,7 +22,7 @@ function scr_find_spell_index(spell_name)
 
 	if(spell_index != 0)
 	{
-		//show_debug_message("Spell_index: " + string(spell_index))
+		show_debug_message("Spell_index: " + string(spell_index))
 	}else show_error("NO SPELL INDEX LOCATED", true)
 	
 }
