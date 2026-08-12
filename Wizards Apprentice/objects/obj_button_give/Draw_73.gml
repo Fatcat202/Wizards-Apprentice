@@ -23,3 +23,4 @@ draw_set_valign(fa_top);
 
 // Reset Font
 draw_set_font(fnt_default);
+

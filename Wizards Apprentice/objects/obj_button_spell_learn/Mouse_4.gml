@@ -1,6 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+with(obj_spell_learn_slot)
+{
+	script_execute(inventory[0].scr)
+	
+}
 
-
-scr_learn_spell()
+// Destroy self
+instance_destroy()

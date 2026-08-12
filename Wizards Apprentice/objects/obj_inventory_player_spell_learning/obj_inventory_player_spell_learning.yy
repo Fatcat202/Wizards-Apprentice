@@ -1,18 +1,22 @@
 {
   "$GMObject":"",
-  "%Name":"obj_button_wizard_dialogue",
+  "%Name":"obj_inventory_player_spell_learning",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_button_wizard_dialogue",
+  "name":"obj_inventory_player_spell_learning",
   "overriddenProperties":[],
   "parent":{
-    "name":"Wizard Buttons",
-    "path":"folders/Objects/Menu/Wizard/Wizard Buttons.yy",
+    "name":"Spell Learning",
+    "path":"folders/Objects/Menu/Wizard/Spell Learning.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_inventory_parent",
+    "path":"objects/obj_inventory_parent/obj_inventory_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,10 +34,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_button_dialogue_page",
-    "path":"sprites/spr_button_dialogue_page/spr_button_dialogue_page.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

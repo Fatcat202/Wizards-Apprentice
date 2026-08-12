@@ -1,21 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_inventory_shop",
+  "%Name":"obj_spell_learn_slot",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_inventory_shop",
+  "name":"obj_spell_learn_slot",
   "overriddenProperties":[],
   "parent":{
-    "name":"Shop",
-    "path":"folders/Objects/Menu/Shop.yy",
+    "name":"Spell Learning",
+    "path":"folders/Objects/Menu/Wizard/Spell Learning.yy",
   },
-  "parentObjectId":{
-    "name":"obj_inventory_parent",
-    "path":"objects/obj_inventory_parent/obj_inventory_parent.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -33,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_inventory_slot",
+    "path":"sprites/spr_inventory_slot/spr_inventory_slot.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

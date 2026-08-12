@@ -1,5 +1,9 @@
 /// @description On Click
 
+
+
+
+
 var index = 0;
 for(var i = 0; i < global.item_index_length + 1; i++)
 {

@@ -66,7 +66,7 @@
 						{
 							// Inventory slot
 							other.slot_hover = i;
-			
+							
 							// Inventory ID
 							other.inventory_hover = id;
 
@@ -170,6 +170,25 @@
 			}
 		
 		#endregion Level Select
+		
+		#region Spell Learn
+			
+			with(obj_spell_learn_slot)
+			{
+				if(point_in_rectangle(mouse_x, mouse_y, x, y, x+sprite_get_width(sprite_index), y+sprite_get_height(sprite_index)))
+				{
+					// Inventory slot
+					other.slot_hover = 0;
+			
+					// Inventory ID
+					other.inventory_hover = id;
+					
+					// Swap image index to show mouse over
+					image_index = 1
+				}else image_index = 0
+			}
+			
+		#endregion Spell Learn
 	
 	}
 
@@ -207,13 +226,13 @@
 	
 	
 				// Create control menu with right click
-				if(mouse_check_button(mb_right) && slot_hover != -1 && slot_hover < inventory_hover.inventory_slots)
+				if(mouse_check_button(mb_right) && slot_hover != -1 && slot_hover < inventory_hover.inventory_slots && inventory_hover.object_index != obj_spell_learn_slot)
 				{
 					if(inventory_hover.inventory[slot_hover] == -1) exit;
 			
 					// Destroy control menu if active
 					if(instance_exists(obj_item_control_menu)) instance_destroy(obj_item_control_menu)
-					if(instance_exists(obj_button_use)) instance_destroy(obj_button_use);
+
 		
 		
 					// Menu Pos
@@ -223,24 +242,42 @@
 					var xx = clamp(mouse_x, global.cam_x, global.cam_x + global.res_w - (sprite_get_width(spr_item_control_menu)));
 					var yy = clamp(mouse_y, global.cam_y + (sprite_get_height(spr_item_control_menu) / 2), global.cam_y + global.res_h - (sprite_get_height(spr_item_control_menu) / 2));
 		
-					if(inventory_hover.object_index == obj_inventory_shop)
-					{
-				
-						// Create control menu
-						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
-							menu.title = inventory_hover.inventory[slot_hover].title;
-							menu.description = inventory_hover.inventory[slot_hover].desc;
-							menu.item = inventory_hover.inventory[slot_hover]
-				
-					}else
-					{
-						// Create control menu
-						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
-							menu.title = inventory_hover.inventory[slot_hover].title;
-							menu.description = inventory_hover.inventory[slot_hover].desc;
-							menu.item = inventory_hover.inventory[slot_hover]
-					}
 
+					// Create control menu
+					menu = instance_create_layer(xx, yy, "Game_Manager", obj_item_control_menu)
+						menu.title = inventory_hover.inventory[slot_hover].title;
+						menu.description = inventory_hover.inventory[slot_hover].desc;
+						menu.item = inventory_hover.inventory[slot_hover]
+						
+				}else
+				
+				// If mouse is over obj_spell_learn_slot, create control menu seperate to other logic
+				if(mouse_check_button(mb_right) && slot_hover != -1)
+				{
+					if(inventory_hover.object_index == obj_spell_learn_slot && inventory_hover.inventory[0] != -1)
+					{	
+			
+						var xx = clamp(mouse_x, global.cam_x, global.cam_x + global.res_w - (sprite_get_width(spr_item_control_menu)));
+						var yy = clamp(mouse_y, global.cam_y + (sprite_get_height(spr_item_control_menu) / 2), global.cam_y + global.res_h - (sprite_get_height(spr_item_control_menu) / 2));
+						
+						// Destroy control menu if active
+						if(instance_exists(obj_item_control_menu)) instance_destroy(obj_item_control_menu)
+
+						with(obj_spell_learn_slot)
+						{
+							// Create control menu
+							menu = instance_create_layer(xx, yy, "Game_Manager", obj_item_control_menu,
+							{
+								title : inventory[0].title,
+								description : inventory[0].desc,
+								item : inventory[0]
+							})
+						}
+					}
+				}
+				
+				if(mouse_check_button(mb_right) && slot_hover != -1 && slot_hover < inventory_hover.inventory_slots)
+				{
 
 					if(inventory_hover.object_index == obj_inventory_player_chest)
 					{
@@ -256,11 +293,15 @@
 							give.item = slot_hover;
 							give.inventory_slots = obj_inventory_chest.inventory_slots
 							give.chest_inventory = obj_inventory_chest.inventory;
-			
-						var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
-							use.item = slot_hover;
-							use.inventory = inventory_hover.inventory
-							use.inventory_slots = inventory_hover.inventory_slots
+							
+						// Check if item hovered is consumable
+						if(inventory_hover.inventory[slot_hover].is_consumable == true)
+						{	
+							var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
+								use.item = slot_hover;
+								use.inventory = inventory_hover.inventory
+								use.inventory_slots = inventory_hover.inventory_slots
+						}
 				
 					}else
 			
@@ -269,11 +310,15 @@
 						// Set use button pos
 						x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
 						y_pos_use = menu.y + 40
-
-						var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
-							use.item = slot_hover;
-							use.inventory = inventory_hover.inventory
-							use.inventory_slots = inventory_hover.inventory_slots
+						
+						// Check if item hovered is consumable
+						if(inventory_hover.inventory[slot_hover].is_consumable == true && !instance_exists(obj_button_use))
+						{
+							var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
+								use.item = slot_hover;
+								use.inventory = inventory_hover.inventory
+								use.inventory_slots = inventory_hover.inventory_slots
+						}
 					}else
 			
 					if(inventory_hover.object_index == obj_inventory_chest)
@@ -286,16 +331,23 @@
 						// Set use button pos
 						x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
 						y_pos_use = menu.y + 20
-				
-						var take = instance_create_layer(x_pos_take, y_pos_take, "Menu_Buttons", obj_button_take)
-							take.item = slot_hover;
-							take.inventory = inventory_hover.inventory
-							take.inventory_slots = inventory_hover.inventory_slots
-			
-						var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
-							use.item = slot_hover;
-							use.inventory = inventory_hover.inventory
-							use.inventory_slots = inventory_hover.inventory_slots
+						
+						if(!instance_exists(obj_button_take))
+						{
+							var take = instance_create_layer(x_pos_take, y_pos_take, "Menu_Buttons", obj_button_take)
+								take.item = slot_hover;
+								take.inventory = inventory_hover.inventory
+								take.inventory_slots = inventory_hover.inventory_slots
+						}
+							
+						// Check if item hovered is consumable
+						if(inventory_hover.inventory[slot_hover].is_consumable == true && !instance_exists(obj_button_use))
+						{
+							var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
+								use.item = slot_hover;
+								use.inventory = inventory_hover.inventory
+								use.inventory_slots = inventory_hover.inventory_slots
+						}
 				
 					}else
 			
@@ -309,14 +361,20 @@
 						x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
 						y_pos_use = menu.y + 20
 			
-			
-						var sell = instance_create_layer(x_pos_sell, y_pos_sell, "Menu_Buttons", obj_button_sell)
-							sell.item = slot_hover;
-			
-						var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
-							use.item = slot_hover;
-							use.inventory = inventory_hover.inventory
-							use.inventory_slots = inventory_hover.inventory_slots
+						if(!instance_exists(obj_button_sell))
+						{
+							var sell = instance_create_layer(x_pos_sell, y_pos_sell, "Menu_Buttons", obj_button_sell)
+								sell.item = slot_hover;
+						}
+							
+						// Check if item hovered is consumable
+						if(inventory_hover.inventory[slot_hover].is_consumable == true && !instance_exists(obj_button_use))
+						{
+							var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
+								use.item = slot_hover;
+								use.inventory = inventory_hover.inventory
+								use.inventory_slots = inventory_hover.inventory_slots
+						}
 					}else
 				
 					if(inventory_hover.object_index == obj_inventory_shop)
@@ -325,16 +383,62 @@
 						x_pos_buy = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
 						y_pos_buy = menu.y + 40
 			
-			
-						var buy = instance_create_layer(x_pos_buy, y_pos_buy, "Menu_Buttons", obj_button_buy)
-							buy.item = slot_hover;
-							buy.inventory = inventory_hover.inventory;
+						if(!instance_exists(obj_button_buy))
+						{
+							var buy = instance_create_layer(x_pos_buy, y_pos_buy, "Menu_Buttons", obj_button_buy)
+								buy.item = slot_hover;
+								buy.inventory = inventory_hover.inventory;
+						}
+
+					}else
+					
+					if(inventory_hover.object_index == obj_spell_learn_slot)
+					{
+						// Set take button pos
+						x_pos_take = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+						y_pos_take = menu.y + 55
+						
+						if(!instance_exists(obj_button_take))
+						{
+							var take = instance_create_layer(x_pos_take, y_pos_take, "Menu_Buttons", obj_button_take)
+								take.item = slot_hover;
+								take.inventory = inventory_hover.inventory
+								take.inventory_slots = inventory_hover.inventory_slots
+						}
+						
+					}else
+					
+					if(inventory_hover.object_index == obj_inventory_player_spell_learning)
+					{
+						// Set take button pos
+						x_pos_give = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+						y_pos_give = menu.y + 55
+
+						// Set use button pos
+						x_pos_use = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
+						y_pos_use = menu.y + 20
+
+						if(!instance_exists(obj_button_give) && inventory_hover.inventory[slot_hover].is_scroll == true)
+						{
+							var give = instance_create_layer(x_pos_give, y_pos_give, "Menu_Buttons", obj_button_give)
+								give.item = slot_hover;
+								give.inventory_slots = obj_spell_learn_slot.inventory_slots
+								give.chest_inventory = obj_spell_learn_slot.inventory;
+						}
+							
+						// Check if item hovered is consumable
+						if(inventory_hover.inventory[slot_hover].is_consumable == true && !instance_exists(obj_button_use))
+						{	
+							var use = instance_create_layer(x_pos_use, y_pos_use, "Menu_Buttons", obj_button_use)
+								use.item = slot_hover;
+								use.inventory = inventory_hover.inventory
+								use.inventory_slots = inventory_hover.inventory_slots
+						}
 					}else
 					{
 						show_debug_message("No Inventory Found");
 					}
 			
-
 			
 					// Indicate mb_right is being held
 					held = true;
@@ -590,9 +694,27 @@
 			
 			if(instance_exists(obj_inventory_parent))
 			{
-				//Swap with slot if hovering
-				if(slot_hover != -1 && inventory_hover.object_index != obj_inventory_shop) scr_inventory_swap(inventory_drag, slot_drag, inventory_hover, slot_hover)
+				//Swap with slot if hovering and not shop or spell learning
+				if(slot_hover != -1
+				&& inventory_hover.object_index != obj_inventory_shop
+				&& inventory_hover.object_index != obj_spell_learn_slot)
+				{
+					scr_inventory_swap(inventory_drag, slot_drag, inventory_hover, slot_hover)
+				}else
+				
+				// If swapping to spell_learn_slot, default slot_hover to 0
+				if(slot_hover != -1 && inventory_hover.object_index == obj_spell_learn_slot)
+				{
+					// Only allow scrolls to be transfered
+					if(inventory_drag.inventory[slot_drag].is_scroll == true)
+					{
+						scr_inventory_swap(inventory_drag, slot_drag, inventory_hover, 0)
+					}
+				}
+				
+				
 			}else
+
 			
 			if(instance_exists(obj_study_menu))
 			{
@@ -668,6 +790,8 @@
 				}
 
 			}
+			
+			
 		
 		
 			//Return to free state

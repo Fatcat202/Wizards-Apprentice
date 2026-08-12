@@ -2,7 +2,6 @@
 
 spacer = 12
 
-
 page_x = global.cam_target_x + (global.res_w/2)
 
 // Width, height, and location of menu select box

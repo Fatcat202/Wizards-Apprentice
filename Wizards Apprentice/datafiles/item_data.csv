@@ -1,5 +1,9 @@
-,spr,scr,main_var,duration,price,min_level,title,description
-health_potion_light,spr_health_potion_light,scr_health_potion,2,0,50,1,Light Health Potion,Heal 2
-health_potion_moderate,spr_health_potion_moderate,scr_health_potion,3,0,100,1,Moderate Health Potion,Heal 3
-health_potion_severe,spr_health_potion_severe,scr_health_potion,4,0,150,1,Severe Health Potion,Heal 4
-health_potion_critical,spr_health_potion_critical,scr_health_potion,5,0,200,1,Critical Health Potion,Heal 5
+,spr,scr,main_var,duration,price,min_level,is_scroll,is_consumable,title,description
+health_potion_light,spr_health_potion_light,scr_health_potion,2,0,50,1,FALSE,TRUE,Light Health Potion,Heal 2
+health_potion_moderate,spr_health_potion_moderate,scr_health_potion,3,0,100,1,FALSE,TRUE,Moderate Health Potion,Heal 3
+health_potion_severe,spr_health_potion_severe,scr_health_potion,4,0,150,1,FALSE,TRUE,Severe Health Potion,Heal 4
+health_potion_critical,spr_health_potion_critical,scr_health_potion,5,0,200,1,FALSE,TRUE,Critical Health Potion,Heal 5
+scroll_level_1,spr_placeholder,scr_learn_spell_scroll,1,0,0,0,TRUE,FALSE,Scroll Level 1,Hidden within is the knowledge of a spell --- if it can be translated
+scroll_level_2,spr_placeholder,scr_learn_spell_scroll,2,0,0,0,TRUE,FALSE,Scroll Level 2,Hidden within is the knowledge of a spell --- if it can be translated
+scroll_level_3,spr_placeholder,scr_learn_spell_scroll,3,0,0,0,TRUE,FALSE,Scroll Level 3,Hidden within is the knowledge of a spell --- if it can be translated
+scroll_level_4,spr_placeholder,scr_learn_spell_scroll,4,0,0,0,TRUE,FALSE,Scroll Level 4,Hidden within is the knowledge of a spell --- if it can be translated

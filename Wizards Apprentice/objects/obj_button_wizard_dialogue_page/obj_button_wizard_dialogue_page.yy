@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_button_wizard_spell_learn",
+  "%Name":"obj_button_wizard_dialogue_page",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_button_wizard_spell_learn",
+  "name":"obj_button_wizard_dialogue_page",
   "overriddenProperties":[],
   "parent":{
     "name":"Wizard Buttons",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_button_spell_learn_page",
-    "path":"sprites/spr_button_spell_learn_page/spr_button_spell_learn_page.yy",
+    "name":"spr_button_dialogue_page",
+    "path":"sprites/spr_button_dialogue_page/spr_button_dialogue_page.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -14,6 +14,6 @@ function scr_inventory_resume()
 	
 	if(instance_exists(obj_inventory_parent)) instance_destroy(obj_inventory_parent)
 	
-	if(sprite_exists(global.pause_image)) sprite_delete(global.pause_image)
+	global.pause_image = -1
 	
 }

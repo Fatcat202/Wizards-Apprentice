@@ -1,5 +1,5 @@
 (spell names below),level,water_level,oil_level,is_ice,is_flaming,is_steaming,is_charged,damage,move_spd,cooldown,mana,memory,uses,duration,title,desc,spr,scr
-heal,1,0,0,FALSE,FALSE,FALSE,FALSE,2,-1,5,1,1,-1,-1,Heal,Empty,spr_spell_slot_heal,scr_spell_heal
+heal,2,0,0,FALSE,FALSE,FALSE,FALSE,2,-1,5,1,1,-1,-1,Heal,Empty,spr_spell_slot_heal,scr_spell_heal
 jump,2,0,0,FALSE,FALSE,FALSE,FALSE,-1,-1,2,2,1,1,5,Jump,Empty,spr_spell_slot_jump,scr_spell_jump
 jolt,1,0,0,FALSE,FALSE,FALSE,TRUE,5,6,1,0,1,-1,2,Jolt,Empty,spr_spell_slot_jolt,scr_spell_jolt
 firebolt,1,0,0,FALSE,TRUE,FALSE,FALSE,5,6,1,0,1,-1,2,Firebolt,Empty,spr_spell_slot_firebolt,scr_spell_firebolt

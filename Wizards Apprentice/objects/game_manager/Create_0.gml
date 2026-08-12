@@ -18,7 +18,11 @@ randomise()
 		health_potion_light,
 		health_potion_moderate,
 		health_potion_severe,
-		health_potion_critical
+		health_potion_critical,
+		scroll_level_1,
+		scroll_level_2,
+		scroll_level_3,
+		scroll_level_4
 	}
 	
 	enum stats // Positions of stats
@@ -429,16 +433,18 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function item_stats(_spr = spr_placeholder, _scr = -1, _main_var = -1, _duration = -1, _price = -1, _min_level = -1, _title = "No Title", _desc = "No Description") constructor {
+				function item_stats(_spr = spr_placeholder, _scr = -1, _main_var = -1, _duration = -1, _price = -1, _min_level = -1, _is_scroll = false, _is_consumable = false, _title = "No Title", _desc = "No Description") constructor {
 				
-					spr = _spr
-					scr = _scr
-					main_var = _main_var
-					duration = _duration
-					price = _price
-					min_level = _min_level
-					title = _title
-					desc = _desc
+					spr = _spr							// Item sprite to trigger on use
+					scr = _scr							// Item script to trigger on use
+					main_var = _main_var				// Primary variable used, such as healing or mana recieved
+					duration = _duration				// Duration of effect, if any
+					price = _price						// Price of item to buy in shop
+					min_level = _min_level				// Minimum level required to buy item
+					is_scroll = _is_scroll				// Declares if item is a scroll
+					is_consumable = _is_consumable		// Declares if item is consumable, like a potion
+					title = _title						// Title of item
+					desc = _desc						// Description of item
 
 				}
 
@@ -462,6 +468,8 @@ randomise()
 					global.item_stats[yy].duration = real(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
 					global.item_stats[yy].price = real(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
 					global.item_stats[yy].min_level = real(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].is_scroll = bool(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
+					global.item_stats[yy].is_consumable = bool(ds_grid_get(ds_item_stats_csv, xx, yy)); xx++;
 					global.item_stats[yy].title = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.item_stats[yy].desc = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++
 				}
@@ -681,8 +689,8 @@ randomise()
 				global.inventory[4] = -1;
 	
 				// Row 2
-				global.inventory[5] = -1;
-				global.inventory[6] = -1;
+				global.inventory[5] = global.item_stats[item_names.scroll_level_3];
+				global.inventory[6] = global.item_stats[item_names.scroll_level_1];
 				global.inventory[7] = -1;
 				global.inventory[8] = -1;
 				global.inventory[9] = -1;
@@ -724,9 +732,9 @@ randomise()
 				
 					global.spellbook[page, slot] = global.spell_stats[scr_find_spell_index("firebolt")];
 					slot++
-					global.spellbook[page, slot] = -1;
+					global.spellbook[page, slot] = -1
 					slot++
-					global.spellbook[page, slot] = -1;
+					global.spellbook[page, slot] = -1
 					slot++
 					global.spellbook[page, slot] = -1;
 					slot++

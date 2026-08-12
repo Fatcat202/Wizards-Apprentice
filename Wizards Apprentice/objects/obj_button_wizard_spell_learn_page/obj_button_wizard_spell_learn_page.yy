@@ -1,22 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_inventory_player_shop",
+  "%Name":"obj_button_wizard_spell_learn_page",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_inventory_player_shop",
+  "name":"obj_button_wizard_spell_learn_page",
   "overriddenProperties":[],
   "parent":{
-    "name":"Shop",
-    "path":"folders/Objects/Menu/Shop.yy",
+    "name":"Wizard Buttons",
+    "path":"folders/Objects/Menu/Wizard/Wizard Buttons.yy",
   },
-  "parentObjectId":{
-    "name":"obj_inventory_parent",
-    "path":"objects/obj_inventory_parent/obj_inventory_parent.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_button_spell_learn_page",
+    "path":"sprites/spr_button_spell_learn_page/spr_button_spell_learn_page.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

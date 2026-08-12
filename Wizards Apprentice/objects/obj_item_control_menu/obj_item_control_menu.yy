@@ -10,8 +10,8 @@
   "name":"obj_item_control_menu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Item Buttons",
-    "path":"folders/Objects/Menu/Inventory/Item Buttons.yy",
+    "name":"Inventory",
+    "path":"folders/Objects/Menu/Inventory.yy",
   },
   "parentObjectId":null,
   "persistent":false,
