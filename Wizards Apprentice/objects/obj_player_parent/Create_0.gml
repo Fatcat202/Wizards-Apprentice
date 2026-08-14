@@ -121,6 +121,15 @@ scr_memory_used()
 		jump_hold_timer = 0;
 		// Maximum number of cycles for held jump before gravity kicks in
 		jump_hold_frames = 12;
+		
+		// Timer for mana regen
+		mana_regen_timer = 0
+		// Time between mana regenerating in seconds
+		mana_regen_length = game_get_speed(gamespeed_fps) * 0.5;
+		
+		mana_regen_delay_timer = 0;
+		// Time before mana starts to regenerate after last use in seconds. Subtract mana_regen_length to prevent doubling up timers
+		mana_regen_delay_length = (game_get_speed(gamespeed_fps) * 4) - mana_regen_length;
 
 
 	

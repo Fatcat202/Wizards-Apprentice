@@ -20,6 +20,37 @@ function scr_player_timers()
 		}else stun_cooldown_timer++
 	#endregion Stun Cooldown
 	
+	#region Mana Regen
+		
+		// Ticks up counter until mana can regen
+		
+		// Check if mana is less than max mana, allowing regeneration
+		if(active_mana < max_mana)
+		{
+			// Start timer setting delay before mana starts regenerating
+			if(mana_regen_delay_timer >= mana_regen_delay_length)
+			{
+	
+				// Timer for regenerating timer without delay
+				if(mana_regen_timer >= mana_regen_length)
+				{
+					// Increment mana
+					active_mana++;
+			
+					// Reset timers
+					mana_regen_timer = 0;
+	
+	
+				}else mana_regen_timer++
+			}else mana_regen_delay_timer++
+		}else
+		{
+			// If mana is full, reset timers
+			mana_regen_timer = 0;
+			mana_regen_delay_timer = 0;
+		}
+	#endregion Stun Cooldown
+	
 	#region Platform Stun
 	
 		if(plat_stunned == true)
