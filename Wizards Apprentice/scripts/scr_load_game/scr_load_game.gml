@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_load_game(file_num = 0, new_room = rm_wizard_tower)
 {
-	// Pass through file number to load
+	// Pass through file number to load, default being global.file_num
 	// Pass through new room to move to, default being wizard tower
 	
 	
@@ -56,11 +56,6 @@ function scr_load_game(file_num = 0, new_room = rm_wizard_tower)
 		
 		// Go to loaded room	
 		scr_transfer_to_room(new_room)
-		
-		// Ensure pause properties are undone
-//		scr_esc_resume()
-//		if(instance_exists(obj_esc_menu)) instance_destroy(obj_esc_menu)
-//		layer_destroy_instances("Menu_Buttons")
 
 
 	}else

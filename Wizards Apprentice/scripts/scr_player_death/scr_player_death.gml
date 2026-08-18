@@ -3,6 +3,6 @@
 function scr_player_death()
 {
 	
-	
-	game_restart();
+	scr_death_pause()
+
 }

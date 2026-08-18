@@ -6,6 +6,8 @@ scr_inventory_resume()
 scr_spellbook_resume()
 scr_wizard_resume()
 scr_shop_resume()
+scr_dialogue_resume()
+scr_death_resume()
 
 // Reset variables
 global.can_control_player = true
