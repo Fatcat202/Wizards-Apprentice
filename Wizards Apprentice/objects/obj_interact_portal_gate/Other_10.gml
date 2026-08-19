@@ -7,7 +7,7 @@ if(global.show_inventory = false)
 {
 	global.show_inventory = true;
 		
-	scr_inventory_pause()	
+	scr_level_select_pause()	
 		
 	if(!instance_exists(obj_menu_level_select))
 	{

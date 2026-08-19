@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_learn_spell_scroll",
   "parent":{
-    "name":"Spells",
-    "path":"folders/Scripts/Spells.yy",
+    "name":"Item Trigger",
+    "path":"folders/Scripts/Items/Item Trigger.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

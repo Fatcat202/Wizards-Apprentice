@@ -78,10 +78,12 @@
     {"$GMFolder":"","%Name":"Enemy Scripts","folderPath":"folders/Scripts/Enemy AI/Attacks/Enemy Scripts.yy","name":"Enemy Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Inventory","folderPath":"folders/Scripts/Inventory.yy","name":"Inventory","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Items","folderPath":"folders/Scripts/Items.yy","name":"Items","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Item Trigger","folderPath":"folders/Scripts/Items/Item Trigger.yy","name":"Item Trigger","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Pause","folderPath":"folders/Scripts/Pause.yy","name":"Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Death Pause","folderPath":"folders/Scripts/Pause/Death Pause.yy","name":"Death Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Dialogue Pause","folderPath":"folders/Scripts/Pause/Dialogue Pause.yy","name":"Dialogue Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"ESC Pause","folderPath":"folders/Scripts/Pause/ESC Pause.yy","name":"ESC Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Level Select","folderPath":"folders/Scripts/Pause/Level Select.yy","name":"Level Select","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Inventory Pause","folderPath":"folders/Scripts/Pause/Inventory Pause.yy","name":"Inventory Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Shop Pause","folderPath":"folders/Scripts/Pause/Shop Pause.yy","name":"Shop Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Spellbook Pause","folderPath":"folders/Scripts/Pause/Spellbook Pause.yy","name":"Spellbook Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -357,6 +359,8 @@
     {"id":{"name":"scr_is_solid","path":"scripts/scr_is_solid/scr_is_solid.yy",},},
     {"id":{"name":"scr_learn_spell_scroll","path":"scripts/scr_learn_spell_scroll/scr_learn_spell_scroll.yy",},},
     {"id":{"name":"scr_learn_spell","path":"scripts/scr_learn_spell/scr_learn_spell.yy",},},
+    {"id":{"name":"scr_level_select_pause","path":"scripts/scr_level_select_pause/scr_level_select_pause.yy",},},
+    {"id":{"name":"scr_level_select_resume","path":"scripts/scr_level_select_resume/scr_level_select_resume.yy",},},
     {"id":{"name":"scr_load_game","path":"scripts/scr_load_game/scr_load_game.yy",},},
     {"id":{"name":"scr_load_room_chests","path":"scripts/scr_load_room_chests/scr_load_room_chests.yy",},},
     {"id":{"name":"scr_mana_drain","path":"scripts/scr_mana_drain/scr_mana_drain.yy",},},
@@ -549,9 +553,9 @@
   "RoomOrderNodes":[
     {"children":[
         {"children":[
+            {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
-            {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
           ],"groupName":"Wizard Tower",},
         {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},

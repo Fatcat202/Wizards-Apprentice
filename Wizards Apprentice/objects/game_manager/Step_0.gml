@@ -86,6 +86,18 @@ scr_get_controls();
 		
 	#endregion Exit Study
 	
+	#region Exit Level Select
+		
+		if((global.show_inventory == true && instance_exists(obj_menu_level_select))
+		&& (global.cont_inventory == true || global.cont_esc_menu == true || global.cont_interact == true))
+		{
+
+			scr_level_select_resume()
+
+		}
+		
+	#endregion Exit Study
+	
 	
 	#region Exit Wizard
 		

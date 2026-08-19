@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_health_potion",
   "parent":{
-    "name":"Items",
-    "path":"folders/Scripts/Items.yy",
+    "name":"Item Trigger",
+    "path":"folders/Scripts/Items/Item Trigger.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

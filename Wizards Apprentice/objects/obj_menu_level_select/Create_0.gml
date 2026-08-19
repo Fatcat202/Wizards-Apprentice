@@ -28,3 +28,37 @@ level_start_x = x_pos + (width/2) - spacer;
 level_start_y = y_pos + (height) - 48
 
 
+
+#region Slots
+
+	// Draw Level Slots
+	for(var i = 0; i < slots; i++)
+	{
+		var xx = x_pos + (i mod row_length) * 64;
+		var yy = y_pos + (i div row_length) * 64 + 40;
+
+	instance_create_layer(xx, yy, "Menu_Buttons", obj_button_level_select,
+	{
+		room_num : i + slot_offset,
+		slot_offset : slot_offset
+	})
+		
+
+	//	show_debug_message(string(global.level_stats[i+slot_offset]))
+	
+		// Stop drawing after reaching final level
+		if(global.level_stats[i+slot_offset].level_completed == false) break;
+	}
+	
+#endregion Slots
+
+#region Level Start
+
+	if(!instance_exists(obj_button_level_start))
+	{
+		instance_create_layer(level_start_x, level_start_y, "Menu_Buttons", obj_button_level_start)
+	}
+
+#endregion Level Start
+
+

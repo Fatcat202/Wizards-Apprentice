@@ -637,13 +637,12 @@
 					{
 						_chests_empty = "No";
 					}
-					// TODO: Search room for all chests inside, search all chests to detect if empty
-					
+				
 					
 					if(!instance_exists(obj_item_control_menu))
 					{
 						// Create control menu
-						var menu = instance_create_layer(xx, yy, "Menu_Buttons", obj_item_control_menu)
+						var menu = instance_create_layer(xx, yy, "Game_Manager", obj_item_control_menu)
 							menu.title = global.level_stats[slot_hover+level_offset].level_name	// Level name
 							menu.description = "Level Complete: " + string(_lvl_complete)		// Show if level has been completed
 							menu.chests_found = "All Chests Found: " + string(_chests_empty)	// Show if all chests have been found
