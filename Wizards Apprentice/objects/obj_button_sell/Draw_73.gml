@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+var price = scr_get_sell_price(item)
+
 draw_self()
 // Set Font
 draw_set_font(fnt_menu)
@@ -12,7 +14,7 @@ draw_set_valign(fa_middle);
 //Draw Text
 if(global.inventory[item] != -1)
 {
-	var text = "SELL  " + string(floor(global.inventory[item].price / 2))
+	var text = "SELL  " + string(price)
 	draw_text(x, y, text);
 }
 

@@ -1,5 +1,7 @@
 /// @description Text
 
+var price = scr_get_buy_price(item)
+
 draw_self()
 // Set Font
 draw_set_font(fnt_menu)
@@ -13,7 +15,7 @@ draw_set_valign(fa_middle);
 //Draw Text
 if(inventory[item] != -1)
 {
-	var text = "BUY  " + string(inventory[item].price)
+	var text = "BUY  " + string(price)
 	draw_text(x, y, text);
 }
 

@@ -137,8 +137,8 @@ randomise()
 			global.memory = 1;
 			global.charisma = 1;
 			
+			// Maximum a stat may be
 			global.stat_max = 20;
-			
 			
 			// Total number of assigned levels
 			global.player_level = 1;
@@ -160,6 +160,12 @@ randomise()
 			
 			// File number of current save. Set when either saving or loading a file
 			global.file_num = 0;
+			
+			// "Average" charisma. If charisma is over number, player is given bonus. If under, player is given penalty
+			global.charisma_average = global.stat_max/2;
+			
+			// Percentage price should increase or decrease per charisma point away from average
+			global.price_mod = 0.075;
 			
 		#endregion Player Stats
 		

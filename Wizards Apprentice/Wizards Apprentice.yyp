@@ -338,7 +338,9 @@
     {"id":{"name":"scr_find_spell_index","path":"scripts/scr_find_spell_index/scr_find_spell_index.yy",},},
     {"id":{"name":"scr_flipping_sprite","path":"scripts/scr_flipping_sprite/scr_flipping_sprite.yy",},},
     {"id":{"name":"scr_gather_enemy_attack_stats","path":"scripts/scr_gather_enemy_attack_stats/scr_gather_enemy_attack_stats.yy",},},
+    {"id":{"name":"scr_get_buy_price","path":"scripts/scr_get_buy_price/scr_get_buy_price.yy",},},
     {"id":{"name":"scr_get_controls","path":"scripts/scr_get_controls/scr_get_controls.yy",},},
+    {"id":{"name":"scr_get_sell_price","path":"scripts/scr_get_sell_price/scr_get_sell_price.yy",},},
     {"id":{"name":"scr_has_no_element","path":"scripts/scr_has_no_element/scr_has_no_element.yy",},},
     {"id":{"name":"scr_heal","path":"scripts/scr_heal/scr_heal.yy",},},
     {"id":{"name":"scr_health_and_mana_debug","path":"scripts/scr_health_and_mana_debug/scr_health_and_mana_debug.yy",},},
@@ -547,9 +549,9 @@
   "RoomOrderNodes":[
     {"children":[
         {"children":[
+            {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
             {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
-            {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
           ],"groupName":"Wizard Tower",},
         {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},

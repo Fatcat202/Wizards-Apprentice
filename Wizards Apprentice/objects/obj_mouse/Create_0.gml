@@ -365,6 +365,7 @@
 						{
 							var sell = instance_create_layer(x_pos_sell, y_pos_sell, "Menu_Buttons", obj_button_sell)
 								sell.item = slot_hover;
+								sell.inventory = inventory_hover.inventory;
 						}
 							
 						// Check if item hovered is consumable
