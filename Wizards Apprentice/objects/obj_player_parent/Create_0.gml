@@ -131,47 +131,29 @@ scr_memory_used()
 		// Time before mana starts to regenerate after last use in seconds. Subtract mana_regen_length to prevent doubling up timers
 		mana_regen_delay_length = (game_get_speed(gamespeed_fps) * 4) - mana_regen_length;
 
-
 	
 		#region Spell Slot Timers
-		
-			// Activates timer and states if spell slot is on cooldown
-			spell_cooldown_1 = false;
-			spell_cooldown_2 = false;
-			spell_cooldown_3 = false;
-			spell_cooldown_4 = false;
-			spell_cooldown_5 = false;
-			spell_cooldown_6 = false;
-			spell_cooldown_7 = false;
-			spell_cooldown_8 = false;
-			spell_cooldown_9 = false;
-			spell_cooldown_10 = false;
-		
-			// Used for the length of a timer in frames
-			spell_cooldown_time_1 = 0;
-			spell_cooldown_time_2 = 0;
-			spell_cooldown_time_3 = 0;
-			spell_cooldown_time_4 = 0;
-			spell_cooldown_time_5 = 0;
-			spell_cooldown_time_6 = 0;
-			spell_cooldown_time_7 = 0;
-			spell_cooldown_time_8 = 0;
-			spell_cooldown_time_9 = 0;
-			spell_cooldown_time_10 = 0;
+			
+			// Constructor holding timer variables for active spells
+			function func_spell_timers(_cooldown = false, _timer = 0, _length = 0) constructor
+			{
+				cooldown = _cooldown
+				timer = _timer
+				length = _length
+			}
+			
+			// Hold within variables for each active spell
+			global.arr_spell_timers = []
+			
+			// Place structs into array
+			for(var i = 1; i <= global.max_spell_slots; i++)
+			{
+				global.arr_spell_timers[i] = new func_spell_timers(false, 0 , global.active_spells[0,i].cooldown)
+			}
 
-			// Used for ticking timer up
-			spell_cooldown_timer_1 = 0;
-			spell_cooldown_timer_2 = 0;
-			spell_cooldown_timer_3 = 0;
-			spell_cooldown_timer_4 = 0;
-			spell_cooldown_timer_5 = 0;
-			spell_cooldown_timer_6 = 0;
-			spell_cooldown_timer_7 = 0;
-			spell_cooldown_timer_8 = 0;
-			spell_cooldown_timer_9 = 0;
-			spell_cooldown_timer_10 = 0;
 
 		#endregion Spell Slot Timers
+		
 	
 		#region Effect Timers
 	
@@ -231,15 +213,13 @@ scr_memory_used()
 
 spell_surf = -1
 
-function func_spell_slot_icon(sprite, xx, yy, subimage, i, r = 255, g = 255, b = 255)
+function func_spell_slot_icon(sprite, xx, yy, subimage, i, r = 255, g = 255, b = 255, cooldown_timer, cooldown_length)
 {
-	
 	// Called in Draw GUI - Spells
 	
 	// Display surface with spell slot icon drawn to it
 	// Pass through RGB values of background colour of icon (default is white)
-	
-	
+
 	
 	var spell_width = sprite_get_width(spr_spell_slot_template)
 	var spell_height = sprite_get_height(spr_spell_slot_template)
@@ -308,6 +288,9 @@ function func_spell_slot_icon(sprite, xx, yy, subimage, i, r = 255, g = 255, b =
 
 	// Draw texture to the surface
 	draw_sprite(sprite, subimage, 0, 0);
+	
+	// Apply cooldown circle
+	scr_draw_circ_healthbar(spell_width/2, spell_height/2, cooldown_timer, cooldown_length, c_black, spell_width, 0.5)
 
 
 	// Reset surface target

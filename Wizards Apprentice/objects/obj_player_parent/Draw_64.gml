@@ -299,17 +299,17 @@ var yy = display_get_gui_height() / 2
 
 			if(active_spell == i)
 			{
-				func_spell_slot_icon(global.active_spells[0, i].spr, xx, yy, 0, i, r, g, b)
+				func_spell_slot_icon(global.active_spells[0, i].spr, xx, yy, 0, i, r, g, b, global.arr_spell_timers[i].timer, global.arr_spell_timers[i].length)
 			}else
 		
 			if(active_spell != i)
 			{
-				func_spell_slot_icon(global.active_spells[0, i].spr, xx, yy, 1, i, r, g, b)
+				func_spell_slot_icon(global.active_spells[0, i].spr, xx, yy, 1, i, r, g, b, global.arr_spell_timers[i].timer, global.arr_spell_timers[i].length)
 			
 			}
 		}else
 		{
-			func_spell_slot_icon(spr_spell_slot_template, xx, yy, 1, i, r, g, b)
+			func_spell_slot_icon(spr_spell_slot_template, xx, yy, 1, i, r, g, b, global.arr_spell_timers[i].timer, global.arr_spell_timers[i].length)
 		}
 	}
 

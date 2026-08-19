@@ -1,4 +1,4 @@
-/// @description Update Inventory
+/// @description Update Spellbook
 
 
 global.spellbook = inventory

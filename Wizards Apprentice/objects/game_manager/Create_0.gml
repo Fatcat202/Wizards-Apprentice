@@ -203,6 +203,7 @@ randomise()
 			
 			// Max number of active spell slots
 			global.max_spell_slots = 10;
+		
 			
 		#endregion Spellbook
 		
