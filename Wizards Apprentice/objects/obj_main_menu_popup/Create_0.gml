@@ -41,17 +41,26 @@ credits_text = "Made By: Ethan Bayley"
 
 	#region Name Creation
 	
+		x_pos_text_box = middle
+		y_pos_text_box = y - 95
 	
 	#endregion Name Creation
+	
+	#region Start Game
+		
+		x_pos_start = x
+		y_pos_start = y + 110
+		
+	#endregion Start Game
 
 	#region Stats
 
 		stats_x = middle
-		stats_start_y = y_top + 75
+		stats_start_y = y_top + 90
 		stats_gap = 27
 
 		available_level_x = middle
-		available_level_y = y_top + 210
+		available_level_y = y_top + 220
 
 		add_button_x = middle + 80
 		subtract_button_x = middle - 80

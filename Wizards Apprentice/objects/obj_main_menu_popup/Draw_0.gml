@@ -24,7 +24,10 @@ draw_set_font(fnt_menu_small);
 				
 					// Character name creation
 				
-				
+					if(!instance_exists(obj_text_box_player_name))
+					{
+						instance_create_layer(x_pos_text_box, y_pos_text_box,"Menu_Buttons" , obj_text_box_player_name)
+					}
 				
 				
 				#endregion Name Creation
@@ -279,13 +282,21 @@ draw_set_font(fnt_menu_small);
 			
 				#region Start Button
 				
-					// Create start button
-					if(!instance_exists(obj_button_start))
+					
+					// Only create start button if name is selected and all levels distributed
+					if(global.player_name != "" && temp_free_level == 0)
 					{
-						var start = instance_create_layer(x, y + 100, "Popup_Instances", obj_button_start,
+						// Create start button
+						if(!instance_exists(obj_button_start))
 						{
-							menu_id : id
-						})
+							var start = instance_create_layer(x_pos_start, y_pos_start, "Popup_Instances", obj_button_start,
+							{
+								menu_id : id
+							})
+						}
+					}else
+					{
+						if(instance_exists(obj_button_start)) instance_destroy(obj_button_start)
 					}
 				
 				#endregion Start Button
