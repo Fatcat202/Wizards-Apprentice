@@ -619,7 +619,6 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function level_stats(_level_name = -1, _room_name = -1, _reward_gold = -1, _reward_xp = -1, _level_completed = false, _level_chests = -1, _level_chests_empty = false) constructor {
 				function level_stats(_level_name = -1, _room_name = -1, _reward_gold = -1, _reward_xp = -1, _level_completed = false, _level_chests = -1, _level_chests_empty = false, _level_unlocked = false) constructor {
 				
 					// GATHERED FROM CSV
