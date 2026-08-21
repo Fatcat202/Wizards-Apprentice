@@ -1,5 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description Button Text
 
 if(selected_level != -1)
 {
@@ -10,6 +9,11 @@ if(selected_level != -1)
 if(selected_level == -1)
 {
 	button_text = "Select Level"
+}else
+
+if(global.level_stats[selected_level].level_unlocked == false)
+{
+	button_text = "Level Locked"
 }else
 
 if(global.level_stats[selected_level].level_completed == false)

@@ -17,4 +17,4 @@ width = sprite_width
 height = sprite_height
 
 // Subimage of level number to show
-subimage = room_num-3
+subimage = room_num - global.level_offset

@@ -1,14 +1,18 @@
 /// @description
 
 
+scr_level_progression()
+
+#region Variables
+
 spacer = 12;
 
 cell_width = 64
 
 row_length = 4;
 
-// Offset used to ignore wizard tower levels in array, set as first three rooms
-slot_offset = 3
+
+slot_offset = global.level_offset
 
 slots = global.level_index_length - slot_offset
 
@@ -27,6 +31,7 @@ level_select_y = y_pos + 20;
 level_start_x = x_pos + (width/2) - spacer;
 level_start_y = y_pos + (height) - 48
 
+#endregion Variables
 
 
 #region Slots
@@ -47,7 +52,7 @@ level_start_y = y_pos + (height) - 48
 	//	show_debug_message(string(global.level_stats[i+slot_offset]))
 	
 		// Stop drawing after reaching final level
-		if(global.level_stats[i+slot_offset].level_completed == false) break;
+		if(global.level_stats[i+slot_offset].level_unlocked == false) break;
 	}
 	
 #endregion Slots

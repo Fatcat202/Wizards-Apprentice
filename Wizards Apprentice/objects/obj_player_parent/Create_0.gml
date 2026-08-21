@@ -2,8 +2,8 @@ event_inherited()
 
 scr_memory_used()
 
-#region Loading instance stats
 
+#region Loading instance stats
 
 	// Health
 		// Normal max health

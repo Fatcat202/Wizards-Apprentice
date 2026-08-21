@@ -4,13 +4,20 @@
 draw_self()
 
 		
-// Base color
+// Base color white
 var r = 255;
 var g = 255;
 var b = 255;
+
+if(global.level_stats[room_num].level_unlocked == false)
+{
+	r = 255;
+	g = 180;
+	b = 180;
+}else
 		
 // If all chests found, turn blue
-if(global.level_stats[room_num].level_chests_empty = true)
+if(global.level_stats[room_num].level_chests_empty == true)
 {
 	r = 180;
 	g = 180;
@@ -18,7 +25,7 @@ if(global.level_stats[room_num].level_chests_empty = true)
 }else
 
 // If level completed, turn green
-if(global.level_stats[room_num].level_completed = true)
+if(global.level_stats[room_num].level_completed == true)
 {
 	r = 180;
 	g = 255;

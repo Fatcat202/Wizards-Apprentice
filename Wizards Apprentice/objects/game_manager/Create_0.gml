@@ -620,6 +620,7 @@ randomise()
 
 				// Initialize stats dictionary constructor
 				function level_stats(_level_name = -1, _room_name = -1, _reward_gold = -1, _reward_xp = -1, _level_completed = false, _level_chests = -1, _level_chests_empty = false) constructor {
+				function level_stats(_level_name = -1, _room_name = -1, _reward_gold = -1, _reward_xp = -1, _level_completed = false, _level_chests = -1, _level_chests_empty = false, _level_unlocked = false) constructor {
 				
 					// GATHERED FROM CSV
 					level_name = _level_name					// Holds name of level
@@ -632,6 +633,7 @@ randomise()
 					level_completed = _level_completed			// Marks if level is completed previously
 					level_chests = _level_chests				// Holds data for chests in level
 					level_chests_empty = _level_chests_empty	// Declares if all chests in the room are empty
+					level_unlocked = _level_unlocked			// Declares if the level is unlocked
 
 				}
 
@@ -670,6 +672,11 @@ randomise()
 			
 			// Holds position of room in global.level_stats
 			global.active_level_num = -1;
+			
+			// Offset used to ignore wizard tower levels in array, set as first three rooms
+			global.level_offset = 3
+			
+
 
 //			show_debug_message("global.level_stats: " + string(global.level_stats))
 
@@ -685,6 +692,7 @@ randomise()
 		#endregion Database
 		
 		#region Inventory Contents
+		
 
 			#region Player Inventory Contents
 		
