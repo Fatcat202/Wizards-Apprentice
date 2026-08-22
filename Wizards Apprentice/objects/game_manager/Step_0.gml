@@ -34,8 +34,8 @@ scr_get_controls();
 	#endregion ESC Pause
 	
 	#region Inventory Pause
-		
-		if(global.cont_inventory == true)
+											// Prevent menus on main menu and level end screen
+		if(global.cont_inventory == true && (room != rm_main_menu && room != rm_level_end))
 		{
 			// Create/destroy player inventory
 
