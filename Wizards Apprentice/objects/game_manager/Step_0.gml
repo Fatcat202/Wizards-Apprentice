@@ -34,13 +34,12 @@ scr_get_controls();
 	#endregion ESC Pause
 	
 	#region Inventory Pause
-											// Prevent menus on main menu and level end screen
-		if(global.cont_inventory == true && (room != rm_main_menu && room != rm_level_end))
+	
+		// Prevent menus on main menu and level end screen
+		if(room != rm_main_menu && room != rm_level_end)
 		{
-			// Create/destroy player inventory
-
 			// Activate Inventory Pause
-			if(global.show_inventory == false && global.game_esc_paused == false)
+			if(global.cont_inventory == true && global.show_inventory == false && global.game_esc_paused == false)
 			{
 				
 				scr_inventory_pause()
@@ -49,13 +48,13 @@ scr_get_controls();
 				{
 					instance_create_layer(x, y, "Inventory", obj_inventory_player)
 				}
-				
-				
 
 			}else
 				
 			// Deactivate Inventory Pause
-			if(global.show_inventory == true && instance_exists(obj_inventory_player))
+			if(global.show_inventory == true
+			&& (global.cont_inventory == true || global.cont_esc_menu == true || global.cont_interact == true)
+			&& (instance_exists(obj_inventory_player) || instance_exists(obj_inventory_player_chest)))
 			{
 				scr_inventory_resume()
 			}
@@ -97,7 +96,6 @@ scr_get_controls();
 		}
 		
 	#endregion Exit Study
-	
 	
 	#region Exit Wizard
 		
