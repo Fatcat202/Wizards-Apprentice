@@ -26,6 +26,13 @@ active_health = 1;
 // Stores the type of element shield the character has, default "Empty"
 element_shield = "Empty";
 
+// Base health of shield
+shield_health = 4;
+
+// Active health of shield
+active_shield_health = 0;
+
+
 
 		
 // Stun timer from charged platforms

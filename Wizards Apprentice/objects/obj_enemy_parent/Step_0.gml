@@ -4,6 +4,9 @@
 // Run enemy AI states
 state_behavior()
 
+// Apply caster action, no matter the state
+if(caster == true) { scr_caster_action() }
+
 // Increment enemy timers
 scr_enemy_timers()
 

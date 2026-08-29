@@ -145,36 +145,9 @@ event_inherited();
 	// Allow jumping speed to by dynamically altered with each jump
 	jumping_speed_h_max = 3.2
 
-	// Time in seconds between being able to create new target node
-	target_time = 0.1
-	// Time in seconds between being able to jump
-	can_jump_time = 1
-	// Time in seconds before gravity kicks in when jumping
-	grav_delay_time = 0.225
-	// Time in seconds before enemy can set a new path
-	pathing_free_time = 0.2
 
-	// Length of cooldown
-	target_cooldown_length = game_get_speed(gamespeed_fps) * target_time
-	// Cooldown timer
-	target_cooldown_timer = 0;
-	
-	// Length of cooldown
-	can_jump_cooldown_length = game_get_speed(gamespeed_fps) * can_jump_time
-	// Cooldown timer
-	can_jump_cooldown_timer = 0;
-	
-	// Length of cooldown
-	grav_delay_cooldown_length = game_get_speed(gamespeed_fps) * grav_delay_time
-	// Cooldown timer
-	grav_delay_cooldown_timer = 0;
-	
-	// Length of cooldown
-	pathing_free_cooldown_length = game_get_speed(gamespeed_fps) * pathing_free_time
-	// Cooldown timer
-	pathing_free_cooldown_timer = 0;
-		
-		
+	// Determines if an action has been taken, if the enemy is a caster. Sets cooldown if true
+	action_taken = false;
 		
 	// Determines if enemy may set a new target
 	can_target = true;
@@ -187,9 +160,6 @@ event_inherited();
 	
 	// Declares if gravity delay is active when jumping
 	grav_delay = false
-	
-	// Total time in seconds enemy can continue to see player without line of sight
-	wall_hack_timer = game_get_speed(gamespeed_fps) * 0.4
 	
 	// Path used for attacking, or returning to patrol point
 	attack_path = path_add()
@@ -210,8 +180,46 @@ event_inherited();
 				atk_melee_default_time = 0		
 				
 		#endregion Attack Timers
+		
+		// Total time in seconds enemy can continue to see player without line of sight
+		wall_hack_timer = game_get_speed(gamespeed_fps) * 0.4
 
-	#endregion Timer Initialization
+		// Time in seconds between being able to create new target node
+		target_time = 0.1
+		// Time in seconds between being able to jump
+		can_jump_time = 1
+		// Time in seconds before gravity kicks in when jumping
+		grav_delay_time = 0.225
+		// Time in seconds before enemy can set a new path
+		pathing_free_time = 0.2
+		// Time in seconds before enemy can take another action
+		action_time = 2
+
+		// Length of cooldown
+		target_cooldown_length = game_get_speed(gamespeed_fps) * target_time
+		// Cooldown timer
+		target_cooldown_timer = 0;
+	
+		// Length of cooldown
+		can_jump_cooldown_length = game_get_speed(gamespeed_fps) * can_jump_time
+		// Cooldown timer
+		can_jump_cooldown_timer = 0;
+	
+		// Length of cooldown
+		grav_delay_cooldown_length = game_get_speed(gamespeed_fps) * grav_delay_time
+		// Cooldown timer
+		grav_delay_cooldown_timer = 0;
+	
+		// Length of cooldown
+		pathing_free_cooldown_length = game_get_speed(gamespeed_fps) * pathing_free_time
+		// Cooldown timer
+		pathing_free_cooldown_timer = 0;
+		
+		// Timer used for caster action cooldown
+		action_timer = 0;
+		action_length = game_get_speed(gamespeed_fps) * action_time;
+
+	#endregion Timers
 	
 	
 #endregion Loading instance stats
@@ -692,6 +700,8 @@ event_inherited();
 				scr_enemy_gravity()
 		
 				scr_flipping_sprite()
+				
+
 			
 
 			}else

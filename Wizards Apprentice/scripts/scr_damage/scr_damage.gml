@@ -15,14 +15,24 @@ function scr_damage(dmg, _water_level = water_level, _oil_level = oil_level, _is
 		{
 			element_shield = "Empty"
 			exit;
+		}else
+		
+		// If element shield is not empty and does not match spell element, decrease shield health
+		if(element_shield != "Empty")
+		{
+			// Decrease health
+			active_shield_health--
+			
+			// Set shield as empty if shield health at 0
+			if(active_shield_health <= 0)
+			{
+				element_shield = "Empty";
+			}
 		}
 		
-
+		// If no shield exists, do damage
 		if(element_shield == "Empty")
 		{
-		
-			// If enemy has same element shield as attack, or has no element shield then do damage
-	
 			if(can_damage == true)
 			{
 				can_damage = false;
@@ -35,6 +45,6 @@ function scr_damage(dmg, _water_level = water_level, _oil_level = oil_level, _is
 				// Remove element shield
 				element_shield = "Empty"
 			}
-		}	
+		}
 	}
 }
