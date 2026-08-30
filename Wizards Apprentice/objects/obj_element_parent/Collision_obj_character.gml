@@ -19,7 +19,15 @@ switch(object_index)
 	break;
 	
 	case obj_element_water_droplet:
-		if(other.element_shield == "Water") other.element_shield = "Empty";	
+		if(other.element_shield == "Water")
+		{
+			other.element_shield = "Empty";
+		}
+		
+		if(other.element_shield == "Shock" && is_charged == true)
+		{
+			other.element_shield = "Empty";
+		}
 	break;
 	
 	case obj_element_icicle:

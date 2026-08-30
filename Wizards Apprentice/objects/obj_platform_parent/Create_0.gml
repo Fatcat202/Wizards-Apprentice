@@ -241,7 +241,8 @@ function func_create_water_droplet(dir)
 		{
 			water_droplet = instance_create_layer(x + sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
 			{
-				level : 1
+				level : 1,
+				is_charged : is_charged
 			})
 			
 			// Decrease own water level by 1
@@ -253,7 +254,8 @@ function func_create_water_droplet(dir)
 		{
 			water_droplet = instance_create_layer(x - sprite_get_width(sprite_index), y, "Spells", obj_element_water_droplet,
 			{
-				level : 1
+				level : 1,
+				is_charged : is_charged
 			})
 			
 			// Decrease own water level by 1
@@ -265,7 +267,8 @@ function func_create_water_droplet(dir)
 		{
 			water_droplet = instance_create_layer(x, y + sprite_get_height(sprite_index), "Spells", obj_element_water_droplet,
 			{
-				level : 1
+				level : 1,
+				is_charged : is_charged
 			})
 			
 			// Decrease own water level by 1

@@ -10,3 +10,5 @@ move_spd_max = 6;
 level = 1
 
 element = "Water"
+
+is_charged = false;

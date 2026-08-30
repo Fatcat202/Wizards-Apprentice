@@ -459,6 +459,7 @@
     {"id":{"name":"spr_element_steam_air","path":"sprites/spr_element_steam_air/spr_element_steam_air.yy",},},
     {"id":{"name":"spr_element_steam_platform","path":"sprites/spr_element_steam_platform/spr_element_steam_platform.yy",},},
     {"id":{"name":"spr_element_water_charged","path":"sprites/spr_element_water_charged/spr_element_water_charged.yy",},},
+    {"id":{"name":"spr_element_water_droplet_charged","path":"sprites/spr_element_water_droplet_charged/spr_element_water_droplet_charged.yy",},},
     {"id":{"name":"spr_element_water_droplet","path":"sprites/spr_element_water_droplet/spr_element_water_droplet.yy",},},
     {"id":{"name":"spr_element_water","path":"sprites/spr_element_water/spr_element_water.yy",},},
     {"id":{"name":"spr_goblin_bat","path":"sprites/spr_goblin_bat/spr_goblin_bat.yy",},},

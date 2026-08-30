@@ -6,6 +6,9 @@ if(other.water_level == 0 && other.oil_level == 0 && other.is_ice == false)
 	// Increment water level
 	other.water_level += level;
 	
+	// Transfer is_charged
+	if(is_charged == true) other.is_charged = true
+	
 }else
 
 // If water, transfer level
@@ -13,6 +16,9 @@ if(other.water_level > 0)
 {
 	// Increment water level
 	other.water_level += level;
+	
+	// Transfer is_charged
+	if(is_charged == true) other.is_charged = true
 		
 }else
 
