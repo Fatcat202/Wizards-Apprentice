@@ -1,5 +1,6 @@
 /// @description
 
+event_inherited()
 
 // Run enemy AI states
 state_behavior()

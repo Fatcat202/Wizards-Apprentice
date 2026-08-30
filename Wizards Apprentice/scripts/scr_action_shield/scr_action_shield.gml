@@ -27,7 +27,7 @@ function scr_action_shield()
 	}
 
 	// Range shield can be placed onto ally
-	var shield_range = 250
+	var shield_range = vision_range
 	
 	
 	// Apply element shield to self

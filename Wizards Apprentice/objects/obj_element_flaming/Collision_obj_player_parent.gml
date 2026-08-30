@@ -1,4 +1,4 @@
 /// @description Damage
 
 
-scr_damage(player_damage, element)
+scr_damage(player_damage)
