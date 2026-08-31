@@ -56,8 +56,36 @@ function scr_caster_action()
 			arr_options[ACTIONS.ATTACK].weight *= 0
 		}
 		
+		// If no allies or self can have shield applied, set weight to 0
+		if(element_shield != "Empty")
+		{
+			// DS list holding all nearby allies
+			allies_near = ds_list_create()
+			num_allies = collision_circle_list(x, y, vision_range, obj_enemy_parent, false, true, allies_near, true)
+		//	show_debug_message("allies_near: " + string(allies_near))
+		//	show_debug_message("num_allies: " + string(num_allies))
 		
-		
+			// Determines if any allies without shield are near
+			var can_apply_shield = false
+			if(num_allies != 0)
+			{
+				for(var i = 0; i < num_allies; i++)
+				{
+					if(allies_near[| i].element_shield == "Empty")
+					{
+						can_apply_shield = true;
+					}
+				}
+			}
+			
+			// Set weight if no shield can be applied
+			if(can_apply_shield == false)
+			{
+				arr_options[ACTIONS.SHIELD].weight *= 0
+			}
+			// Reset memory
+			ds_list_destroy(allies_near)
+		}
 		
 		
 		

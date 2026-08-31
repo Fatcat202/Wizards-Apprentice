@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_action_shield()
 {
-//	show_debug_message("Action: Shield")
+	show_debug_message("Action: Shield")
 	
 	
 	function func_apply_shield()
