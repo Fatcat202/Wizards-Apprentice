@@ -53,7 +53,7 @@ function scr_caster_action()
 		// If player is not visible, do not attack
 		if(player_visible == false)
 		{
-			arr_options[ACTIONS.ATTACK].weight *= 0
+			arr_options[ACTIONS.ATTACK].weight *= 0;
 		}
 		
 		// If no allies or self can have shield applied, set weight to 0
