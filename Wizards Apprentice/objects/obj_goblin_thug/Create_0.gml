@@ -5,4 +5,4 @@
 event_inherited();
 
 // Add attacks
-scr_add_possible_attack("goblin_thug_attack")
+scr_add_possible_attack("goblin_thug")

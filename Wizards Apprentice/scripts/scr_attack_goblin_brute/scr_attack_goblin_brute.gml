@@ -3,6 +3,6 @@
 function scr_attack_goblin_brute()
 {
 
-	scr_attack_enemy_default("goblin_brute_attack")
+	scr_attack_enemy_default("goblin_brute")
 
 }

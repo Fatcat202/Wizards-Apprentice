@@ -1,5 +1,5 @@
 ,damage,water_level,oil_level,is_ice,is_flaming,is_steaming,is_charged,atk_spd,atk_range,duration,level,attack_scr,sprite,is_visible,move_spd
-goblin_thug_attack,1,0,0,FALSE,FALSE,FALSE,FALSE,0.5,40,-1,1,scr_attack_goblin_thug,spr_attack_melee_sword,TRUE,-1
-goblin_brute_attack,3,0,0,FALSE,FALSE,FALSE,FALSE,1,40,-1,1,scr_attack_goblin_brute,spr_attack_melee_sword,TRUE,-1
-goblin_slinger_attack,1,0,0,FALSE,FALSE,FALSE,FALSE,1,150,10,1,scr_attack_goblin_slinger,spr_attack_rock,TRUE,6
-goblin_bat_attack,1,0,0,FALSE,FALSE,FALSE,FALSE,0.5,40,-1,1,scr_attack_goblin_bat,spr_attack_melee_default,FALSE,-1
+goblin_thug,1,0,0,FALSE,FALSE,FALSE,FALSE,0.5,40,-1,1,scr_attack_goblin_thug,spr_attack_melee_sword,TRUE,-1
+goblin_brute,3,0,0,FALSE,FALSE,FALSE,FALSE,1,40,-1,1,scr_attack_goblin_brute,spr_attack_melee_sword,TRUE,-1
+goblin_slinger,1,0,0,FALSE,FALSE,FALSE,FALSE,1,150,10,1,scr_attack_goblin_slinger,spr_attack_rock,TRUE,6
+goblin_bat,1,0,0,FALSE,FALSE,FALSE,FALSE,0.5,40,-1,1,scr_attack_goblin_bat,spr_attack_melee_default,FALSE,-1
