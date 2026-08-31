@@ -46,7 +46,7 @@ function scr_caster_action()
 		arr_options[ACTIONS.ATTACK] = {name : "Attack", action : scr_action_attack, weight : 0.9}
 		arr_options[ACTIONS.SHIELD] = {name : "Shield",action : scr_action_shield, weight : 0.6}
 		arr_options[ACTIONS.TELEPORT_ALLY] = {name : "Teleport Ally",action : scr_action_teleport_ally, weight : 0.3}
-		arr_options[ACTIONS.TELEPORT_AWAY] = {name : "Teleport Away",action : scr_action_teleport_away, weight : 0.1}
+		arr_options[ACTIONS.TELEPORT_AWAY] = {name : "Teleport Away",action : scr_action_teleport_away, weight : 0.0}
 		
 	#endregion Setting Possible Actions
 	
@@ -57,8 +57,17 @@ function scr_caster_action()
 		var allies_near = ds_list_create()
 		var num_allies = collision_circle_list(x, y, vision_range, obj_enemy_parent, false, true, allies_near, true)
 		
+		// Distance to the player
+		var dis_to_player = point_distance(x, y, obj_player_parent.x, obj_player_parent.y)
+		
 		// Used to track number of allies near without shields
 		var num_unshielded = 0
+		
+		
+		// Weight Variables
+			// Decrease attack based on number of unshielded allies
+			var mod_num_unshielded = 0.1
+		
 		
 			
 		// If all allies and self have shield applied, set weight to 0
@@ -104,8 +113,19 @@ function scr_caster_action()
 		if(player_visible == true)
 		{
 
-			// TO DO: Increase teleport_away when health is low and player is closer
-		
+			// Increase teleport_away when health is low and player is closer than min range
+			if(dis_to_player < min_range)
+			{
+				// Find distance between player and self, turn to decimal
+				var mod_distance = (((min_range/dis_to_player)-1)/10)
+				
+				// Find percentage of missing health, use as a multiplier
+				var mod_missing_health = ((max_health - active_health))+1
+				
+				// Modify weight
+				arr_options[ACTIONS.TELEPORT_AWAY].weight += (mod_distance * mod_missing_health)
+				
+			}
 		
 			// TO DO: Increase teleport_ally when a ground melee ally is near and the player is getting closer
 		
@@ -115,7 +135,7 @@ function scr_caster_action()
 			{
 				if(num_unshielded != 0)
 				{
-					arr_options[ACTIONS.ATTACK].weight -= (num_unshielded/10)
+					arr_options[ACTIONS.ATTACK].weight -= (num_unshielded * mod_num_unshielded)
 				}
 			}
 			
