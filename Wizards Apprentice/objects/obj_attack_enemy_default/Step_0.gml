@@ -25,7 +25,7 @@ event_inherited()
 		speed = move_spd;
 		
 		
-		if(place_meeting(x, y, obj_platform_solid_parent) || place_meeting(x, y, obj_player_parent) || place_meeting(x, y, obj_platform_void))
+		if(interact_delay_active == false && place_meeting(x, y, obj_platform_solid_parent) || place_meeting(x, y, obj_player_parent) || place_meeting(x, y, obj_platform_void))
 		{
 			instance_destroy()
 		}

@@ -3,3 +3,4 @@ goblin_thug,1,0,0,FALSE,FALSE,FALSE,FALSE,0.5,40,-1,1,scr_attack_goblin_thug,spr
 goblin_brute,3,0,0,FALSE,FALSE,FALSE,FALSE,1,40,-1,1,scr_attack_goblin_brute,spr_attack_melee_sword,TRUE,-1
 goblin_slinger,1,0,0,FALSE,FALSE,FALSE,FALSE,1,150,10,1,scr_attack_goblin_slinger,spr_attack_rock,TRUE,6
 goblin_bat,1,0,0,FALSE,FALSE,FALSE,FALSE,0.5,40,-1,1,scr_attack_goblin_bat,spr_attack_melee_default,FALSE,-1
+firebolt,1,0,0,FALSE,TRUE,FALSE,FALSE,0,200,5,1,scr_attack_enemy_firebolt,spr_spell_firebolt,TRUE,6

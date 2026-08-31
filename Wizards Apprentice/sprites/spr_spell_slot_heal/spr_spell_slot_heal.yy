@@ -28,7 +28,7 @@
   "origin":0,
   "parent":{
     "name":"Icons",
-    "path":"folders/Sprites/Spells/Icons.yy",
+    "path":"folders/Sprites/Attacks/Spells/Icons.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

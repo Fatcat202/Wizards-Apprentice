@@ -32,7 +32,7 @@
   "origin":4,
   "parent":{
     "name":"Effects",
-    "path":"folders/Sprites/Spells/Effects.yy",
+    "path":"folders/Sprites/Attacks/Spells/Effects.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

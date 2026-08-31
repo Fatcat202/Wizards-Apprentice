@@ -22,4 +22,8 @@ function scr_action_attack()
 	if(attack != -1) attack()
 	
 	
+	// Set action_taken to start cooldown
+	action_taken = true;
+	action_timer = 0;
+	
 }

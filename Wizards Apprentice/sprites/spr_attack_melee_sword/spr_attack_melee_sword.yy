@@ -29,7 +29,7 @@
   "origin":3,
   "parent":{
     "name":"Enemy Attacks",
-    "path":"folders/Sprites/Enemy Attacks.yy",
+    "path":"folders/Sprites/Attacks/Enemy Attacks.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

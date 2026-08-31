@@ -8,16 +8,9 @@ if(element_delay_timer > element_delay_length)
 	element_delay_active = false;
 }else element_delay_timer++;
 
-/*
-// Destroying self if level decreases under zero for the purposes of spell interactions
-if(level < 0 && element != "Empty") instance_destroy()
-
-if(element == "Water")
+// Used to prevent interactions after spawning
+if(interact_delay_timer > interact_delay_length)
 {
-	water_level = level
-}else
-
-if(element == "Oil")
-{
-	oil_level = level
-}
+	interact_delay_timer = 0;
+	interact_delay_active = false;
+}else interact_delay_timer++;

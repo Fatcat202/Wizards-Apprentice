@@ -4,7 +4,7 @@
 event_inherited();
 
 
-
+scr_add_possible_attack("firebolt")
 
 
 
