@@ -43,30 +43,27 @@ function scr_caster_action()
 		}
 	
 		// Store actions as struct in array, allowing for easy modification of weights and calling of scripts
-		arr_options[ACTIONS.ATTACK] = {action : scr_action_attack, weight : 0.9}
-		arr_options[ACTIONS.SHIELD] = {action : scr_action_shield, weight : 0.6}
-		arr_options[ACTIONS.TELEPORT_ALLY] = {action : scr_action_teleport_ally, weight : 0.3}
-		arr_options[ACTIONS.TELEPORT_AWAY] = {action : scr_action_teleport_away, weight : 0.1}
+		arr_options[ACTIONS.ATTACK] = {name : "Attack", action : scr_action_attack, weight : 0.9}
+		arr_options[ACTIONS.SHIELD] = {name : "Shield",action : scr_action_shield, weight : 0.6}
+		arr_options[ACTIONS.TELEPORT_ALLY] = {name : "Teleport Ally",action : scr_action_teleport_ally, weight : 0.3}
+		arr_options[ACTIONS.TELEPORT_AWAY] = {name : "Teleport Away",action : scr_action_teleport_away, weight : 0.1}
 		
 	#endregion Setting Possible Actions
 	
 	
 	#region Modify Weights
 		
-		// If player is not visible, deactivate actions
-		if(player_visible == false)
-		{
-			arr_options[ACTIONS.ATTACK].weight *= 0;
-			arr_options[ACTIONS.TELEPORT_ALLY].weight *= 0;
-			arr_options[ACTIONS.TELEPORT_AWAY].weight *= 0;
-		}
+		// DS list holding all nearby allies
+		var allies_near = ds_list_create()
+		var num_allies = collision_circle_list(x, y, vision_range, obj_enemy_parent, false, true, allies_near, true)
 		
-		// If no allies or self can have shield applied, set weight to 0
+		// Used to track number of allies near without shields
+		var num_unshielded = 0
+		
+			
+		// If all allies and self have shield applied, set weight to 0
 		if(element_shield != "Empty")
 		{
-			// DS list holding all nearby allies
-			allies_near = ds_list_create()
-			num_allies = collision_circle_list(x, y, vision_range, obj_enemy_parent, false, true, allies_near, true)
 		//	show_debug_message("allies_near: " + string(allies_near))
 		//	show_debug_message("num_allies: " + string(num_allies))
 		
@@ -79,6 +76,9 @@ function scr_caster_action()
 					if(allies_near[| i].element_shield == "Empty")
 					{
 						can_apply_shield = true;
+						
+						// Track number of unshielded allies near
+						num_unshielded++
 					}
 				}
 			}
@@ -88,15 +88,42 @@ function scr_caster_action()
 			{
 				arr_options[ACTIONS.SHIELD].weight *= 0
 			}
-			// Reset memory
-			ds_list_destroy(allies_near)
+			
 		}
 		
 		
+		// If player is not visible, deactivate actions
+		if(player_visible == false)
+		{
+			arr_options[ACTIONS.ATTACK].weight *= 0;
+			arr_options[ACTIONS.TELEPORT_ALLY].weight *= 0;
+			arr_options[ACTIONS.TELEPORT_AWAY].weight *= 0;
+		}else
+		
+		// If player is visible, modify available weights
+		if(player_visible == true)
+		{
+
+			// TO DO: Increase teleport_away when health is low and player is closer
 		
 		
+			// TO DO: Increase teleport_ally when a ground melee ally is near and the player is getting closer
 		
 		
+			// Decrease attack with more unshielded allies near
+			if(num_allies != 0)
+			{
+				if(num_unshielded != 0)
+				{
+					arr_options[ACTIONS.ATTACK].weight -= (num_unshielded/10)
+				}
+			}
+			
+		}
+		
+
+		// Reset memory
+		ds_list_destroy(allies_near)
 	#endregion Modify Weights
 	
 	
@@ -112,6 +139,9 @@ function scr_caster_action()
 			{
 				highest = i;
 			}
+			
+			// Weight Debug
+			show_debug_message(string(arr_options[i].name) + ": " + string(arr_options[i].weight))
 		}
 		
 		// Check for action to take
