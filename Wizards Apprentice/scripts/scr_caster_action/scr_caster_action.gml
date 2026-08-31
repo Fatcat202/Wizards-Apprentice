@@ -37,23 +37,28 @@ function scr_caster_action()
 		enum ACTIONS
 		{
 			ATTACK,
-			TELEPORT,
-			SHIELD
+			SHIELD,
+			TELEPORT_ALLY,
+			TELEPORT_AWAY
 		}
 	
 		// Store actions as struct in array, allowing for easy modification of weights and calling of scripts
-		arr_options[ACTIONS.ATTACK] = {action : scr_action_attack, weight : 1}
-		arr_options[ACTIONS.TELEPORT] = {action : scr_action_teleport, weight : 0.5}
+		arr_options[ACTIONS.ATTACK] = {action : scr_action_attack, weight : 0.9}
 		arr_options[ACTIONS.SHIELD] = {action : scr_action_shield, weight : 0.6}
+		arr_options[ACTIONS.TELEPORT_ALLY] = {action : scr_action_teleport_ally, weight : 0.3}
+		arr_options[ACTIONS.TELEPORT_AWAY] = {action : scr_action_teleport_away, weight : 0.1}
+		
 	#endregion Setting Possible Actions
 	
 	
 	#region Modify Weights
 		
-		// If player is not visible, do not attack
+		// If player is not visible, deactivate actions
 		if(player_visible == false)
 		{
 			arr_options[ACTIONS.ATTACK].weight *= 0;
+			arr_options[ACTIONS.TELEPORT_ALLY].weight *= 0;
+			arr_options[ACTIONS.TELEPORT_AWAY].weight *= 0;
 		}
 		
 		// If no allies or self can have shield applied, set weight to 0
@@ -108,9 +113,16 @@ function scr_caster_action()
 				highest = i;
 			}
 		}
-	
-		// Execute action
-		script_execute(arr_options[highest].action)
+		
+		// Check for action to take
+		if(arr_options[highest].weight != 0)
+		{
+			// Execute action
+			script_execute(arr_options[highest].action)
+		}else
+		{
+			show_debug_message("No Caster Action To Take")
+		}
 	
 	#endregion Execute
 	
