@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_action_attack()
 {
-	show_debug_message("Action: Attack")
+	//show_debug_message("Action: Attack")
 	
 	
 	// Attack has been triggered. Enemy is to select between available attacks, then make said attack

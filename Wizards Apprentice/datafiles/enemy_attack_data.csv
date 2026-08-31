@@ -3,4 +3,8 @@ goblin_thug,1,0,0,FALSE,FALSE,FALSE,FALSE,0.5,40,-1,1,scr_attack_goblin_thug,spr
 goblin_brute,3,0,0,FALSE,FALSE,FALSE,FALSE,1,40,-1,1,scr_attack_goblin_brute,spr_attack_melee_sword,TRUE,-1
 goblin_slinger,1,0,0,FALSE,FALSE,FALSE,FALSE,1,150,10,1,scr_attack_goblin_slinger,spr_attack_rock,TRUE,6
 goblin_bat,1,0,0,FALSE,FALSE,FALSE,FALSE,0.5,40,-1,1,scr_attack_goblin_bat,spr_attack_melee_default,FALSE,-1
-firebolt,1,0,0,FALSE,TRUE,FALSE,FALSE,0,200,5,1,scr_attack_enemy_firebolt,spr_spell_firebolt,TRUE,6
+firebolt,1,0,0,FALSE,TRUE,FALSE,FALSE,0,200,10,1,scr_attack_enemy_firebolt,spr_spell_firebolt,TRUE,6
+icicle,1,1,0,TRUE,FALSE,FALSE,FALSE,0,200,10,1,scr_attack_enemy_icicle,spr_spell_icicle,TRUE,6
+jolt,1,0,0,FALSE,FALSE,FALSE,TRUE,0,200,10,1,scr_attack_enemy_jolt,spr_spell_jolt,TRUE,6
+water_splash,1,1,0,FALSE,FALSE,FALSE,FALSE,0,200,10,1,scr_attack_enemy_water_splash,spr_spell_water_splash,TRUE,6
+oil_splash,1,0,1,FALSE,FALSE,FALSE,FALSE,0,200,10,1,scr_attack_enemy_oil_splash,spr_spell_oil_splash,TRUE,6
