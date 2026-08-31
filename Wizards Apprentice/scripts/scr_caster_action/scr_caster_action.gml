@@ -56,6 +56,14 @@ function scr_caster_action()
 			arr_options[ACTIONS.ATTACK].weight *= 0
 		}
 		
+		
+		
+		
+		
+		
+		
+		
+		
 	#endregion Modify Weights
 	
 	

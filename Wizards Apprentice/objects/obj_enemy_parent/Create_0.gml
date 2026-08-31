@@ -169,6 +169,9 @@ event_inherited();
 	
 	// Declares home has been reached
 	returned_home = false
+	
+	// Array holding possible attacks for enemy to use. Add attacks in individual create events
+	arr_possible_attacks = [];
 
 	#region Timers
 		
@@ -531,11 +534,18 @@ event_inherited();
 
 
 		#region Attack
-		
-			// Run enemy specific attack script
-			var attack = global.enemy_stats[index].attack_scr
-		//	show_debug_message(string(attack))
-			if(attack != -1) attack()
+			if(caster == false)
+			{
+				// Gather number of attacks
+				var num_attacks = array_length(arr_possible_attacks)
+				// Select between attacks randomly
+				var rand_attack = irandom(num_attacks-1)
+			
+				// Run enemy specific attack script
+				var attack = arr_possible_attacks[rand_attack].attack_scr
+			//	show_debug_message(string(attack))
+				if(attack != -1) attack()
+			}
 
 		#endregion Attack
 		
