@@ -7,7 +7,6 @@ function scr_action_teleport_ally()
 	// When player is approaching caster and melee non flier is near, teleport ally between self and player
 	
 
-	
 	// Search for ally with highest active hp
 	var highest_hp = 0;
 	for(var i = 0; i < num_melee; i++)
@@ -40,8 +39,5 @@ function scr_action_teleport_ally()
 		}
 	}
 	
-	
-	
-	
-	
+
 }

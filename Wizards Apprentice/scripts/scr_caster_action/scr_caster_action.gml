@@ -61,7 +61,7 @@ function scr_caster_action()
 		 dis_to_player = point_distance(x, y, obj_player_parent.x, obj_player_parent.y)
 		
 		// Used to track number of allies near without shields
-		 num_unshielded = 0
+		num_unshielded = 0
 		 
 		// Used to track number of melee, non flying, non casting allies near
 		num_melee = 0;
@@ -76,114 +76,121 @@ function scr_caster_action()
 		
 		
 			
-		// If all allies and self have shield applied, set weight to 0
-		if(element_shield != "Empty")
-		{
-		//	show_debug_message("allies_near: " + string(allies_near))
-		//	show_debug_message("num_allies: " + string(num_allies))
-		
-			// Determines if any allies without shield are near
-			var can_apply_shield = false
-			if(num_allies != 0)
+		#region If all allies and self have shield applied, set weight to 0
+			if(element_shield != "Empty")
 			{
-				for(var i = 0; i < num_allies; i++)
+			//	show_debug_message("allies_near: " + string(allies_near))
+			//	show_debug_message("num_allies: " + string(num_allies))
+		
+				// Determines if any allies without shield are near
+				var can_apply_shield = false
+				if(num_allies != 0)
 				{
-					if(allies_near[| i].element_shield == "Empty")
+					for(var i = 0; i < num_allies; i++)
 					{
-						can_apply_shield = true;
+						if(allies_near[| i].element_shield == "Empty")
+						{
+							can_apply_shield = true;
 						
-						// Track number of unshielded allies near
-						num_unshielded++
-					}
+							// Track number of unshielded allies near
+							num_unshielded++
+						}
 					
-				}
-			}
-			
-			// Set weight if no shield can be applied
-			if(can_apply_shield == false)
-			{
-				arr_options[ACTIONS.SHIELD].weight *= 0
-			}
-			
-		}
-		
-		
-		// If player is not visible, deactivate actions
-		if(player_visible == false)
-		{
-			arr_options[ACTIONS.ATTACK].weight *= 0;
-			arr_options[ACTIONS.TELEPORT_ALLY].weight *= 0;
-			arr_options[ACTIONS.TELEPORT_AWAY].weight *= 0;
-		}else
-		
-		// If player is visible, modify available weights
-		if(player_visible == true)
-		{
-
-			// Increase teleport_away when health is low and player is closer than min range
-			if(dis_to_player < min_range)
-			{
-				// Find distance between player and self, turn to decimal
-				var mod_distance = (((min_range/dis_to_player)-1)/10)
-				
-				// Find percentage of missing health, use as a multiplier
-				var mod_missing_health = ((max_health - active_health))+1
-				
-				// Modify weight
-				arr_options[ACTIONS.TELEPORT_AWAY].weight += (mod_distance * mod_missing_health)
-				
-			}
-			
-			
-		
-			// TO DO: Increase teleport_ally when a ground melee ally is near and the player is getting closer
-			if(dis_to_player < min_range)
-			{
-				for(var i = 0; i < num_allies; i++)
-				{
-					// Track number of melee, non flying, non caster allies near
-					if(allies_near[| i].is_melee && !allies_near[| i].flies && !allies_near[| i].caster)
-					{
-						array_push(arr_melee_allies, allies_near[| i])
-						num_melee++;
 					}
 				}
-				
-
-				// Check if any melee enemies are near
-				if(num_melee > 0)
+			
+				// Set weight if no shield can be applied
+				if(can_apply_shield == false)
 				{
-					var dis_to_ally = point_distance(x, y, arr_melee_allies[0].x, arr_melee_allies[0].y)
-					
-					// If player is closer than ally, increase weight
-					if(dis_to_player < dis_to_ally)
+					arr_options[ACTIONS.SHIELD].weight *= 0
+				}
+			
+			}
+		#endregion If all allies and self have shield applied, set weight to 0
+		
+		#region If player is not visible, deactivate actions
+		
+			if(player_visible == false)
+			{
+				arr_options[ACTIONS.ATTACK].weight *= 0;
+				arr_options[ACTIONS.TELEPORT_ALLY].weight *= 0;
+				arr_options[ACTIONS.TELEPORT_AWAY].weight *= 0;
+			}else
+		
+		#endregion If player is not visible, deactivate actions
+		
+		#region If player is visible, modify available weights
+			if(player_visible == true)
+			{
+
+				#region Increase teleport_away when health is low and player is closer than min range
+					if(dis_to_player < min_range)
 					{
-				
 						// Find distance between player and self, turn to decimal
-						var mod_distance = (((min_range/dis_to_player)-1)) * 1.5;
+						var mod_distance = (((min_range/dis_to_player)-1)/10)
+				
+						// Find percentage of missing health, use as a multiplier
+						var mod_missing_health = ((max_health - active_health))+1
 				
 						// Modify weight
-						arr_options[ACTIONS.TELEPORT_ALLY].weight += (mod_distance)
-					}else
-					{
-						// If the player is further than the closest ally, set weight to 0
-						arr_options[ACTIONS.TELEPORT_ALLY].weight *=0;
+						arr_options[ACTIONS.TELEPORT_AWAY].weight += (mod_distance * mod_missing_health)
+				
 					}
-				}
-			}
+				#endregion Increase teleport_away when health is low and player is closer than min range
+			
+			
+		
+				#region Increase teleport_ally when a ground melee ally is near and the player is getting closer
+					if(dis_to_player < min_range)
+					{
+						for(var i = 0; i < num_allies; i++)
+						{
+							// Track number of melee, non flying, non caster allies near
+							if(allies_near[| i].is_melee && !allies_near[| i].flies && !allies_near[| i].caster)
+							{
+								array_push(arr_melee_allies, allies_near[| i])
+								num_melee++;
+							}
+						}
+				
+
+						// Check if any melee enemies are near
+						if(num_melee > 0)
+						{
+							var dis_to_ally = point_distance(x, y, arr_melee_allies[0].x, arr_melee_allies[0].y)
+					
+							// If player is closer than ally, increase weight
+							if(dis_to_player < dis_to_ally)
+							{
+				
+								// Find distance between player and self, turn to decimal
+								var mod_distance = (((min_range/dis_to_player)-1)) * 1.5;
+				
+								// Modify weight
+								arr_options[ACTIONS.TELEPORT_ALLY].weight += (mod_distance)
+							}else
+							{
+								// If the player is further than the closest ally, set weight to 0
+								arr_options[ACTIONS.TELEPORT_ALLY].weight *=0;
+							}
+						}
+					}
+				#endregion Increase teleport_ally when a ground melee ally is near and the player is getting closer
 			
 
-
-			// Decrease attack with more unshielded allies near
-			if(num_allies != 0)
-			{
-				if(num_unshielded != 0)
-				{
-					arr_options[ACTIONS.ATTACK].weight -= (num_unshielded * mod_num_unshielded)
-				}
-			}
 			
-		}
+				#region Decrease attack with more unshielded allies near
+					if(num_allies != 0)
+					{
+						if(num_unshielded != 0)
+						{
+							arr_options[ACTIONS.ATTACK].weight -= (num_unshielded * mod_num_unshielded)
+						}
+					}
+				#endregion Decrease attack with more unshielded allies near
+			
+			}
+		#endregion If player is visible, modify available weights
 		
 
 		// Reset memory
