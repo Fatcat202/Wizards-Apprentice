@@ -1,6 +1,6 @@
-,_hp,_move_spd,_flies,_can_jump,_min_range,_vision_range,_caster,_xp
-goblin_thug,10,2,FALSE,TRUE,-1,250,FALSE,75
-goblin_brute,25,1,FALSE,TRUE,-1,250,FALSE,150
-goblin_slinger,15,2,FALSE,TRUE,125,250,FALSE,100
-goblin_bat,10,2,TRUE,FALSE,-1,250,FALSE,75
-goblin_shaman,20,1,FALSE,TRUE,125,250,TRUE,400
+,_hp,_move_spd,_flies,is_melee,_can_jump,_min_range,_vision_range,_caster,_xp
+goblin_thug,10,2,FALSE,TRUE,TRUE,-1,250,FALSE,75
+goblin_brute,25,1,FALSE,TRUE,TRUE,-1,250,FALSE,150
+goblin_slinger,15,2,FALSE,FALSE,TRUE,125,250,FALSE,100
+goblin_bat,10,2,TRUE,TRUE,FALSE,-1,250,FALSE,75
+goblin_shaman,20,1,FALSE,FALSE,TRUE,125,250,TRUE,400

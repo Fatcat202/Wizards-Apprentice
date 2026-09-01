@@ -41,6 +41,9 @@ event_inherited();
 	// Determines if enemy is a caster
 	caster = global.enemy_stats[index].caster;
 	
+	// Determines if enemy uses melee weapons
+	is_melee = global.enemy_stats[index].is_melee;
+	
 	// Modifiable max movement speed
 	move_spd_max = move_spd_max_default
 	

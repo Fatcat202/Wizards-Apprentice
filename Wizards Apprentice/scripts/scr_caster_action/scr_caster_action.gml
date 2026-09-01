@@ -54,16 +54,22 @@ function scr_caster_action()
 	#region Modify Weights
 		
 		// DS list holding all nearby allies
-		var allies_near = ds_list_create()
-		var num_allies = collision_circle_list(x, y, vision_range, obj_enemy_parent, false, true, allies_near, true)
+		 allies_near = ds_list_create()
+		 num_allies = collision_circle_list(x, y, vision_range, obj_enemy_parent, false, true, allies_near, true)
 		
 		// Distance to the player
-		var dis_to_player = point_distance(x, y, obj_player_parent.x, obj_player_parent.y)
+		 dis_to_player = point_distance(x, y, obj_player_parent.x, obj_player_parent.y)
 		
 		// Used to track number of allies near without shields
-		var num_unshielded = 0
+		 num_unshielded = 0
+		 
+		// Used to track number of melee, non flying, non casting allies near
+		num_melee = 0;
 		
+		// Array holding melee allies near
+		arr_melee_allies = []
 		
+
 		// Weight Variables
 			// Decrease attack based on number of unshielded allies
 			var mod_num_unshielded = 0.1
@@ -89,6 +95,7 @@ function scr_caster_action()
 						// Track number of unshielded allies near
 						num_unshielded++
 					}
+					
 				}
 			}
 			
@@ -126,10 +133,47 @@ function scr_caster_action()
 				arr_options[ACTIONS.TELEPORT_AWAY].weight += (mod_distance * mod_missing_health)
 				
 			}
+			
+			
 		
 			// TO DO: Increase teleport_ally when a ground melee ally is near and the player is getting closer
-		
-		
+			if(dis_to_player < min_range)
+			{
+				for(var i = 0; i < num_allies; i++)
+				{
+					// Track number of melee, non flying, non caster allies near
+					if(allies_near[| i].is_melee && !allies_near[| i].flies && !allies_near[| i].caster)
+					{
+						array_push(arr_melee_allies, allies_near[| i])
+						num_melee++;
+					}
+				}
+				
+
+				// Check if any melee enemies are near
+				if(num_melee > 0)
+				{
+					var dis_to_ally = point_distance(x, y, arr_melee_allies[0].x, arr_melee_allies[0].y)
+					
+					// If player is closer than ally, increase weight
+					if(dis_to_player < dis_to_ally)
+					{
+				
+						// Find distance between player and self, turn to decimal
+						var mod_distance = (((min_range/dis_to_player)-1)) * 1.5;
+				
+						// Modify weight
+						arr_options[ACTIONS.TELEPORT_ALLY].weight += (mod_distance)
+					}else
+					{
+						// If the player is further than the closest ally, set weight to 0
+						arr_options[ACTIONS.TELEPORT_ALLY].weight *=0;
+					}
+				}
+			}
+			
+
+
 			// Decrease attack with more unshielded allies near
 			if(num_allies != 0)
 			{
