@@ -722,7 +722,7 @@ randomise()
 			#region Hard coded spells for testing
 			
 				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("firebolt")]
-				global.active_spells[0, 2] = global.spell_stats[scr_find_spell_index("jump")]
+				global.active_spells[0, 2] = global.spell_stats[scr_find_spell_index("lightning bolt")]
 				global.active_spells[0, 3] = global.spell_stats[scr_find_spell_index("heal")]
 				global.active_spells[0, 4] = global.spell_stats[scr_find_spell_index("icicle")]
 				global.active_spells[0, 5] = global.spell_stats[scr_find_spell_index("jolt")]
