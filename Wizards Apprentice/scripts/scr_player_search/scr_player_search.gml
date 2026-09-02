@@ -296,4 +296,25 @@ function scr_player_search()
 		// Immediatly set player to not be visible		
 		player_visible = false;
 	}
+	
+	#region Shared Targeting
+		// If caster, share targeting with all near allies
+		if(caster == true && player_visible == true)
+		{
+			// Gather list of near allies
+			var allies_near = ds_list_create()
+			var num_allies_near = collision_circle_list(x, y, vision_range, obj_enemy_parent, false, true, allies_near, false)
+		
+			// Loop through all near allies, sharing targeting details
+			for(var i = 0; i < num_allies_near; i++)
+			{
+				allies_near[| i].target_x = target_x;
+				allies_near[| i].target_y = target_y;
+				allies_near[| i].player_visible = player_visible;
+			}
+		
+			// Memory Reset
+			ds_list_destroy(allies_near)
+		}
+	#endregion Shared Targeting
 }
