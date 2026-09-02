@@ -67,12 +67,15 @@ function scr_caster_action()
 		num_melee = 0;
 		
 		// Array holding melee allies near
-		arr_melee_allies = []
+		arr_melee_allies = [];
 		
 
 		// Weight Variables
 			// Decrease attack based on number of unshielded allies
-			var mod_num_unshielded = 0.1
+			var mod_num_unshielded = 0.1;
+			
+			// Increase shield weight if self does not have shield
+			var mod_self_unshielded = 0.25;
 		
 		
 			
@@ -138,8 +141,17 @@ function scr_caster_action()
 					}
 				#endregion Increase teleport_away when health is low and player is closer than min range
 			
-			
-		
+				
+				#region If self does not have shield, increase weight
+				
+					if(element_shield == "Empty")
+					{
+						arr_options[ACTIONS.TELEPORT_AWAY].weight += mod_self_unshielded;
+					}
+				
+				#endregion If self does not have shield, increase weight
+				
+				
 				#region Increase teleport_ally when a ground melee ally is near and the player is getting closer
 					if(dis_to_player < min_range)
 					{
