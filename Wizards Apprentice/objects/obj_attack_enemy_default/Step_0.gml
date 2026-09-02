@@ -33,9 +33,12 @@ event_inherited()
 	}else
 	{
 		// Keep attack in place relative to enemy that created it
-	
-		x = enemy_object.x;
-		y = enemy_object.y;
+		
+		if(instance_exists(enemy_object))
+		{
+			x = enemy_object.x;
+			y = enemy_object.y;
+		}
 	}
 	
 #endregion Projectile Determination
