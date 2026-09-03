@@ -275,6 +275,7 @@
     {"id":{"name":"obj_platform_stone_sloped_left","path":"objects/obj_platform_stone_sloped_left/obj_platform_stone_sloped_left.yy",},},
     {"id":{"name":"obj_platform_stone_sloped","path":"objects/obj_platform_stone_sloped/obj_platform_stone_sloped.yy",},},
     {"id":{"name":"obj_platform_stone","path":"objects/obj_platform_stone/obj_platform_stone.yy",},},
+    {"id":{"name":"obj_platform_void_parent","path":"objects/obj_platform_void_parent/obj_platform_void_parent.yy",},},
     {"id":{"name":"obj_platform_void_slope","path":"objects/obj_platform_void_slope/obj_platform_void_slope.yy",},},
     {"id":{"name":"obj_platform_void","path":"objects/obj_platform_void/obj_platform_void.yy",},},
     {"id":{"name":"obj_player_parent","path":"objects/obj_player_parent/obj_player_parent.yy",},},
