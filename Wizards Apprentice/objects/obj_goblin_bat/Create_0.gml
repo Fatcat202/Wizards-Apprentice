@@ -6,3 +6,7 @@ event_inherited();
 
 // Add attacks
 scr_add_possible_attack("goblin_bat")
+
+
+// To set path, place into instance creation code:
+// path_patrol = "path_name"

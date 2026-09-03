@@ -143,7 +143,7 @@ event_inherited();
 	target_nodes = []
 	
 	// Movement speed when jumping
-	jump_speed = 6.5;
+	jump_speed = 5.5;
 
 	// Allow jumping speed to by dynamically altered with each jump
 	jumping_speed_h_max = 3.2
@@ -427,7 +427,8 @@ event_inherited();
 						}
 					}
 					
-					scr_sprite_direction()
+					
+					scr_flipping_sprite()
 				
 				}else
 			
@@ -489,9 +490,11 @@ event_inherited();
 				
 					// Set flying patrol false
 					flying_patrol = false
+					
+					scr_sprite_direction()
 				}else
 				{
-					show_error("Error: No Patrol Moveset Found", false);
+					//show_error("Error: No Patrol Moveset Found", false);
 					
 					// Set flying patrol false
 					flying_patrol = false
