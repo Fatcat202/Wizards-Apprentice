@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_spell_icicle",
+  "%Name":"scr_spell_default",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_spell_icicle",
+  "name":"scr_spell_default",
   "parent":{
     "name":"Default",
     "path":"folders/Scripts/Spells/Spells/Default.yy",

@@ -252,7 +252,7 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function spell_stats(_level = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _damage = -1, _move_spd = -1, _cooldown = -1, _mana = -1, _memory = -1, _uses = -1, _duration = -1, _title = "Empty", _desc = "Empty", _spr = -1, _script = -1) constructor {
+				function spell_stats(_level = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _damage = -1, _move_spd = -1, _cooldown = -1, _mana = -1, _memory = -1, _uses = -1, _duration = -1, _title = "Empty", _desc = "Empty", _spr = -1, _script = -1, _attack_sprite = -1) constructor {
 				
 					level = _level					// Level of spell, used for some calculations
 					water_level = _water_level		// Water level of spell
@@ -272,6 +272,7 @@ randomise()
 					desc = _desc					// Sets spell description
 					spr = _spr						// Sets spell icon sprite
 					scr = _script					// Script for spell functionality
+					attack_spr = _attack_sprite		// Sprite of spell object
 
 				}
 
@@ -308,7 +309,8 @@ randomise()
 					global.spell_stats[yy].description = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++
 					global.spell_stats[yy].spr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].scr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
-	
+					global.spell_stats[yy].attack_spr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					
 				}
 
 

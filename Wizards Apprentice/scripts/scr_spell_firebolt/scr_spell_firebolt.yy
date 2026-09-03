@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_spell_firebolt",
   "parent":{
-    "name":"Spells",
-    "path":"folders/Scripts/Spells/Spells.yy",
+    "name":"Default",
+    "path":"folders/Scripts/Spells/Spells/Default.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -24,5 +24,6 @@ function scr_pull_spell_data(spell_name)
 	desc = global.spell_stats[spell_index].desc
 	spr = global.spell_stats[spell_index].spr
 	scr = global.spell_stats[spell_index].scr
+	attack_spr = global.spell_stats[spell_index].attack_spr
 	
 }

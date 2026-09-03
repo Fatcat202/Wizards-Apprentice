@@ -22,7 +22,7 @@ function scr_push_spell_data(spell_name)
 	spell_name.desc = desc
 	spell_name.spr = spr
 	spell_name.scr = scr
-	
+	spell_name.attack_spr = attack_spr
 	
 	
 }
