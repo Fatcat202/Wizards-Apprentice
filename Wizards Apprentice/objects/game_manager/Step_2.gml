@@ -27,17 +27,14 @@ if(room == "rm_level_end")
 // Prevent camera jerking when paused
 if(global.game_paused == true)
 {
-//	show_debug_message("Game Paused")
-	
 	global.cam_x = global.cam_target_x
 	global.cam_y = global.cam_target_y
 }else
 {
-//	show_debug_message("Game Not Paused")
-	
+
 	// Prevent camera from leaving map
-	//global.cam_target_x = clamp(global.cam_target_x, 0, room_height - global.cam_w);
-	//global.cam_target_y = clamp(global.cam_target_y, 0, room_width - global.cam_h);
+	global.cam_target_x = clamp(global.cam_target_x, 0, room_width - global.cam_w);
+	global.cam_target_y = clamp(global.cam_target_y, 0, room_height - global.cam_h);
 	
 	// Set linear interpolation for camera movement smoothing
 	global.cam_x = lerp(global.cam_x, global.cam_target_x, global.cam_smoothing);
