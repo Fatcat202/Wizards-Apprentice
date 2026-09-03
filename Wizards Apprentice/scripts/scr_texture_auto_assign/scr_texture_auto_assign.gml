@@ -49,7 +49,7 @@ function scr_texture_auto_assign()
 		
 		case "rm_level_00":
 		
-			room_texture = "Stone";
+			room_texture = "Grass";
 			
 		break;
 		
@@ -88,6 +88,12 @@ function scr_texture_auto_assign()
 		{
 			platform_texture = spr_tex_stone;
 			ground_texture = spr_tex_ground_stone;
+		}else
+		
+		if(room_texture == "Grass")
+		{
+			platform_texture = spr_tex_dirt;
+			ground_texture = spr_tex_ground_grass;
 		}else
 		{
 			
