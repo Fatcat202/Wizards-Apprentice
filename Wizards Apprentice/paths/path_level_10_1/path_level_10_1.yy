@@ -1,0 +1,20 @@
+{
+  "$GMPath":"",
+  "%Name":"path_level_10_1",
+  "closed":true,
+  "kind":1,
+  "name":"path_level_10_1",
+  "parent":{
+    "name":"rm_level_10",
+    "path":"folders/Paths/rm_level_10.yy",
+  },
+  "points":[
+    {"speed":100.0,"x":1738.856,"y":837.94495,},
+    {"speed":100.0,"x":1974.5723,"y":986.7957,},
+    {"speed":100.0,"x":1744.3634,"y":1069.7361,},
+    {"speed":100.0,"x":1534.6171,"y":1001.00464,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}
