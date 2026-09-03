@@ -1,5 +1,9 @@
 /// @description Leaving Level
 
+
+// Cancel interaction if not active
+if(active = false) exit;
+
 scr_set_room_number()
 
 //show_debug_message(global.active_level_num)

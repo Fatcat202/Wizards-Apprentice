@@ -6,3 +6,7 @@ event_inherited();
 
 // Animation speed
 image_speed = 0
+
+
+// Declares if portal extract is active
+active = true;
