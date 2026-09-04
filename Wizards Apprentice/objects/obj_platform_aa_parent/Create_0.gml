@@ -27,6 +27,13 @@ top_right = place_meeting(x + search, y - search, obj_platform_parent)
 bottom_left = place_meeting(x - search, y + search, obj_platform_parent)
 bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 
+// Check for ground placement in corners
+ground_corner_top_left = (!place_meeting(x - sprite_width, y - sprite_height, obj_platform_parent)  && (left == true && above == true))
+ground_corner_top_right = (!place_meeting(x + sprite_width, y - sprite_height, obj_platform_parent)  && (right == true && above == true))
+ground_corner_bottom_left = (!place_meeting(x - sprite_width, y + sprite_height, obj_platform_parent)  && (left == true && below == true))
+ground_corner_bottom_right = (!place_meeting(x + sprite_width, y + sprite_height, obj_platform_parent)  && (right == true && below == true))
+
+
 
 #region Ground Sprite Functions
 
@@ -87,7 +94,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		#region Ground Corner
 		
 			// Check for and draw ground corner
-			if(!place_meeting(x - sprite_width, y - sprite_height, obj_platform_parent)  && (left == true && above == true))
+			if(ground_corner_top_left)
 			{
 				// Used to offset location of sprite
 				var xx = -half_sprite_width
@@ -115,7 +122,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		#region Ground Corner
 		
 			// Check for and draw ground corner
-			if(!place_meeting(x + sprite_width, y - sprite_height, obj_platform_parent)  && (right == true && above == true))
+			if(ground_corner_top_right)
 			{
 				// Used to offset location of sprite
 				var xx = half_sprite_width
@@ -143,7 +150,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		#region Ground Corner
 		
 			// Check for and draw ground corner
-			if(!place_meeting(x + sprite_width, y + sprite_height, obj_platform_parent)  && (right == true && below == true))
+			if(ground_corner_bottom_right)
 			{
 				// Used to offset location of sprite
 				var xx = half_sprite_width
@@ -171,7 +178,7 @@ bottom_right = place_meeting(x + search, y + search, obj_platform_parent)
 		#region Ground Corner
 		
 			// Check for and draw ground corner
-			if(!place_meeting(x - sprite_width, y + sprite_height, obj_platform_parent)  && (left == true && below == true))
+			if(ground_corner_bottom_left)
 			{
 				// Used to offset location of sprite
 				var xx = -half_sprite_width

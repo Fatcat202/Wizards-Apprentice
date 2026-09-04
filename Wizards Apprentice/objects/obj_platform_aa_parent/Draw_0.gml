@@ -1,16 +1,6 @@
 /// @description Apply Texture
 
 
-
-
-/* **TO DO**
-
-Gather element of platform in top right/left and place the same element in top right/left of own platform
-Do not display if located below another platform to prevent sprite from showing when platform is part of a wall
-
-
-*/
-
 function draw_element_above(rotation = 0, x_shift = 0, y_shift = 0)
 {
 	// ID of platform above
@@ -86,7 +76,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		#region Corner
 		
 			// Check for and draw ground corner
-			if(!place_meeting(x - sprite_width, y + sprite_height, obj_platform_parent) && (left == true && below == true))
+			if(ground_corner_bottom_left)
 			{
 				// Used to offset location of sprite
 				xx = -half_sprite_width
@@ -122,7 +112,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		#region Corner
 		
 			// Check for and draw ground corner
-			if(!place_meeting(x + sprite_width, y + sprite_height, obj_platform_parent) && (right == true && below == true))
+			if(ground_corner_bottom_right)
 			{
 				// Used to offset location of sprite
 				xx = half_sprite_width
@@ -157,7 +147,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		#region Corner
 		
 			// Check for and draw ground corner
-			if(!place_meeting(x - sprite_width, y - sprite_height, obj_platform_parent) && (left == true && above == true))
+			if(ground_corner_top_left)
 			{
 				// Used to offset location of sprite
 				xx = -half_sprite_width
@@ -197,7 +187,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		#region Corner
 		
 			// Check for and draw ground corner
-			if(!place_meeting(x + sprite_width, y - sprite_height, obj_platform_parent)  && (right == true && above == true))
+			if(ground_corner_top_right)
 			{
 				// Used to offset location of sprite
 				xx = half_sprite_width
@@ -222,7 +212,7 @@ if(object_is_ancestor(object_index, obj_platform_aa_slope_parent))
 		// Element of platform above in corner
 		draw_element_above(315, half_sprite_width/2, -half_sprite_height/2 + 1)
 		
-		// Draw element spritae
+		// Draw element sprites
 		func_elements(0, 0)
 	}
 	

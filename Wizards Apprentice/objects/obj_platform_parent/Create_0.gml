@@ -154,8 +154,10 @@ bottom_left_free = !place_meeting(x - sprite_width, y + sprite_height, obj_platf
 function func_elements(xx = 0, yy = 0, xx_scale = image_xscale, yy_scale = image_yscale, rot = 0)
 {
 	// Used to display element sprites on platforms
-
 	// Check for elements, and draw if activated
+	
+	// Exit if no element to be drawn
+	if(water_level < 1 && oil_level < 1) exit;
 
 	// Stores sprite of element to draw
 	 element_draw = noone
@@ -203,19 +205,6 @@ function func_elements(xx = 0, yy = 0, xx_scale = image_xscale, yy_scale = image
 	if(water_level > 0 && oil_level > 0 && is_ice == true)
 	{
 		element_draw = spr_element_oil_ice
-	}else
-	
-	// No Element
-	if(water_level == 0 && oil_level == 0 && is_ice == false)
-	{
-		// Draw nothing
-	}else
-	{
-		// No element combination could be found
-		
-		element_draw = spr_plat_aa_square;
-		
-		show_error("ERROR: NO ELEMENT DETERMINED", false)
 	}
 	
 	// Draw element sprite
