@@ -115,5 +115,6 @@ scr_get_controls();
 	{
 		global.game_paused = true;
 	}else global.game_paused = false;
+
 	
 #endregion Pausing
