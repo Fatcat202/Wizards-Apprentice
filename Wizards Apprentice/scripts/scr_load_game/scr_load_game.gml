@@ -5,6 +5,9 @@ function scr_load_game(file_num = 0, new_room = rm_wizard_tower)
 	// Pass through file number to load, default being global.file_num
 	// Pass through new room to move to, default being wizard tower
 	
+	// Check if first room is completed, if not, load first level
+	var first_level_complete = global.level_stats[global.level_offset+0].level_completed;
+	if(first_level_complete == false) new_room = rm_level_00;
 	
 	// File name
 	var file_name = scr_create_file_name(file_num)
