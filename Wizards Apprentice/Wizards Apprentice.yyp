@@ -59,8 +59,8 @@
     {"$GMFolder":"","%Name":"Stone","folderPath":"folders/Objects/Platforms/Solid/Stone.yy","name":"Stone","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Text Box","folderPath":"folders/Objects/Text Box.yy","name":"Text Box","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Paths","folderPath":"folders/Paths.yy","name":"Paths","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"rm_level_10","folderPath":"folders/Paths/rm_level_10.yy","name":"rm_level_10","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"rm_level_00","folderPath":"folders/Paths/rm_level_00.yy","name":"rm_level_00","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"rm_level_10","folderPath":"folders/Paths/rm_level_10.yy","name":"rm_level_10","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"rm_testing_0","folderPath":"folders/Paths/rm_testing_0.yy","name":"rm_testing_0","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Demo","folderPath":"folders/Rooms/Demo.yy","name":"Demo","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -588,6 +588,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},
@@ -598,7 +599,6 @@
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
           ],"groupName":"Wizard Tower",},
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
       ],"groupName":"Demo",},
     {"children":[

@@ -13,4 +13,4 @@ with(menu_id)
 	global.charisma = temp_cha;
 }
 
-scr_transfer_to_room(rm_wizard_tower)
+scr_transfer_to_room(rm_level_00)
