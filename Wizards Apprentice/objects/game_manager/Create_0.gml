@@ -699,14 +699,14 @@ randomise()
 		
 				// Row 1
 				global.inventory[0] = global.item_stats[item_names.health_potion_light];
-				global.inventory[1] = global.item_stats[item_names.health_potion_moderate];
-				global.inventory[2] = global.item_stats[item_names.health_potion_severe];
-				global.inventory[3] = global.item_stats[item_names.health_potion_critical];
+				global.inventory[1] = -1;
+				global.inventory[2] = -1;
+				global.inventory[3] = -1;
 				global.inventory[4] = -1;
 	
 				// Row 2
-				global.inventory[5] = global.item_stats[item_names.scroll_level_3];
-				global.inventory[6] = global.item_stats[item_names.scroll_level_1];
+				global.inventory[5] = -1;
+				global.inventory[6] = -1;
 				global.inventory[7] = -1;
 				global.inventory[8] = -1;
 				global.inventory[9] = -1;
