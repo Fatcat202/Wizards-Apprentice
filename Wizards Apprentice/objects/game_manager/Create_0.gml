@@ -723,24 +723,24 @@ randomise()
 			
 			#region Hard coded spells for testing
 			
-				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("firebolt")]
-				global.active_spells[0, 2] = global.spell_stats[scr_find_spell_index("lightning bolt")]
-				global.active_spells[0, 3] = global.spell_stats[scr_find_spell_index("heal")]
-				global.active_spells[0, 4] = global.spell_stats[scr_find_spell_index("icicle")]
-				global.active_spells[0, 5] = global.spell_stats[scr_find_spell_index("jolt")]
-				global.active_spells[0, 6] = global.spell_stats[scr_find_spell_index("wall of fire")]
-				global.active_spells[0, 7] = global.spell_stats[scr_find_spell_index("wall of ice")]
-				global.active_spells[0, 8] = global.spell_stats[scr_find_spell_index("fireball")]
-				global.active_spells[0, 9] = global.spell_stats[scr_find_spell_index("water splash")]
-				global.active_spells[0, 10] = global.spell_stats[scr_find_spell_index("oil splash")]
+				global.active_spells[0, 1] = -1 //global.spell_stats[scr_find_spell_index("firebolt")]
+				global.active_spells[0, 2] = -1 //global.spell_stats[scr_find_spell_index("lightning bolt")]
+				global.active_spells[0, 3] = -1 //global.spell_stats[scr_find_spell_index("heal")]
+				global.active_spells[0, 4] = -1 //global.spell_stats[scr_find_spell_index("icicle")]
+				global.active_spells[0, 5] = -1 //global.spell_stats[scr_find_spell_index("jolt")]
+				global.active_spells[0, 6] = -1 //global.spell_stats[scr_find_spell_index("wall of fire")]
+				global.active_spells[0, 7] = -1 //global.spell_stats[scr_find_spell_index("wall of ice")]
+				global.active_spells[0, 8] = -1 //global.spell_stats[scr_find_spell_index("fireball")]
+				global.active_spells[0, 9] = -1 //global.spell_stats[scr_find_spell_index("water splash")]
+				global.active_spells[0, 10] = -1 //global.spell_stats[scr_find_spell_index("oil splash")]
 				//show_debug_message("global.active_spells = " + string(global.active_spells))
-				
+			
 			#endregion Hard coded spells for testing
 			
 			#region Spellbook Testing Contents
-
+			
 				#region Page 1
-				
+				/*
 					// Page and Slot
 					var page = 1
 					var slot = 0
@@ -758,7 +758,7 @@ randomise()
 					slot++
 					global.spellbook[page, slot] = -1;
 					slot++
-				
+				*/
 				#endregion Page 1
 				
 				#region Page 2

@@ -2,6 +2,17 @@
 
 draw_self()
 
+// Draw inventory image
+draw_sprite_stretched
+(
+	spr_main_menu_popup,
+	0,
+	xpos - width/2,
+	ypos - height/2,
+	width,
+	height
+);
+
 
 // Set Location
 draw_set_halign(fa_center);
@@ -15,7 +26,59 @@ draw_set_font(fnt_menu_small);
 		
 			case "new_game": // Start a new game
 			
-				draw_text(middle, save_slot_y_title, "New Game")
+			
+				#region Positioning
+				
+					width = 350
+					xpos = default_xpos - (width - default_width)/2;
+					ypos = default_ypos;
+	
+					#region Name Creation
+	
+						x_pos_text_box = xpos
+						y_pos_text_box = y - 95
+	
+					#endregion Name Creation
+	
+					#region Start Game
+		
+						x_pos_start = x - 100
+						y_pos_start = y + 110
+		
+					#endregion Start Game
+
+					#region Stats
+						
+						// Offset to place stats left
+						stats_x_offset = 65
+
+						stats_x = xpos - stats_x_offset
+						stats_start_y = y_top + 90
+						stats_gap = 27
+
+						available_level_x = xpos - stats_x_offset
+						available_level_y = y_top + 220
+
+						add_button_x = xpos + 80 - stats_x_offset
+						subtract_button_x = xpos - 80 - stats_x_offset
+		
+					#endregion Stats
+					
+					#region Spells
+						
+						
+						spell_select_x = xpos + 95
+						spell_select_y = y_top + 85
+						
+						spell_select_start_x = xpos + 40
+						spell_select_start_y = y_top + 100
+						spell_select_gap = 52
+					
+					#endregion Spells
+	
+				#endregion Positioning
+			
+				draw_text(xpos, save_slot_y_title, "Name:")
 		
 		
 				var stats_y_count = 0;
@@ -31,6 +94,54 @@ draw_set_font(fnt_menu_small);
 				
 				
 				#endregion Name Creation
+				
+				
+				#region Spell Selection
+
+
+					scr_draw_set_text(fa_center, fa_middle, fnt_menu_small, c_white)
+						draw_text(spell_select_x, spell_select_y, "Select Spell:")
+					scr_text_reset()
+					
+					if(!instance_exists(obj_button_spell_select))
+					{		
+						
+						var total_spells = array_length(arr_starter_spells)
+						var count = 0;
+						
+						var button_x_pos = spell_select_start_x
+						var button_y_pos = spell_select_start_y
+						
+						for(var i = 0; i < total_spells; i++)
+						{
+							
+							// Order spell in 2 columns
+							if(count > 1)
+							{
+								button_x_pos = spell_select_start_x
+								button_y_pos += spell_select_gap
+								count = 0
+							}
+							button_x_pos += count * (spell_select_gap)
+							
+							// Center last spell
+							if((i + 1) >= total_spells && count == 0)
+							{
+								button_x_pos = spell_select_start_x + (spell_select_gap/2)
+							}
+
+							// Create buttons
+							var spell = instance_create_layer(button_x_pos, button_y_pos, "Menu_Buttons", obj_button_spell_select)
+								spell.spell_data = arr_starter_spells[i]
+								spell.menu_id = id
+						
+						
+							count++
+						}
+					}
+					
+				
+				#endregion Spell Selection
 			
 
 				#region Stat Selection
@@ -284,7 +395,7 @@ draw_set_font(fnt_menu_small);
 				
 					
 					// Only create start button if name is selected and all levels distributed
-					if(global.player_name != "" && temp_free_level == 0)
+					if(global.player_name != "" && temp_free_level == 0 && starting_spell != -1)
 					{
 						// Create start button
 						if(!instance_exists(obj_button_start))
@@ -308,7 +419,11 @@ draw_set_font(fnt_menu_small);
 	
 		#region Load Game
 			case "load_game": // Load a previous game
-		
+				
+				width = default_width;
+				xpos = default_xpos;
+				ypos = default_ypos;
+				
 				// Save game slots
 				
 				// Reload data held in save slot array
@@ -365,7 +480,12 @@ draw_set_font(fnt_menu_small);
 	
 		#region Options
 			case "options": // View and change game settings
-		
+				
+				width = default_width;
+				xpos = default_xpos;
+				ypos = default_ypos;
+				
+				
 				draw_text(x, y, "Options")
 		
 			break;
@@ -373,7 +493,12 @@ draw_set_font(fnt_menu_small);
 		
 		#region Credits
 			case "credits": // View credits
-		
+				
+				width = default_width;
+				xpos = default_xpos;
+				ypos = default_ypos;
+				
+				
 				draw_text(credits_title_x, credits_title_y, "Credits:")
 				
 				draw_text(credits_text_x, credits_text_y, credits_text)
@@ -384,6 +509,10 @@ draw_set_font(fnt_menu_small);
 		#region Make Save Slot
 		
 			case "make_save_slot":
+				
+				width = default_width;
+				xpos = default_xpos;
+				ypos = default_ypos;
 				
 				
 				// Reload data held in save slot array
@@ -446,6 +575,8 @@ draw_set_font(fnt_menu_small);
 		
 		break;
 	}
+	
+	
 
 // Reset Location
 scr_text_reset()

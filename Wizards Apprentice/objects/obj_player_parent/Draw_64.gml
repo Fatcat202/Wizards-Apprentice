@@ -309,7 +309,10 @@ var yy = display_get_gui_height() / 2
 			}
 		}else
 		{
-			func_spell_slot_icon(spr_spell_slot_template, xx, yy, 1, i, r, g, b, global.arr_spell_timers[i].timer, global.arr_spell_timers[i].length)
+			if(i < array_length(global.arr_spell_timers))
+			{
+				func_spell_slot_icon(spr_spell_slot_template, xx, yy, 1, i, r, g, b, global.arr_spell_timers[i].timer, global.arr_spell_timers[i].length)
+			}
 		}
 	}
 

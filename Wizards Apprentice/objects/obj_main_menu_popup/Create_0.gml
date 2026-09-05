@@ -1,17 +1,25 @@
 /// @description
 
-// Set position
-xpos = 499
-ypos = 191
+// Default Positions
+default_xpos = 499
+default_ypos = 191
+
+default_width = 250
+default_height = 300
+
+xpos = default_xpos;
+ypos = default_ypos;
+
 x = xpos
 y = ypos
 
 // State used for detemining what menu options to show in step
 state = "none"
 
+
 // Menu positions for placing buttons
-width = sprite_get_width(sprite_index)
-height = sprite_get_height(sprite_index)
+width = default_width
+height = default_height
 
 middle = xpos;
 
@@ -39,31 +47,8 @@ credits_text = "Made By: Ethan Bayley"
 
 #region New Game
 
-	#region Name Creation
-	
-		x_pos_text_box = middle
-		y_pos_text_box = y - 95
-	
-	#endregion Name Creation
-	
-	#region Start Game
-		
-		x_pos_start = x
-		y_pos_start = y + 110
-		
-	#endregion Start Game
 
-	#region Stats
 
-		stats_x = middle
-		stats_start_y = y_top + 90
-		stats_gap = 27
-
-		available_level_x = middle
-		available_level_y = y_top + 220
-
-		add_button_x = middle + 80
-		subtract_button_x = middle - 80
 
 
 		temp_vit = global.vitality;
@@ -89,6 +74,24 @@ credits_text = "Made By: Ethan Bayley"
 		sub_cha = noone;
 	
 	#endregion Stats
+	
+	#region Spell Selection
+	
+		// Array holding possible spells
+		arr_starter_spells = []
+		
+		var pos = 0;
+		arr_starter_spells[pos] = global.spell_stats[scr_find_spell_index("firebolt")]; pos++;
+		arr_starter_spells[pos] = global.spell_stats[scr_find_spell_index("icicle")]; pos++;
+		arr_starter_spells[pos] = global.spell_stats[scr_find_spell_index("jolt")]; pos++;
+		arr_starter_spells[pos] = global.spell_stats[scr_find_spell_index("water splash")]; pos++;
+		arr_starter_spells[pos] = global.spell_stats[scr_find_spell_index("oil splash")]; pos++;
+		
+		// Spell selected by player to be first spell
+		starting_spell = -1
+		
+	
+	#endregion Spell Selection
 
 
 #endregion New Game
