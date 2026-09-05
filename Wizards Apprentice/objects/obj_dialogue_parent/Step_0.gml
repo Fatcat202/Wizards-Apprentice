@@ -1,6 +1,9 @@
 /// @description Buttons
 
 
+// Skip typewriter effect
+if(global.cont_attack == true) text_display = arr_dialogue[position].text;
+
 
 #region Buttons
 

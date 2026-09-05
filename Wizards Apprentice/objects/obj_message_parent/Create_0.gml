@@ -28,8 +28,8 @@ body_line_sep = 14;
 body_line_width = 200;
 
 // Body positioning
-body_x = x_pos + width/2 + offset;
-body_y = y_pos + 125;
+body_x = x_pos + 75;
+body_y = y_pos + 25;
 
 // Text of exit button
 button_text = "Continue"
@@ -38,3 +38,12 @@ button_text = "Continue"
 button_x = x_pos + width/2 + offset;
 button_y = y_pos + 265;
 
+// Typewriter timer
+typewriter_timer = 0
+typewriter_time = 2
+	
+// Text displayed to screen
+text_display = "";
+
+// Position of character to gather from body_text
+str_pos = 1

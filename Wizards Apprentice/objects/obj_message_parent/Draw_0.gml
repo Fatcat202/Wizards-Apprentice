@@ -17,6 +17,6 @@ draw_sprite_stretched
 );
 
 // Draw body text
-scr_draw_set_text(fa_center, fa_middle, fnt_menu_small, c_white)
-	draw_text_ext(body_x, body_y, body_text, body_line_sep, body_line_width)
+scr_draw_set_text(fa_top, fa_left, fnt_menu_small, c_white)
+	draw_text_ext(body_x, body_y, text_display, body_line_sep, body_line_width)
 scr_text_reset()
