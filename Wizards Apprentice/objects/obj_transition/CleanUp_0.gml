@@ -18,3 +18,7 @@ if(instance_exists(obj_player_parent))
 	obj_player_parent.can_be_stunned = true
 	obj_player_parent.can_attack = true
 }
+
+
+
+scr_room_entry_message()

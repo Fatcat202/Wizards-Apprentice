@@ -12,6 +12,8 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Message","folderPath":"folders/Objects/Message.yy","name":"Message","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Buttons","folderPath":"folders/Objects/Message/Buttons.yy","name":"Buttons","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Attacks","folderPath":"folders/Objects/Attacks.yy","name":"Attacks","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"AOE","folderPath":"folders/Objects/Attacks/AOE.yy","name":"AOE","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Melee","folderPath":"folders/Objects/Attacks/Melee.yy","name":"Melee","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -87,6 +89,7 @@
     {"$GMFolder":"","%Name":"Items","folderPath":"folders/Scripts/Items.yy","name":"Items","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Item Trigger","folderPath":"folders/Scripts/Items/Item Trigger.yy","name":"Item Trigger","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Pause","folderPath":"folders/Scripts/Pause.yy","name":"Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Message Pause","folderPath":"folders/Scripts/Pause/Message Pause.yy","name":"Message Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Death Pause","folderPath":"folders/Scripts/Pause/Death Pause.yy","name":"Death Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Dialogue Pause","folderPath":"folders/Scripts/Pause/Dialogue Pause.yy","name":"Dialogue Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"ESC Pause","folderPath":"folders/Scripts/Pause/ESC Pause.yy","name":"ESC Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -189,6 +192,7 @@
     {"id":{"name":"obj_button_load_game","path":"objects/obj_button_load_game/obj_button_load_game.yy",},},
     {"id":{"name":"obj_button_main_menu","path":"objects/obj_button_main_menu/obj_button_main_menu.yy",},},
     {"id":{"name":"obj_button_memorize","path":"objects/obj_button_memorize/obj_button_memorize.yy",},},
+    {"id":{"name":"obj_button_message_exit","path":"objects/obj_button_message_exit/obj_button_message_exit.yy",},},
     {"id":{"name":"obj_button_new_game","path":"objects/obj_button_new_game/obj_button_new_game.yy",},},
     {"id":{"name":"obj_button_new_save_slot","path":"objects/obj_button_new_save_slot/obj_button_new_save_slot.yy",},},
     {"id":{"name":"obj_button_options","path":"objects/obj_button_options/obj_button_options.yy",},},
@@ -263,6 +267,7 @@
     {"id":{"name":"obj_menu_button_parent","path":"objects/obj_menu_button_parent/obj_menu_button_parent.yy",},},
     {"id":{"name":"obj_menu_level_select","path":"objects/obj_menu_level_select/obj_menu_level_select.yy",},},
     {"id":{"name":"obj_menu_spell_learning","path":"objects/obj_menu_spell_learning/obj_menu_spell_learning.yy",},},
+    {"id":{"name":"obj_message_parent","path":"objects/obj_message_parent/obj_message_parent.yy",},},
     {"id":{"name":"obj_mouse","path":"objects/obj_mouse/obj_mouse.yy",},},
     {"id":{"name":"obj_platform_aa_parent","path":"objects/obj_platform_aa_parent/obj_platform_aa_parent.yy",},},
     {"id":{"name":"obj_platform_aa_slope_left","path":"objects/obj_platform_aa_slope_left/obj_platform_aa_slope_left.yy",},},
@@ -392,6 +397,8 @@
     {"id":{"name":"scr_load_room_chests","path":"scripts/scr_load_room_chests/scr_load_room_chests.yy",},},
     {"id":{"name":"scr_mana_drain","path":"scripts/scr_mana_drain/scr_mana_drain.yy",},},
     {"id":{"name":"scr_memory_used","path":"scripts/scr_memory_used/scr_memory_used.yy",},},
+    {"id":{"name":"scr_message_pause","path":"scripts/scr_message_pause/scr_message_pause.yy",},},
+    {"id":{"name":"scr_message_resume","path":"scripts/scr_message_resume/scr_message_resume.yy",},},
     {"id":{"name":"scr_move_enemy","path":"scripts/scr_move_enemy/scr_move_enemy.yy",},},
     {"id":{"name":"scr_move_to_target","path":"scripts/scr_move_to_target/scr_move_to_target.yy",},},
     {"id":{"name":"scr_on_ground","path":"scripts/scr_on_ground/scr_on_ground.yy",},},
@@ -406,6 +413,7 @@
     {"id":{"name":"scr_reload_save_slot_array","path":"scripts/scr_reload_save_slot_array/scr_reload_save_slot_array.yy",},},
     {"id":{"name":"scr_reset_enemy_movement","path":"scripts/scr_reset_enemy_movement/scr_reset_enemy_movement.yy",},},
     {"id":{"name":"scr_reset_move_modifiers","path":"scripts/scr_reset_move_modifiers/scr_reset_move_modifiers.yy",},},
+    {"id":{"name":"scr_room_entry_message","path":"scripts/scr_room_entry_message/scr_room_entry_message.yy",},},
     {"id":{"name":"scr_room_get_completed","path":"scripts/scr_room_get_completed/scr_room_get_completed.yy",},},
     {"id":{"name":"scr_save_game","path":"scripts/scr_save_game/scr_save_game.yy",},},
     {"id":{"name":"scr_semi_solid_passthrough","path":"scripts/scr_semi_solid_passthrough/scr_semi_solid_passthrough.yy",},},
@@ -526,6 +534,7 @@
     {"id":{"name":"spr_menu_button_short_1","path":"sprites/spr_menu_button_short_1/spr_menu_button_short_1.yy",},},
     {"id":{"name":"spr_menu_esc_background","path":"sprites/spr_menu_esc_background/spr_menu_esc_background.yy",},},
     {"id":{"name":"spr_menu_save_slot","path":"sprites/spr_menu_save_slot/spr_menu_save_slot.yy",},},
+    {"id":{"name":"spr_message","path":"sprites/spr_message/spr_message.yy",},},
     {"id":{"name":"spr_number","path":"sprites/spr_number/spr_number.yy",},},
     {"id":{"name":"spr_page_1","path":"sprites/spr_page_1/spr_page_1.yy",},},
     {"id":{"name":"spr_page_2","path":"sprites/spr_page_2/spr_page_2.yy",},},
@@ -588,6 +597,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},
@@ -598,7 +608,6 @@
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
           ],"groupName":"Wizard Tower",},
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
       ],"groupName":"Demo",},
     {"children":[
