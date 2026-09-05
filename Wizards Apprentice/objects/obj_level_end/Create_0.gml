@@ -1,6 +1,10 @@
 
 
 #region Variables
+	
+	// Position camera in correct location
+	global.cam_x = 0
+	global.cam_y = 0
 
 	// Top of screen
 	top = global.cam_y

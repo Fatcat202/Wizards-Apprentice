@@ -15,10 +15,9 @@ if(instance_exists(obj_player_parent))
 	global.cam_target_y = clamp(global.cam_target_y, 0, room_height - global.cam_h);
 }else
 
-if(room == "rm_level_end")
+if(room == rm_level_end)
 {
 	// If player does not exist, such as in menu screens, set camera to default position
-	
 	global.cam_x = 0
 	global.cam_y = 0
 	global.cam_target_x = global.cam_x
