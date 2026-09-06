@@ -599,12 +599,12 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
           ],"groupName":"Wizard Tower",},
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},

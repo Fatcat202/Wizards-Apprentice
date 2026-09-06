@@ -100,8 +100,9 @@ scr_memory_used()
 	memory = global.memory;
 	
 	// Total number of spells memorised
-	total_spells = 10
-
+	total_spells = array_length(global.active_spells);
+	// Increment by 1 if over 0 to allow for correct positioning in GUI
+	if(total_spells > 0) total_spells++;
 
 	#region Timers
 	

@@ -268,7 +268,7 @@ var yy = display_get_gui_height() / 2
 #endregion Mana
 
 #region Spells
-
+	
 	var spell_width = sprite_get_width(spr_spell_slot_template)
 	var spell_height = sprite_get_height(spr_spell_slot_template)
 	var spell_spacing = (spell_width);
