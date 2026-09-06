@@ -440,10 +440,10 @@ if(global.can_control_player == false) exit;
 	
 	#region Use Spell
 		
-		if(global.cont_attack && can_attack && is_stunned == false)
+		if(global.cont_attack && can_attack && is_stunned == false && global.active_spells[0, active_spell] != -1)
 		{
 			// Activate attack
-			if(global.arr_spell_timers[active_spell].cooldown == false && global.active_spells[0, active_spell] != -1)
+			if(global.arr_spell_timers[active_spell].cooldown == false)
 			{
 				script_execute(global.active_spells[0, active_spell].scr);
 			}
