@@ -216,7 +216,8 @@ scr_memory_used()
 	
 #endregion Jump States
 
-spell_surf = -1
+spell_surf = -1;
+cooldown_surf = -1;
 
 function func_spell_slot_icon(sprite, xx, yy, subimage, i, r = 255, g = 255, b = 255, cooldown_timer, cooldown_length)
 {
@@ -225,90 +226,140 @@ function func_spell_slot_icon(sprite, xx, yy, subimage, i, r = 255, g = 255, b =
 	// Display surface with spell slot icon drawn to it
 	// Pass through RGB values of background colour of icon (default is white)
 
+	#region Spell Icon
 	
-	var spell_width = sprite_get_width(spr_spell_slot_template)
-	var spell_height = sprite_get_height(spr_spell_slot_template)
-	var spell_spacing = (spell_width);
-	var spell_margin_x =  xx - (((total_spells + 1) * spell_width))/2
-	var spell_margin_y = ((yy * 2) - (spell_height / 2)) - 35;
+		var spell_width = sprite_get_width(spr_spell_slot_template)
+		var spell_height = sprite_get_height(spr_spell_slot_template)
+		var spell_spacing = (spell_width);
+		var spell_margin_x =  xx - (((total_spells + 1) * spell_width))/2
+		var spell_margin_y = ((yy * 2) - (spell_height / 2)) - 35;
 	
-	func_colour = function(r, g, b) constructor
-	{
-		red = r;
-		green = g;
-		blue = b;
-		
-		// Quick gml to shader conversion
-		static to_shader_value = function(value)
+		func_colour = function(r, g, b) constructor
 		{
-			return value / 255;
+			red = r;
+			green = g;
+			blue = b;
+		
+			// Quick gml to shader conversion
+			static to_shader_value = function(value)
+			{
+				return value / 255;
+			}
+		};
+	
+		// Colour to search for for replacement
+		colour_match = new func_colour(255, 255, 255) // White
+	
+		// Colour to replace matched colour with
+		colour_replace = new func_colour(r, g, b)
+	
+		// Declare uniform values
+		shd_handle_range = shader_get_uniform(shd_replace_colour, "range");
+		shd_handle_match = shader_get_uniform(shd_replace_colour, "colour_match");
+		shd_handle_replace = shader_get_uniform(shd_replace_colour, "colour_replace");
+	
+	
+		// Create shader
+		shader_set(shd_replace_colour);
+	
+		// Set range
+		shader_set_uniform_f(shd_handle_range, 1);
+	
+		// Set colour match value
+		shader_set_uniform_f(shd_handle_match,
+			colour_match.to_shader_value(colour_match.red),
+			colour_match.to_shader_value(colour_match.green),
+			colour_match.to_shader_value(colour_match.blue),
+			);
+	
+		// Set colour replace value
+		shader_set_uniform_f(shd_handle_replace,
+			colour_replace.to_shader_value(colour_replace.red),
+			colour_replace.to_shader_value(colour_replace.green),
+			colour_replace.to_shader_value(colour_replace.blue),
+			);
+
+		// Ensure base texture is set for the surface drawing
+		texture_set_stage(0, surface_get_texture(spell_surf));
+		
+		// Create surface
+		if(!surface_exists(spell_surf))
+		{
+			spell_surf = surface_create(spell_width, spell_height);
+		
+			// Set surface target
+			surface_set_target(spell_surf)
+				draw_clear_alpha(c_black, 0)
+		}else draw_clear_alpha(c_black, 0)
+
+
+		// Draw texture to the surface
+		draw_sprite(sprite, subimage, 0, 0);
+
+
+		// Reset surface target
+		surface_reset_target()
+
+		// Draw surface
+		draw_surface(spell_surf, spell_margin_x + (i * spell_spacing), spell_margin_y);
+
+		// Free memory
+		surface_free(spell_surf)
+
+		// End shader
+		shader_reset();
+	
+	#endregion Spell Icon
+	
+	#region Cooldown
+		
+		// Check if cooldown is active
+		if(cooldown_timer > 0)
+		{
+			// Check for sprite size based on if spell is active, using subimage to determine
+			var _sprite, cooldown_spr_height, cooldown_spr_width, _offset;
+			if(subimage == 0)
+			{
+				_sprite = spr_spell_slot_template;
+				_offset = 0;
+			}else
+			{
+				_sprite = spr_spell_slot_template_small;
+				
+				// Apply offset to ensure cooldown is located correctly
+				_offset = (sprite_get_width(spr_spell_slot_template) - sprite_get_width(spr_spell_slot_template_small))/2;
+			}
+			
+			cooldown_spr_width = sprite_get_width(_sprite);
+			cooldown_spr_height = sprite_get_height(_sprite);
+			
+			// Create surface
+			if(!surface_exists(cooldown_surf))
+			{
+				cooldown_surf = surface_create(cooldown_spr_width, cooldown_spr_height);
+		
+				// Set surface target
+				surface_set_target(cooldown_surf)
+					draw_clear_alpha(c_black, 0)
+			}else draw_clear_alpha(c_black, 0)
+
+
+			// Apply cooldown circle
+			scr_draw_circ_healthbar(cooldown_spr_width/2, cooldown_spr_height/2, cooldown_timer, cooldown_length, c_black, cooldown_spr_width, 0.5)
+
+
+
+			// Reset surface target
+			surface_reset_target()
+
+			// Draw surface
+			draw_surface(cooldown_surf, spell_margin_x + (i * spell_spacing) + _offset, spell_margin_y + _offset);
+
+			// Free memory
+			surface_free(cooldown_surf)
+		
 		}
-	};
-	
-	// Colour to search for for replacement
-	colour_match = new func_colour(255, 255, 255) // White
-	
-	// Colour to replace matched colour with
-	colour_replace = new func_colour(r, g, b)
-	
-	// Declare uniform values
-	shd_handle_range = shader_get_uniform(shd_replace_colour, "range");
-	shd_handle_match = shader_get_uniform(shd_replace_colour, "colour_match");
-	shd_handle_replace = shader_get_uniform(shd_replace_colour, "colour_replace");
-	
-	
-	// Create shader
-	shader_set(shd_replace_colour);
-	
-	// Set range
-	shader_set_uniform_f(shd_handle_range, 1);
-	
-	// Set colour match value
-	shader_set_uniform_f(shd_handle_match,
-		colour_match.to_shader_value(colour_match.red),
-		colour_match.to_shader_value(colour_match.green),
-		colour_match.to_shader_value(colour_match.blue),
-		);
-	
-	// Set colour replace value
-	shader_set_uniform_f(shd_handle_replace,
-		colour_replace.to_shader_value(colour_replace.red),
-		colour_replace.to_shader_value(colour_replace.green),
-		colour_replace.to_shader_value(colour_replace.blue),
-		);
-
-	// Ensure base texture is set for the surface drawing
-	texture_set_stage(0, surface_get_texture(spell_surf));
 		
-	// Create surface
-	if(!surface_exists(spell_surf))
-	{
-		spell_surf = surface_create(spell_width, spell_height);
-		
-		// Set surface target
-		surface_set_target(spell_surf)
-			draw_clear_alpha(c_black, 0)
-	}else draw_clear_alpha(c_black, 0)
-
-
-	// Draw texture to the surface
-	draw_sprite(sprite, subimage, 0, 0);
-	
-	// Apply cooldown circle
-	scr_draw_circ_healthbar(spell_width/2, spell_height/2, cooldown_timer, cooldown_length, c_black, spell_width, 0.5)
-
-
-	// Reset surface target
-	surface_reset_target()
-
-	// Draw surface
-	draw_surface(spell_surf, spell_margin_x + (i * spell_spacing), spell_margin_y);
-
-	// Free memory
-	surface_free(spell_surf)
-
-	// End shader
-	shader_reset();
-	
+	#endregion Cooldown
 }
 
