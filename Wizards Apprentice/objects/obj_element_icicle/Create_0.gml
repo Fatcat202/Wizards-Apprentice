@@ -19,3 +19,8 @@ enemy_damage = 5;
 element = "Ice"
 
 is_ice = true;
+water_level = 1;
+oil_level = 0;
+is_flaming = false;
+is_charged = false;
+is_steaming = false;

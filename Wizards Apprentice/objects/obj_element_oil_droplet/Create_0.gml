@@ -23,6 +23,13 @@ level = 1
 // Declares element as oil
 element = "Oil"
 
+is_ice = false;
+water_level = 0;
+oil_level = 1;
+is_flaming = false;
+is_charged = false;
+is_steaming = false;
+
 
 // Declares flames are spawned
 flames_spawned = false;

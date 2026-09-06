@@ -11,4 +11,9 @@ level = 1
 
 element = "Water"
 
+is_ice = false;
+water_level = 1;
+oil_level = 0;
+is_flaming = false;
 is_charged = false;
+is_steaming = false;
