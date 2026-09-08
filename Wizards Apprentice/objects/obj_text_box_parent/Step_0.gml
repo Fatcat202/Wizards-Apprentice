@@ -28,18 +28,22 @@ if(focused == true)
 {
 	// Apply text input
 	
-	// Check if a keyboard key is being pressed
-	if(keyboard_key != 0 && string_length(entry_text) < max_text_length && !keyboard_check_pressed(ord(vk_backspace)))
+	// Check if a keyboard key is being pressed, saving character
+	if(keyboard_key != 0 && string_length(entry_text) < max_text_length && !keyboard_check_pressed(vk_backspace))
 	{
 		entry_text = keyboard_string
-	}else
-	
-	if(keyboard_check_pressed(ord(vk_backspace)))
-	{
-		length = string_length(entry_text)
-		entry_text = string_delete(entry_text, length, 1)
 	}
 	
+	// Delete character
+	if(keyboard_check_pressed(vk_backspace) && length !=0)
+	{
+		entry_text = string_delete(entry_text, length, 1)
+	}
+
+	length = string_length(entry_text)
+	
+//	show_debug_message(string(length))
+
 	// Flip image index to show focused
 	image_index = 1
 }else

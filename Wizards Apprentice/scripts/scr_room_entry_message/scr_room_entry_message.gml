@@ -10,7 +10,7 @@ function scr_room_entry_message()
 	if(room == rm_level_00)
 	{
 		var _message = instance_create_layer(global.cam_x, global.cam_y, "Inventory", obj_message_parent)
-			_message.body_text = "Dear " + string(global.player_name) + "," + "      Congradulations! After thorough consideration, your application to be my apprentice has been accepted! I have placed a portal to my tower not far from your home, just be sure to clear the goblins first. Consider your survival your first test.      -Wizard"
+			_message.body_text = "Dear " + string(global.player_name) + ", \nCongradulations! After thorough consideration, your application to be my apprentice has been accepted! I have placed a portal to my tower not far from your home, just be sure to clear the goblins first. Consider your survival your first test.\n-Wizard"
 			_message.button_text = "Exit"
 	}
 	

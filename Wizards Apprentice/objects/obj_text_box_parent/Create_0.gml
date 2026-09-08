@@ -9,6 +9,7 @@ width = sprite_width
 
 // String entered by the player
 entry_text = "";
+length = 0
 
 // Declares if player text input should be active
 focused = false;
