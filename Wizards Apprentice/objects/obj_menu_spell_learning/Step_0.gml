@@ -16,7 +16,7 @@ if(!instance_exists(obj_button_spell_learn) && obj_spell_learn_slot.inventory[0]
 }
 
 // If spell has been learned, gather data to display
-if(spell_learned != -1)
+if(spell_learned != -1 && obj_spell_learn_slot.inventory[0] == -1)
 {
 	spell_title_text = spell_learned.title
 
@@ -30,6 +30,7 @@ if(instance_exists(obj_spell_learn_slot))
 	if(obj_spell_learn_slot.inventory[0] != -1)
 	{
 		spell_title_text = "Scroll Level: " + string(obj_spell_learn_slot.inventory[0].main_var)
+		spell_desc_text = "";
 	}
 }else
 {

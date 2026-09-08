@@ -3,6 +3,7 @@
 
 draw_self()
 
+// Display sprite of scroll
 if(inventory[0] != -1)
 {
 	draw_sprite(inventory[0].spr, 0, x, y)

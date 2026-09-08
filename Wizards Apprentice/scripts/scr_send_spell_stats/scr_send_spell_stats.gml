@@ -4,6 +4,7 @@ function scr_push_spell_data(spell_name)
 	
 	// Used for transfering spell data from scripts to objects when created
 	
+	spell_name.unlockable = unlockable
 	spell_name.level = level
 	spell_name.water_level = water_level
 	spell_name.oil_level = oil_level

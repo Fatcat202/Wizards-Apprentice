@@ -19,7 +19,9 @@ function scr_learn_spell_scroll()
 		arr_spells = []
 	
 		// Used to determine if spell being checked has already been learned
-		var novel_spell = true
+		var novel_spell = true;
+		// Used to determine if the spell is listed as unlockable
+		var unlockable = false;
 	
 		// Loop through all spells in database
 		for(var i = 1; i <= global.spell_index_length; i++)
@@ -41,11 +43,18 @@ function scr_learn_spell_scroll()
 							novel_spell = false
 							break;
 						}
+						
+						if(global.spell_stats[i].unlockable == true)
+						{
+							// Declare spell can be unlocked
+							unlockable = true;
+							break;
+						}
 					}
 				}
 			
 				// If spell is of the correct level and has not been learned before, add to potential spells
-				if(novel_spell == true)
+				if(novel_spell == true && unlockable == true)
 				{
 					spell_found = true;
 					array_push(arr_spells, i)
@@ -55,7 +64,7 @@ function scr_learn_spell_scroll()
 		
 	}
 	
-	// Increment backwards through spell levels, starting at scroll_level, to find valid random spells to learn
+	// Increment backwards through spell levels starting at scroll_level to find valid random spells to learn
 	for(var i = scroll_level; i != 0; i--)
 	{
 		

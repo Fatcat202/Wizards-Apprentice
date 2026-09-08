@@ -30,7 +30,9 @@ spell_title_y = center - 25
 spell_title_text = "";
 	
 spell_desc_x = middle
-spell_desc_y = center + 25
+spell_desc_y = center
+spell_desc_sep = 20;
+spell_desc_width = 200;
 spell_desc_text = "";
 
 
