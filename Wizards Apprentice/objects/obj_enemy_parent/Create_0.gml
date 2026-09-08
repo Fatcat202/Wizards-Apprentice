@@ -312,12 +312,12 @@ event_inherited();
 					// Detects if ledge would be a low fall
 					var low_fall = place_meeting(x + check_dist, y + global.cell_size*2, obj_platform_parent)
 				
-				/*	
+	/*				
 					show_debug_message("h_coll: " + string(h_coll))
 					show_debug_message("plat_step: " + string(plat_step))
 					show_debug_message("ledge: " + string(ledge))
 					show_debug_message("low_fall: " + string(low_fall))
-				*/
+	*/			
 				
 					// No horizontal collision, or can step up on platform
 					if(h_coll == false || (h_coll == true && plat_step == true))
@@ -326,6 +326,8 @@ event_inherited();
 						{
 							// Accelerate
 							move_spd_h += (h_acel * move_dir)
+							
+							scr_step_over_platform()
 						}else
 						{
 							// Switch direction
