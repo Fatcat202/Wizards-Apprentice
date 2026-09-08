@@ -6,10 +6,8 @@
 // button text
 
 // Pause game if not already paused
-if(global.game_paused == false)
-{
-	scr_message_pause();
-}
+scr_message_pause();
+
 
 
 // Alert positioning

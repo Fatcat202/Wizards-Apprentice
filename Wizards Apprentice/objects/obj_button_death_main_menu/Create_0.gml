@@ -2,3 +2,4 @@
 
 button_text = "Main Menu"
 
+image_speed = 0;

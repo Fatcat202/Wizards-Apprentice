@@ -9,3 +9,5 @@ if(first_level_complete == false)
 {
 	button_text = "Restart"
 }
+
+image_speed = 0;

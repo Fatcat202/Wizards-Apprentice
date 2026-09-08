@@ -17,3 +17,5 @@ with(obj_dialogue_parent)
 		instance_destroy(obj_button_dialogue_next)
 	}
 }
+
+image_speed = 0;
