@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_platform_void_slope",
+  "%Name":"obj_platform_void_slope_left",
   "eventList":[],
   "managed":true,
-  "name":"obj_platform_void_slope",
+  "name":"obj_platform_void_slope_left",
   "overriddenProperties":[],
   "parent":{
-    "name":"Platforms",
-    "path":"folders/Objects/Platforms.yy",
+    "name":"Void",
+    "path":"folders/Objects/Platforms/Void.yy",
   },
   "parentObjectId":{
     "name":"obj_platform_void_parent",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_platform_void_slope",
-    "path":"sprites/spr_platform_void_slope/spr_platform_void_slope.yy",
+    "name":"spr_platform_void_left",
+    "path":"sprites/spr_platform_void_left/spr_platform_void_left.yy",
   },
   "spriteMaskId":null,
   "visible":true,

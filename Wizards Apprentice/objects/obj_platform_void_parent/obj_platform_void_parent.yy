@@ -13,8 +13,8 @@
   "name":"obj_platform_void_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Platforms",
-    "path":"folders/Objects/Platforms.yy",
+    "name":"Void",
+    "path":"folders/Objects/Platforms/Void.yy",
   },
   "parentObjectId":{
     "name":"obj_platform_parent",

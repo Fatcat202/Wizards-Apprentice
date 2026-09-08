@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_platform_void",
+  "%Name":"obj_platform_void_slope_top_right",
   "eventList":[],
   "managed":true,
-  "name":"obj_platform_void",
+  "name":"obj_platform_void_slope_top_right",
   "overriddenProperties":[],
   "parent":{
     "name":"Void",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_platform_void",
-    "path":"sprites/spr_platform_void/spr_platform_void.yy",
+    "name":"spr_platform_void_slope_top_right",
+    "path":"sprites/spr_platform_void_slope_top_right/spr_platform_void_slope_top_right.yy",
   },
   "spriteMaskId":null,
   "visible":true,
