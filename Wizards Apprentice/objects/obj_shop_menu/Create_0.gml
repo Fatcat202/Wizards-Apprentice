@@ -44,7 +44,6 @@ page_shop = function()
 		instance_create_layer(x, y, "Inventory", obj_inventory_shop)
 	}
 
-
 }
 
 // Start on dialogue page

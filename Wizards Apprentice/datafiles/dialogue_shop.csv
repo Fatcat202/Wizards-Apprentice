@@ -1,4 +1,6 @@
 Order,Suborder,Unlocked,shown,Text
-0,0,TRUE,FALSE,Default Message
-1,0,TRUE,FALSE,Hello there!
-2,0,FALSE,FALSE,I found more things!
+0,0,TRUE,FALSE,"Shiny coins, shiny coins....."
+0,1,TRUE,FALSE,More things? Come for more things?
+0,2,TRUE,FALSE,Yes...welcome. Good things for shiny coins.
+1,0,TRUE,FALSE,Not supposed to be here....but level to find me isn't built yet....
+1,1,TRUE,FALSE,"Bring shiny coins, buy good things. Not stolen, swear."
