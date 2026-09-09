@@ -28,7 +28,7 @@ function scr_action_teleport_away()
 		// Check for direct line of sight between player and position above platform
 		var los = !collision_line(ds_near_platforms[| i].x, ds_near_platforms[| i].y - global.cell_size, player_x, player_y, obj_platform_parent, false, true);
 		// Check platform is not a void platform
-		var is_void = (ds_near_platforms[| i].object_index == obj_platform_void) || (ds_near_platforms[| i].object_index == obj_platform_void_slope_left);
+		var is_void = (ds_near_platforms[| i].object_index == obj_platform_void_parent);
 		
 		// If all criteria match, add to array
 		if(above_empty == true && los == true && is_void == false)
