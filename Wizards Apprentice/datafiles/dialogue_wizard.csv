@@ -1,5 +1,7 @@
 Order,Suborder,unlocked,shown,Text
 0,0,TRUE,FALSE,Default Message
+0,1,TRUE,FALSE,Default 2
+0,2,TRUE,FALSE,efault 3
 1,0,TRUE,FALSE,I have a quest for you!
 1,1,TRUE,FALSE,Go to the portal!
 2,0,FALSE,FALSE,Welcome back! I see you aren't dead!

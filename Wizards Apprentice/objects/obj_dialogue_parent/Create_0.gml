@@ -158,7 +158,3 @@ if(!instance_exists(obj_shop_menu) && !instance_exists(obj_wizard_menu))
 #endregion Dialogue Initial Position
 
 
-
-
-
-
