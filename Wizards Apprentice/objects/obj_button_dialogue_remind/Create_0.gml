@@ -1,5 +1,5 @@
 /// @description Button Text
 
-button_text = "Remind Me"
+button_text = "Remind"
 
 image_speed = 0;

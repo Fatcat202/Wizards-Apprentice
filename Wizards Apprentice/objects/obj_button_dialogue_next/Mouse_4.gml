@@ -13,6 +13,8 @@ with(obj_dialogue_parent)
 	typewriter_timer = 0
 	str_pos = 1
 	
+	next_pressed = true;
+	
 	
 	// Check end of all dialogue has not been reached
 	if(position+1 <= dialogue_index_length)

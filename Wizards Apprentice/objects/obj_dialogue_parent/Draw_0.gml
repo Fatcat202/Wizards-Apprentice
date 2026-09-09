@@ -34,9 +34,9 @@ draw_sprite_stretched
 	if(arr_dialogue[position].unlocked == true && arr_dialogue[position].shown == false)
 	{
 	
-		scr_draw_set_text(fa_middle, fa_center, fnt_default, c_white)
+		scr_draw_set_text(fa_middle, fa_top, fnt_default, c_white)
 			// Display Text
-			draw_text(text_x, text_y, text_display)
+			draw_text_ext(text_x, text_y, text_display, text_sep, text_width)
 		scr_text_reset()
 
 	}else 

@@ -357,6 +357,7 @@
     {"id":{"name":"scr_death_resume","path":"scripts/scr_death_resume/scr_death_resume.yy",},},
     {"id":{"name":"scr_declare_move_direction","path":"scripts/scr_declare_move_direction/scr_declare_move_direction.yy",},},
     {"id":{"name":"scr_dialogue_pause","path":"scripts/scr_dialogue_pause/scr_dialogue_pause.yy",},},
+    {"id":{"name":"scr_dialogue_read","path":"scripts/scr_dialogue_read/scr_dialogue_read.yy",},},
     {"id":{"name":"scr_dialogue_resume","path":"scripts/scr_dialogue_resume/scr_dialogue_resume.yy",},},
     {"id":{"name":"scr_dialogue_unlock","path":"scripts/scr_dialogue_unlock/scr_dialogue_unlock.yy",},},
     {"id":{"name":"scr_dis_to_player_check","path":"scripts/scr_dis_to_player_check/scr_dis_to_player_check.yy",},},

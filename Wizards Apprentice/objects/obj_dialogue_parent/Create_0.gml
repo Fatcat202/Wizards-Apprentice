@@ -25,6 +25,11 @@ if(!instance_exists(obj_shop_menu) && !instance_exists(obj_wizard_menu))
 	typewriter_timer = 0
 	typewriter_time = 2
 	
+	// Declares next button has been pressed to start typewriter deactive timer
+	next_pressed = false;
+	deactive_skip_timer = 0;
+	deactive_skip_length = 2;
+	
 	// Text displayed to screen
 	text_display = "";
 	
@@ -46,8 +51,10 @@ if(!instance_exists(obj_shop_menu) && !instance_exists(obj_wizard_menu))
 	npc_name_y = y_pos + 35;
 
 	// Text Positioning
-	text_x = x_middle;
-	text_y = y_pos + 35;
+	text_x = x_middle - 15;
+	text_y = y_pos + 25;
+	text_sep = 14
+	text_width = 225
 	
 	// Leave Button Positioning
 	button_leave_x = x_middle + 175
@@ -156,5 +163,4 @@ if(!instance_exists(obj_shop_menu) && !instance_exists(obj_wizard_menu))
 	}
 
 #endregion Dialogue Initial Position
-
 

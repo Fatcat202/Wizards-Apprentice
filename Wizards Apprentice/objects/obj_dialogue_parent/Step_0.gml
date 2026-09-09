@@ -2,7 +2,7 @@
 
 
 // Skip typewriter effect
-if(global.cont_attack == true) text_display = arr_dialogue[position].text;
+if(global.cont_attack == true && next_pressed == false) text_display = arr_dialogue[position].text;
 
 
 #region Buttons
@@ -14,7 +14,7 @@ if(global.cont_attack == true) text_display = arr_dialogue[position].text;
 	}
 	
 	// Display "Remind Me" Button
-	if(position == 0)
+	if(arr_dialogue[position].order == 0)
 	{
 		// Destroy "Next" button
 		if(instance_exists(obj_button_dialogue_next)) instance_destroy(obj_button_dialogue_next)
@@ -26,7 +26,7 @@ if(global.cont_attack == true) text_display = arr_dialogue[position].text;
 	}else
 	
 	// Display "Next" button
-	if(position != 0)
+	if(arr_dialogue[position].order != 0)
 	{
 		// Destroy "Remind Me" button
 		if(instance_exists(obj_button_dialogue_remind)) instance_destroy(obj_button_dialogue_remind)
@@ -37,40 +37,60 @@ if(global.cont_attack == true) text_display = arr_dialogue[position].text;
 		}
 	}
 	
-
-
-
 #endregion Buttons
 
 
 #region Timer
 	
-	// Typewriter timer							Check string of text_display is not larger or equal to dialogue text
-	if(typewriter_timer >= typewriter_time && string_length(arr_dialogue[position].text) > string_length(text_display))
-	{
-		// Reset timer
-		typewriter_timer = 0;
-		
-		// Gather next character in dialogue text
-		var char = string_char_at(arr_dialogue[position].text, str_pos)
-		
-		
-		// Increment position to gather next timer
-		str_pos++
-		
-		// If next character exists, add to text_display string
-		if(char != 1)
+	#region Typewriter
+	
+		// Typewriter timer							Check string of text_display is not larger or equal to dialogue text
+		if(typewriter_timer >= typewriter_time && string_length(arr_dialogue[position].text) > string_length(text_display))
 		{
+			// Reset timer
+			typewriter_timer = 0;
+		
+			// Gather next character in dialogue text
+			var char = string_char_at(arr_dialogue[position].text, str_pos)
+		
+		
+			// Increment position to gather next timer
+			str_pos++
+		
+			// If next character exists, add to text_display string
+			if(char != 1)
+			{
 
-			text_display += char;
-		}
+				text_display += char;
+			}
 
 		
-	}else typewriter_timer++;
+		}else typewriter_timer++;
 	
-	// Prevent overflow
-	if(typewriter_timer > typewriter_time) typewriter_timer = 0;
+		// Prevent overflow
+		if(typewriter_timer > typewriter_time) typewriter_timer = 0;
 	
-	//show_debug_message(text_display)
+		//show_debug_message(text_display)
+	
+	#endregion Typewriter
+	
+	
+	#region Deactive Skip
+	
+		if(next_pressed == true)
+		{
+			if(deactive_skip_timer > deactive_skip_length)
+			{
+				next_pressed = false;
+				deactive_skip_timer = 0;
+			}else deactive_skip_timer++;
+		}
+	
+	#endregion Deactive Skip
+	
 	
 #endregion Timer
+
+
+
+

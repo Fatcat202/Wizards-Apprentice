@@ -1,7 +1,24 @@
 Order,Suborder,unlocked,shown,Text
-0,0,TRUE,FALSE,Default Message
-0,1,TRUE,FALSE,Default 2
-0,2,TRUE,FALSE,efault 3
-1,0,TRUE,FALSE,I have a quest for you!
-1,1,TRUE,FALSE,Go to the portal!
+0,0,TRUE,FALSE,Well go on then! Can't have you sitting around here all day.
+0,1,TRUE,FALSE,"No, I will not just hand out spells to a fresh apprentice like you! Go find your own scrolls."
+0,2,TRUE,FALSE,Goblins...goblins...Im sure they won't be too much of an issue
+1,0,TRUE,FALSE,Ah! Well I see you survived! Good job on not dying too quick.
+1,1,TRUE,FALSE,"Welcome to my tower. I am your master and new mentor, Wizard."
+1,2,TRUE,FALSE,"What, expected some other fleshed out name or title? Its a demo, don't worry about specifics."
+1,3,TRUE,FALSE,Anyways...
+1,4,TRUE,FALSE,"Downstairs will be the rooms available to you, my last apprentice probably left a few things before ...the incident..."
+1,5,TRUE,FALSE,"There is a study to perfect your skills and study your magic, and a couple chests from the one before."
+1,6,TRUE,FALSE, I can translate any scrolls you find until you learn how yourself. The portal will take you to any locations I may permit.
+1,7,TRUE,FALSE,"Don't take too long, I have place nearby needing clearing of goblins!"
+1,8,TRUE,FALSE,Damn things got a little too comfortable after the last apprentice I sent wasn't worth the sandals they were wearing!
+1,9,TRUE,FALSE,"I hear one of them has a knack for magic, might want to be careful around that one."
 2,0,FALSE,FALSE,Welcome back! I see you aren't dead!
+2,1,FALSE,FALSE,"Well, I can say you are already doing better than most...provided you haven't contracted some horrific plague that will leave a mess for me to clean."
+2,2,FALSE,FALSE,Ive seen that before. The stains.....
+2,3,FALSE,FALSE,Anyways...
+2,4,FALSE,FALSE,Your reward is a chamber to study in.
+2,5,FALSE,FALSE,"And more work. Only another goblin caster causing problems. Its alright, you have a better handle of what youre doing now, right?"
+2,6,FALSE,FALSE,"Have fun, dont die. Really not wanting to have to get a fifth apprentice this month."
+3,0,FALSE,FALSE,Back again! Im almost impressed.
+3,1,FALSE,FALSE,"Well, thats all I have for you for now. Feel free to check those sites again for more goblins showing up. Tends to happen."
+3,2,FALSE,FALSE,Ill let you know when I have more work!

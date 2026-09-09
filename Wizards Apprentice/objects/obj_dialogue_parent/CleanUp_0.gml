@@ -10,6 +10,7 @@ if(!instance_exists(obj_shop_menu) && !instance_exists(obj_wizard_menu))
 
 // Set shown messages as "shown" if all messages with matching order have been shown
 
+
 // Check end of all dialogue has not been reached
 if(position != dialogue_index_length)
 {
@@ -39,7 +40,6 @@ if(position == dialogue_index_length)
 		}
 	}
 }
-
 
 
 // Remove buttons
