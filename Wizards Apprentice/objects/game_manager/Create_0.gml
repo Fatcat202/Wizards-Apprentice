@@ -725,8 +725,8 @@ randomise()
 			
 			#region Hard coded spells for testing
 			
-				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("firebolt")]
-				global.active_spells[0, 2] = global.spell_stats[scr_find_spell_index("icicle")]
+				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("water splash")]
+				global.active_spells[0, 2] = global.spell_stats[scr_find_spell_index("oil splash")]
 				global.active_spells[0, 3] = -1 //global.spell_stats[scr_find_spell_index("heal")]
 				global.active_spells[0, 4] = -1 //global.spell_stats[scr_find_spell_index("lightning bolt")]
 				global.active_spells[0, 5] = -1 //global.spell_stats[scr_find_spell_index("jolt")]
@@ -805,7 +805,7 @@ randomise()
 	
 	// Set fullscreen and borderless
 	window_enable_borderless_fullscreen(true)
-	window_set_fullscreen(true)
+//	window_set_fullscreen(true)
 
 	// Set size of window and center it
 	window_set_size(global.res_w * window_scale, global.res_h * window_scale);

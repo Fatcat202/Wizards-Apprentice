@@ -175,6 +175,15 @@ event_inherited();
 	
 	// Array holding possible attacks for enemy to use. Add attacks in individual create events
 	arr_possible_attacks = [];
+	
+	// Declares "alert" sprite can be shown
+	can_show_alert = true
+	
+	// Activates "alert" sprite
+	show_alert = false;
+	
+
+
 
 	#region Timers
 		
@@ -200,6 +209,8 @@ event_inherited();
 		pathing_free_time = 0.2
 		// Time in seconds before enemy can take another action
 		action_time = 2
+		// Time in seconds that alert sprite shows
+		alert_time = 2
 
 		// Length of cooldown
 		target_cooldown_length = game_get_speed(gamespeed_fps) * target_time
@@ -224,6 +235,10 @@ event_inherited();
 		// Timer used for caster action cooldown
 		action_timer = 0;
 		action_length = game_get_speed(gamespeed_fps) * action_time;
+		
+		// Timer used for alert, declaring how long it lasts
+		alert_timer = 0;
+		alert_length = game_get_speed(gamespeed_fps) * alert_time
 
 	#endregion Timers
 	
@@ -242,6 +257,10 @@ event_inherited();
 		// Reset target coords
 		target_x = -1
 		target_y = -1
+		
+		// Reset alert
+		can_show_alert = true;
+		alert_timer = 0;
 		
 		// Clear target nodes
 		scr_clear_target_nodes()
@@ -539,6 +558,11 @@ event_inherited();
 
 		// Reset player coords
 		scr_player_search()
+		
+		if(can_show_alert == true)
+		{
+			show_alert = true;
+		}
 
 
 		#region Attack

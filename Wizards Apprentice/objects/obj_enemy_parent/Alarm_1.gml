@@ -6,7 +6,7 @@
 if(caster == true)
 {
 	scr_caster_teleport_home()
-	
+	state_behavior = state_idle;
 	
 }else
 

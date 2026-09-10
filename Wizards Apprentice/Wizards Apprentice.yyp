@@ -468,6 +468,7 @@
     {"id":{"name":"shd_platform_display","path":"shaders/shd_platform_display/shd_platform_display.yy",},},
     {"id":{"name":"shd_platform_multi_texture","path":"shaders/shd_platform_multi_texture/shd_platform_multi_texture.yy",},},
     {"id":{"name":"shd_replace_colour","path":"shaders/shd_replace_colour/shd_replace_colour.yy",},},
+    {"id":{"name":"spr_alert","path":"sprites/spr_alert/spr_alert.yy",},},
     {"id":{"name":"spr_attack_melee_default","path":"sprites/spr_attack_melee_default/spr_attack_melee_default.yy",},},
     {"id":{"name":"spr_attack_melee_sword","path":"sprites/spr_attack_melee_sword/spr_attack_melee_sword.yy",},},
     {"id":{"name":"spr_attack_rock","path":"sprites/spr_attack_rock/spr_attack_rock.yy",},},
@@ -618,6 +619,10 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
+        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
+        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
+      ],"groupName":"Testing",},
+    {"children":[
         {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"children":[],"groupName":"group",},
@@ -632,10 +637,6 @@
           ],"groupName":"Chapter 1",},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
       ],"groupName":"Demo",},
-    {"children":[
-        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
-        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
-      ],"groupName":"Testing",},
   ],
   "templateType":"game",
   "TextureGroups":[

@@ -390,10 +390,11 @@ var quarter_width = width / 4;
 				// Platform id to right and left
 				var right_id = instance_place(x + check_distance, y, obj_platform_parent)
 				var left_id = instance_place(x - check_distance, y, obj_platform_parent)
-		
+
 		
 				// Checks to make sure there is no object to either the right or left
-				if(!right_free && !left_free)
+				if((!right_free && !object_is_ancestor(right_id.object_index, obj_platform_void_parent))
+				&& (!left_free && !object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
 				{
 					// Used to store instance id with higher water level
 					var higher_id = noone
@@ -464,13 +465,13 @@ var quarter_width = width / 4;
 				}else
 				
 				// Transfer right if free
-				if(!right_free && left_free)
+				if(!right_free && (left_free || object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
 				{
 					transfer_id = right_id
 				}else
 				
 				// Transfer left if free
-				if(right_free && !left_free)
+				if((right_free || object_is_ancestor(right_id.object_index, obj_platform_void_parent)) && !left_free)
 				{
 					transfer_id = left_id
 				}
@@ -549,7 +550,9 @@ var quarter_width = width / 4;
 				var right_id = instance_place(x + check_distance, y, obj_platform_parent)
 				var left_id = instance_place(x - check_distance, y, obj_platform_parent)
 		
-				if(!right_free && !left_free)
+					// Checks to make sure there is no object to either the right or left
+				if((!right_free && !object_is_ancestor(right_id.object_index, obj_platform_void_parent))
+				&& (!left_free && !object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
 				{
 					// Used to store instance id with higher oil level
 					var higher_id = noone
@@ -620,13 +623,13 @@ var quarter_width = width / 4;
 				}else
 				
 				// Transfer right if free
-				if(!right_free && left_free)
+				if(!right_free && (left_free || object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
 				{
 					transfer_id = right_id
 				}else
 				
 				// Transfer left if free
-				if(right_free && !left_free)
+				if((right_free || object_is_ancestor(right_id.object_index, obj_platform_void_parent)) && !left_free)
 				{
 					transfer_id = left_id
 				}
@@ -662,7 +665,8 @@ var quarter_width = width / 4;
 			if(!right_free && interacting == false && rand_dir == 0)
 			{
 				other_id = instance_place(x + check_distance, y, obj_platform_parent)
-
+				if(object_is_ancestor(other_id.object_index, obj_platform_void_parent)) exit;
+				
 				// Prevent water from spreading to platform located under another platform
 				if(other_id.above_free == true)
 				{
@@ -675,7 +679,8 @@ var quarter_width = width / 4;
 			if(!left_free && interacting == false && rand_dir == 1)
 			{
 				other_id = instance_place(x - check_distance, y, obj_platform_parent)
-		
+				if(object_is_ancestor(other_id.object_index, obj_platform_void_parent)) exit;
+				
 				// Prevent water from spreading to platform located under another platform
 				if(other_id.above_free == true)
 				{
