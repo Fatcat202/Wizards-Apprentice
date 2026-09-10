@@ -93,6 +93,9 @@ scr_memory_used()
 	// Jumps remaining
 	jumps_left = max_jumps
 	
+	// Declares if player is crouching
+	is_crouching = false;
+	
 	// Actively selected spell
 	active_spell = 1;
 	

@@ -173,9 +173,9 @@ if(global.can_control_player == false) exit;
 				jump_hold_timer = 0;
 				
 				// Increase gravity (located below in gravity section)
-				
+				is_crouching = true;
 				state_move = state_crouch
-			}
+			}else is_crouching = false;
 			
 		#endregion Crouching
 		
