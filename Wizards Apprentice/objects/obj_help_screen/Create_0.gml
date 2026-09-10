@@ -13,6 +13,8 @@ Left - A
 Up - W
 Down - S
 Jump - Space Bar
+Inventory - TAB
+Pause - ESC
 
 Select Attacks:
 Attack - Left Mouse
