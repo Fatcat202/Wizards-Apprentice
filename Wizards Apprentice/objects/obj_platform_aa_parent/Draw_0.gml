@@ -22,8 +22,6 @@ function draw_element_above(rotation = 0, x_shift = 0, y_shift = 0)
 			// Draw element sprite
 			if(element_draw != noone) draw_sprite_ext(element_draw, 0, 0 + sprite_xoffset + x_shift, 0 + sprite_yoffset + y_shift, image_xscale, image_xscale, rotation, c_white, 1)
 		}
-		
-
 	}
 }
 
