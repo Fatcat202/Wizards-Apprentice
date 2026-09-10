@@ -7,16 +7,23 @@ function draw_element_above(rotation = 0, x_shift = 0, y_shift = 0)
 	var above_id = instance_place(x, y - sprite_height, obj_platform_parent);
 	if(instance_exists(above_id))
 	{
-		// If platform above has an element
+		// If platform above has an element drawn
 		if(variable_instance_exists(above_id, "element_draw"))
 		{
 			// Use same sprite as platform above
 			element_draw = above_id.element_draw;
-
+			
+			// Clear if no element is present above
+			if(scr_has_no_element(above_id))
+			{
+				element_draw = noone
+			}
 		
 			// Draw element sprite
 			if(element_draw != noone) draw_sprite_ext(element_draw, 0, 0 + sprite_xoffset + x_shift, 0 + sprite_yoffset + y_shift, image_xscale, image_xscale, rotation, c_white, 1)
 		}
+		
+
 	}
 }
 

@@ -184,7 +184,6 @@ event_inherited();
 	
 
 
-
 	#region Timers
 		
 		#region Attack Timers
