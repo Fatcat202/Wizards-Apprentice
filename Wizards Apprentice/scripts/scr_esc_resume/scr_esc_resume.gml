@@ -12,5 +12,7 @@ function scr_esc_resume()
 	
 	// Reactivate regular objects
 	instance_activate_all();
+	
+	scr_menu_attack_delay()
 
 }

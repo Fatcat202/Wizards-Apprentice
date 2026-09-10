@@ -14,4 +14,6 @@ function scr_spellbook_resume()
 	instance_activate_all();
 	
 	if(instance_exists(obj_study_menu)) instance_destroy(obj_study_menu);
+	
+	scr_menu_attack_delay()
 }

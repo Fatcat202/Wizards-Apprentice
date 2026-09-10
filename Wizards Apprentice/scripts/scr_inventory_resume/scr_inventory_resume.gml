@@ -16,4 +16,6 @@ function scr_inventory_resume()
 	
 	global.pause_image = -1
 	
+	scr_menu_attack_delay()
+	
 }

@@ -409,6 +409,7 @@
     {"id":{"name":"scr_load_room_chests","path":"scripts/scr_load_room_chests/scr_load_room_chests.yy",},},
     {"id":{"name":"scr_mana_drain","path":"scripts/scr_mana_drain/scr_mana_drain.yy",},},
     {"id":{"name":"scr_memory_used","path":"scripts/scr_memory_used/scr_memory_used.yy",},},
+    {"id":{"name":"scr_menu_attack_delay","path":"scripts/scr_menu_attack_delay/scr_menu_attack_delay.yy",},},
     {"id":{"name":"scr_message_pause","path":"scripts/scr_message_pause/scr_message_pause.yy",},},
     {"id":{"name":"scr_message_resume","path":"scripts/scr_message_resume/scr_message_resume.yy",},},
     {"id":{"name":"scr_move_enemy","path":"scripts/scr_move_enemy/scr_move_enemy.yy",},},

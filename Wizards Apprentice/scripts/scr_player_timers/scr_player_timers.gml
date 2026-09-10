@@ -3,6 +3,20 @@
 
 function scr_player_timers()
 {
+	#region Menu Attack Delay
+		
+		if(menu_attack_delay == true)
+		{
+			if(menu_attack_delay_time > menu_attack_delay_length)
+			{
+				
+				menu_attack_delay_time = 0;
+				menu_attack_delay = false;
+				
+			}else menu_attack_delay_time++;
+		}
+	
+	#region Menu Attack Delay
 	
 	#region Stun Cooldown
 		

@@ -134,6 +134,11 @@ scr_memory_used()
 		mana_regen_delay_timer = 0;
 		// Time before mana starts to regenerate after last use in seconds. Subtract mana_regen_length to prevent doubling up timers
 		mana_regen_delay_length = (game_get_speed(gamespeed_fps) * 4) - mana_regen_length;
+		
+		// Timer used to delay attacks after player exits menu
+		menu_attack_delay = false
+		menu_attack_delay_time = 0;
+		menu_attack_delay_length = 1
 
 	
 		#region Spell Slot Timers

@@ -12,4 +12,6 @@ function scr_message_resume()
 	instance_activate_all();
 
 	if(instance_exists(obj_message_parent)) instance_destroy(obj_message_parent);
+	
+	scr_menu_attack_delay()
 }

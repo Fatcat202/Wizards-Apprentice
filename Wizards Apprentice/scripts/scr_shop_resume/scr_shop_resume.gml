@@ -14,4 +14,6 @@ function scr_shop_resume()
 	instance_activate_all();
 	
 	if(instance_exists(obj_shop_menu)) instance_destroy(obj_shop_menu);
+	
+	scr_menu_attack_delay()
 }

@@ -18,4 +18,6 @@ function scr_level_select_resume()
 	
 	global.pause_image = -1
 	
+	scr_menu_attack_delay()
+	
 }
