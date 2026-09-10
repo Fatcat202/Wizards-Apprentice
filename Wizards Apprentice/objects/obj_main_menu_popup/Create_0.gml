@@ -47,9 +47,7 @@ credits_text = "Made By: Ethan Bayley"
 
 #region New Game
 
-
-
-
+	#region Stats
 
 		temp_vit = global.vitality;
 		temp_dex = global.dexterity;
@@ -95,4 +93,24 @@ credits_text = "Made By: Ethan Bayley"
 
 
 #endregion New Game
+
+#region Options
+
+	scr_draw_set_text(fa_left, fa_center, fnt_menu, c_white)
+	
+		options_title_x = middle;
+		options_title_y = y_top + 25;
+		options_title_text = "Options:";
+
+		options_fullscreen_x = middle - 30;
+		options_fullscreen_y = y_top + 75;
+		options_fullscreen_text = "Fullscreen   -";
+		
+		fullscreen_button_x = middle + 75;
+		fullscreen_button_y = options_fullscreen_y;
+	
+	scr_text_reset()
+	
+	
+#endregion Options
 

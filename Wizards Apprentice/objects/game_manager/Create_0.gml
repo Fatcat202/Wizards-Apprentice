@@ -799,16 +799,13 @@ randomise()
 			// Game resolution
 			global.res_w = 640;
 			global.res_h = 360;
-	
-		// Used for full screen
-			// Game resolution
-//			global.res_w = 1960;
-//			global.res_h = 1080;
 
 	// Scaling (hardcoded for now)
 	window_scale = 1;
 	
-	//window_set_fullscreen(true)
+	// Set fullscreen and borderless
+	window_enable_borderless_fullscreen(true)
+	window_set_fullscreen(true)
 
 	// Set size of window and center it
 	window_set_size(global.res_w * window_scale, global.res_h * window_scale);

@@ -486,8 +486,17 @@ draw_set_font(fnt_menu_small);
 				ypos = default_ypos;
 				
 				
-				draw_text(x, y, "Options")
-		
+				draw_text(options_title_x, options_title_y, options_title_text)
+				
+				
+				draw_text(options_fullscreen_x, options_fullscreen_y, options_fullscreen_text)
+				
+				if(!instance_exists(obj_button_fullscreen))
+				{
+					instance_create_layer(fullscreen_button_x, fullscreen_button_y, "Menu_Buttons", obj_button_fullscreen)
+				}
+
+
 			break;
 		#endregion Options
 		

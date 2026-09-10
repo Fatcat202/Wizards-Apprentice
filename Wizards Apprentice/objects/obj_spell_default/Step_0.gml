@@ -24,15 +24,10 @@ event_inherited()
 	
 		speed = move_spd;
 		
-		
-		if(interact_delay_active == false && (place_meeting(x, y, obj_platform_solid_parent) || place_meeting(x, y, obj_enemy_parent) || place_meeting(x, y, obj_platform_void_parent)))
-		{
-			instance_destroy()
-		}
-		
 	}else
+	
 	{
-		// Keep attack in place relative to enemy that created it
+		// Keep attack in place relative to player
 		
 		if(instance_exists(obj_player_parent))
 		{

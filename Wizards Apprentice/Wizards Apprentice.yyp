@@ -42,6 +42,7 @@
     {"$GMFolder":"","%Name":"Level Select","folderPath":"folders/Objects/Menu/Level Select.yy","name":"Level Select","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Main Menu","folderPath":"folders/Objects/Menu/Main Menu.yy","name":"Main Menu","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Main Menu Buttons","folderPath":"folders/Objects/Menu/Main Menu/Main Menu Buttons.yy","name":"Main Menu Buttons","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Options","folderPath":"folders/Objects/Menu/Main Menu/Main Menu Buttons/Options.yy","name":"Options","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"New Game","folderPath":"folders/Objects/Menu/Main Menu/Main Menu Buttons/New Game.yy","name":"New Game","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Shop","folderPath":"folders/Objects/Menu/Shop.yy","name":"Shop","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Shop Buttons","folderPath":"folders/Objects/Menu/Shop/Shop Buttons.yy","name":"Shop Buttons","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -188,6 +189,7 @@
     {"id":{"name":"obj_button_dialogue_next","path":"objects/obj_button_dialogue_next/obj_button_dialogue_next.yy",},},
     {"id":{"name":"obj_button_dialogue_remind","path":"objects/obj_button_dialogue_remind/obj_button_dialogue_remind.yy",},},
     {"id":{"name":"obj_button_forget","path":"objects/obj_button_forget/obj_button_forget.yy",},},
+    {"id":{"name":"obj_button_fullscreen","path":"objects/obj_button_fullscreen/obj_button_fullscreen.yy",},},
     {"id":{"name":"obj_button_give","path":"objects/obj_button_give/obj_button_give.yy",},},
     {"id":{"name":"obj_button_help","path":"objects/obj_button_help/obj_button_help.yy",},},
     {"id":{"name":"obj_button_level_end","path":"objects/obj_button_level_end/obj_button_level_end.yy",},},
@@ -199,6 +201,7 @@
     {"id":{"name":"obj_button_message_exit","path":"objects/obj_button_message_exit/obj_button_message_exit.yy",},},
     {"id":{"name":"obj_button_new_game","path":"objects/obj_button_new_game/obj_button_new_game.yy",},},
     {"id":{"name":"obj_button_new_save_slot","path":"objects/obj_button_new_save_slot/obj_button_new_save_slot.yy",},},
+    {"id":{"name":"obj_button_options_parent","path":"objects/obj_button_options_parent/obj_button_options_parent.yy",},},
     {"id":{"name":"obj_button_options","path":"objects/obj_button_options/obj_button_options.yy",},},
     {"id":{"name":"obj_button_page_1","path":"objects/obj_button_page_1/obj_button_page_1.yy",},},
     {"id":{"name":"obj_button_page_2","path":"objects/obj_button_page_2/obj_button_page_2.yy",},},
@@ -469,6 +472,7 @@
     {"id":{"name":"spr_attack_rock","path":"sprites/spr_attack_rock/spr_attack_rock.yy",},},
     {"id":{"name":"spr_background_rm_main_menu","path":"sprites/spr_background_rm_main_menu/spr_background_rm_main_menu.yy",},},
     {"id":{"name":"spr_background_rm_testing","path":"sprites/spr_background_rm_testing/spr_background_rm_testing.yy",},},
+    {"id":{"name":"spr_button_check","path":"sprites/spr_button_check/spr_button_check.yy",},},
     {"id":{"name":"spr_button_delete_slot","path":"sprites/spr_button_delete_slot/spr_button_delete_slot.yy",},},
     {"id":{"name":"spr_button_dialogue_page","path":"sprites/spr_button_dialogue_page/spr_button_dialogue_page.yy",},},
     {"id":{"name":"spr_button_multi_shop","path":"sprites/spr_button_multi_shop/spr_button_multi_shop.yy",},},
@@ -613,13 +617,13 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"children":[],"groupName":"group",},
             {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
           ],"groupName":"Wizard Tower",},
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},

@@ -13,7 +13,11 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 	*/
 	
 	// Exit script if other_id is not properly passed through to prevent crash
-	if(!instance_exists(other_id))
+	if(!instance_exists(other_id) || !instance_exists(own_id))
+	{
+		exit;
+	}
+	if(object_is_ancestor(own_id.object_index, obj_platform_void_parent) || object_is_ancestor(other_id.object_index, obj_platform_void_parent))
 	{
 		exit;
 	}
@@ -122,17 +126,20 @@ function scr_element_inter_platform_interactions(own_id = id, other_id)
 						// Destroy steam object, if it exists
 						if(instance_exists(steam)) instance_destroy(steam, true)
 						
-						// Remove steam
-						other_id.is_steaming = false;
+						with(other_id)
+						{
+							// Remove steam
+							is_steaming = false;
 			
-						// Reset Fuel
-						other_id.fuel_left = other_id.fuel_default
+							// Reset Fuel
+							fuel_left = fuel_default
 			
-						// Remove charge
-						other_id.is_charged = false;
+							// Remove charge
+							is_charged = false;
 			
-						// Set element to ice
-						other_id.is_ice = true
+							// Set element to ice
+							is_ice = true
+						}
 						
 						// Reset timer
 						freeze_timer = 0;

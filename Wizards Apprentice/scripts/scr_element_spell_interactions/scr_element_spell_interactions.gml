@@ -5,6 +5,8 @@ function scr_element_spell_interactions(own_id, other_id)
 	
 	// Must provide ID of elements being interacted with
 	
+	if(!instance_exists(own_id) || !instance_exists(other_id)) exit;
+	
 	
 	// Used for calling other elements variables
 		
