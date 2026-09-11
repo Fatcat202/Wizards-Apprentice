@@ -1,5 +1,6 @@
 /// @description
 
+
 // Create shader
 shader_set(shd_platform_display);
 
@@ -43,4 +44,5 @@ draw_surface(surf, x - sprite_xoffset, y - sprite_yoffset);
 
 // End shader
 shader_reset();
+
 

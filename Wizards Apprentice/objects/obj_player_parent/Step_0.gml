@@ -5,6 +5,7 @@ event_inherited()
 // Check for and tick most player timers
 scr_player_timers()
 
+
 // Used for testing health and mana functionality
 scr_health_and_mana_test()
 

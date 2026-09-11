@@ -20,779 +20,787 @@ var quarter_width = width / 4;
 	}
 #endregion Surface
 
-#region Flaming
+#region Elements
 
-	// If not oil, remove flame objects
-	if(oil_level == 0)
+	// Skip everything if there is no element
+	if(!scr_has_no_element(id))
 	{
-		// Destroy flame objects
-		if(instance_exists(flame_0)) instance_destroy(flame_0)
-		if(instance_exists(flame_1)) instance_destroy(flame_1)		
-	}
+		#region Flaming
 
-	// Spawning/controlling flames
-	if(is_flaming == true && flames_spawned == false)
-	{
-	
-		// Spawn left flame
-		flame_0 = instance_create_layer(x - quarter_width, y - half_height, "Spells", obj_element_flaming,
-		{
-			platform_id : id
-		});
-			
-		// Spawn right flame
-		flame_1 = instance_create_layer(x + quarter_width, y - half_height, "Spells", obj_element_flaming,
-		{
-			platform_id : id
-		});
-	
-		// State flames are now spawned to prevent duplication
-		flames_spawned = true;
-		
-		// Rotate and shift flame sprites to match slope angle
-		if(object_index == obj_platform_aa_slope_left)
-		{
-			flame_0.image_angle = 45
-			flame_0.y += half_height + quarter_height
-			
-			flame_1.image_angle = 45
-			flame_1.y += quarter_height
-		}
-		if(object_index == obj_platform_aa_slope_right)
-		{
-			flame_0.image_angle = 315
-			flame_0.y += quarter_height
-			
-			flame_1.image_angle = 315
-			flame_1.y += half_height + quarter_height
-		}
-
-	}
-	
-	// Calculates total number of flames burning to determine fuel burn rate
-	if(is_flaming == true && flames_spawned == true)
-	{
-		var total_flames = 0;
-		
-		// Count total number of active flames
-		if(instance_exists(flame_0)) total_flames++
-		if(instance_exists(flame_1)) total_flames++
-		
-		// Set burn rate to 0 if no flames exist
-		if(!instance_exists(flame_0) && !instance_exists(flame_1)) total_flames = 0;
-		
-		// Set burn rate to total flame objects
-//		fuel_burn_rate = total_flames
-
-		fuel_burn_rate = 1;
-		
-		// Reduce fuel remaining based on burn rate
-		fuel_left -= fuel_burn_rate
-		
-		// When fuel runs out, decrease oil level
-		if(fuel_left <= 0)
-		{
-			// Decrease oil level
-			oil_level--;
-			
-			// Reset fuel level
-			fuel_left = fuel_default
-			
-		}
-		
-		// Remove oil if reaching oil level of 0
-		if(oil_level <= 0)
-		{
-			// Destroy flame objects
-			if(instance_exists(flame_0)) instance_destroy(flame_0)
-			if(instance_exists(flame_1)) instance_destroy(flame_1)
-			
-			scr_element_reset_variables()		
-		}
-		
-	}
-
-	
-	
-
-#endregion Flaming
-
-#region Steaming
-	
-	if(is_steaming == true && steam_spawned == false)
-	{
-		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam_platform,
-		{
-			platform_id : id
-		})
-		steam_spawned = true;
-
-		
-		// Rotate and shift steam sprites to match slope angle
-		if(object_index == obj_platform_aa_slope_left)
-		{
-			steam.image_angle = 45
-			steam.y += half_height
-		}
-		if(object_index == obj_platform_aa_slope_right)
-		{
-			steam.image_angle = 315
-			steam.y += half_height
-		}
-	}
-	
-	// If not water, remove steam objects
-	if(water_level == 0 || is_steaming == false)
-	{
-		// Destroy flame objects
-		if(instance_exists(steam)) instance_destroy(steam)	
-	}
-
-	// Spawn and control steam objects
-	if(is_steaming == true && steam_spawned == false)
-	{
-	
-		// Spawn steam object
-		steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam_platform,
-		{
-			platform_id : id
-		});
-	
-		// State steam are now spawned to prevent duplication
-		steam_spawned = true;
-		
-		// Rotate and shift flame sprites to match slope angle
-		if(object_index == obj_platform_aa_slope_left)
-		{
-			steam.image_angle = 45
-			steam.y += half_height + quarter_height
-		}
-		if(object_index == obj_platform_aa_slope_right)
-		{
-			steam.image_angle = 315
-			steam.y += quarter_height
-		}
-
-	}
-	
-	// Fuel Steam
-	if(is_steaming == true && steam_spawned == true)
-	{
-
-		// Reduce fuel remaining based on burn rate
-		fuel_left -= fuel_steam_rate
-		
-		// When fuel runs out, decrease water level
-		if(fuel_left <= 0)
-		{
-			// Decrease water level
-			water_level--;
-			
-			// Reset fuel level
-			fuel_left = fuel_default
-			
-			// End steam effect
-			is_steaming = false;
-			
-			// Destroy steam object
-			if(instance_exists(steam)) instance_destroy(steam)
-			
-		}
-		
-		// Remove water if reaching water level of 0
-		if(water_level <= 0)
-		{
-			// Destroy steam object
-			if(instance_exists(steam)) instance_destroy(steam)
-			
-			scr_element_reset_variables()		
-		}
-		
-	}
-	
-#endregion Steaming
-
-#region Charged
-	
-	// If not water, remove charge
-	if(water_level == 0)
-	{
-		is_charged = false
-		
-	}
-	
-#endregion Charged
-
-#region Water Level
-	
-	// Lock water level at a minimum of 0
-	if(water_level < 0) water_level = 0;
-	
-#endregion Water Level
-
-#region Oil Level
-	
-	// Lock oil level at a minimum of 0
-	if(oil_level < 0) oil_level = 0;
-	
-#endregion Oil Level
-
-#region Water + Flaming Oil Interaction
-
-	if(water_level > 0 && is_flaming == true)
-	{
-		// Create a number of flaming oil droplets equal to level of water spell
-		// splitting remaining fuel in platform between them.
-		// Throw oil droplets in random directions
-		// with gravity affecting them and facing the direction they fly
-		
-		
-		// If more water
-		if(water_level > oil_level)
-		{
-			// Subtract oil from water
-			water_level -= oil_level
-			
-			// Set oil level to 0
-			oil_level = 0
-			
-			var total_levels = water_level - oil_level;
-		}else
-		
-		// If more oil
-		if(water_level < oil_level)
-		{
-			// Subtract oil from water
-			oil_level -= water_level
-			
-			// Set water level to 0
-			water_level = 0
-			
-			var total_levels = oil_level - water_level;
-		}else 
-		
-		// If equal throw 1 level of oil, but leave platform steaming
-		if(water_level == oil_level)
-		{
-			var total_levels = oil_level;
-			
-			scr_element_reset_variables()
-			
-			water_level = 1
-			is_steaming = true
-		}
-			
-		// Total fuel after split between each droplet and platform
-		var fuel_split = fuel_left / (total_levels + 1);
-
-		// Reduce platform fuel
-		fuel_left = fuel_split;
-			
-		for(var i = 0; i < total_levels; i++)
-		{
-			// Create random speed of droplet
-			var rand_spd = random_range(-4, 4)
-				
-			// Create random deviation in x origin point on platform
-			var rand_x = random_range(-10, 10)
-				
-			// Create oil droplet, throwing it in random direction
-			droplet = instance_create_layer(x + rand_x, y - sprite_height - 5, "Spells", obj_element_oil_droplet,
+			// If not oil, remove flame objects
+			if(oil_level == 0)
 			{
-				fuel_left : fuel_split,
-				is_flaming : true,
-				move_spd_v : 6,
-				move_spd_h : rand_spd
-					
-			});
+				// Destroy flame objects
+				if(instance_exists(flame_0)) instance_destroy(flame_0)
+				if(instance_exists(flame_1)) instance_destroy(flame_1)		
+			}
+
+			// Spawning/controlling flames
+			if(is_flaming == true && flames_spawned == false)
+			{
+	
+				// Spawn left flame
+				flame_0 = instance_create_layer(x - quarter_width, y - half_height, "Spells", obj_element_flaming,
+				{
+					platform_id : id
+				});
+			
+				// Spawn right flame
+				flame_1 = instance_create_layer(x + quarter_width, y - half_height, "Spells", obj_element_flaming,
+				{
+					platform_id : id
+				});
+	
+				// State flames are now spawned to prevent duplication
+				flames_spawned = true;
+		
+				// Rotate and shift flame sprites to match slope angle
+				if(object_index == obj_platform_aa_slope_left)
+				{
+					flame_0.image_angle = 45
+					flame_0.y += half_height + quarter_height
+			
+					flame_1.image_angle = 45
+					flame_1.y += quarter_height
+				}
+				if(object_index == obj_platform_aa_slope_right)
+				{
+					flame_0.image_angle = 315
+					flame_0.y += quarter_height
+			
+					flame_1.image_angle = 315
+					flame_1.y += half_height + quarter_height
+				}
+
+			}
+	
+			// Calculates total number of flames burning to determine fuel burn rate
+			if(is_flaming == true && flames_spawned == true)
+			{
+				var total_flames = 0;
+		
+				// Count total number of active flames
+				if(instance_exists(flame_0)) total_flames++
+				if(instance_exists(flame_1)) total_flames++
+		
+				// Set burn rate to 0 if no flames exist
+				if(!instance_exists(flame_0) && !instance_exists(flame_1)) total_flames = 0;
+		
+				// Set burn rate to total flame objects
+		//		fuel_burn_rate = total_flames
+
+				fuel_burn_rate = 1;
+		
+				// Reduce fuel remaining based on burn rate
+				fuel_left -= fuel_burn_rate
+		
+				// When fuel runs out, decrease oil level
+				if(fuel_left <= 0)
+				{
+					// Decrease oil level
+					oil_level--;
+			
+					// Reset fuel level
+					fuel_left = fuel_default
+			
+				}
+		
+				// Remove oil if reaching oil level of 0
+				if(oil_level <= 0)
+				{
+					// Destroy flame objects
+					if(instance_exists(flame_0)) instance_destroy(flame_0)
+					if(instance_exists(flame_1)) instance_destroy(flame_1)
+			
+					scr_element_reset_variables()		
+				}
+		
+			}
+
+	
+	
+
+		#endregion Flaming
+
+		#region Steaming
+	
+			if(is_steaming == true && steam_spawned == false)
+			{
+				steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam_platform,
+				{
+					platform_id : id
+				})
+				steam_spawned = true;
+
+		
+				// Rotate and shift steam sprites to match slope angle
+				if(object_index == obj_platform_aa_slope_left)
+				{
+					steam.image_angle = 45
+					steam.y += half_height
+				}
+				if(object_index == obj_platform_aa_slope_right)
+				{
+					steam.image_angle = 315
+					steam.y += half_height
+				}
+			}
+	
+			// If not water, remove steam objects
+			if(water_level == 0 || is_steaming == false)
+			{
+				// Destroy flame objects
+				if(instance_exists(steam)) instance_destroy(steam)	
+			}
+
+			// Spawn and control steam objects
+			if(is_steaming == true && steam_spawned == false)
+			{
+	
+				// Spawn steam object
+				steam = instance_create_layer(x, y - half_height, "Spells", obj_element_steam_platform,
+				{
+					platform_id : id
+				});
+	
+				// State steam are now spawned to prevent duplication
+				steam_spawned = true;
+		
+				// Rotate and shift flame sprites to match slope angle
+				if(object_index == obj_platform_aa_slope_left)
+				{
+					steam.image_angle = 45
+					steam.y += half_height + quarter_height
+				}
+				if(object_index == obj_platform_aa_slope_right)
+				{
+					steam.image_angle = 315
+					steam.y += quarter_height
+				}
+
+			}
+	
+			// Fuel Steam
+			if(is_steaming == true && steam_spawned == true)
+			{
+
+				// Reduce fuel remaining based on burn rate
+				fuel_left -= fuel_steam_rate
+		
+				// When fuel runs out, decrease water level
+				if(fuel_left <= 0)
+				{
+					// Decrease water level
+					water_level--;
+			
+					// Reset fuel level
+					fuel_left = fuel_default
+			
+					// End steam effect
+					is_steaming = false;
+			
+					// Destroy steam object
+					if(instance_exists(steam)) instance_destroy(steam)
+			
+				}
+		
+				// Remove water if reaching water level of 0
+				if(water_level <= 0)
+				{
+					// Destroy steam object
+					if(instance_exists(steam)) instance_destroy(steam)
+			
+					scr_element_reset_variables()		
+				}
+		
+			}
+	
+		#endregion Steaming
+
+		#region Charged
+	
+			// If not water, remove charge
+			if(water_level == 0)
+			{
+				is_charged = false
+		
+			}
+	
+		#endregion Charged
+
+		#region Water Level
+	
+			// Lock water level at a minimum of 0
+			if(water_level < 0) water_level = 0;
+	
+		#endregion Water Level
+
+		#region Oil Level
+	
+			// Lock oil level at a minimum of 0
+			if(oil_level < 0) oil_level = 0;
+	
+		#endregion Oil Level
+
+		#region Water + Flaming Oil Interaction
+
+			if(water_level > 0 && is_flaming == true)
+			{
+				// Create a number of flaming oil droplets equal to level of water spell
+				// splitting remaining fuel in platform between them.
+				// Throw oil droplets in random directions
+				// with gravity affecting them and facing the direction they fly
+		
+		
+				// If more water
+				if(water_level > oil_level)
+				{
+					// Subtract oil from water
+					water_level -= oil_level
+			
+					// Set oil level to 0
+					oil_level = 0
+			
+					var total_levels = water_level - oil_level;
+				}else
+		
+				// If more oil
+				if(water_level < oil_level)
+				{
+					// Subtract oil from water
+					oil_level -= water_level
+			
+					// Set water level to 0
+					water_level = 0
+			
+					var total_levels = oil_level - water_level;
+				}else 
+		
+				// If equal throw 1 level of oil, but leave platform steaming
+				if(water_level == oil_level)
+				{
+					var total_levels = oil_level;
+			
+					scr_element_reset_variables()
+			
+					water_level = 1
+					is_steaming = true
+				}
+			
+				// Total fuel after split between each droplet and platform
+				var fuel_split = fuel_left / (total_levels + 1);
+
+				// Reduce platform fuel
+				fuel_left = fuel_split;
+			
+				for(var i = 0; i < total_levels; i++)
+				{
+					// Create random speed of droplet
+					var rand_spd = random_range(-4, 4)
 				
-			// Create steam object for each water level in location droplet is spawned
-			steam = instance_create_layer(x + rand_x, y - sprite_height - 5, "Spells", obj_element_steam_air)
+					// Create random deviation in x origin point on platform
+					var rand_x = random_range(-10, 10)
+				
+					// Create oil droplet, throwing it in random direction
+					droplet = instance_create_layer(x + rand_x, y - sprite_height - 5, "Spells", obj_element_oil_droplet,
+					{
+						fuel_left : fuel_split,
+						is_flaming : true,
+						move_spd_v : 6,
+						move_spd_h : rand_spd
+					
+					});
+				
+					// Create steam object for each water level in location droplet is spawned
+					steam = instance_create_layer(x + rand_x, y - sprite_height - 5, "Spells", obj_element_steam_air)
 			
 
-		}
-	}
+				}
+			}
 
-#endregion Water + Flaming Oil Interaction
+		#endregion Water + Flaming Oil Interaction
 
-#region Inter Platform Element Interactions
+		#region Inter Platform Element Interactions
 
-	// Do not run checks if there is no interaction to begin
-	if(water_level != 0 || oil_level != 0)
-	{
+			// Do not run checks if there is no interaction to begin
+			if(water_level != 0 || oil_level != 0)
+			{
 
-		// Check in each direction for touching platforms. Run inter-element script for each direction
+				// Check in each direction for touching platforms. Run inter-element script for each direction
 	
-		// Generate random int to select cardinal direction to interact with
-		var rand_dir = irandom(1);
+				// Generate random int to select cardinal direction to interact with
+				var rand_dir = irandom(1);
 	
-		//show_debug_message("rand_dir = " + string(rand_dir))
+				//show_debug_message("rand_dir = " + string(rand_dir))
 	
-		// Continue ongoing interaction
-		if(interacting == true)
-		{
-			scr_element_inter_platform_interactions(id, other_id);
-		}else
-	
-		if(interacting == false)
-		{
-		  other_id = -1;
-		}
-	
-	
-		#region Water transfer
-	
-
-			#region Slopes
-		
-		
-				// Water sliding down slopes
-				if(water_level > 0 && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
+				// Continue ongoing interaction
+				if(interacting == true)
 				{
-					if(object_index == obj_platform_aa_slope_left)
-					{
-						if(bottom_left_free == false)
+					scr_element_inter_platform_interactions(id, other_id);
+				}else
+	
+				if(interacting == false)
+				{
+				  other_id = -1;
+				}
+	
+	
+				#region Water transfer
+	
+
+					#region Slopes
+		
+		
+						// Water sliding down slopes
+						if(water_level > 0 && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
 						{
-							other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
+							if(object_index == obj_platform_aa_slope_left)
+							{
+								if(bottom_left_free == false)
+								{
+									other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
 								
-							scr_element_inter_platform_interactions(id, other_id)
-						}else
-						{	// Create droplet going off slope
+									scr_element_inter_platform_interactions(id, other_id)
+								}else
+								{	// Create droplet going off slope
 						
-							// Create droplet to left side
-							func_create_water_droplet(1)
-						}
-					}else
+									// Create droplet to left side
+									func_create_water_droplet(1)
+								}
+							}else
 				
-					if(object_index == obj_platform_aa_slope_right)
-					{
-						if(bottom_right_free == false)
-						{
-							other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
+							if(object_index == obj_platform_aa_slope_right)
+							{
+								if(bottom_right_free == false)
+								{
+									other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
 
-							scr_element_inter_platform_interactions(id, other_id)
-						}else
-						{	// Create droplet going off slope
+									scr_element_inter_platform_interactions(id, other_id)
+								}else
+								{	// Create droplet going off slope
 						
-							// Create droplet to right side
-							func_create_water_droplet(0)
+									// Create droplet to right side
+									func_create_water_droplet(0)
+								}
+							}
+			
+						}else
+		
+					#endregion Slopes
+	
+	
+					// If water, check water levels of platform to left and right, transfer to lowest level
+					if(water_level > 1)
+					{
+						// Platform id to right and left
+						var right_id = instance_place(x + check_distance, y, obj_platform_parent)
+						var left_id = instance_place(x - check_distance, y, obj_platform_parent)
+
+		
+						// Checks to make sure there is no object to either the right or left
+						if((!right_free && !object_is_ancestor(right_id.object_index, obj_platform_void_parent))
+						&& (!left_free && !object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
+						{
+							// Used to store instance id with higher water level
+							var higher_id = noone
+		
+							// Used to select random direction with equal water levels
+							var rand_water_dir = -1
+				
+							// If water recently transferred from another platform
+							if(transferred_from != noone)
+							{
+								// If timer length has not been reached
+								if(transfer_timer < transfer_timer_length)
+								{
+									// Continue to transfer in the opposite direction the water came from
+									if(right_id == transferred_from) transfer_id = left_id
+									else 
+									if(left_id == transferred_from) transfer_id = right_id
+						
+									// Increment timer
+									transfer_timer++
+								}else 
+								{
+									// End of timer
+						 
+									// Reset transferred_from
+									transferred_from = noone;
+						
+									// Reset timer
+									transfer_timer = 0;
+								}
+					
+					
+							}else
+				
+							// If water has not recently transferred from another platform
+							if(transferred_from == noone)
+							{
+								// Check if water level of right is higher than left
+								if(right_id.water_level > left_id.water_level)
+								{
+									higher_id = right_id
+			
+								// Check if water level of right is higher than left
+								}else if(right_id.water_level < left_id.water_level)
+								{
+									higher_id = left_id
+								}else
+								{
+									// If both directions are equal, randomise direction
+									rand_water_dir = irandom(1)
+			
+									// 0 is right
+									if(rand_water_dir == 0)
+									{
+										higher_id = instance_place(x + 1, y, obj_platform_parent)
+				
+									// 1 is left
+									}else
+									{
+										higher_id = instance_place(x - 1, y, obj_platform_parent)
+									}
+								}
+					
+								// Set transfer_id to higher_id
+								transfer_id = higher_id;
+							}
+				
+						}else
+				
+						// Transfer right if free
+						if(!right_free && (left_free || object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
+						{
+							transfer_id = right_id
+						}else
+				
+						// Transfer left if free
+						if((right_free || object_is_ancestor(right_id.object_index, obj_platform_void_parent)) && !left_free)
+						{
+							transfer_id = left_id
+						}
+
+							// If own platforms water level is higher than the water level of highest to the left or right
+							// then transfer water level between, else continue to other checks
+							if(transfer_id != noone)
+							{
+								if(water_level > transfer_id.water_level)
+								{
+									// Activate interaction to transfer water level
+									scr_element_inter_platform_interactions(id, transfer_id)
+						
+									// Send to other platform the direction to transfer to
+									transfer_id.transferred_from = id
+						
+			//						show_debug_message("Transferring to: " + string(transfer_id))
+			
+								}
+							}
+				
+				
+							// Clear transfer_id to prevent incorrectly stored variable
+							transfer_id = noone
+			
+
+					}else
+	
+				#endregion Water transfer
+	
+				#region Oil transfer
+
+					#region Slopes
+		
+		
+						// Oil sliding down slopes
+						if(oil_level > 0 && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
+						{
+							if(object_index == obj_platform_aa_slope_left)
+							{
+								if(bottom_left_free == false)
+								{
+									other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
+									scr_element_inter_platform_interactions(id, other_id)
+								}else
+								{	// Create droplet going off slope
+						
+									// Create droplet to left side
+									func_create_oil_droplet(1)
+								}
+							}else
+				
+							if(object_index == obj_platform_aa_slope_right)
+							{
+								if(bottom_right_free == false)
+								{
+									other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
+									scr_element_inter_platform_interactions(id, other_id)
+								}else
+								{	// Create droplet going off slope
+						
+									// Create droplet to right side
+									func_create_oil_droplet(0)
+								}
+							}
+			
+						}else
+		
+					#endregion Slopes
+	
+	
+					// If oil, check oil levels of platform to left and right, transfer to lowest level
+					if(oil_level > 1)
+					{
+						// Platform id to right and left
+						var right_id = instance_place(x + check_distance, y, obj_platform_parent)
+						var left_id = instance_place(x - check_distance, y, obj_platform_parent)
+		
+							// Checks to make sure there is no object to either the right or left
+						if((!right_free && !object_is_ancestor(right_id.object_index, obj_platform_void_parent))
+						&& (!left_free && !object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
+						{
+							// Used to store instance id with higher oil level
+							var higher_id = noone
+		
+							// Used to select random direction with equal oil levels
+							var rand_oil_dir = -1
+				
+							// If oil recently transferred from another platform
+							if(transferred_from != noone)
+							{
+								// If timer length has not been reached
+								if(transfer_timer < transfer_timer_length)
+								{
+									// Continue to transfer in the opposite direction the oil came from
+									if(right_id == transferred_from) transfer_id = left_id
+									else 
+									if(left_id == transferred_from) transfer_id = right_id
+						
+									// Increment timer
+									transfer_timer++
+								}else 
+								{
+									// End of timer
+						 
+									// Reset transferred_from
+									transferred_from = noone;
+						
+									// Reset timer
+									transfer_timer = 0;
+								}
+					
+					
+							}else
+				
+							// If oil has not recently transferred from another platform
+							if(transferred_from == noone)
+							{
+								// Check if oil level of right is higher than left
+								if(right_id.oil_level > left_id.oil_level)
+								{
+									higher_id = right_id
+			
+								// Check if oil level of right is higher than left
+								}else if(right_id.oil_level < left_id.oil_level)
+								{
+									higher_id = left_id
+								}else
+								{
+									// If both directions are equal, randomise direction
+									rand_oil_dir = irandom(1)
+			
+									// 0 is right
+									if(rand_oil_dir == 0)
+									{
+										higher_id = instance_place(x + 1, y, obj_platform_parent)
+				
+									// 1 is left
+									}else
+									{
+										higher_id = instance_place(x - 1, y, obj_platform_parent)
+									}
+								}
+					
+								// Set transfer_id to higher_id
+								transfer_id = higher_id;
+							}
+				
+						}else
+				
+						// Transfer right if free
+						if(!right_free && (left_free || object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
+						{
+							transfer_id = right_id
+						}else
+				
+						// Transfer left if free
+						if((right_free || object_is_ancestor(right_id.object_index, obj_platform_void_parent)) && !left_free)
+						{
+							transfer_id = left_id
+						}
+
+							// If own platforms oil level is higher than the oil level of highest to the left or right
+							// then transfer oil level between, else continue to other checks
+							if(transfer_id != noone)
+							{
+								if(oil_level > transfer_id.oil_level)
+								{
+									// Activate interaction to transfer oil level
+									scr_element_inter_platform_interactions(id, transfer_id)
+						
+									// Send to other platform the direction to transfer to
+									transfer_id.transferred_from = id
+						
+			//						show_debug_message("Transferring to: " + string(transfer_id))
+
+								}
+							}
+				
+				
+							// Clear transfer_id to prevent incorrectly stored variable
+							transfer_id = noone
+			
+					}else
+	
+				#endregion Oil transfer
+	
+				#region Check Directions
+	
+					// Check right
+					if(!right_free && interacting == false && rand_dir == 0)
+					{
+						other_id = instance_place(x + check_distance, y, obj_platform_parent)
+						if(object_is_ancestor(other_id.object_index, obj_platform_void_parent)) exit;
+				
+						// Prevent water from spreading to platform located under another platform
+						if(other_id.above_free == true)
+						{
+							scr_element_inter_platform_interactions(id, other_id)
+						}
+		
+					}else
+	
+					// Check left
+					if(!left_free && interacting == false && rand_dir == 1)
+					{
+						other_id = instance_place(x - check_distance, y, obj_platform_parent)
+						if(object_is_ancestor(other_id.object_index, obj_platform_void_parent)) exit;
+				
+						// Prevent water from spreading to platform located under another platform
+						if(other_id.above_free == true)
+						{
+							scr_element_inter_platform_interactions(id, other_id)
 						}
 					}
+	
+				#endregion Check Directions
+	
+				#region Water Droplets
+	
+					if(water_level > 1 && interacting == false && above_free == true)
+					{
+						// Used to detect if water dropping function is used in this step
+						var dropping = false;
 			
-				}else
-		
-			#endregion Slopes
+						// Preventing issue if platform in top left is a slope
 	
-	
-			// If water, check water levels of platform to left and right, transfer to lowest level
-			if(water_level > 1)
-			{
-				// Platform id to right and left
-				var right_id = instance_place(x + check_distance, y, obj_platform_parent)
-				var left_id = instance_place(x - check_distance, y, obj_platform_parent)
+						if(top_left_free == false)
+						{
+							if(instance_place(x - sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
+							{
+								func_create_water_droplet(0);
 
-		
-				// Checks to make sure there is no object to either the right or left
-				if((!right_free && !object_is_ancestor(right_id.object_index, obj_platform_void_parent))
-				&& (!left_free && !object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
-				{
-					// Used to store instance id with higher water level
-					var higher_id = noone
-		
-					// Used to select random direction with equal water levels
-					var rand_water_dir = -1
-				
-					// If water recently transferred from another platform
-					if(transferred_from != noone)
-					{
-						// If timer length has not been reached
-						if(transfer_timer < transfer_timer_length)
-						{
-							// Continue to transfer in the opposite direction the water came from
-							if(right_id == transferred_from) transfer_id = left_id
-							else 
-							if(left_id == transferred_from) transfer_id = right_id
-						
-							// Increment timer
-							transfer_timer++
-						}else 
-						{
-							// End of timer
-						 
-							// Reset transferred_from
-							transferred_from = noone;
-						
-							// Reset timer
-							transfer_timer = 0;
-						}
-					
-					
-					}else
-				
-					// If water has not recently transferred from another platform
-					if(transferred_from == noone)
-					{
-						// Check if water level of right is higher than left
-						if(right_id.water_level > left_id.water_level)
-						{
-							higher_id = right_id
-			
-						// Check if water level of right is higher than left
-						}else if(right_id.water_level < left_id.water_level)
-						{
-							higher_id = left_id
+								// State water dropping function has been used in step
+								dropping = true;
+							}
 						}else
-						{
-							// If both directions are equal, randomise direction
-							rand_water_dir = irandom(1)
 			
-							// 0 is right
-							if(rand_water_dir == 0)
+						// Preventing issue if platform in top right is a slope
+						if(top_right_free == false)
+						{
+							if(instance_place(x + sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
 							{
-								higher_id = instance_place(x + 1, y, obj_platform_parent)
-				
-							// 1 is left
-							}else
-							{
-								higher_id = instance_place(x - 1, y, obj_platform_parent)
+								func_create_water_droplet(1);
+
+								// State water dropping function has been used in step
+								dropping = true;
 							}
 						}
-					
-						// Set transfer_id to higher_id
-						transfer_id = higher_id;
+			
+						// If the water droplet function has not been used this step
+						if(dropping == false)
+						{
+							// Create random direction
+							var rand_dir = irandom(1);
+				
+							// Drop to left side
+							if(top_left_free && rand_dir = 1) func_create_water_droplet(1);
+				
+							// Drop to right side
+							if(top_right_free && rand_dir = 0) func_create_water_droplet(0);
+				
+				
+						}
+			
 					}
-				
-				}else
-				
-				// Transfer right if free
-				if(!right_free && (left_free || object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
-				{
-					transfer_id = right_id
-				}else
-				
-				// Transfer left if free
-				if((right_free || object_is_ancestor(right_id.object_index, obj_platform_void_parent)) && !left_free)
-				{
-					transfer_id = left_id
-				}
-
-					// If own platforms water level is higher than the water level of highest to the left or right
-					// then transfer water level between, else continue to other checks
-					if(transfer_id != noone)
-					{
-						if(water_level > transfer_id.water_level)
-						{
-							// Activate interaction to transfer water level
-							scr_element_inter_platform_interactions(id, transfer_id)
-						
-							// Send to other platform the direction to transfer to
-							transfer_id.transferred_from = id
-						
-	//						show_debug_message("Transferring to: " + string(transfer_id))
-			
-						}
-					}
-				
-				
-					// Clear transfer_id to prevent incorrectly stored variable
-					transfer_id = noone
-			
-
-			}else
+		
+				#endregion Water Droplets
 	
-		#endregion Water transfer
+				#region Oil Droplets
 	
-		#region Oil transfer
-
-			#region Slopes
-		
-		
-				// Oil sliding down slopes
-				if(oil_level > 0 && (object_index == obj_platform_aa_slope_left || object_index == obj_platform_aa_slope_right))
-				{
-					if(object_index == obj_platform_aa_slope_left)
-					{
-						if(bottom_left_free == false)
+						if(oil_level > 1 && interacting == false && above_free == true)
 						{
-							other_id = instance_place(x - sprite_width, y + sprite_height, obj_platform_parent)
-							scr_element_inter_platform_interactions(id, other_id)
-						}else
-						{	// Create droplet going off slope
-						
-							// Create droplet to left side
-							func_create_oil_droplet(1)
-						}
-					}else
-				
-					if(object_index == obj_platform_aa_slope_right)
-					{
-						if(bottom_right_free == false)
-						{
-							other_id = instance_place(x + sprite_width, y + sprite_height, obj_platform_parent)
-							scr_element_inter_platform_interactions(id, other_id)
-						}else
-						{	// Create droplet going off slope
-						
-							// Create droplet to right side
-							func_create_oil_droplet(0)
-						}
-					}
+							// Used to detect if oil dropping function is used in this step
+							var dropping = false
 			
-				}else
-		
-			#endregion Slopes
-	
-	
-			// If oil, check oil levels of platform to left and right, transfer to lowest level
-			if(oil_level > 1)
-			{
-				// Platform id to right and left
-				var right_id = instance_place(x + check_distance, y, obj_platform_parent)
-				var left_id = instance_place(x - check_distance, y, obj_platform_parent)
-		
-					// Checks to make sure there is no object to either the right or left
-				if((!right_free && !object_is_ancestor(right_id.object_index, obj_platform_void_parent))
-				&& (!left_free && !object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
-				{
-					// Used to store instance id with higher oil level
-					var higher_id = noone
-		
-					// Used to select random direction with equal oil levels
-					var rand_oil_dir = -1
-				
-					// If oil recently transferred from another platform
-					if(transferred_from != noone)
-					{
-						// If timer length has not been reached
-						if(transfer_timer < transfer_timer_length)
-						{
-							// Continue to transfer in the opposite direction the oil came from
-							if(right_id == transferred_from) transfer_id = left_id
-							else 
-							if(left_id == transferred_from) transfer_id = right_id
-						
-							// Increment timer
-							transfer_timer++
-						}else 
-						{
-							// End of timer
-						 
-							// Reset transferred_from
-							transferred_from = noone;
-						
-							// Reset timer
-							transfer_timer = 0;
-						}
-					
-					
-					}else
-				
-					// If oil has not recently transferred from another platform
-					if(transferred_from == noone)
-					{
-						// Check if oil level of right is higher than left
-						if(right_id.oil_level > left_id.oil_level)
-						{
-							higher_id = right_id
-			
-						// Check if oil level of right is higher than left
-						}else if(right_id.oil_level < left_id.oil_level)
-						{
-							higher_id = left_id
-						}else
-						{
-							// If both directions are equal, randomise direction
-							rand_oil_dir = irandom(1)
-			
-							// 0 is right
-							if(rand_oil_dir == 0)
+							// Preventing issue if platform in top left is a slope
+							if(top_left_free == false)
 							{
-								higher_id = instance_place(x + 1, y, obj_platform_parent)
-				
-							// 1 is left
+								if(instance_place(x - sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
+								{
+									func_create_oil_droplet(0)
+					
+									// State oil dropping function has been used in step
+									dropping = true;
+								}
 							}else
+			
+							// Preventing issue if platform in top right is a slope
+							if(top_right_free == false)
 							{
-								higher_id = instance_place(x - 1, y, obj_platform_parent)
+								if(instance_place(x + sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
+								{
+									func_create_oil_droplet(1)
+					
+									// State oil dropping function has been used in step
+									dropping = true;
+								}
 							}
-						}
-					
-						// Set transfer_id to higher_id
-						transfer_id = higher_id;
-					}
-				
-				}else
-				
-				// Transfer right if free
-				if(!right_free && (left_free || object_is_ancestor(left_id.object_index, obj_platform_void_parent)))
-				{
-					transfer_id = right_id
-				}else
-				
-				// Transfer left if free
-				if((right_free || object_is_ancestor(right_id.object_index, obj_platform_void_parent)) && !left_free)
-				{
-					transfer_id = left_id
-				}
-
-					// If own platforms oil level is higher than the oil level of highest to the left or right
-					// then transfer oil level between, else continue to other checks
-					if(transfer_id != noone)
-					{
-						if(oil_level > transfer_id.oil_level)
-						{
-							// Activate interaction to transfer oil level
-							scr_element_inter_platform_interactions(id, transfer_id)
-						
-							// Send to other platform the direction to transfer to
-							transfer_id.transferred_from = id
-						
-	//						show_debug_message("Transferring to: " + string(transfer_id))
-
-						}
-					}
-				
-				
-					// Clear transfer_id to prevent incorrectly stored variable
-					transfer_id = noone
 			
-			}else
-	
-		#endregion Oil transfer
-	
-		#region Check Directions
-	
-			// Check right
-			if(!right_free && interacting == false && rand_dir == 0)
-			{
-				other_id = instance_place(x + check_distance, y, obj_platform_parent)
-				if(object_is_ancestor(other_id.object_index, obj_platform_void_parent)) exit;
+							// If the oil droplet function has not been used this step
+							if(dropping == false)
+							{
+								// Create random direction
+								var rand_dir = irandom(1)
 				
-				// Prevent water from spreading to platform located under another platform
-				if(other_id.above_free == true)
-				{
-					scr_element_inter_platform_interactions(id, other_id)
-				}
+								// Drop to left side
+								if(top_left_free && rand_dir = 1) func_create_oil_droplet(1)
+				
+								// Drop to right side
+								if(top_right_free && rand_dir = 0) func_create_oil_droplet(0)
+				
+				
+							}
+			
+						}
 		
-			}else
+					#endregion Oil Droplets
 	
-			// Check left
-			if(!left_free && interacting == false && rand_dir == 1)
-			{
-				other_id = instance_place(x - check_distance, y, obj_platform_parent)
-				if(object_is_ancestor(other_id.object_index, obj_platform_void_parent)) exit;
-				
-				// Prevent water from spreading to platform located under another platform
-				if(other_id.above_free == true)
-				{
-					scr_element_inter_platform_interactions(id, other_id)
-				}
 			}
-	
-		#endregion Check Directions
-	
-		#region Water Droplets
-	
-			if(water_level > 1 && interacting == false && above_free == true)
-			{
-				// Used to detect if water dropping function is used in this step
-				var dropping = false;
-			
-				// Preventing issue if platform in top left is a slope
-	
-				if(top_left_free == false)
-				{
-					if(instance_place(x - sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
-					{
-						func_create_water_droplet(0);
 
-						// State water dropping function has been used in step
-						dropping = true;
-					}
-				}else
-			
-				// Preventing issue if platform in top right is a slope
-				if(top_right_free == false)
-				{
-					if(instance_place(x + sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
-					{
-						func_create_water_droplet(1);
+		#endregion Inter Platform Element Interactions
 
-						// State water dropping function has been used in step
-						dropping = true;
-					}
-				}
-			
-				// If the water droplet function has not been used this step
-				if(dropping == false)
-				{
-					// Create random direction
-					var rand_dir = irandom(1);
-				
-					// Drop to left side
-					if(top_left_free && rand_dir = 1) func_create_water_droplet(1);
-				
-					// Drop to right side
-					if(top_right_free && rand_dir = 0) func_create_water_droplet(0);
-				
-				
-				}
-			
-			}
-		
-		#endregion Water Droplets
-	
-		#region Oil Droplets
-	
-				if(oil_level > 1 && interacting == false && above_free == true)
-				{
-					// Used to detect if oil dropping function is used in this step
-					var dropping = false
-			
-					// Preventing issue if platform in top left is a slope
-					if(top_left_free == false)
-					{
-						if(instance_place(x - sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
-						{
-							func_create_oil_droplet(0)
-					
-							// State oil dropping function has been used in step
-							dropping = true;
-						}
-					}else
-			
-					// Preventing issue if platform in top right is a slope
-					if(top_right_free == false)
-					{
-						if(instance_place(x + sprite_width, y - sprite_height, obj_platform_aa_slope_parent))
-						{
-							func_create_oil_droplet(1)
-					
-							// State oil dropping function has been used in step
-							dropping = true;
-						}
-					}
-			
-					// If the oil droplet function has not been used this step
-					if(dropping == false)
-					{
-						// Create random direction
-						var rand_dir = irandom(1)
-				
-						// Drop to left side
-						if(top_left_free && rand_dir = 1) func_create_oil_droplet(1)
-				
-						// Drop to right side
-						if(top_right_free && rand_dir = 0) func_create_oil_droplet(0)
-				
-				
-					}
-			
-				}
-		
-			#endregion Oil Droplets
-	
 	}
-
-#endregion Inter Platform Element Interactions
+#endregion Elements
 
 

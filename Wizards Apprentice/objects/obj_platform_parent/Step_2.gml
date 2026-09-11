@@ -51,12 +51,15 @@
 		{
 			scr_element_reset_variables()
 		}
-}
+	}
 
 #endregion Oil Droplets
 
+// Check if previous frame there was an element, and now there is none
+if(previous_frame_had_element == true && scr_has_no_element(id))
+{
+	// Reset all variables
+	scr_element_reset_variables()
+}else previous_frame_had_element = !scr_has_no_element(id)
 
-
-// Reset variables if no element applies
-if(water_level == 0 && oil_level == 0) scr_element_reset_variables()
 

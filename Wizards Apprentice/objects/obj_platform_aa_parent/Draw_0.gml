@@ -28,6 +28,8 @@ function draw_element_above(rotation = 0, x_shift = 0, y_shift = 0)
 
 // ** DOES NOT INHERIT PARENT EVENT**
 
+
+
 // Create shader
 shader_set(shd_platform_multi_texture);
 
@@ -270,6 +272,8 @@ draw_surface(surf, x - sprite_xoffset, y - sprite_yoffset);
 shader_reset();
 
 
+
+
 #region Debug
 
 	// Debug display settings
@@ -290,5 +294,6 @@ shader_reset();
 		draw_text(x, y + 10, "FL: " + string(fuel_left))
 	}
 
+	scr_text_reset()
 	
 #endregion Debug

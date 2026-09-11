@@ -2,7 +2,6 @@
 
 event_inherited()
 
-
 // Used for dynamic platform textures
 platform_texture = sprite_index
 
@@ -59,6 +58,9 @@ transfer_id = noone;
 				
 // Stores id of last platform water level was transfered from
 transferred_from = noone
+
+// Declares if platform had an element the previous frame
+previous_frame_had_element = false
 
 
 // Used to determine the amount of time platform will burn for if flaming oil or steam if steaming water
