@@ -42,8 +42,9 @@
     {"$GMFolder":"","%Name":"Level Select","folderPath":"folders/Objects/Menu/Level Select.yy","name":"Level Select","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Main Menu","folderPath":"folders/Objects/Menu/Main Menu.yy","name":"Main Menu","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Main Menu Buttons","folderPath":"folders/Objects/Menu/Main Menu/Main Menu Buttons.yy","name":"Main Menu Buttons","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Options","folderPath":"folders/Objects/Menu/Main Menu/Main Menu Buttons/Options.yy","name":"Options","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"New Game","folderPath":"folders/Objects/Menu/Main Menu/Main Menu Buttons/New Game.yy","name":"New Game","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Skills","folderPath":"folders/Objects/Menu/Main Menu/Main Menu Buttons/New Game/Skills.yy","name":"Skills","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Options","folderPath":"folders/Objects/Menu/Main Menu/Main Menu Buttons/Options.yy","name":"Options","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Shop","folderPath":"folders/Objects/Menu/Shop.yy","name":"Shop","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Shop Buttons","folderPath":"folders/Objects/Menu/Shop/Shop Buttons.yy","name":"Shop Buttons","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Study","folderPath":"folders/Objects/Menu/Study.yy","name":"Study","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -277,6 +278,12 @@
     {"id":{"name":"obj_menu_spell_learning","path":"objects/obj_menu_spell_learning/obj_menu_spell_learning.yy",},},
     {"id":{"name":"obj_message_parent","path":"objects/obj_message_parent/obj_message_parent.yy",},},
     {"id":{"name":"obj_mouse","path":"objects/obj_mouse/obj_mouse.yy",},},
+    {"id":{"name":"obj_new_game_skill_charisma","path":"objects/obj_new_game_skill_charisma/obj_new_game_skill_charisma.yy",},},
+    {"id":{"name":"obj_new_game_skill_dexterity","path":"objects/obj_new_game_skill_dexterity/obj_new_game_skill_dexterity.yy",},},
+    {"id":{"name":"obj_new_game_skill_intelligence","path":"objects/obj_new_game_skill_intelligence/obj_new_game_skill_intelligence.yy",},},
+    {"id":{"name":"obj_new_game_skill_memory","path":"objects/obj_new_game_skill_memory/obj_new_game_skill_memory.yy",},},
+    {"id":{"name":"obj_new_game_skill_parent","path":"objects/obj_new_game_skill_parent/obj_new_game_skill_parent.yy",},},
+    {"id":{"name":"obj_new_game_skill_vitality","path":"objects/obj_new_game_skill_vitality/obj_new_game_skill_vitality.yy",},},
     {"id":{"name":"obj_platform_aa_parent","path":"objects/obj_platform_aa_parent/obj_platform_aa_parent.yy",},},
     {"id":{"name":"obj_platform_aa_slope_left","path":"objects/obj_platform_aa_slope_left/obj_platform_aa_slope_left.yy",},},
     {"id":{"name":"obj_platform_aa_slope_parent","path":"objects/obj_platform_aa_slope_parent/obj_platform_aa_slope_parent.yy",},},
@@ -550,6 +557,7 @@
     {"id":{"name":"spr_menu_esc_background","path":"sprites/spr_menu_esc_background/spr_menu_esc_background.yy",},},
     {"id":{"name":"spr_menu_save_slot","path":"sprites/spr_menu_save_slot/spr_menu_save_slot.yy",},},
     {"id":{"name":"spr_message","path":"sprites/spr_message/spr_message.yy",},},
+    {"id":{"name":"spr_new_game_skill","path":"sprites/spr_new_game_skill/spr_new_game_skill.yy",},},
     {"id":{"name":"spr_number","path":"sprites/spr_number/spr_number.yy",},},
     {"id":{"name":"spr_page_1","path":"sprites/spr_page_1/spr_page_1.yy",},},
     {"id":{"name":"spr_page_2","path":"sprites/spr_page_2/spr_page_2.yy",},},
@@ -619,10 +627,6 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
-        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
-        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
-      ],"groupName":"Testing",},
-    {"children":[
         {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"children":[],"groupName":"group",},
@@ -637,6 +641,10 @@
           ],"groupName":"Chapter 1",},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
       ],"groupName":"Demo",},
+    {"children":[
+        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
+        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
+      ],"groupName":"Testing",},
   ],
   "templateType":"game",
   "TextureGroups":[

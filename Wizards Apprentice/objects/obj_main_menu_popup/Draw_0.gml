@@ -151,10 +151,12 @@ draw_set_font(fnt_menu_small);
 
 						#region Vitality
 	
-							draw_set_font(fnt_menu_small)
-							draw_set_halign(fa_middle)
-							draw_set_valign(fa_center)
-							draw_text(stats_x, stats_start_y + stats_y_count, "Vitality: " + string(temp_vit))
+							// Create object
+							if(!instance_exists(obj_new_game_skill_vitality))
+							{
+								instance_create_layer(stats_x, stats_start_y + stats_y_count, "Menu_Buttons", obj_new_game_skill_vitality)
+							}
+							if(instance_exists(obj_new_game_skill_vitality)) obj_new_game_skill_vitality.skill = temp_vit
 
 							// Check if levels can be added
 							if(temp_free_level > 0)
@@ -198,10 +200,12 @@ draw_set_font(fnt_menu_small);
 	
 						#region Dexterity
 	
-							draw_set_font(fnt_menu_small)
-							draw_set_halign(fa_middle)
-							draw_set_valign(fa_center)
-							draw_text(stats_x, stats_start_y + stats_y_count, "Dexterity: " + string(temp_dex))
+							// Create object
+							if(!instance_exists(obj_new_game_skill_dexterity))
+							{
+								instance_create_layer(stats_x, stats_start_y + stats_y_count, "Menu_Buttons", obj_new_game_skill_dexterity)
+							}
+							if(instance_exists(obj_new_game_skill_dexterity)) obj_new_game_skill_dexterity.skill = temp_dex
 
 							// Check if levels can be added
 							if(temp_free_level > 0)
@@ -242,10 +246,13 @@ draw_set_font(fnt_menu_small);
 						#endregion Dexterity
 	
 						#region Intelligence
-							draw_set_font(fnt_menu_small)
-							draw_set_halign(fa_middle)
-							draw_set_valign(fa_center)
-							draw_text(stats_x, stats_start_y + stats_y_count, "Intelligence: " + string(temp_int))
+						
+							// Create object
+							if(!instance_exists(obj_new_game_skill_intelligence))
+							{
+								instance_create_layer(stats_x, stats_start_y + stats_y_count, "Menu_Buttons", obj_new_game_skill_intelligence)
+							}
+							if(instance_exists(obj_new_game_skill_intelligence)) obj_new_game_skill_intelligence.skill = temp_int
 
 							// Check if levels can be added
 							if(temp_free_level > 0)
@@ -286,10 +293,14 @@ draw_set_font(fnt_menu_small);
 						#endregion Intelligence
 	
 						#region Memory
-							draw_set_font(fnt_menu_small)
-							draw_set_halign(fa_middle)
-							draw_set_valign(fa_center)
-							draw_text(stats_x, stats_start_y + stats_y_count, "Memory: " + string(temp_mem))
+						
+							// Create object
+							if(!instance_exists(obj_new_game_skill_memory))
+							{
+								instance_create_layer(stats_x, stats_start_y + stats_y_count, "Menu_Buttons", obj_new_game_skill_memory)
+							}
+							if(instance_exists(obj_new_game_skill_memory)) obj_new_game_skill_memory.skill = temp_mem
+
 
 							// Check if levels can be added
 							if(temp_free_level > 0)
@@ -330,10 +341,14 @@ draw_set_font(fnt_menu_small);
 						#endregion Memory
 	
 						#region Charisma
-							draw_set_font(fnt_menu_small)
-							draw_set_halign(fa_middle)
-							draw_set_valign(fa_center)
-							draw_text(stats_x, stats_start_y + stats_y_count, "Charisma: " + string(temp_cha))
+						
+							// Create object
+							if(!instance_exists(obj_new_game_skill_charisma))
+							{
+								instance_create_layer(stats_x, stats_start_y + stats_y_count, "Menu_Buttons", obj_new_game_skill_charisma)
+							}
+							if(instance_exists(obj_new_game_skill_charisma)) obj_new_game_skill_charisma.skill = temp_cha
+
 
 							// Check if levels can be added
 							if(temp_free_level > 0)
