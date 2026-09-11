@@ -444,6 +444,7 @@
     {"id":{"name":"scr_shop_pause","path":"scripts/scr_shop_pause/scr_shop_pause.yy",},},
     {"id":{"name":"scr_shop_resume","path":"scripts/scr_shop_resume/scr_shop_resume.yy",},},
     {"id":{"name":"scr_slide_off_player","path":"scripts/scr_slide_off_player/scr_slide_off_player.yy",},},
+    {"id":{"name":"scr_spell_alert_enemy","path":"scripts/scr_spell_alert_enemy/scr_spell_alert_enemy.yy",},},
     {"id":{"name":"scr_spell_default","path":"scripts/scr_spell_default/scr_spell_default.yy",},},
     {"id":{"name":"scr_spell_example","path":"scripts/scr_spell_example/scr_spell_example.yy",},},
     {"id":{"name":"scr_spell_fireball","path":"scripts/scr_spell_fireball/scr_spell_fireball.yy",},},

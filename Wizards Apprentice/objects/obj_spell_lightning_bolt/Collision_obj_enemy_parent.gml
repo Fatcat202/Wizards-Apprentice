@@ -10,8 +10,7 @@ if(!array_contains(arr_enemies_hurt, other.id))
 	if(other.can_be_stunned == true)
 	{
 		other.plat_stunned = true
-	}
-	
-	
-	
+	}	
 }
+
+scr_spell_alert_enemy(other.id)

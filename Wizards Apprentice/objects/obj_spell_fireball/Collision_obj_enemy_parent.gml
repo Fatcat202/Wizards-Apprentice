@@ -10,3 +10,5 @@ if(other.can_damage) scr_damage(damage, element);
 	
 // Destruction on explosion animation end
 triggered = true;
+
+scr_spell_alert_enemy(other.id)
