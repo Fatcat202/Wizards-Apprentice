@@ -91,10 +91,10 @@ if(global.can_control_player == false) exit;
 						}
 							
 					}
-				}else scr_reset_move_modifiers() // Rest any changes when on the ground
+				}else scr_reset_move_modifiers() // Reset any changes when on the ground
 					
 				
-			}else scr_reset_move_modifiers() // Rest any changes when not on the ground
+			}else scr_reset_move_modifiers() // Reset any changes when not on the ground
 			
 
 		

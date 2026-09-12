@@ -1,20 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_button_load_game",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_button_main_menu_parent",
+  "eventList":[],
   "managed":true,
-  "name":"obj_button_load_game",
+  "name":"obj_button_main_menu_parent",
   "overriddenProperties":[],
   "parent":{
     "name":"Main Menu Buttons",
     "path":"folders/Objects/Menu/Main Menu/Main Menu Buttons.yy",
   },
   "parentObjectId":{
-    "name":"obj_button_main_menu_parent",
-    "path":"objects/obj_button_main_menu_parent/obj_button_main_menu_parent.yy",
+    "name":"obj_menu_button_parent",
+    "path":"objects/obj_menu_button_parent/obj_menu_button_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -33,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_menu_button_long",
-    "path":"sprites/spr_menu_button_long/spr_menu_button_long.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

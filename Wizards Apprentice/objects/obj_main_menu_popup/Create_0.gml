@@ -43,6 +43,10 @@ credits_text_x = x;
 credits_text_y = y;
 credits_text = "Made By: Ethan Bayley"
 
+game_title_x = 450
+game_title_y = 100
+game_title_text = "Wizards" + "\n" + "Apprentice"
+
 
 
 #region New Game

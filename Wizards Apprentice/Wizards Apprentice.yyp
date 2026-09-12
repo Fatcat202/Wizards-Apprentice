@@ -167,6 +167,7 @@
   "name":"Wizards Apprentice",
   "resources":[
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},},
+    {"id":{"name":"fnt_game_title","path":"fonts/fnt_game_title/fnt_game_title.yy",},},
     {"id":{"name":"fnt_help_screen","path":"fonts/fnt_help_screen/fnt_help_screen.yy",},},
     {"id":{"name":"fnt_interact","path":"fonts/fnt_interact/fnt_interact.yy",},},
     {"id":{"name":"fnt_menu_small","path":"fonts/fnt_menu_small/fnt_menu_small.yy",},},
@@ -197,6 +198,7 @@
     {"id":{"name":"obj_button_level_select","path":"objects/obj_button_level_select/obj_button_level_select.yy",},},
     {"id":{"name":"obj_button_level_start","path":"objects/obj_button_level_start/obj_button_level_start.yy",},},
     {"id":{"name":"obj_button_load_game","path":"objects/obj_button_load_game/obj_button_load_game.yy",},},
+    {"id":{"name":"obj_button_main_menu_parent","path":"objects/obj_button_main_menu_parent/obj_button_main_menu_parent.yy",},},
     {"id":{"name":"obj_button_main_menu","path":"objects/obj_button_main_menu/obj_button_main_menu.yy",},},
     {"id":{"name":"obj_button_memorize","path":"objects/obj_button_memorize/obj_button_memorize.yy",},},
     {"id":{"name":"obj_button_message_exit","path":"objects/obj_button_message_exit/obj_button_message_exit.yy",},},
@@ -628,12 +630,12 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
           ],"groupName":"Wizard Tower",},
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},

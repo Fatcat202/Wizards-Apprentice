@@ -2,16 +2,20 @@
 
 draw_self()
 
-// Draw inventory image
-draw_sprite_stretched
-(
-	spr_main_menu_popup,
-	0,
-	xpos - width/2,
-	ypos - height/2,
-	width,
-	height
-);
+
+if(state != "none")
+{
+	// Draw inventory image
+	draw_sprite_stretched
+	(
+		spr_main_menu_popup,
+		0,
+		xpos - width/2,
+		ypos - height/2,
+		width,
+		height
+	);
+}
 
 
 // Set Location
@@ -597,6 +601,10 @@ draw_set_font(fnt_menu_small);
 	
 		case "none": // Initial empty state before assigning other state
 		
+			scr_draw_set_text(fa_middle, fa_middle, fnt_game_title, c_white)
+				draw_text(game_title_x, game_title_y, game_title_text)
+			scr_text_reset()
+			
 		break;
 	}
 	
