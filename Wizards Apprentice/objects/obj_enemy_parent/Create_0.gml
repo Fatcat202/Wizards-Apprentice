@@ -284,6 +284,7 @@ event_inherited();
 		#region Ground Enemy Patrol
 			if(flies == false)
 			{
+
 				// If starting a new patrol
 				if(patrol_started == false)
 				{
@@ -387,7 +388,7 @@ event_inherited();
 			if(flies == true)
 			{
 				var sprite_size = (sprite_width + sprite_height) / 2
-				
+
 				// If path is assigned, has not started, and is within range of patrol start (width of sprite)
 				if(path_patrol != -1 && path_index == -1
 				&& (point_distance(x, y, path_get_x(path_patrol, 0), path_get_y(path_patrol, 0)) <= sprite_width
