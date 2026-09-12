@@ -394,7 +394,6 @@ event_inherited();
 				&& (point_distance(x, y, path_get_x(path_patrol, 0), path_get_y(path_patrol, 0)) <= sprite_width
 				|| point_distance(x, y, path_get_x(path_patrol, 0), path_get_y(path_patrol, 0)) <= sprite_height))
 				{	
-					
 //					show_debug_message("Starting Assigned Patrol")
 					
 					if(path_exists(attack_path)) path_delete(attack_path)
@@ -402,7 +401,6 @@ event_inherited();
 					// Start manually created path
 					path_start(path_patrol, move_spd_max, path_action_restart, 1)
 				}else
-			
 			
 				// If located elsewhere from starting point, return to start to resume path
 				if(path_index == -1 && returned_home == false)

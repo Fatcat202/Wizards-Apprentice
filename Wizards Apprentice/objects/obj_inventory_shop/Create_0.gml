@@ -45,3 +45,17 @@ y_pos = global.cam_target_y + (global.res_h / 2) - (inv_height / 2) + (spacer * 
 	inventory[15] = -1;
 
 #endregion Shop Contents
+
+#region Shop Minimum Level
+	
+	// Loop through shop contents and remove items the player has not unlocked yet
+	for(var i = 0; i < array_length(inventory); i++)
+	{
+		if(inventory[i] != -1)
+		{
+			if(global.player_level < inventory[i].min_level) inventory[i] = -1
+		}
+	}
+	
+#region Shop Minimum Level
+

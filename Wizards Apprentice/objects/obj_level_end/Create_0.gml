@@ -156,10 +156,8 @@
 			{
 				bonus_xp -= increment;
 				global.player_earned_xp += increment;
-			}
-				
+			}	
 		}
-		
 	}
 	
 	

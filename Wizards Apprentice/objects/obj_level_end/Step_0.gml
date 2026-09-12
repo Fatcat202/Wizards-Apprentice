@@ -32,3 +32,6 @@ if(give_gold_active == true)
 {
 	func_give_gold()
 }
+
+
+
