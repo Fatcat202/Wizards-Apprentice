@@ -628,17 +628,12 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
-        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
-        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
-      ],"groupName":"Testing",},
-    {"children":[
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
-            {"children":[],"groupName":"group",},
-            {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
+            {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
           ],"groupName":"Wizard Tower",},
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},
@@ -646,6 +641,10 @@
           ],"groupName":"Chapter 1",},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
       ],"groupName":"Demo",},
+    {"children":[
+        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
+        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
+      ],"groupName":"Testing",},
   ],
   "templateType":"game",
   "TextureGroups":[

@@ -2,6 +2,12 @@
 
 with(obj_dialogue_parent)
 {
+	
+	if(arr_dialogue[position].text != text_display)
+	{
+		text_display = arr_dialogue[position].text;
+	}else
+	{
 	// Set dialogue being displayed as shown
 	arr_dialogue[position].shown = true;
 	
@@ -14,6 +20,7 @@ with(obj_dialogue_parent)
 	str_pos = 1
 	
 	next_pressed = true;
+	}
 	
 	
 	// Check end of all dialogue has not been reached
