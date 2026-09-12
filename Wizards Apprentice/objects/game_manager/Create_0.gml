@@ -700,7 +700,7 @@ randomise()
 			#region Player Inventory Contents
 		
 				// Row 1
-				global.inventory[0] = global.item_stats[item_names.scroll_level_1];
+				global.inventory[0] = global.item_stats[item_names.health_potion_light];
 				global.inventory[1] = -1;
 				global.inventory[2] = -1;
 				global.inventory[3] = -1;

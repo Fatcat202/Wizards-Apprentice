@@ -36,7 +36,7 @@ scr_get_controls();
 	#region Inventory Pause
 	
 		// Prevent menus on main menu and level end screen
-		if(room != rm_main_menu && room != rm_level_end)
+		if(room != rm_main_menu && room != rm_level_end && !instance_exists(obj_transition))
 		{
 			// Activate Inventory Pause
 			if(global.cont_inventory == true && global.show_inventory == false && global.game_esc_paused == false)
