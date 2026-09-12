@@ -224,7 +224,7 @@ function scr_caster_action()
 			}
 			
 			// Weight Debug
-			show_debug_message(string(arr_options[i].name) + ": " + string(arr_options[i].weight))
+//			show_debug_message(string(arr_options[i].name) + ": " + string(arr_options[i].weight))
 		}
 		
 		// Check for action to take
@@ -234,7 +234,7 @@ function scr_caster_action()
 			script_execute(arr_options[highest].action)
 		}else
 		{
-			show_debug_message("No Caster Action To Take")
+//			show_debug_message("No Caster Action To Take")
 		}
 	
 	#endregion Execute

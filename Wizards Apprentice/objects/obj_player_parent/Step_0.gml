@@ -7,7 +7,7 @@ scr_player_timers()
 
 
 // Used for testing health and mana functionality
-scr_health_and_mana_test()
+//scr_health_and_mana_test()
 
 // Used to provide debug outputs for health, mana, and drain
 //scr_health_and_mana_debug()
@@ -452,9 +452,7 @@ if(global.can_control_player == false) exit;
 			{
 				script_execute(global.active_spells[0, active_spell].scr);
 			}
-			
-			
-			
+
 			// Debug
 			//show_debug_message("global.spell_stats[active_spell].scr: " + string(global.spell_stats[active_spell].scr))
 			//show_debug_message("active_spell: " + string(active_spell))

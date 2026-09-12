@@ -275,7 +275,7 @@ shader_reset();
 
 
 #region Debug
-
+/*
 	// Debug display settings
 	draw_set_font(fnt_platform_debug)
 	draw_set_halign(fa_middle)
@@ -295,5 +295,5 @@ shader_reset();
 	}
 
 	scr_text_reset()
-	
+*/
 #endregion Debug
