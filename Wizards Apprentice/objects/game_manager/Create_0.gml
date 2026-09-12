@@ -725,7 +725,7 @@ randomise()
 			
 			#region Hard coded spells for testing
 			
-				global.active_spells[0, 1] = -1 //global.spell_stats[scr_find_spell_index("water splash")]
+				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("water splash")]
 				global.active_spells[0, 2] = -1 //global.spell_stats[scr_find_spell_index("oil splash")]
 				global.active_spells[0, 3] = -1 //global.spell_stats[scr_find_spell_index("heal")]
 				global.active_spells[0, 4] = -1 //global.spell_stats[scr_find_spell_index("lightning bolt")]
