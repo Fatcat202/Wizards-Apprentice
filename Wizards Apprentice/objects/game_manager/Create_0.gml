@@ -230,9 +230,7 @@ randomise()
 			
 		
 		#endregion Dialogue
-
-
-		
+	
 		#region Database
 	
 	
@@ -811,7 +809,7 @@ randomise()
 	
 	// Set fullscreen and borderless
 	window_enable_borderless_fullscreen(true)
-//	window_set_fullscreen(true)
+	window_set_fullscreen(true)
 
 	// Set size of window and center it
 	window_set_size(global.res_w * window_scale, global.res_h * window_scale);
