@@ -63,7 +63,7 @@ randomise()
 			// Update grid to show positions of obstacles
 			mp_grid_clear_all(global.mp_grid)
 			mp_grid_add_instances(global.mp_grid, obj_platform_solid_parent, true);
-	
+
 	
 		#region Camera
 	
@@ -85,6 +85,9 @@ randomise()
 			// Camera size
 			global.cam_w = camera_get_view_width(CAMERA);
 			global.cam_h = camera_get_view_height(CAMERA);
+			
+			// Range at which some instances will stop processing data for the purposes of optimisation
+			global.disable_range = global.cam_w
 	
 	
 		#endregion Camera

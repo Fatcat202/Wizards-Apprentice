@@ -1,5 +1,8 @@
 /// @description Apply Texture
 
+global.disable_range = global.cam_w
+if(point_distance(x, y, obj_player_parent.x, obj_player_parent.y) > global.disable_range) exit;
+
 
 function draw_element_above(rotation = 0, x_shift = 0, y_shift = 0)
 {

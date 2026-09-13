@@ -14,3 +14,6 @@ else if(active_mana < 0) active_mana = 0;
 
 // Set max mana as defined by mana drain
 max_mana = base_max_mana - mana_drain
+
+
+

@@ -6,7 +6,7 @@ event_inherited();
 
 if(path_exists(attack_path))
 {
-	draw_path(attack_path, x, y, true)
+//	draw_path(attack_path, x, y, true)
 }
 
 #region Alert Sprite

@@ -25,6 +25,7 @@ scr_player_timers()
 	
 #endregion Grid Update
 
+
 // Deactivate player controls
 if(global.can_control_player == false) exit;
 
