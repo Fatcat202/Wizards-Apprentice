@@ -1364,8 +1364,8 @@
   ],
   "name":"rm_level_00",
   "parent":{
-    "name":"Demo",
-    "path":"folders/Rooms/Demo.yy",
+    "name":"Chapter 1",
+    "path":"folders/Rooms/Demo/Chapter 1.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
