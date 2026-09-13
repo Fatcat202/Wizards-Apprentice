@@ -1,7 +1,5 @@
 /// @description Use
 
-
-
 // Execute script and remove from inventory
 script_execute(inventory[item].scr)
 scr_inventory_remove(inventory, inventory_slots, item)
