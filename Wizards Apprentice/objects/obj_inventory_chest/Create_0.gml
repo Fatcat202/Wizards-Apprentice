@@ -24,3 +24,4 @@ take_gold = noone
 // Menu Pos
 x_pos = global.cam_target_x + (global.res_w) - ((global.res_w / 2) / 2) - (inv_width / 2) + (spacer * 2);
 y_pos = global.cam_target_y + (global.res_h / 2) - (inv_height / 2) + (spacer * 2) - 20;
+
