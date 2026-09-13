@@ -2,4 +2,4 @@
 
 inventory[3] = global.item_stats[item_names.health_potion_moderate]
 
-chest_gold = 500
+chest_gold = 35
