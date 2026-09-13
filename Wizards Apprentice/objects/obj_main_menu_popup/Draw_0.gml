@@ -514,6 +514,13 @@ draw_set_font(fnt_menu_small);
 				{
 					instance_create_layer(fullscreen_button_x, fullscreen_button_y, "Menu_Buttons", obj_button_fullscreen)
 				}
+				
+				draw_text(options_debug_x, options_debug_y, options_debug_text)
+				if(!instance_exists(obj_button_debug))
+				{
+					instance_create_layer(debug_button_x, debug_button_y, "Menu_Buttons", obj_button_debug)
+				}
+				
 
 
 			break;

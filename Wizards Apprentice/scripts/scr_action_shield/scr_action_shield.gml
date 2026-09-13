@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_action_shield()
 {
-	show_debug_message("Action: Shield")
+//	show_debug_message("Action: Shield")
 	
 	
 	function func_apply_shield()
@@ -14,7 +14,7 @@ function scr_action_shield()
 		
 		// Element selected
 		var element = arr_possible_shields[rand]
-		show_debug_message("Element Selected: " + string(element))
+//		show_debug_message("Element Selected: " + string(element))
 		
 		// Apply shield
 		element_shield = element;

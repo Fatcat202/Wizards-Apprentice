@@ -186,6 +186,7 @@
     {"id":{"name":"obj_button_credits","path":"objects/obj_button_credits/obj_button_credits.yy",},},
     {"id":{"name":"obj_button_death_main_menu","path":"objects/obj_button_death_main_menu/obj_button_death_main_menu.yy",},},
     {"id":{"name":"obj_button_death_reload_save","path":"objects/obj_button_death_reload_save/obj_button_death_reload_save.yy",},},
+    {"id":{"name":"obj_button_debug","path":"objects/obj_button_debug/obj_button_debug.yy",},},
     {"id":{"name":"obj_button_delete_slot","path":"objects/obj_button_delete_slot/obj_button_delete_slot.yy",},},
     {"id":{"name":"obj_button_dialogue_leave","path":"objects/obj_button_dialogue_leave/obj_button_dialogue_leave.yy",},},
     {"id":{"name":"obj_button_dialogue_next","path":"objects/obj_button_dialogue_next/obj_button_dialogue_next.yy",},},
@@ -630,6 +631,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},
@@ -640,7 +642,6 @@
             {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
             {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
           ],"groupName":"Wizard Tower",},
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
         {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
       ],"groupName":"Demo",},
     {"children":[

@@ -112,6 +112,13 @@ game_title_text = "Wizards" + "\n" + "Apprentice"
 		
 		fullscreen_button_x = middle + 75;
 		fullscreen_button_y = options_fullscreen_y;
+		
+		options_debug_x = middle - 30;
+		options_debug_y = y_top + 140;
+		options_debug_text = "Debug Mode   -";
+		
+		debug_button_x = middle + 75;
+		debug_button_y = options_debug_y;
 	
 	scr_text_reset()
 	

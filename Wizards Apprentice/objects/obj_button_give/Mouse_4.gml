@@ -29,7 +29,7 @@ for(var i = 0; i < inventory_slots; i++)
 // Check if slot was found
 if(slot = -1)
 {
-	show_debug_message("No Slot Available")
+//	show_debug_message("No Slot Available")
 	exit;
 }
 

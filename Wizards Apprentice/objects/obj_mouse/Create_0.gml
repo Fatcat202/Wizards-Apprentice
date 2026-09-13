@@ -511,7 +511,7 @@
 							}
 						}else
 						{
-							show_debug_message("No Inventory Found");
+//							show_debug_message("No Inventory Found");
 						}
 			
 			
@@ -629,7 +629,7 @@
 
 					}else
 					{
-						show_debug_message("No Inventory Found");
+//						show_debug_message("No Inventory Found");
 					}
 
 					// Indicate mb_right is being held

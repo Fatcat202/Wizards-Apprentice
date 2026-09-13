@@ -22,7 +22,7 @@ if(global.player_gold >= price)
 	global.player_gold -= price
 }else
 {
-	show_debug_message("Not enough gold")
+//	show_debug_message("Not enough gold")
 }
 
 // Destroy self and menu

@@ -5,12 +5,14 @@ event_inherited()
 // Check for and tick most player timers
 scr_player_timers()
 
+if(global.debug_display)
+{
+	// Used for testing health and mana functionality
+	scr_health_and_mana_test()
 
-// Used for testing health and mana functionality
-//scr_health_and_mana_test()
-
-// Used to provide debug outputs for health, mana, and drain
-//scr_health_and_mana_debug()
+	// Used to provide debug outputs for health, mana, and drain
+//	scr_health_and_mana_debug()
+}
 
 #region Grid Update
 

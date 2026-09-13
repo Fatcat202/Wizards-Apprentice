@@ -2,6 +2,18 @@
 
 scr_get_controls();
 
+
+#region Debug Display
+
+	show_debug_overlay(global.debug_display)
+	
+	if(global.debug_display == true)
+	{
+		with(obj_target_node) visible = true;
+	}
+
+#endregion Debug Display
+
 #region Pausing
 
 	#region ESC Pause

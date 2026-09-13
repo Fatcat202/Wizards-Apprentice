@@ -17,11 +17,11 @@ function scr_get_sell_price(item)
 
 	
 	
-	show_debug_message("base_price: " + string(base_price))
-	show_debug_message("total_price_mod: " + string(total_price_mod))
-	show_debug_message("global.charisma: " + string(global.charisma))
-	show_debug_message("global.charisma_average: " + string(global.charisma_average))
-	show_debug_message("price: " + string(price))
+//	show_debug_message("base_price: " + string(base_price))
+//	show_debug_message("total_price_mod: " + string(total_price_mod))
+//	show_debug_message("global.charisma: " + string(global.charisma))
+//	show_debug_message("global.charisma_average: " + string(global.charisma_average))
+//	show_debug_message("price: " + string(price))
 	
 	return price;
 }

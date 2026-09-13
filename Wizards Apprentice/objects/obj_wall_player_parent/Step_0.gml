@@ -30,8 +30,8 @@ if(element_interaction_triggered == false)
 		}
 		
 	}
-	show_debug_message("sprite_width: " + string(sprite_width))
-	show_debug_message("arr_interacted_platforms: " + string(arr_interacted_platforms))
+//	show_debug_message("sprite_width: " + string(sprite_width))
+//	show_debug_message("arr_interacted_platforms: " + string(arr_interacted_platforms))
 
 	// Declare element interaction complete
 	element_interaction_triggered = true;

@@ -3,10 +3,12 @@
 // Inherit the parent event
 event_inherited();
 
-
-if(path_exists(attack_path))
+if(global.debug_display == true)
 {
-//	draw_path(attack_path, x, y, true)
+	if(path_exists(attack_path))
+	{
+		draw_path(attack_path, x, y, true)
+	}
 }
 
 #region Alert Sprite
