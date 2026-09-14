@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_player_timers",
   "parent":{
-    "name":"Player",
-    "path":"folders/Scripts/Player.yy",
+    "name":"Timers",
+    "path":"folders/Scripts/Timers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

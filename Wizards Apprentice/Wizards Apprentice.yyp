@@ -90,6 +90,7 @@
     {"$GMFolder":"","%Name":"Attacks","folderPath":"folders/Scripts/Enemy AI/Attacks.yy","name":"Attacks","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Attack Scripts","folderPath":"folders/Scripts/Enemy AI/Attacks/Attack Scripts.yy","name":"Attack Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Enemy Scripts","folderPath":"folders/Scripts/Enemy AI/Attacks/Enemy Scripts.yy","name":"Enemy Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Timers","folderPath":"folders/Scripts/Timers.yy","name":"Timers","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Inventory","folderPath":"folders/Scripts/Inventory.yy","name":"Inventory","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Items","folderPath":"folders/Scripts/Items.yy","name":"Items","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Item Trigger","folderPath":"folders/Scripts/Items/Item Trigger.yy","name":"Item Trigger","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -363,6 +364,7 @@
     {"id":{"name":"scr_attack_goblin_thug","path":"scripts/scr_attack_goblin_thug/scr_attack_goblin_thug.yy",},},
     {"id":{"name":"scr_caster_action","path":"scripts/scr_caster_action/scr_caster_action.yy",},},
     {"id":{"name":"scr_caster_teleport_home","path":"scripts/scr_caster_teleport_home/scr_caster_teleport_home.yy",},},
+    {"id":{"name":"scr_character_timers","path":"scripts/scr_character_timers/scr_character_timers.yy",},},
     {"id":{"name":"scr_check_semi_solid","path":"scripts/scr_check_semi_solid/scr_check_semi_solid.yy",},},
     {"id":{"name":"scr_clear_target_nodes","path":"scripts/scr_clear_target_nodes/scr_clear_target_nodes.yy",},},
     {"id":{"name":"scr_create_attack_path","path":"scripts/scr_create_attack_path/scr_create_attack_path.yy",},},
@@ -638,23 +640,23 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"children":[
-        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
-        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
-      ],"groupName":"Testing",},
-    {"children":[
-        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
-        {"children":[
-            {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
-            {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
-            {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
-          ],"groupName":"Wizard Tower",},
-        {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
         {"children":[
             {"roomId":{"name":"rm_level_00","path":"rooms/rm_level_00/rm_level_00.yy",},},
             {"roomId":{"name":"rm_level_10","path":"rooms/rm_level_10/rm_level_10.yy",},},
             {"roomId":{"name":"rm_level_11","path":"rooms/rm_level_11/rm_level_11.yy",},},
           ],"groupName":"Chapter 1",},
+        {"children":[
+            {"roomId":{"name":"rm_wizard_tower","path":"rooms/rm_wizard_tower/rm_wizard_tower.yy",},},
+            {"roomId":{"name":"rm_wizard_tower_top","path":"rooms/rm_wizard_tower_top/rm_wizard_tower_top.yy",},},
+            {"roomId":{"name":"rm_wizard_tower_cellar","path":"rooms/rm_wizard_tower_cellar/rm_wizard_tower_cellar.yy",},},
+          ],"groupName":"Wizard Tower",},
+        {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
+        {"roomId":{"name":"rm_level_end","path":"rooms/rm_level_end/rm_level_end.yy",},},
       ],"groupName":"Demo",},
+    {"children":[
+        {"roomId":{"name":"rm_testing_0","path":"rooms/rm_testing_0/rm_testing_0.yy",},},
+        {"roomId":{"name":"rm_testing_1","path":"rooms/rm_testing_1/rm_testing_1.yy",},},
+      ],"groupName":"Testing",},
   ],
   "templateType":"game",
   "TextureGroups":[

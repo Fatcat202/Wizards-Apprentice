@@ -1,7 +1,8 @@
-function scr_damage(dmg, _water_level = water_level, _oil_level = oil_level, _is_flaming = is_flaming, _is_ice = is_ice, _is_steaming = is_steaming, _is_charged = is_charged)
+function scr_damage(dmg, _bypass = false, _water_level = water_level, _oil_level = oil_level, _is_flaming = is_flaming, _is_ice = is_ice, _is_steaming = is_steaming, _is_charged = is_charged)
 {
 	// Deals damage to other object, designed to be used in collision events of attacks
-	// Pass through damage of attack
+	// Pass through damage of attack, alongside elemental conditions
+	// _bypass can be set to true to bypass all elemental shields and do damage directly
 	with(other)
 	{
 		
@@ -31,7 +32,7 @@ function scr_damage(dmg, _water_level = water_level, _oil_level = oil_level, _is
 		}
 		
 		// If no shield exists, do damage
-		if(element_shield == "Empty")
+		if(element_shield == "Empty" || _bypass == true)
 		{
 			if(can_damage == true)
 			{

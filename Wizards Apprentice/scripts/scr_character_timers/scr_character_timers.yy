@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_enemy_timers",
+  "%Name":"scr_character_timers",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_enemy_timers",
+  "name":"scr_character_timers",
   "parent":{
     "name":"Timers",
     "path":"folders/Scripts/Timers.yy",
