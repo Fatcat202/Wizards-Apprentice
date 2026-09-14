@@ -14,6 +14,15 @@ function scr_health_drain(drain)
 	if(max_health > base_max_health) max_health = base_max_health;
 	
 	// Kill player if drain brings player to 0 health
-	if(max_health <= 0) scr_player_death()
+	if(max_health <= 0)
+	{
+		if(object_index = obj_player_parent)
+		{
+			scr_player_death()
+		}else
+		{
+			instance_destroy()
+		}
+	}
 
 }

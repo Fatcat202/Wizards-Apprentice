@@ -545,7 +545,7 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_attack_stats(_damage = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _attack_scr = -1, _sprite = -1, _is_visible = -1, _move_spd = -1, _knockback = -1, _can_stun = -1, _can_ignite = -1, _can_poison = -1, _can_freeze = -1, _can_slow = -1, _type = "EMPTY") constructor {
+				function enemy_attack_stats(_damage = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _attack_scr = -1, _sprite = -1, _is_visible = -1, _move_spd = -1, _knockback = -1, _can_stun = -1, _can_ignite = -1, _can_poison = -1, _can_freeze = -1, _can_slow = -1, _type = "EMPTY", _health_drain = -1, _mana_drain = -1) constructor {
 				
 					damage = _damage				// Sets damage of attack
 					water_level = _water_level		// Sets water level, defining if water is present
@@ -569,6 +569,8 @@ randomise()
 					can_freeze = _can_freeze		// Sets duration of freeze effect. None is -1
 					can_slow = _can_slow			// Sets duration of slow effect. None is -1
 					type = _type					// Define set charactaristics of spell when created from default attack object. Pass through as string. None is "EMPTY"
+					health_drain = _health_drain	// Inflict player with health drain. None is -1
+					mana_drain = _mana_drain		// Inflict player with mana drain. None is -1
 
 				}
 
@@ -609,6 +611,8 @@ randomise()
 					global.enemy_attack_stats[yy].can_freeze = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].can_slow = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].type = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].health_drain = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].mana_drain = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 								
 				}
 
