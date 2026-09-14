@@ -256,7 +256,7 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function spell_stats(_unlockable = false, _level = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _damage = -1, _move_spd = -1, _cooldown = -1, _mana = -1, _memory = -1, _uses = -1, _duration = -1, _title = "Empty", _desc = "Empty", _spr = -1, _script = -1, _attack_sprite = -1) constructor {
+				function spell_stats(_unlockable = false, _level = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _damage = -1, _move_spd = -1, _cooldown = -1, _mana = -1, _memory = -1, _uses = -1, _duration = -1, _title = "Empty", _desc = "Empty", _spr = -1, _script = -1, _attack_sprite = -1, _knockback = -1, _can_stun = -1, _can_ignite = -1, _can_poison = -1, _can_freeze = -1, _can_slow = -1, _type = "EMPTY") constructor {
 					
 					unlockable = _unlockable		// Declares if spell can be unlocked by the player, used for deactivating broken spells
 					level = _level					// Level of spell, used for some calculations
@@ -278,6 +278,13 @@ randomise()
 					spr = _spr						// Sets spell icon sprite
 					scr = _script					// Script for spell functionality
 					attack_spr = _attack_sprite		// Sprite of spell object
+					knockback = _knockback			// Set knockback distance. None is -1
+					can_stun = _can_stun			// Sets duration of stun effect. None is -1
+					can_ignite = _can_ignite		// Sets duration of ignition effect. None is -1
+					can_poison = _can_poison		// Sets duration of poison effect. None is -1
+					can_freeze = _can_freeze		// Sets duration of freeze effect. None is -1
+					can_slow = _can_slow			// Sets duration of slow effect. None is -1
+					type = _type					// Define set charactaristics of spell when created from default attack object. Pass through as string. None is "EMPTY"
 
 				}
 
@@ -316,7 +323,13 @@ randomise()
 					global.spell_stats[yy].spr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].scr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 					global.spell_stats[yy].attack_spr = asset_get_index(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
-					
+					global.spell_stats[yy].knockback = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].can_stun = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].can_ignite = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].can_poison = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].can_freeze = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].can_slow = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.spell_stats[yy].type = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 				}
 
 
@@ -532,7 +545,7 @@ randomise()
 				}
 
 				// Initialize stats dictionary constructor
-				function enemy_attack_stats(_damage = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _attack_scr = -1, _sprite = -1, _is_visible = -1, _move_spd = -1) constructor {
+				function enemy_attack_stats(_damage = -1, _water_level = -1, _oil_level = -1, _is_ice = -1, _is_flaming = -1, _is_steaming = -1, _is_charged = -1, _atk_spd = -1, _atk_range = -1, _duration = -1, _level = -1, _xp = -1, _attack_scr = -1, _sprite = -1, _is_visible = -1, _move_spd = -1, _knockback = -1, _can_stun = -1, _can_ignite = -1, _can_poison = -1, _can_freeze = -1, _can_slow = -1, _type = "EMPTY") constructor {
 				
 					damage = _damage				// Sets damage of attack
 					water_level = _water_level		// Sets water level, defining if water is present
@@ -549,6 +562,14 @@ randomise()
 					sprite = _sprite				// Sprite of attack
 					is_visible = _is_visible		// Declares if attack is invisible or now
 					move_spd = _move_spd			// Sets movement speed of attack, -1 makes attack a melee attack
+					knockback = _knockback			// Set knockback distance. None is -1
+					can_stun = _can_stun			// Sets duration of stun effect. None is -1
+					can_ignite = _can_ignite		// Sets duration of ignition effect. None is -1
+					can_poison = _can_poison		// Sets duration of poison effect. None is -1
+					can_freeze = _can_freeze		// Sets duration of freeze effect. None is -1
+					can_slow = _can_slow			// Sets duration of slow effect. None is -1
+					type = _type					// Define set charactaristics of spell when created from default attack object. Pass through as string. None is "EMPTY"
+
 				}
 
 				// Declare length of enemy_attack index based on adjusted CSV height
@@ -581,6 +602,13 @@ randomise()
 					global.enemy_attack_stats[yy].sprite = asset_get_index(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].is_visible = bool(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
 					global.enemy_attack_stats[yy].move_spd = real(ds_grid_get(ds_enemy_attack_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].knockback = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].can_stun = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].can_ignite = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].can_poison = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].can_freeze = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].can_slow = real(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
+					global.enemy_attack_stats[yy].type = string(ds_grid_get(ds_spell_stats_csv, xx, yy)); xx++;
 								
 				}
 
@@ -729,7 +757,7 @@ randomise()
 			
 			#region Hard coded spells for testing
 			
-				global.active_spells[0, 1] = -1 //global.spell_stats[scr_find_spell_index("water splash")]
+				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("water splash")]
 				global.active_spells[0, 2] = -1 //global.spell_stats[scr_find_spell_index("oil splash")]
 				global.active_spells[0, 3] = -1 //global.spell_stats[scr_find_spell_index("heal")]
 				global.active_spells[0, 4] = -1 //global.spell_stats[scr_find_spell_index("lightning bolt")]
@@ -739,7 +767,7 @@ randomise()
 				global.active_spells[0, 8] = -1 //global.spell_stats[scr_find_spell_index("fireball")]
 				global.active_spells[0, 9] = -1 //global.spell_stats[scr_find_spell_index("water splash")]
 				global.active_spells[0, 10] = -1 //global.spell_stats[scr_find_spell_index("oil splash")]
-				//show_debug_message("global.active_spells = " + string(global.active_spells))
+				show_debug_message("global.active_spells = " + string(global.active_spells))
 			
 			#endregion Hard coded spells for testing
 			
@@ -809,7 +837,7 @@ randomise()
 	
 	// Set fullscreen and borderless
 	window_enable_borderless_fullscreen(true)
-	window_set_fullscreen(true)
+	//window_set_fullscreen(true)
 
 	// Set size of window and center it
 	window_set_size(global.res_w * window_scale, global.res_h * window_scale);
