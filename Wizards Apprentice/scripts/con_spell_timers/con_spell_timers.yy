@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"con_spell_timers",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"con_spell_timers",
+  "parent":{
+    "name":"Constructors",
+    "path":"folders/Scripts/Constructors.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

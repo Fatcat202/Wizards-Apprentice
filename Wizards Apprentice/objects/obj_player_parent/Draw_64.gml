@@ -269,6 +269,14 @@ var yy = display_get_gui_height() / 2
 
 #region Spells
 	
+	var num_slots_shown = 0
+	for(var i = 1; i <= global.max_spell_slots; i++)
+	{
+		if(global.active_spells[0, i] != -1) num_slots_shown = i
+	}
+	
+	total_spells = num_slots_shown
+	
 	var spell_width = sprite_get_width(spr_spell_slot_template)
 	var spell_height = sprite_get_height(spr_spell_slot_template)
 	var spell_spacing = (spell_width);
@@ -311,7 +319,7 @@ var yy = display_get_gui_height() / 2
 		{
 			if(i < array_length(global.arr_spell_timers))
 			{
-				func_spell_slot_icon(spr_spell_slot_template, xx, yy, 1, i, r, g, b, global.arr_spell_timers[i].timer, global.arr_spell_timers[i].length)
+				func_spell_slot_icon(spr_spell_slot_template, xx, yy, 1, i, r, g, b, -1, -1)
 			}
 		}
 	}

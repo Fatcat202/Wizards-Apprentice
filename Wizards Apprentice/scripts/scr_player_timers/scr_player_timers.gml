@@ -129,18 +129,21 @@ function scr_player_timers()
 		// Loop through all timers
 		for(var i = 1; i < array_length(global.arr_spell_timers); i++)
 		{
-			// Check if cooldown ticking
-			if(global.arr_spell_timers[i].cooldown == true)
+			if(global.arr_spell_timers[i] != -1)
 			{
-				// Increment cooldown each frame
-				global.arr_spell_timers[i].timer++;
-				if(global.arr_spell_timers[i].timer >= global.arr_spell_timers[i].length) 
+				// Check if cooldown ticking
+				if(global.arr_spell_timers[i].cooldown == true)
 				{
-					// Reset cooldown once time has been reached
-					global.arr_spell_timers[i].cooldown = false;
-					global.arr_spell_timers[i].timer = 0;
+					// Increment cooldown each frame
+					global.arr_spell_timers[i].timer++;
+					if(global.arr_spell_timers[i].timer >= global.arr_spell_timers[i].length) 
+					{
+						// Reset cooldown once time has been reached
+						global.arr_spell_timers[i].cooldown = false;
+						global.arr_spell_timers[i].timer = 0;
 					
-		//			show_debug_message("Timer Reset: " + string(i))
+			//			show_debug_message("Timer Reset: " + string(i))
+					}
 				}
 			}
 		}
