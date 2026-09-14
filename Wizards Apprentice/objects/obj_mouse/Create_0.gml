@@ -469,6 +469,7 @@
 					
 						if(inventory_hover.object_index == obj_spell_learn_slot)
 						{
+							if(inventory_hover.inventory[0] == -1) exit;
 							// Set take button pos
 							x_pos_take = menu.x + (sprite_get_width(spr_item_control_menu) / 2)
 							y_pos_take = menu.y + 55
