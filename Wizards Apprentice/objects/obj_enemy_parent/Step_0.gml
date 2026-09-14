@@ -1,7 +1,7 @@
 /// @description
 
 event_inherited()
-show_debug_message(is_stunned)
+
 // Run enemy AI states
 state_behavior()
 

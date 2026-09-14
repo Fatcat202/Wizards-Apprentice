@@ -4,7 +4,7 @@ function scr_plat_movement_modifiers()
 {
 	// Detects platform ID below player
 	var plat_id = instance_place(x, y + 1, obj_platform_parent)
-	if(plat_id != noone && !object_is_ancestor(plat_id.object_index, obj_platform_void_parent))
+	if(plat_id != noone && !object_is_ancestor(plat_id.object_index, obj_platform_void_parent) && is_slowed == false)
 	{
 				
 		if(plat_id.oil_level > 0)
@@ -39,12 +39,11 @@ function scr_plat_movement_modifiers()
 		if(plat_id.water_level > 0)
 		{
 			// Rest any changes
-			scr_reset_move_modifiers();
+			if(!is_slowed && !is_stunned && !is_frozen) scr_reset_move_modifiers();
 						
 			// If the character is standing on a charged water platform
 			if(plat_id.is_charged)
 			{
-	
 				// Determines if the character can be stunned
 				if(can_be_stunned == true)
 				{
@@ -53,9 +52,10 @@ function scr_plat_movement_modifiers()
 				}
 							
 			}
-		}else scr_reset_move_modifiers() // Rest any changes when on the ground
+		}else if(!is_slowed && !is_stunned && !is_frozen) scr_reset_move_modifiers() // Rest any changes when on the ground
 					
 				
-	}else scr_reset_move_modifiers() // Rest any changes when not on the ground
+	}else if(!is_slowed && !is_stunned && !is_frozen) scr_reset_move_modifiers() // Rest any changes when not on the ground
+
 			
 }
