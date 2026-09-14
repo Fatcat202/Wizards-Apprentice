@@ -26,5 +26,12 @@ function scr_pull_spell_data(spell_name)
 	spr = global.spell_stats[spell_index].spr
 	scr = global.spell_stats[spell_index].scr
 	attack_spr = global.spell_stats[spell_index].attack_spr
+	knockback = global.spell_stats[spell_index].knockback
+	can_stun = global.spell_stats[spell_index].can_stun
+	can_ignite = global.spell_stats[spell_index].can_ignite
+	can_poison = global.spell_stats[spell_index].can_poison
+	can_freeze = global.spell_stats[spell_index].can_freeze
+	can_slow = global.spell_stats[spell_index].can_slow
+	type = global.spell_stats[spell_index].type
 	
 }

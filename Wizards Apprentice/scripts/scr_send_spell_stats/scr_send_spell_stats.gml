@@ -24,6 +24,13 @@ function scr_push_spell_data(spell_name)
 	spell_name.spr = spr
 	spell_name.scr = scr
 	spell_name.attack_spr = attack_spr
+	spell_name.knockback = knockback
+	spell_name.can_stun = can_stun
+	spell_name.can_ignite = can_ignite
+	spell_name.can_poison = can_poison
+	spell_name.can_freeze = can_freeze
+	spell_name.can_slow = can_slow
+	spell_name.type = type
 	
 	
 }

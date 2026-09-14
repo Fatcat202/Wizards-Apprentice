@@ -1,7 +1,7 @@
 (spell names below),unlockable,level,water_level,oil_level,is_ice,is_flaming,is_steaming,is_charged,damage,move_spd,cooldown,mana,memory,uses,duration,title,desc,spr,scr,attack_spr,knockback,can_stun,can_ignite,can_poison,can_freeze,can_slow,spell_type
 heal,TRUE,2,0,0,FALSE,FALSE,FALSE,FALSE,2,-1,5,2,2,-1,-1,Heal,"Restore life to yourself, but drain max mana.",spr_spell_slot_heal,scr_spell_heal,-1,-1,-1,-1,-1,-1,-1,EMPTY
 jump,TRUE,2,0,0,FALSE,FALSE,FALSE,FALSE,-1,-1,2,2,2,1,5,Jump,Enhance your dexterity with a double jump.,spr_spell_slot_jump,scr_spell_jump,-1,-1,-1,-1,-1,-1,-1,EMPTY
-jolt,TRUE,1,0,0,FALSE,FALSE,FALSE,TRUE,5,6,1,0,1,-1,2,Jolt,Launch a jolt of electricity.,spr_spell_slot_jolt,scr_spell_jolt,spr_spell_jolt,-1,-1,-1,-1,-1,-1,PROJECTILE
+jolt,TRUE,1,0,0,FALSE,FALSE,FALSE,TRUE,5,6,1,0,1,-1,2,Jolt,Launch a jolt of electricity.,spr_spell_slot_jolt,scr_spell_jolt,spr_spell_jolt,-1,0.5,-1,-1,-1,-1,PROJECTILE
 firebolt,TRUE,1,0,0,FALSE,TRUE,FALSE,FALSE,5,6,1,0,1,-1,2,Firebolt,Launch a small ball of flames.,spr_spell_slot_firebolt,scr_spell_firebolt,spr_spell_firebolt,-1,-1,-1,-1,-1,-1,PROJECTILE
 icicle,TRUE,1,1,0,TRUE,FALSE,FALSE,FALSE,5,6,1,0,1,-1,2,Icicle,Launch a freezing icicle.,spr_spell_slot_icicle,scr_spell_icicle,spr_spell_icicle,-1,-1,-1,-1,-1,-1,PROJECTILE
 wall of fire,FALSE,3,0,0,FALSE,TRUE,FALSE,FALSE,2,-1,1,3,3,-1,10,Wall of Fire,Create a wall of fire.,spr_spell_slot_wall_of_fire,scr_spell_wall_of_fire,spr_spell_wall_of_fire,-1,-1,-1,-1,-1,-1,WALL
@@ -9,4 +9,4 @@ wall of ice,FALSE,3,3,0,FALSE,FALSE,FALSE,FALSE,-1,-1,1,3,3,-1,10,Wall of Ice,Cr
 fireball,TRUE,2,0,0,FALSE,TRUE,FALSE,FALSE,5,6,1,2,3,-1,10,Fireball,Launch a fireball that detonates on impact.,spr_spell_slot_fireball,scr_spell_fireball,spr_spell_fireball,-1,-1,-1,-1,-1,-1,PROJECTILE
 water splash,TRUE,1,1,0,FALSE,FALSE,FALSE,FALSE,5,6,1,0,1,-1,10,Water Splash,Launch a splash of water.,spr_spell_slot_water_splash,scr_spell_water_splash,spr_spell_water_splash,-1,-1,-1,-1,-1,-1,PROJECTILE
 oil splash,TRUE,1,0,1,FALSE,FALSE,FALSE,FALSE,5,6,1,0,1,-1,10,Oil Splash,Launch a splash of oil.,spr_spell_slot_oil_splash,scr_spell_oil_splash,spr_spell_oil_splash,-1,-1,-1,-1,-1,-1,PROJECTILE
-lightning bolt,TRUE,3,0,0,FALSE,FALSE,FALSE,TRUE,10,-1,1,3,3,-1,0.15,Lightning Bolt,Generate and release a powerful charge of electricity in a line.,spr_spell_slot_lightning_bolt,scr_spell_lightning_bolt,spr_spell_lightning_bolt,-1,-1,-1,-1,-1,-1,RAY
+lightning bolt,TRUE,3,0,0,FALSE,FALSE,FALSE,TRUE,10,-1,1,3,3,-1,0.15,Lightning Bolt,Generate and release a powerful charge of electricity in a line.,spr_spell_slot_lightning_bolt,scr_spell_lightning_bolt,spr_spell_lightning_bolt,-1,1,-1,-1,-1,-1,RAY

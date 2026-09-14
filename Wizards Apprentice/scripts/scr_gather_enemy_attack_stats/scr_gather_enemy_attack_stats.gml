@@ -20,4 +20,13 @@ function scr_gather_enemy_attack_stats(attack_name)
 	sprite = global.enemy_attack_stats[attack_index].sprite
 	is_visible = global.enemy_attack_stats[attack_index].is_visible
 	move_spd = global.enemy_attack_stats[attack_index].move_spd
+	knockback = global.enemy_attack_stats[attack_index].knockback
+	can_stun = global.enemy_attack_stats[attack_index].can_stun
+	can_ignite = global.enemy_attack_stats[attack_index].can_ignite
+	can_poison = global.enemy_attack_stats[attack_index].can_poison
+	can_freeze = global.enemy_attack_stats[attack_index].can_freeze
+	can_slow = global.enemy_attack_stats[attack_index].can_slow
+	type = global.enemy_attack_stats[attack_index].type
+	health_drain = global.enemy_attack_stats[attack_index].health_drain
+	mana_drain = global.enemy_attack_stats[attack_index].mana_drain
 }

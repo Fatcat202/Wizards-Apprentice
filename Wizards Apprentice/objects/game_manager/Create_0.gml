@@ -761,11 +761,11 @@ randomise()
 			
 			#region Hard coded spells for testing
 			
-				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("water splash")]
+				global.active_spells[0, 1] = global.spell_stats[scr_find_spell_index("jolt")]
 				global.active_spells[0, 2] = -1 //global.spell_stats[scr_find_spell_index("oil splash")]
 				global.active_spells[0, 3] = -1 //global.spell_stats[scr_find_spell_index("heal")]
 				global.active_spells[0, 4] = -1 //global.spell_stats[scr_find_spell_index("lightning bolt")]
-				global.active_spells[0, 5] = -1 //global.spell_stats[scr_find_spell_index("jolt")]
+				global.active_spells[0, 5] = -1 // global.spell_stats[scr_find_spell_index("jolt")]
 				global.active_spells[0, 6] = -1 //global.spell_stats[scr_find_spell_index("wall of fire")]
 				global.active_spells[0, 7] = -1 //global.spell_stats[scr_find_spell_index("wall of ice")]
 				global.active_spells[0, 8] = -1 //global.spell_stats[scr_find_spell_index("fireball")]
