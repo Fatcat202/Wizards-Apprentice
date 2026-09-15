@@ -15,15 +15,21 @@ function scr_damage(dmg, _bypass = false, _water_level = water_level, _oil_level
 		(_is_charged == true && element_shield == "Shock"))
 		{
 			element_shield = "Empty"
+			// Activate I frames
+			alarm[11] = global.i_frames;
+			can_damage = false
 			exit;
 		}else
 		
 		// If element shield is not empty and does not match spell element, decrease shield health
-		if(element_shield != "Empty")
+		if(element_shield != "Empty" && can_damage)
 		{
 			// Decrease health
 			active_shield_health--
-			
+			// Activate I frames
+			alarm[11] = global.i_frames;
+			can_damage = false
+
 			// Set shield as empty if shield health at 0
 			if(active_shield_health <= 0)
 			{

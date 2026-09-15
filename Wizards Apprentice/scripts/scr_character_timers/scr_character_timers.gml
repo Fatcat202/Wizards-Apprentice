@@ -133,6 +133,8 @@ function scr_character_timers()
 				is_shielded = false;
 				shield_timer = 0;
 				shield_length = shield_length_base;
+				element_shield = "Empty";
+				
 			}shield_timer++;
 		
 			if(shield_ticks <= 0)
@@ -141,6 +143,7 @@ function scr_character_timers()
 				is_shielded = false;
 				shield_timer = 0;
 				shield_length = shield_length_base;
+				element_shield = "Empty";
 			}
 		}
 	
