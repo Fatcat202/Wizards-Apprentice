@@ -13,7 +13,10 @@ function scr_spell_default(spell_name)
 	var target_y = mouse_y;
 
 	// Create instance
-	var spell = instance_create_layer(x, y, "Spells", obj_spell_default)
+	var spell = instance_create_layer(x, y, "Spells", obj_spell_default,
+	{
+		spell_name : spell_name
+	})
 		scr_push_spell_data(spell)
 		spell.speed = move_spd
 		spell.direction = point_direction(x, y, target_x, target_y)

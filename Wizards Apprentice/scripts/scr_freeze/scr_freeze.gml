@@ -1,4 +1,4 @@
-function scr_freeze()
+function scr_freeze(can_freeze)
 {
 	// Lock character in ice. 
 	// Treat effect as ice element. 

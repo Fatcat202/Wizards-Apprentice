@@ -15,3 +15,8 @@ element_delay_active = false;
 interact_delay_timer = 0;
 interact_delay_length = 2;
 interact_delay_active = true;
+
+
+// Holds ID of enemies hurt to prevent stacking
+arr_enemies_hurt = []
+

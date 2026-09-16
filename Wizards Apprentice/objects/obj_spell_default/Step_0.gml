@@ -18,7 +18,7 @@ event_inherited()
 
 #region Projectile Determination
 
-	if(move_spd != -1)
+	if(type == "PROJECTILE")
 	{
 		// Allow attack to move at set speed, becoming a projectile
 	
@@ -26,6 +26,7 @@ event_inherited()
 		
 	}else
 	
+	if(type == "MELEE")
 	{
 		// Keep attack in place relative to player
 		

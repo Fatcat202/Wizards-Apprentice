@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_spell_ray",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_spell_ray",
+  "parent":{
+    "name":"Types",
+    "path":"folders/Scripts/Spells/Spells/Types.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
