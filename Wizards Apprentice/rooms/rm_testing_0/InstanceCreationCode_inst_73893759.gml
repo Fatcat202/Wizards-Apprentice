@@ -4,4 +4,4 @@ scr_update_player_stats()
 
 //can_damage = false
 
-//invisible = true
+//is_invisible = true

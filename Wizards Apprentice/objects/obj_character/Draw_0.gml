@@ -6,6 +6,8 @@ var spr_width = sprite_get_width(sprite_index)
 // Sprite height
 var spr_height = sprite_get_height(sprite_index)
 	var spr_height_half = spr_height / 2
+	
+
 
 
 #region Element Shields

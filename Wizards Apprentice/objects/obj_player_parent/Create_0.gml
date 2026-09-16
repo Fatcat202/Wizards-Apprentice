@@ -68,9 +68,6 @@ scr_memory_used()
 		plat_spd_decel_ice = 2.3
 	
 	
-	// Determines if the player is invisible
-	invisible = false
-	
 	// Blank surface to assignment
 	surf = -1
 	

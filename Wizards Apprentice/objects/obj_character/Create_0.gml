@@ -42,6 +42,7 @@ poison_time = 1
 freeze_time = 1
 slow_time = 1
 shield_time = 1
+invisible_time = 8
 
 //Ticks
 // Used for counting down certain effects, eg. DOT
@@ -101,6 +102,11 @@ is_shielded = false;
 shield_timer = 0;
 shield_length_base = game_get_speed(gamespeed_fps) * shield_time;
 shield_length = shield_length_base;
+
+// Timer used for duration of invisiblity
+is_invisible = false;
+invisible_time = 0;
+invisible_length = game_get_speed(gamespeed_fps) * invisible_time;
 
 
 

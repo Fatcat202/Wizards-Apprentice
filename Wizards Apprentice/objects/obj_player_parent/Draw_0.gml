@@ -19,3 +19,9 @@ event_inherited();
 	}
 	
 #region Player Sprite
+
+if(is_invisible == true)
+{
+	image_alpha = 0.5;
+	image_blend = c_purple;
+}

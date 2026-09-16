@@ -13,7 +13,7 @@ function scr_player_search()
 	making_path = false
 	
 	// Check if the player is invisible
-	if(obj_player_parent.invisible == true)
+	if(obj_player_parent.is_invisible == true)
 	{
 		player_visible = false
 		exit;

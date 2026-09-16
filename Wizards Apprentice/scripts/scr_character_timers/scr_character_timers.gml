@@ -149,6 +149,19 @@ function scr_character_timers()
 	
 	#endregion Shield Timer
 	
+	#region Invisible Timer
+	
+		if(invisible_time > invisible_length)
+		{
+			image_blend = c_white;
+			image_alpha = 1;
+			is_invisible = false;
+			invisible_time = 0;
+			invisible_length = game_get_speed(gamespeed_fps) * invisible_time;
+		}else invisible_time++
+	
+	#endregion Invisible Timer
+	
 
 	
 
