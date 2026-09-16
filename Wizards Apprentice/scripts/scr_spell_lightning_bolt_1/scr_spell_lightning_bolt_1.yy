@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_spell_lightning_bolt_1",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_spell_lightning_bolt_1",
+  "parent":{
+    "name":"Default",
+    "path":"folders/Scripts/Spells/Spells/Default.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
