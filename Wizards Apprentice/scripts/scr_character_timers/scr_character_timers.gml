@@ -28,6 +28,12 @@ function scr_character_timers()
 				is_frozen = false;
 				freeze_timer = 0;
 				freeze_length = freeze_length_base;
+				
+				image_blend = c_white
+				
+				can_move = true;
+				can_attack = true;
+				
 			}freeze_timer++;
 		}
 	

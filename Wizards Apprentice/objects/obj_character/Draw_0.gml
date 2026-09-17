@@ -62,5 +62,10 @@ var spr_height = sprite_get_height(sprite_index)
 	
 #endregion Stunned
 
+if(is_frozen == true)
+{
+	image_blend = c_teal
+}
+
 // Draw own sprite
 draw_self()

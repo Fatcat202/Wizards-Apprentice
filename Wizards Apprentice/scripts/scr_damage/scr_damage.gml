@@ -52,6 +52,18 @@ function scr_damage(dmg, _bypass = false, _water_level = water_level, _oil_level
 				// Remove element shield
 				element_shield = "Empty"
 			}
+		}	
+	}
+	
+	// Remove frozen from other character if effect is flaming
+	if(is_flaming == true)
+	{
+		if(other.is_frozen)
+		{
+			other.freeze_timer = other.freeze_length+1;
 		}
 	}
+	
 }
+
+

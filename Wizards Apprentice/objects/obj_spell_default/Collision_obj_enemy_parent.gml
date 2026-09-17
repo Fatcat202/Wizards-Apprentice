@@ -1,5 +1,6 @@
 /// @description Damage
 
+
 #region Spell Type
 
 	if(type == "RAY")
